@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const paths = [
   {
@@ -99,13 +100,25 @@ const LearningPaths = () => {
                   ))}
                 </div>
 
-                <Button
-                  variant="outline"
-                  className="w-full group-hover:bg-primary/10 group-hover:border-primary"
-                >
-                  Начать курс
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                {index === 0 ? (
+                  <Link to="/beginner-course" className="block">
+                    <Button
+                      variant="outline"
+                      className="w-full group-hover:bg-primary/10 group-hover:border-primary"
+                    >
+                      Начать курс
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                ) : (
+                  <Button
+                    variant="outline"
+                    className="w-full group-hover:bg-primary/10 group-hover:border-primary"
+                  >
+                    Скоро доступно
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}
