@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Brain, Zap, Code } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
@@ -56,9 +57,11 @@ const Hero = () => {
             <Button size="lg" variant="cyber" className="text-lg">
               Начать обучение
             </Button>
-            <Button size="lg" variant="outline" className="text-lg">
-              Примеры кода
-            </Button>
+            <Link to="/code-examples">
+              <Button size="lg" variant="outline" className="text-lg">
+                Примеры кода
+              </Button>
+            </Link>
           </div>
 
           {/* Stats */}
