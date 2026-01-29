@@ -2,66 +2,98 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Modern Tech Design System - Stripe/AI Startup inspired */
 
 @layer base {
   :root {
-    --background: 230 25% 8%;
-    --foreground: 180 100% 95%;
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
 
-    --card: 230 20% 12%;
-    --card-foreground: 180 100% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 230 20% 10%;
-    --popover-foreground: 180 100% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 180 100% 50%;
-    --primary-foreground: 230 25% 8%;
+    --primary: 252 100% 67%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 280 100% 60%;
-    --secondary-foreground: 180 100% 95%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 230 15% 20%;
-    --muted-foreground: 180 50% 70%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 320 100% 60%;
-    --accent-foreground: 180 100% 95%;
+    --accent: 172 66% 50%;
+    --accent-foreground: 222 47% 11%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 180 100% 95%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 230 20% 20%;
-    --input: 230 20% 18%;
-    --ring: 180 100% 50%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 252 100% 67%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    /* Cyberpunk specific colors */
-    --neon-cyan: 180 100% 50%;
-    --neon-purple: 280 100% 60%;
-    --neon-pink: 320 100% 60%;
-    --cyber-dark: 230 25% 8%;
-    --cyber-darker: 230 30% 5%;
+    /* Brand colors */
+    --violet: 252 100% 67%;
+    --violet-light: 252 100% 75%;
+    --violet-dark: 252 100% 55%;
+    --teal: 172 66% 50%;
+    --teal-light: 172 66% 60%;
+    --indigo: 238 84% 67%;
+    --rose: 343 81% 58%;
     
     /* Gradients */
-    --gradient-cyber: linear-gradient(135deg, hsl(180 100% 50% / 0.2), hsl(280 100% 60% / 0.2));
-    --gradient-neon: linear-gradient(90deg, hsl(180 100% 50%), hsl(280 100% 60%));
-    --gradient-hero: linear-gradient(180deg, hsl(230 25% 8%), hsl(230 30% 5%));
+    --gradient-primary: linear-gradient(135deg, hsl(252 100% 67%), hsl(238 84% 67%));
+    --gradient-accent: linear-gradient(135deg, hsl(172 66% 50%), hsl(252 100% 67%));
+    --gradient-hero: linear-gradient(180deg, hsl(210 40% 98%), hsl(0 0% 100%));
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(252 100% 95%) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(172 66% 95%) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(238 84% 95%) 0px, transparent 50%);
     
-    /* Shadows & Glows */
-    --glow-cyan: 0 0 20px hsl(180 100% 50% / 0.5), 0 0 40px hsl(180 100% 50% / 0.3);
-    --glow-purple: 0 0 20px hsl(280 100% 60% / 0.5), 0 0 40px hsl(280 100% 60% / 0.3);
-    --glow-pink: 0 0 20px hsl(320 100% 60% / 0.5), 0 0 40px hsl(320 100% 60% / 0.3);
-    
-    /* Animations */
-    --transition-cyber: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-glow: 0 0 40px -10px hsl(252 100% 67% / 0.3);
   }
 
   .dark {
-    --background: 230 25% 8%;
-    --foreground: 180 100% 95%;
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 252 100% 67%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 222 47% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 47% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 172 66% 50%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 47% 15%;
+    --input: 222 47% 15%;
+    --ring: 252 100% 67%;
+
+    --gradient-hero: linear-gradient(180deg, hsl(222 47% 8%), hsl(222 47% 6%));
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(252 100% 15%) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(172 66% 15%) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(238 84% 15%) 0px, transparent 50%);
   }
 }
 
@@ -71,15 +103,29 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
 @layer utilities {
-  .animation-delay-300 {
-    animation-delay: 300ms;
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .bg-mesh {
+    background-image: var(--gradient-mesh);
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
   }
   
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
   .animation-delay-600 {
     animation-delay: 600ms;
   }

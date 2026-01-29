@@ -1,79 +1,85 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, Target, Cpu, GitBranch, Sparkles, Users } from "lucide-react";
+import { Brain, Layers, LineChart, Rocket, Cpu, GitBranch } from "lucide-react";
 
 const features = [
   {
-    icon: BookOpen,
-    title: "Пошаговые уроки",
-    description: "Структурированные материалы от базовых концепций до продвинутых техник",
+    icon: Brain,
+    title: "PyTorch-Based RL",
+    description: "Clean implementations of PPO, DQN, A2C, and more with detailed explanations.",
     color: "primary",
   },
   {
-    icon: Target,
-    title: "Практические примеры",
-    description: "Реальные проекты с готовым кодом и подробными комментариями",
-    color: "secondary",
+    icon: Layers,
+    title: "Unity ML-Agents",
+    description: "Learn to train agents in realistic 3D game environments.",
+    color: "teal",
+  },
+  {
+    icon: LineChart,
+    title: "Visual Math",
+    description: "Understand policy gradients and value functions through interactive diagrams.",
+    color: "indigo",
+  },
+  {
+    icon: Rocket,
+    title: "Step-by-Step Projects",
+    description: "Build complete agents from scratch with guided tutorials.",
+    color: "rose",
   },
   {
     icon: Cpu,
-    title: "ML алгоритмы",
-    description: "Изучите PPO, SAC, POCA и другие алгоритмы машинного обучения",
-    color: "accent",
+    title: "Reproducible Experiments",
+    description: "All code is tested, versioned, and guaranteed to work.",
+    color: "teal",
   },
   {
     icon: GitBranch,
-    title: "Готовые решения",
-    description: "Скачивайте готовые проекты и адаптируйте под свои задачи",
+    title: "Research-Level Rigor",
+    description: "Implementations follow best practices from top RL papers.",
     color: "primary",
-  },
-  {
-    icon: Sparkles,
-    title: "Визуализация",
-    description: "Понимайте процесс обучения через интерактивные графики",
-    color: "secondary",
-  },
-  {
-    icon: Users,
-    title: "Сообщество",
-    description: "Общайтесь с другими разработчиками и делитесь опытом",
-    color: "accent",
   },
 ];
 
+const colorClasses: Record<string, { bg: string; text: string }> = {
+  primary: { bg: "bg-primary/10", text: "text-primary" },
+  teal: { bg: "bg-teal/10", text: "text-teal" },
+  indigo: { bg: "bg-indigo/10", text: "text-indigo" },
+  rose: { bg: "bg-rose/10", text: "text-rose" },
+};
+
 const Features = () => {
   return (
-    <section className="py-20 px-4 relative">
+    <section className="py-24 px-4 bg-secondary/30">
       <div className="container mx-auto">
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold">
-            <span className="text-foreground">Почему </span>
-            <span className="bg-gradient-neon bg-clip-text text-transparent">
-              выбирают нас?
-            </span>
+          <p className="text-primary font-semibold text-sm uppercase tracking-wider">Features</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+            Everything you need to master RL
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Все необходимое для создания умных агентов в Unity
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            A complete learning platform designed for practical, hands-on reinforcement learning.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {features.map((feature, index) => {
             const Icon = feature.icon;
+            const colors = colorClasses[feature.color];
             return (
               <Card
                 key={index}
-                className="group relative bg-card/50 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-300 hover:shadow-glow-cyan hover:-translate-y-2"
+                className="group bg-background border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg"
               >
                 <CardContent className="p-6 space-y-4">
-                  <div
-                    className={`w-12 h-12 rounded-lg bg-gradient-cyber flex items-center justify-center shadow-glow-${feature.color} group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <Icon className={`w-6 h-6 text-${feature.color}`} />
+                  <div className={`w-12 h-12 rounded-xl ${colors.bg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon className={`w-6 h-6 ${colors.text}`} />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground">
+                  <h3 className="text-lg font-semibold text-foreground">
                     {feature.title}
                   </h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  <p className="text-muted-foreground text-sm">
+                    {feature.description}
+                  </p>
                 </CardContent>
               </Card>
             );
