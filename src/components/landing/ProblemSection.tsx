@@ -30,7 +30,7 @@ const problems = [
 
 const ProblemSection = () => {
   return (
-    <section className="py-20 px-4 relative bg-cyber-darker/50">
+    <section id="problem" className="py-20 px-4 relative bg-cyber-darker/50">
       {/* Background Effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-destructive/50 to-transparent" />

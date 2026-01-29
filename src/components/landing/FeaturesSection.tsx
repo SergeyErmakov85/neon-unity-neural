@@ -48,7 +48,7 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <section className="py-20 px-4 relative">
+    <section id="features" className="py-20 px-4 relative">
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />

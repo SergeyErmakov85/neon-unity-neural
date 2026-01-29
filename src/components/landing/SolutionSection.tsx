@@ -3,7 +3,7 @@ import { ArrowRight, Lightbulb, Code2, Gamepad2, CheckCircle2 } from "lucide-rea
 
 const SolutionSection = () => {
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
+    <section id="solution" className="py-20 px-4 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />

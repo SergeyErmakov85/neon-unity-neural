@@ -38,7 +38,7 @@ const audiences = [
 
 const AudienceSection = () => {
   return (
-    <section className="py-20 px-4 relative bg-cyber-darker/50">
+    <section id="audience" className="py-20 px-4 relative bg-cyber-darker/50">
       <div className="container mx-auto relative z-10">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-3xl md:text-5xl font-bold">
