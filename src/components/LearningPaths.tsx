@@ -1,131 +1,127 @@
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const paths = [
   {
-    level: "Beginner",
-    title: "Foundations",
-    duration: "4 weeks",
-    description: "Learn the fundamentals of reinforcement learning and set up your environment.",
+    title: "Основы ML-Agents",
+    level: "Начальный",
+    duration: "4 недели",
     modules: [
-      "RL basics: agents, environments, rewards",
-      "Setting up Unity ML-Agents",
-      "Your first training loop",
-      "Understanding observations and actions",
+      "Установка Unity ML-Agents Toolkit",
+      "Создание первого агента",
+      "Базовые концепции обучения с подкреплением",
+      "Простой пример: мяч на платформе",
     ],
-    color: "primary",
-    active: true,
+    gradient: "from-cyber-cyan to-primary",
   },
   {
-    level: "Intermediate",
-    title: "Core Algorithms",
-    duration: "6 weeks",
-    description: "Master the most important RL algorithms with hands-on implementations.",
+    title: "Продвинутые техники",
+    level: "Средний",
+    duration: "6 недель",
     modules: [
-      "Deep Q-Networks (DQN)",
-      "Policy Gradient methods",
-      "Proximal Policy Optimization (PPO)",
-      "Reward shaping and curriculum learning",
+      "Настройка параметров обучения",
+      "Работа с наблюдениями и действиями",
+      "Система наград и штрафов",
+      "Curriculum Learning",
     ],
-    color: "teal",
-    active: false,
+    gradient: "from-secondary to-cyber-purple",
   },
   {
-    level: "Advanced",
-    title: "Production RL",
-    duration: "8 weeks",
-    description: "Build production-ready systems and tackle complex challenges.",
+    title: "Реальные проекты",
+    level: "Продвинутый",
+    duration: "8 недель",
     modules: [
-      "Multi-agent systems",
-      "Imitation learning",
-      "Hyperparameter optimization",
-      "Deploying trained models",
+      "Многоагентные системы",
+      "Имитационное обучение",
+      "Оптимизация производительности",
+      "Развертывание моделей в production",
     ],
-    color: "indigo",
-    active: false,
+    gradient: "from-accent to-cyber-pink",
   },
 ];
 
-const colorClasses: Record<string, { border: string; bg: string; text: string }> = {
-  primary: { border: "border-primary", bg: "bg-primary", text: "text-primary" },
-  teal: { border: "border-teal", bg: "bg-teal", text: "text-teal" },
-  indigo: { border: "border-indigo", bg: "bg-indigo", text: "text-indigo" },
-};
-
 const LearningPaths = () => {
   return (
-    <section className="py-24 px-4 bg-secondary/30">
-      <div className="container mx-auto">
+    <section className="py-20 px-4 relative">
+      {/* Background Effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto relative z-10">
         <div className="text-center mb-16 space-y-4">
-          <p className="text-primary font-semibold text-sm uppercase tracking-wider">Learning Path</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Your journey to RL mastery
+          <h2 className="text-4xl md:text-5xl font-bold">
+            <span className="bg-gradient-neon bg-clip-text text-transparent">
+              Программы обучения
+            </span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            A structured curriculum that takes you from beginner to advanced practitioner.
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Выберите свой путь от новичка до эксперта
           </p>
         </div>
 
-        {/* Timeline */}
-        <div className="max-w-4xl mx-auto">
-          <div className="relative">
-            {/* Connecting line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border hidden md:block" />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {paths.map((path, index) => (
+            <Card
+              key={index}
+              className="relative bg-card/50 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-300 overflow-hidden group"
+            >
+              {/* Gradient Header */}
+              <div
+                className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${path.gradient}`}
+              />
 
-            <div className="space-y-8">
-              {paths.map((path, index) => {
-                const colors = colorClasses[path.color];
-                return (
-                  <div key={index} className="relative flex gap-8">
-                    {/* Timeline dot */}
-                    <div className={`hidden md:flex flex-shrink-0 w-16 h-16 rounded-full ${colors.bg}/10 border-2 ${colors.border} items-center justify-center z-10 bg-background`}>
-                      <span className={`text-xl font-bold ${colors.text}`}>{index + 1}</span>
+              <CardHeader className="space-y-4 pt-8">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <div className="text-sm text-muted-foreground mb-2">
+                      {path.level}
                     </div>
-
-                    {/* Card */}
-                    <div className={`flex-1 bg-background border border-border rounded-2xl p-6 hover:border-primary/30 transition-all ${path.active ? 'shadow-lg' : ''}`}>
-                      <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-                        <div>
-                          <span className={`text-xs font-semibold ${colors.text} uppercase tracking-wider`}>
-                            {path.level}
-                          </span>
-                          <h3 className="text-xl font-bold text-foreground mt-1">{path.title}</h3>
-                        </div>
-                        <span className="text-sm text-muted-foreground bg-secondary px-3 py-1 rounded-full">
-                          {path.duration}
-                        </span>
-                      </div>
-
-                      <p className="text-muted-foreground mb-6">{path.description}</p>
-
-                      <div className="grid sm:grid-cols-2 gap-3 mb-6">
-                        {path.modules.map((module, idx) => (
-                          <div key={idx} className="flex items-start gap-2">
-                            <CheckCircle2 className={`w-4 h-4 ${colors.text} flex-shrink-0 mt-0.5`} />
-                            <span className="text-sm text-muted-foreground">{module}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      {path.active ? (
-                        <Link to="/beginner-course">
-                          <Button variant="gradient" className="w-full sm:w-auto">
-                            Start This Path
-                            <ArrowRight className="w-4 h-4" />
-                          </Button>
-                        </Link>
-                      ) : (
-                        <Button variant="outline" disabled className="w-full sm:w-auto">
-                          Coming Soon
-                        </Button>
-                      )}
-                    </div>
+                    <CardTitle className="text-2xl">{path.title}</CardTitle>
                   </div>
-                );
-              })}
-            </div>
-          </div>
+                  <div className="text-sm text-primary font-semibold bg-primary/10 px-3 py-1 rounded-full">
+                    {path.duration}
+                  </div>
+                </div>
+              </CardHeader>
+
+              <CardContent className="space-y-6">
+                <div className="space-y-3">
+                  {path.modules.map((module, idx) => (
+                    <div key={idx} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-muted-foreground">
+                        {module}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {index === 0 ? (
+                  <Link to="/beginner-course" className="block">
+                    <Button
+                      variant="outline"
+                      className="w-full group-hover:bg-primary/10 group-hover:border-primary"
+                    >
+                      Начать курс
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                ) : (
+                  <Button
+                    variant="outline"
+                    className="w-full group-hover:bg-primary/10 group-hover:border-primary"
+                  >
+                    Скоро доступно
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                )}
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
