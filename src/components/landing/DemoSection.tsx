@@ -4,7 +4,7 @@ import { Play, TrendingUp, Bot, Target } from "lucide-react";
 
 const DemoSection = () => {
   return (
-    <section className="py-20 px-4 relative bg-cyber-darker/50">
+    <section id="demo" className="py-20 px-4 relative bg-cyber-darker/50">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
