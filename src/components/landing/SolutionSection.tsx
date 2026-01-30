@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Lightbulb, Code2, Gamepad2, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Lightbulb, Code2, Gamepad2, CheckCircle2, Trophy } from "lucide-react";
 
 const SolutionSection = () => {
   return (
@@ -27,12 +27,12 @@ const SolutionSection = () => {
         </div>
 
         {/* Solution Flow */}
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 items-center">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-stretch">
             {/* Math Card */}
-            <Card className="bg-card/60 backdrop-blur-sm border-primary/30 hover:border-primary/60 transition-all duration-300 hover:shadow-glow-cyan">
+            <Card className="bg-card/60 backdrop-blur-sm border-primary/30 hover:border-primary/60 transition-all duration-300 hover:shadow-glow-cyan group">
               <CardContent className="p-6 text-center space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-cyber flex items-center justify-center shadow-glow-cyan">
+                <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-cyber flex items-center justify-center shadow-glow-cyan group-hover:scale-110 transition-transform duration-300">
                   <Lightbulb className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold text-foreground">Теория и математика</h3>
@@ -42,18 +42,15 @@ const SolutionSection = () => {
               </CardContent>
             </Card>
 
-            {/* Arrow */}
-            <div className="hidden md:flex justify-center">
+            {/* Arrow for desktop */}
+            <div className="hidden lg:flex items-center justify-center">
               <ArrowRight className="w-8 h-8 text-primary animate-glow-pulse" />
-            </div>
-            <div className="flex md:hidden justify-center py-2">
-              <ArrowRight className="w-8 h-8 text-primary rotate-90" />
             </div>
 
             {/* Code Card */}
-            <Card className="bg-card/60 backdrop-blur-sm border-secondary/30 hover:border-secondary/60 transition-all duration-300 hover:shadow-glow-purple">
+            <Card className="bg-card/60 backdrop-blur-sm border-secondary/30 hover:border-secondary/60 transition-all duration-300 hover:shadow-glow-purple group">
               <CardContent className="p-6 text-center space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-cyber flex items-center justify-center shadow-glow-purple">
+                <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-cyber flex items-center justify-center shadow-glow-purple group-hover:scale-110 transition-transform duration-300">
                   <Code2 className="w-8 h-8 text-secondary" />
                 </div>
                 <h3 className="text-xl font-bold text-foreground">Код на PyTorch</h3>
@@ -63,23 +60,38 @@ const SolutionSection = () => {
               </CardContent>
             </Card>
 
-            {/* Arrow */}
-            <div className="hidden md:flex justify-center md:col-start-2">
+            {/* Arrow for desktop */}
+            <div className="hidden lg:flex items-center justify-center">
               <ArrowRight className="w-8 h-8 text-secondary animate-glow-pulse animation-delay-300" />
-            </div>
-            <div className="flex md:hidden justify-center py-2">
-              <ArrowRight className="w-8 h-8 text-secondary rotate-90" />
             </div>
 
             {/* Game Card */}
-            <Card className="md:col-start-3 bg-card/60 backdrop-blur-sm border-accent/30 hover:border-accent/60 transition-all duration-300 hover:shadow-glow-pink">
+            <Card className="bg-card/60 backdrop-blur-sm border-accent/30 hover:border-accent/60 transition-all duration-300 hover:shadow-glow-pink group">
               <CardContent className="p-6 text-center space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-cyber flex items-center justify-center shadow-glow-pink">
+                <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-cyber flex items-center justify-center shadow-glow-pink group-hover:scale-110 transition-transform duration-300">
                   <Gamepad2 className="w-8 h-8 text-accent" />
                 </div>
                 <h3 className="text-xl font-bold text-foreground">Игровые среды Unity</h3>
                 <p className="text-sm text-muted-foreground">
                   Обучение агентов в реальных 3D-окружениях
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Arrow for desktop */}
+            <div className="hidden lg:flex items-center justify-center">
+              <ArrowRight className="w-8 h-8 text-accent animate-glow-pulse animation-delay-600" />
+            </div>
+
+            {/* Results Card */}
+            <Card className="bg-card/60 backdrop-blur-sm border-green-500/30 hover:border-green-500/60 transition-all duration-300 hover:shadow-[0_0_20px_hsl(142_76%_36%/0.3)] group">
+              <CardContent className="p-6 text-center space-y-4">
+                <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-cyber flex items-center justify-center shadow-[0_0_15px_hsl(142_76%_36%/0.4)] group-hover:scale-110 transition-transform duration-300">
+                  <Trophy className="w-8 h-8 text-green-400" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground">Реальные результаты</h3>
+                <p className="text-sm text-muted-foreground">
+                  Работающие агенты и портфолио проектов
                 </p>
               </CardContent>
             </Card>
