@@ -13,6 +13,7 @@ import MathRLModule3 from "./pages/MathRLModule3";
 import MathRLModule4 from "./pages/MathRLModule4";
 import MathRLModule5 from "./pages/MathRLModule5";
 import PyTorchModule from "./pages/PyTorchModule";
+import UnityMLAgentsModule from "./pages/UnityMLAgentsModule";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/math-rl/module-4" element={<MathRLModule4 />} />
           <Route path="/math-rl/module-5" element={<MathRLModule5 />} />
           <Route path="/pytorch" element={<PyTorchModule />} />
+          <Route path="/unity-ml-agents" element={<UnityMLAgentsModule />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
