@@ -11,6 +11,7 @@ import MathRLModule1 from "./pages/MathRLModule1";
 import MathRLModule2 from "./pages/MathRLModule2";
 import MathRLModule3 from "./pages/MathRLModule3";
 import MathRLModule4 from "./pages/MathRLModule4";
+import MathRLModule5 from "./pages/MathRLModule5";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/math-rl/module-2" element={<MathRLModule2 />} />
           <Route path="/math-rl/module-3" element={<MathRLModule3 />} />
           <Route path="/math-rl/module-4" element={<MathRLModule4 />} />
+          <Route path="/math-rl/module-5" element={<MathRLModule5 />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
