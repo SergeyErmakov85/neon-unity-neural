@@ -20,9 +20,9 @@ const modules = [
   },
   {
     id: 3,
-    title: "Модуль 3 (скоро)",
-    description: "Материал готовится.",
-    available: false,
+    title: "Вероятность, Статистика и Марковские Процессы",
+    description: "Теория вероятности, условная вероятность, правило Байеса, MDP, уравнения Беллмана, алгоритмы RL.",
+    available: true,
     color: "accent" as const,
   },
   {
