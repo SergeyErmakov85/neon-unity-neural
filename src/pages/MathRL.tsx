@@ -34,9 +34,9 @@ const modules = [
   },
   {
     id: 5,
-    title: "Модуль 5 (скоро)",
-    description: "Материал готовится.",
-    available: false,
+    title: "Учебное пособие по математике и глубокому обучению с подкреплением",
+    description: "Комплексное пособие, интегрирующее все модули: Deep RL, MDP, Беллман, DQN, Policy Gradient, распределения, MLE/MAP, ОДУ.",
+    available: true,
     color: "secondary" as const,
   },
 ];
