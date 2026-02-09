@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Zap, X, Calculator, Flame } from "lucide-react";
+import { Menu, Zap, X, Calculator, Flame, Gamepad2 } from "lucide-react";
 
 const navLinks = [
   { href: "#problem", label: "Проблема" },
@@ -104,6 +104,15 @@ const Navbar = () => {
               variant="outline"
               size="sm"
               className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:shadow-glow-cyan transition-all duration-300"
+              onClick={() => navigate("/unity-ml-agents")}
+            >
+              <Gamepad2 className="w-4 h-4 mr-1" />
+              UnityML-Agents
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:shadow-glow-cyan transition-all duration-300"
             >
               Войти
             </Button>
@@ -170,6 +179,14 @@ const Navbar = () => {
                   >
                     <Flame className="w-4 h-4 mr-1" />
                     PyTorch
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full border-primary/50 text-primary hover:bg-primary/10 hover:border-primary"
+                    onClick={() => { setIsOpen(false); navigate("/unity-ml-agents"); }}
+                  >
+                    <Gamepad2 className="w-4 h-4 mr-1" />
+                    UnityML-Agents
                   </Button>
                   <Button
                     variant="outline"
