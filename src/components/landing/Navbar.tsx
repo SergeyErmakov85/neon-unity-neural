@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Zap, X } from "lucide-react";
+import { Menu, Zap, X, Calculator } from "lucide-react";
 
 const navLinks = [
   { href: "#problem", label: "Проблема" },
@@ -15,6 +16,7 @@ const navLinks = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,6 +85,15 @@ const Navbar = () => {
             <Button
               variant="outline"
               size="sm"
+              className="border-accent/50 text-accent hover:bg-accent/10 hover:border-accent hover:shadow-glow-pink transition-all duration-300"
+              onClick={() => navigate("/math-rl")}
+            >
+              <Calculator className="w-4 h-4 mr-1" />
+              Математика RL
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
               className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:shadow-glow-cyan transition-all duration-300"
             >
               Войти
@@ -135,6 +146,14 @@ const Navbar = () => {
 
                 {/* Mobile CTA Buttons */}
                 <div className="mt-auto flex flex-col gap-3 px-2 pb-8">
+                  <Button
+                    variant="outline"
+                    className="w-full border-accent/50 text-accent hover:bg-accent/10 hover:border-accent"
+                    onClick={() => { setIsOpen(false); navigate("/math-rl"); }}
+                  >
+                    <Calculator className="w-4 h-4 mr-1" />
+                    Математика RL
+                  </Button>
                   <Button
                     variant="outline"
                     className="w-full border-primary/50 text-primary hover:bg-primary/10 hover:border-primary"
