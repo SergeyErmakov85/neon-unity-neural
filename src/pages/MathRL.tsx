@@ -27,9 +27,9 @@ const modules = [
   },
   {
     id: 4,
-    title: "Модуль 4 (скоро)",
-    description: "Материал готовится.",
-    available: false,
+    title: "Методы оптимизации в обучении с подкреплением",
+    description: "Градиент политики, REINFORCE, SGD/Adam, Proximal Policy Optimization (PPO) и реализация в Unity ML-Agents.",
+    available: true,
     color: "primary" as const,
   },
   {
