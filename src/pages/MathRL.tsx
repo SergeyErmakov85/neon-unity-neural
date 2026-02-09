@@ -13,9 +13,9 @@ const modules = [
   },
   {
     id: 2,
-    title: "Модуль 2 (скоро)",
-    description: "Материал готовится.",
-    available: false,
+    title: "Линейная алгебра для RL",
+    description: "Векторы, матрицы, собственные значения, SVD, квадратичные формы и разложения в контексте RL.",
+    available: true,
     color: "secondary" as const,
   },
   {
