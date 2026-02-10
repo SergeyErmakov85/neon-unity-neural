@@ -20,6 +20,9 @@ import SACModule from "./pages/SACModule";
 import UnityProjectsHub from "./pages/UnityProjectsHub";
 import BallBalanceProject from "./pages/BallBalanceProject";
 import GridWorldProject from "./pages/GridWorldProject";
+import QLearningViz from "./pages/QLearningViz";
+import AdvancedTopics from "./pages/AdvancedTopics";
+import Labs from "./pages/Labs";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -48,6 +51,9 @@ const App = () => (
           <Route path="/unity-projects" element={<UnityProjectsHub />} />
           <Route path="/unity-projects/ball-balance" element={<BallBalanceProject />} />
           <Route path="/unity-projects/gridworld" element={<GridWorldProject />} />
+          <Route path="/visualizations/q-learning" element={<QLearningViz />} />
+          <Route path="/advanced" element={<AdvancedTopics />} />
+          <Route path="/labs" element={<Labs />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

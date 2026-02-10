@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Zap, X, Calculator, Flame, Gamepad2, Brain, Boxes } from "lucide-react";
+import { Menu, Zap, X, Calculator, Flame, Gamepad2, Brain, Boxes, Eye, FlaskConical, Sparkles } from "lucide-react";
 
 const navLinks = [
   { href: "#problem", label: "Проблема" },
@@ -130,6 +130,33 @@ const Navbar = () => {
             <Button
               variant="outline"
               size="sm"
+              className="border-accent/50 text-accent hover:bg-accent/10 hover:border-accent hover:shadow-glow-pink transition-all duration-300"
+              onClick={() => navigate("/visualizations/q-learning")}
+            >
+              <Eye className="w-4 h-4 mr-1" />
+              Визуализации
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="border-secondary/50 text-secondary hover:bg-secondary/10 hover:border-secondary hover:shadow-glow-purple transition-all duration-300"
+              onClick={() => navigate("/advanced")}
+            >
+              <Sparkles className="w-4 h-4 mr-1" />
+              Продвинутое
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:shadow-glow-cyan transition-all duration-300"
+              onClick={() => navigate("/labs")}
+            >
+              <FlaskConical className="w-4 h-4 mr-1" />
+              Практикумы
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
               className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:shadow-glow-cyan transition-all duration-300"
             >
               Войти
@@ -221,6 +248,30 @@ const Navbar = () => {
                   >
                     <Gamepad2 className="w-4 h-4 mr-1" />
                     UnityML-Agents
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full border-accent/50 text-accent hover:bg-accent/10 hover:border-accent"
+                    onClick={() => { setIsOpen(false); navigate("/visualizations/q-learning"); }}
+                  >
+                    <Eye className="w-4 h-4 mr-1" />
+                    Визуализации
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full border-secondary/50 text-secondary hover:bg-secondary/10 hover:border-secondary"
+                    onClick={() => { setIsOpen(false); navigate("/advanced"); }}
+                  >
+                    <Sparkles className="w-4 h-4 mr-1" />
+                    Продвинутое
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full border-primary/50 text-primary hover:bg-primary/10 hover:border-primary"
+                    onClick={() => { setIsOpen(false); navigate("/labs"); }}
+                  >
+                    <FlaskConical className="w-4 h-4 mr-1" />
+                    Практикумы
                   </Button>
                   <Button
                     variant="outline"
