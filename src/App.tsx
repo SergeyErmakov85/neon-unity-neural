@@ -14,6 +14,12 @@ import MathRLModule4 from "./pages/MathRLModule4";
 import MathRLModule5 from "./pages/MathRLModule5";
 import PyTorchModule from "./pages/PyTorchModule";
 import UnityMLAgentsModule from "./pages/UnityMLAgentsModule";
+import AlgorithmsHub from "./pages/AlgorithmsHub";
+import PPOModule from "./pages/PPOModule";
+import SACModule from "./pages/SACModule";
+import UnityProjectsHub from "./pages/UnityProjectsHub";
+import BallBalanceProject from "./pages/BallBalanceProject";
+import GridWorldProject from "./pages/GridWorldProject";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +42,12 @@ const App = () => (
           <Route path="/math-rl/module-5" element={<MathRLModule5 />} />
           <Route path="/pytorch" element={<PyTorchModule />} />
           <Route path="/unity-ml-agents" element={<UnityMLAgentsModule />} />
+          <Route path="/algorithms" element={<AlgorithmsHub />} />
+          <Route path="/algorithms/ppo" element={<PPOModule />} />
+          <Route path="/algorithms/sac" element={<SACModule />} />
+          <Route path="/unity-projects" element={<UnityProjectsHub />} />
+          <Route path="/unity-projects/ball-balance" element={<BallBalanceProject />} />
+          <Route path="/unity-projects/gridworld" element={<GridWorldProject />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Zap, X, Calculator, Flame, Gamepad2 } from "lucide-react";
+import { Menu, Zap, X, Calculator, Flame, Gamepad2, Brain, Boxes } from "lucide-react";
 
 const navLinks = [
   { href: "#problem", label: "Проблема" },
@@ -112,6 +112,24 @@ const Navbar = () => {
             <Button
               variant="outline"
               size="sm"
+              className="border-secondary/50 text-secondary hover:bg-secondary/10 hover:border-secondary hover:shadow-glow-pink transition-all duration-300"
+              onClick={() => navigate("/algorithms")}
+            >
+              <Brain className="w-4 h-4 mr-1" />
+              Алгоритмы
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:shadow-glow-cyan transition-all duration-300"
+              onClick={() => navigate("/unity-projects")}
+            >
+              <Boxes className="w-4 h-4 mr-1" />
+              Проекты
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
               className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:shadow-glow-cyan transition-all duration-300"
             >
               Войти
@@ -179,6 +197,22 @@ const Navbar = () => {
                   >
                     <Flame className="w-4 h-4 mr-1" />
                     PyTorch
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full border-secondary/50 text-secondary hover:bg-secondary/10 hover:border-secondary"
+                    onClick={() => { setIsOpen(false); navigate("/algorithms"); }}
+                  >
+                    <Brain className="w-4 h-4 mr-1" />
+                    Алгоритмы
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full border-primary/50 text-primary hover:bg-primary/10 hover:border-primary"
+                    onClick={() => { setIsOpen(false); navigate("/unity-projects"); }}
+                  >
+                    <Boxes className="w-4 h-4 mr-1" />
+                    Проекты
                   </Button>
                   <Button
                     variant="outline"
