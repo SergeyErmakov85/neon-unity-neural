@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, BookOpen, Settings, Code, Rocket, Target, Grid3X3 } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Settings, Code, Rocket, Target, Grid3X3 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const GridWorldProject = () => {
@@ -291,8 +291,8 @@ public class GridWorldAgent : Agent
           <Button variant="outline" onClick={() => navigate("/unity-projects/ball-balance")} className="border-primary/50 text-primary hover:bg-primary/10">
             <ArrowLeft className="w-4 h-4 mr-2" /> Ball Balance
           </Button>
-          <Button variant="outline" onClick={() => navigate("/unity-projects")} className="border-primary/50 text-primary hover:bg-primary/10">
-            Все проекты
+          <Button variant="outline" onClick={() => navigate("/unity-projects/racing")} className="border-primary/50 text-primary hover:bg-primary/10">
+            Racing Car <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </div>

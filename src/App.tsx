@@ -25,6 +25,8 @@ const A3CModule = lazy(() => import("./pages/A3CModule"));
 const UnityProjectsHub = lazy(() => import("./pages/UnityProjectsHub"));
 const BallBalanceProject = lazy(() => import("./pages/BallBalanceProject"));
 const GridWorldProject = lazy(() => import("./pages/GridWorldProject"));
+const RacingCarProject = lazy(() => import("./pages/RacingCarProject"));
+const SoccerProject = lazy(() => import("./pages/SoccerProject"));
 const QLearningViz = lazy(() => import("./pages/QLearningViz"));
 const Visualizations = lazy(() => import("./pages/Visualizations"));
 const AdvancedTopics = lazy(() => import("./pages/AdvancedTopics"));
@@ -69,6 +71,8 @@ const App = () => (
             <Route path="/unity-projects" element={<UnityProjectsHub />} />
             <Route path="/unity-projects/ball-balance" element={<BallBalanceProject />} />
             <Route path="/unity-projects/gridworld" element={<GridWorldProject />} />
+            <Route path="/unity-projects/racing" element={<RacingCarProject />} />
+            <Route path="/unity-projects/soccer" element={<SoccerProject />} />
             <Route path="/visualizations" element={<Visualizations />} />
             <Route path="/visualizations/q-learning" element={<QLearningViz />} />
             <Route path="/advanced" element={<AdvancedTopics />} />
