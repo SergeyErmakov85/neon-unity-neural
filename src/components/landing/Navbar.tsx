@@ -4,14 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Zap, X, Calculator, Flame, Gamepad2, Brain, Boxes, Eye, FlaskConical, Sparkles } from "lucide-react";
 
-const navLinks = [
-  { href: "#problem", label: "Проблема" },
-  { href: "#solution", label: "Решение" },
-  { href: "#features", label: "Возможности" },
-  { href: "#demo", label: "Демо" },
-  { href: "#learning-path", label: "Путь обучения" },
-  { href: "#audience", label: "Аудитория" },
-];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,13 +19,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsOpen(false);
-  };
 
   return (
     <nav
@@ -63,22 +48,6 @@ const Navbar = () => {
             </span>
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 group"
-              >
-                <span className="relative z-10">{link.label}</span>
-                {/* Neon underline effect */}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-neon group-hover:w-3/4 transition-all duration-300" />
-                {/* Glow effect */}
-                <span className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 rounded-md transition-colors duration-300" />
-              </button>
-            ))}
-          </div>
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
@@ -193,19 +162,6 @@ const Navbar = () => {
                   </span>
                 </div>
 
-                {/* Mobile Navigation Links */}
-                <div className="flex flex-col gap-2">
-                  {navLinks.map((link) => (
-                    <button
-                      key={link.href}
-                      onClick={() => scrollToSection(link.href)}
-                      className="flex items-center px-4 py-3 text-left text-muted-foreground hover:text-foreground hover:bg-primary/10 rounded-lg transition-all duration-300 group"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary group-hover:shadow-glow-cyan mr-3 transition-all duration-300" />
-                      {link.label}
-                    </button>
-                  ))}
-                </div>
 
                 {/* Mobile CTA Buttons */}
                 <div className="mt-auto flex flex-col gap-3 px-2 pb-8">
