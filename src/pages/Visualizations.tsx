@@ -91,7 +91,7 @@ const PPOClippingViz = () => {
   const toX = (ratio: number) => (ratio / 3) * 100;
 
   const pathFromPoints = (key: "unclipped" | "final") =>
-    ratioRange.map((p, i) => `${i === 0 ? "M" : "L"} ${toX(p.ratio)}% ${toY(p[key])}`).join(" ");
+    ratioRange.map((p, i) => `${i === 0 ? "M" : "L"} ${toX(p.ratio)} ${toY(p[key])}`).join(" ");
 
   return (
     <div className="space-y-6">
