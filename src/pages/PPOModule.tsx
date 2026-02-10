@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight, BookOpen, Shield, Target, Cpu, Code, Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
+import Quiz from "@/components/Quiz";
 
 const PPOModule = () => {
   const navigate = useNavigate();
@@ -349,6 +350,32 @@ class PPOAgent(nn.Module):
             </CardContent>
           </Card>
         </section>
+
+        <Quiz
+          title="Проверьте понимание PPO"
+          questions={[
+            {
+              question: "Что ограничивает clipped objective в PPO?",
+              options: [
+                "Размер нейросети",
+                "Размер изменения политики за одно обновление",
+                "Количество эпизодов",
+                "Learning rate",
+              ],
+              correctIndex: 1,
+            },
+            {
+              question: "Что такое GAE (Generalized Advantage Estimation)?",
+              options: [
+                "Метод оптимизации нейросети",
+                "Способ вычисления advantage с балансом bias-variance",
+                "Алгоритм обучения без учителя",
+                "Тип функции активации",
+              ],
+              correctIndex: 1,
+            },
+          ]}
+        />
 
         {/* Navigation */}
         <div className="flex justify-between items-center pt-8 border-t border-border/50">
