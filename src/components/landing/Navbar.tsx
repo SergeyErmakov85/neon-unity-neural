@@ -131,7 +131,7 @@ const Navbar = () => {
               variant="outline"
               size="sm"
               className="border-accent/50 text-accent hover:bg-accent/10 hover:border-accent hover:shadow-glow-pink transition-all duration-300"
-              onClick={() => navigate("/visualizations/q-learning")}
+              onClick={() => navigate("/visualizations")}
             >
               <Eye className="w-4 h-4 mr-1" />
               Визуализации
@@ -252,7 +252,7 @@ const Navbar = () => {
                   <Button
                     variant="outline"
                     className="w-full border-accent/50 text-accent hover:bg-accent/10 hover:border-accent"
-                    onClick={() => { setIsOpen(false); navigate("/visualizations/q-learning"); }}
+                    onClick={() => { setIsOpen(false); navigate("/visualizations"); }}
                   >
                     <Eye className="w-4 h-4 mr-1" />
                     Визуализации

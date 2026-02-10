@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight, BookOpen, Zap, Target, Code, Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
+import Quiz from "@/components/Quiz";
 
 const SACModule = () => {
   const navigate = useNavigate();
@@ -262,6 +263,32 @@ class GaussianPolicy(nn.Module):
         </section>
 
         {/* Navigation */}
+        <Quiz
+          title="Проверьте понимание SAC"
+          questions={[
+            {
+              question: "Что максимизирует SAC помимо награды?",
+              options: [
+                "Скорость обучения",
+                "Энтропию политики",
+                "Размер буфера",
+                "Количество слоёв",
+              ],
+              correctIndex: 1,
+            },
+            {
+              question: "Почему SAC использует два Q-сети?",
+              options: [
+                "Для ускорения обучения",
+                "Для минимизации overestimation bias",
+                "Для поддержки дискретных действий",
+                "Для увеличения exploration",
+              ],
+              correctIndex: 1,
+            },
+          ]}
+        />
+
         <div className="flex justify-between items-center pt-8 border-t border-border/50">
           <Button variant="outline" onClick={() => navigate("/algorithms/ppo")} className="border-accent/50 text-accent hover:bg-accent/10">
             <ArrowLeft className="w-4 h-4 mr-2" /> PPO
