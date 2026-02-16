@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Play, TrendingUp, Bot, Target } from "lucide-react";
@@ -101,10 +102,12 @@ const DemoSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button size="lg" variant="outline" className="group">
-            <Play className="w-4 h-4 mr-2" />
-            Смотреть полное демо
-          </Button>
+          <Link to="/demo-project">
+            <Button size="lg" variant="outline" className="group">
+              <Play className="w-4 h-4 mr-2" />
+              Смотреть полное демо
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

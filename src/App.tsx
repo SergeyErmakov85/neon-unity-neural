@@ -31,6 +31,7 @@ const QLearningViz = lazy(() => import("./pages/QLearningViz"));
 const Visualizations = lazy(() => import("./pages/Visualizations"));
 const AdvancedTopics = lazy(() => import("./pages/AdvancedTopics"));
 const Labs = lazy(() => import("./pages/Labs"));
+const DemoProject = lazy(() => import("./pages/DemoProject"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -77,6 +78,7 @@ const App = () => (
             <Route path="/visualizations/q-learning" element={<QLearningViz />} />
             <Route path="/advanced" element={<AdvancedTopics />} />
             <Route path="/labs" element={<Labs />} />
+            <Route path="/demo-project" element={<DemoProject />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
