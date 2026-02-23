@@ -43,10 +43,10 @@ const Navbar = () => {
     setIsOpen(false);
   };
   return <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/90 backdrop-blur-md border-b border-primary/30 shadow-glow-cyan" : "bg-transparent"}`}>
-      <div className="container px-4 mx-px">
+      <div className="container px-4 mx-[240px] my-0">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group" onClick={e => {
+          <a href="#" className="flex items-center gap-2 group mx-[7px]" onClick={(e) => {
           e.preventDefault();
           window.scrollTo({
             top: 0,
@@ -55,7 +55,7 @@ const Navbar = () => {
         }}>
             <div className="relative">
               <Zap className="w-8 h-8 text-primary transition-all duration-300 group-hover:drop-shadow-[0_0_10px_hsl(var(--primary))]" />
-              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 mx-0" />
             </div>
             <span className="text-xl font-bold bg-gradient-neon bg-clip-text text-transparent">
               RL Platform
@@ -63,15 +63,15 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map(link => <button key={link.href} onClick={() => scrollToSection(link.href)} className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300 group">
-                <span className="relative z-10">{link.label}</span>
-                {/* Neon underline effect */}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-neon group-hover:w-3/4 transition-all duration-300" />
-                {/* Glow effect */}
-                <span className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 rounded-md transition-colors duration-300" />
-              </button>)}
-          </div>
+          
+
+
+
+
+
+
+
+
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
@@ -134,7 +134,7 @@ const Navbar = () => {
 
                 {/* Mobile Navigation Links */}
                 <div className="flex flex-col gap-2">
-                  {navLinks.map(link => <button key={link.href} onClick={() => scrollToSection(link.href)} className="flex items-center px-4 py-3 text-left text-muted-foreground hover:text-foreground hover:bg-primary/10 rounded-lg transition-all duration-300 group">
+                  {navLinks.map((link) => <button key={link.href} onClick={() => scrollToSection(link.href)} className="flex items-center px-4 py-3 text-left text-muted-foreground hover:text-foreground hover:bg-primary/10 rounded-lg transition-all duration-300 group">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary group-hover:shadow-glow-cyan mr-3 transition-all duration-300" />
                       {link.label}
                     </button>)}

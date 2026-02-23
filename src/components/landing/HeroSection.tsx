@@ -10,14 +10,14 @@ const HeroSection = () => {
         <img
           src={heroBg}
           alt="AI Gaming Environment"
-          className="w-full h-full object-cover opacity-30"
-        />
+          className="w-full h-full object-cover opacity-30" />
+
         <div className="absolute inset-0 bg-gradient-hero" />
       </div>
 
       {/* Animated Grid Pattern */}
       <div className="absolute inset-0 z-0 opacity-20">
-        <div className="h-full w-full bg-[linear-gradient(to_right,#00f0ff15_1px,transparent_1px),linear-gradient(to_bottom,#00f0ff15_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+        <div className="h-full w-full bg-[linear-gradient(to_right,#00f0ff15_1px,transparent_1px),linear-gradient(to_bottom,#00f0ff15_1px,transparent_1px)] bg-[size:4rem_4rem] my-[36px]" />
       </div>
 
       {/* Floating Particles Effect */}
@@ -102,8 +102,8 @@ const HeroSection = () => {
 
       {/* Bottom Gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-0" />
-    </section>
-  );
+    </section>);
+
 };
 
 export default HeroSection;
