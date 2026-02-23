@@ -51,12 +51,14 @@ const HeroSection = () => {
 
           {/* Main Heading */}
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">
-            <span className="text-foreground">Освойте </span>
+            <span className="text-foreground">Освойте</span>
+            <br />
             <span className="bg-gradient-neon bg-clip-text text-transparent">
               Reinforcement Learning
             </span>
             <br />
-            <span className="text-foreground">через тренировку </span>
+            <span className="text-foreground">через тренировку</span>
+            <br />
             <span className="bg-gradient-neon bg-clip-text text-transparent">
               игровых агентов 🎮
             </span>
