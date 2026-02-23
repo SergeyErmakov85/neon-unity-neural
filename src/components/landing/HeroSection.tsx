@@ -50,7 +50,7 @@ const HeroSection = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-relaxed">
             <span className="text-foreground">Освойте</span>
             <br />
             <span className="bg-gradient-neon bg-clip-text text-transparent">
