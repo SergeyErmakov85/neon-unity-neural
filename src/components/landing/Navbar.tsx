@@ -107,9 +107,6 @@ const Navbar = () => {
               <FlaskConical className="w-4 h-4 mr-1" />
               Практикумы
             </Button>
-            <Button variant="outline" size="sm" className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:shadow-glow-cyan transition-all duration-300">
-              Войти
-            </Button>
             <Button size="sm" className="bg-gradient-neon hover:shadow-glow-cyan hover:scale-105 transition-all duration-300" onClick={() => navigate("/beginner-course")}>
               Начать обучение
             </Button>
