@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2, Circle, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const levels = [
   {
@@ -41,6 +42,7 @@ const levels = [
 ];
 
 const LearningPathSection = () => {
+  const navigate = useNavigate();
   return (
     <section id="learning-path" className="py-20 px-4 relative overflow-hidden">
       {/* Background Effects */}
@@ -114,7 +116,10 @@ const LearningPathSection = () => {
                       )}
                     </div>
 
-                    <Card className={`bg-card/60 backdrop-blur-sm ${colors.border} ${colors.shadow} transition-all duration-300`}>
+                    <Card 
+                      className={`bg-card/60 backdrop-blur-sm ${colors.border} ${colors.shadow} transition-all duration-300 ${level.isActive ? 'cursor-pointer' : ''}`}
+                      onClick={() => level.isActive && navigate("/beginner-course")}
+                    >
                       <CardContent className="p-6 space-y-4">
                         <div className="flex justify-between items-start">
                           <div>
