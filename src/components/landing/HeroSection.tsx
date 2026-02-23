@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Brain, Gamepad2, Code2, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -69,7 +71,7 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-            <Button size="lg" variant="cyber" className="text-lg px-8 group">
+            <Button size="lg" variant="cyber" className="text-lg px-8 group" onClick={() => navigate("/beginner-course")}>
               <Sparkles className="w-5 h-5 mr-2 group-hover:animate-glow-pulse" />
               Начать обучение
             </Button>

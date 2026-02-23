@@ -10,7 +10,7 @@ import { toast } from "sonner";
 const lessons = [
   {
     id: 1,
-    title: "Установка Unity ML-Agents Toolkit",
+    title: "Основы Reinforcement Learning",
     duration: "30 мин",
     theory: `Unity ML-Agents Toolkit - это открытая библиотека, которая позволяет играм и симуляциям служить средой для обучения интеллектуальных агентов.
 
@@ -43,7 +43,7 @@ git clone https://github.com/Unity-Technologies/ml-agents.git
   },
   {
     id: 2,
-    title: "Создание первого агента",
+    title: "Установка окружения PyTorch + Unity",
     duration: "45 мин",
     theory: `Агент в ML-Agents - это объект, который может наблюдать за окружением, принимать решения и выполнять действия.
 
@@ -153,7 +153,7 @@ public class RollerAgent : Agent
   },
   {
     id: 3,
-    title: "Базовые концепции обучения с подкреплением",
+    title: "Первый агент: CartPole",
     duration: "40 мин",
     theory: `Обучение с подкреплением (Reinforcement Learning) - это метод машинного обучения, где агент учится принимать решения через взаимодействие со средой.
 
@@ -210,7 +210,7 @@ behaviors:
   },
   {
     id: 4,
-    title: "Простой пример: мяч на платформе",
+    title: "Базовый DQN алгоритм",
     duration: "60 мин",
     theory: `Классический пример ML-Agents - балансировка мяча на платформе. Агент учится наклонять платформу, чтобы удерживать мяч.
 
