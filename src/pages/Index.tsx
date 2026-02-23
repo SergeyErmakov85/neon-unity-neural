@@ -15,7 +15,7 @@ import FooterSection from "@/components/landing/FooterSection";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar className="mx-[240px] my-[11px]" />
+      <Navbar />
       <SectionNav />
       <HeroSection />
       <ProblemSection />
