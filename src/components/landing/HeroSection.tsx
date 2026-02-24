@@ -35,18 +35,18 @@ const HeroSection = () => {
         <div className="max-w-5xl mx-auto text-center space-y-8 animate-slide-up">
           {/* Tech Stack Badges */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-primary/30 shadow-glow-cyan">
+            <button onClick={() => navigate("/pytorch")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-primary/30 shadow-glow-cyan hover:bg-primary/10 hover:scale-105 transition-all duration-300 cursor-pointer">
               <Brain className="w-5 h-5 text-primary" />
               <span className="text-sm font-medium text-foreground">PyTorch</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-secondary/30 shadow-glow-purple">
+            </button>
+            <button onClick={() => navigate("/unity-ml-agents")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-secondary/30 shadow-glow-purple hover:bg-secondary/10 hover:scale-105 transition-all duration-300 cursor-pointer">
               <Gamepad2 className="w-5 h-5 text-secondary" />
               <span className="text-sm font-medium text-foreground">Unity ML-Agents</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-accent/30 shadow-glow-pink">
+            </button>
+            <button onClick={() => navigate("/deep-rl")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-accent/30 shadow-glow-pink hover:bg-accent/10 hover:scale-105 transition-all duration-300 cursor-pointer">
               <Code2 className="w-5 h-5 text-accent" />
               <span className="text-sm font-medium text-foreground">Deep RL</span>
-            </div>
+            </button>
           </div>
 
           {/* Main Heading */}
