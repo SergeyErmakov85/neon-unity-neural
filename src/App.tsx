@@ -32,6 +32,7 @@ const Visualizations = lazy(() => import("./pages/Visualizations"));
 const AdvancedTopics = lazy(() => import("./pages/AdvancedTopics"));
 const Labs = lazy(() => import("./pages/Labs"));
 const DemoProject = lazy(() => import("./pages/DemoProject"));
+const DeepRLModule = lazy(() => import("./pages/DeepRLModule"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -79,6 +80,7 @@ const App = () => (
             <Route path="/advanced" element={<AdvancedTopics />} />
             <Route path="/labs" element={<Labs />} />
             <Route path="/demo-project" element={<DemoProject />} />
+            <Route path="/deep-rl" element={<DeepRLModule />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
