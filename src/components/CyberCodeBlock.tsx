@@ -11,52 +11,50 @@ interface CyberCodeBlockProps {
   filename?: string;
 }
 
+const tokenize = (code: string, patterns: [RegExp, string][]): string => {
+  // Build a combined regex from all patterns
+  const combined = new RegExp(patterns.map(([re]) => `(${re.source})`).join('|'), 'gm');
+  const classes = patterns.map(([, cls]) => cls);
+
+  return code.replace(combined, (...args) => {
+    // args: full match, then one group per pattern, then offset, then string
+    for (let i = 0; i < classes.length; i++) {
+      if (args[i + 1] !== undefined) {
+        return `<span class="${classes[i]}">${args[i + 1]}</span>`;
+      }
+    }
+    return args[0];
+  });
+};
+
 const highlightPython = (code: string): string => {
-  // Order matters: comments first, then strings, then keywords, etc.
-  return code
-    // Comments
-    .replace(/(#.*)/g, '<span class="cyber-comment">$1</span>')
-    // Strings (double and single quoted)
-    .replace(/(?<!class="cyber-comment">.*)("""[\s\S]*?"""|'''[\s\S]*?'''|"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g, '<span class="cyber-string">$1</span>')
-    // Keywords
-    .replace(/\b(import|from|as|def|class|return|if|else|elif|for|while|in|not|and|or|is|None|True|False|with|try|except|finally|raise|yield|lambda|pass|break|continue|self|super)\b/g, '<span class="cyber-keyword">$1</span>')
-    // Built-in functions
-    .replace(/\b(print|range|len|int|float|str|list|dict|tuple|set|type|isinstance|enumerate|zip|map|filter|max|min|sum|abs|round|sorted|reversed|format|input|open|super)\b(?=\s*\()/g, '<span class="cyber-builtin">$1</span>')
-    // Numbers
-    .replace(/\b(\d+\.?\d*(?:e[+-]?\d+)?f?)\b/g, '<span class="cyber-number">$1</span>')
-    // Decorators
-    .replace(/(@\w+)/g, '<span class="cyber-decorator">$1</span>')
-    // Class/function names after def/class
-    .replace(/(?<=\bdef\s+)(\w+)/g, '<span class="cyber-funcname">$1</span>')
-    .replace(/(?<=\bclass\s+)(\w+)/g, '<span class="cyber-classname">$1</span>');
+  return tokenize(code, [
+    [/#.*/, 'cyber-comment'],
+    [/"""[\s\S]*?"""|'''[\s\S]*?'''|"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/, 'cyber-string'],
+    [/@\w+/, 'cyber-decorator'],
+    [/\b(?:import|from|as|def|class|return|if|else|elif|for|while|in|not|and|or|is|None|True|False|with|try|except|finally|raise|yield|lambda|pass|break|continue|self|super)\b/, 'cyber-keyword'],
+    [/\b(?:print|range|len|int|float|str|list|dict|tuple|set|type|isinstance|enumerate|zip|map|filter|max|min|sum|abs|round|sorted|reversed|format|input|open|super)\s*(?=\()/, 'cyber-builtin'],
+    [/\b\d+\.?\d*(?:e[+-]?\d+)?f?\b/, 'cyber-number'],
+  ]);
 };
 
 const highlightCSharp = (code: string): string => {
-  return code
-    // Comments
-    .replace(/(\/\/.*)/g, '<span class="cyber-comment">$1</span>')
-    // Strings
-    .replace(/("(?:[^"\\]|\\.)*")/g, '<span class="cyber-string">$1</span>')
-    // Keywords
-    .replace(/\b(using|public|private|protected|class|override|void|new|if|else|for|while|return|float|int|bool|string|var|this|base|static|readonly|const|namespace|abstract|virtual|sealed|partial|get|set|true|false|null)\b/g, '<span class="cyber-keyword">$1</span>')
-    // Types
-    .replace(/\b(Vector3|Transform|Agent|VectorSensor|ActionBuffers|Time|Mathf|GameObject|MonoBehaviour|Rigidbody|Collider)\b/g, '<span class="cyber-type">$1</span>')
-    // Numbers
-    .replace(/\b(\d+\.?\d*f?)\b/g, '<span class="cyber-number">$1</span>')
-    // Method calls
-    .replace(/\.(\w+)(?=\s*\()/g, '.<span class="cyber-funcname">$1</span>');
+  return tokenize(code, [
+    [/\/\/.*/, 'cyber-comment'],
+    [/"(?:[^"\\]|\\.)*"/, 'cyber-string'],
+    [/\b(?:using|public|private|protected|class|override|void|new|if|else|for|while|return|float|int|bool|string|var|this|base|static|readonly|const|namespace|abstract|virtual|sealed|partial|get|set|true|false|null)\b/, 'cyber-keyword'],
+    [/\b(?:Vector3|Transform|Agent|VectorSensor|ActionBuffers|Time|Mathf|GameObject|MonoBehaviour|Rigidbody|Collider)\b/, 'cyber-type'],
+    [/\b\d+\.?\d*f?\b/, 'cyber-number'],
+  ]);
 };
 
 const highlightPseudo = (code: string): string => {
-  return code
-    // Comments
-    .replace(/(#.*)/g, '<span class="cyber-comment">$1</span>')
-    // Keywords/operators in pseudo-code
-    .replace(/\b(where|if|else|for|while|return|min|max|clip|log|E)\b/g, '<span class="cyber-keyword">$1</span>')
-    // Arrows and special symbols
-    .replace(/(←|→|∑|π|γ|α|ε|θ)/g, '<span class="cyber-type">$1</span>')
-    // Numbers
-    .replace(/\b(\d+\.?\d*)\b/g, '<span class="cyber-number">$1</span>');
+  return tokenize(code, [
+    [/#.*/, 'cyber-comment'],
+    [/\b(?:where|if|else|for|while|return|min|max|clip|log|E)\b/, 'cyber-keyword'],
+    [/[←→∑πγαεθ]/, 'cyber-type'],
+    [/\b\d+\.?\d*\b/, 'cyber-number'],
+  ]);
 };
 
 const highlight = (code: string, language: Language): string => {
