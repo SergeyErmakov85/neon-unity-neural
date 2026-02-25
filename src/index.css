@@ -84,3 +84,45 @@ All colors MUST be HSL.
     animation-delay: 600ms;
   }
 }
+
+/* Cyberpunk syntax highlighting */
+.cyber-keyword {
+  color: hsl(280 100% 70%);
+  font-weight: 600;
+}
+
+.cyber-string {
+  color: hsl(50 100% 60%);
+}
+
+.cyber-comment {
+  color: hsl(180 40% 45%);
+  font-style: italic;
+}
+
+.cyber-number {
+  color: hsl(320 100% 65%);
+}
+
+.cyber-builtin {
+  color: hsl(180 100% 60%);
+}
+
+.cyber-type {
+  color: hsl(180 100% 55%);
+  font-weight: 500;
+}
+
+.cyber-funcname {
+  color: hsl(45 100% 65%);
+}
+
+.cyber-classname {
+  color: hsl(180 100% 55%);
+  font-weight: 700;
+}
+
+.cyber-decorator {
+  color: hsl(320 100% 60%);
+  font-style: italic;
+}

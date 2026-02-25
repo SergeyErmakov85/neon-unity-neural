@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, BookOpen, Brain, Zap, Target, Code2, TrendingUp, Layers } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import CyberCodeBlock from "@/components/CyberCodeBlock";
 
 const DeepRLModule = () => {
   const navigate = useNavigate();
@@ -182,8 +183,7 @@ const DeepRLModule = () => {
                 <li><strong className="text-foreground">Свёрточные слои:</strong> CNN автоматически извлекает
                   пространственные признаки из кадров игры (84×84 пикселей в оттенках серого).</li>
               </ul>
-              <pre className="bg-background/80 border border-border/50 rounded-lg p-4 overflow-x-auto text-sm text-foreground">
-{`# Ключевая формула обновления DQN:
+              <CyberCodeBlock language="pseudo">{`# Ключевая формула обновления DQN:
 # Q(s,a) ← r + γ · max_a' Q_target(s', a')
 
 # Архитектура сети для Atari:
@@ -191,8 +191,7 @@ const DeepRLModule = () => {
 # Conv2d(32, 64, 4, stride=2) → ReLU
 # Conv2d(64, 64, 3, stride=1) → ReLU
 # Linear(3136, 512) → ReLU
-# Linear(512, n_actions)`}
-              </pre>
+# Linear(512, n_actions)`}</CyberCodeBlock>
             </CardContent>
           </Card>
 
@@ -221,14 +220,12 @@ const DeepRLModule = () => {
                 <li><strong className="text-foreground">Actor-Critic архитектура:</strong> Два выхода сети —
                   политика (Actor) и оценка ценности состояния (Critic), обучаемые совместно.</li>
               </ul>
-              <pre className="bg-background/80 border border-border/50 rounded-lg p-4 overflow-x-auto text-sm text-foreground">
-{`# Целевая функция PPO (клипированная):
+              <CyberCodeBlock language="pseudo">{`# Целевая функция PPO (клипированная):
 # L_CLIP = E[min(r_t(θ) · A_t, clip(r_t(θ), 1-ε, 1+ε) · A_t)]
 #
 # где r_t(θ) = π_θ(a|s) / π_θ_old(a|s)
 #     A_t — оценка преимущества (advantage)
-#     ε = 0.2 (типичное значение)`}
-              </pre>
+#     ε = 0.2 (типичное значение)`}</CyberCodeBlock>
             </CardContent>
           </Card>
 
@@ -256,16 +253,14 @@ const DeepRLModule = () => {
                 <li><strong className="text-foreground">Автоматическая настройка температуры:</strong> Коэффициент
                   α (баланс между наградой и энтропией) подбирается автоматически в процессе обучения.</li>
               </ul>
-              <pre className="bg-background/80 border border-border/50 rounded-lg p-4 overflow-x-auto text-sm text-foreground">
-{`# Целевая функция SAC:
+              <CyberCodeBlock language="pseudo">{`# Целевая функция SAC:
 # J(π) = E[Σ γ^t (r_t + α · H(π(·|s_t)))]
 #
 # где H(π) = -E[log π(a|s)] — энтропия политики
 #     α — температурный коэффициент
 #
 # Обновление Q-функции:
-# Q(s,a) ← r + γ · (min(Q1, Q2)(s',a') - α · log π(a'|s'))`}
-              </pre>
+# Q(s,a) ← r + γ · (min(Q1, Q2)(s',a') - α · log π(a'|s'))`}</CyberCodeBlock>
             </CardContent>
           </Card>
         </section>

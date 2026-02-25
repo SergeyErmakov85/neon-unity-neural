@@ -1,12 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Copy, Play } from "lucide-react";
-import { useState } from "react";
-import { toast } from "sonner";
+import CyberCodeBlock from "@/components/CyberCodeBlock";
 
 const CodeExample = () => {
-  const [copied, setCopied] = useState(false);
-
   const codeExample = `using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
@@ -47,13 +42,6 @@ public class SimpleAgent : Agent
     }
 }`;
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(codeExample);
-    setCopied(true);
-    toast.success("Код скопирован в буфер обмена");
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
     <section className="py-20 px-4 relative">
       <div className="container mx-auto">
@@ -70,44 +58,9 @@ public class SimpleAgent : Agent
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <Card className="bg-card/50 backdrop-blur-sm border-primary/20 shadow-glow-cyan overflow-hidden">
-            <div className="bg-gradient-cyber p-4 flex items-center justify-between border-b border-primary/20">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-destructive" />
-                <div className="w-3 h-3 rounded-full bg-accent" />
-                <div className="w-3 h-3 rounded-full bg-primary" />
-                <span className="ml-4 text-sm text-foreground font-mono">
-                  SimpleAgent.cs
-                </span>
-              </div>
-              <div className="flex gap-2">
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  onClick={handleCopy}
-                  className="hover:bg-primary/10"
-                >
-                  <Copy className="w-4 h-4 mr-2" />
-                  {copied ? "Скопировано!" : "Копировать"}
-                </Button>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="hover:bg-primary/10"
-                >
-                  <Play className="w-4 h-4 mr-2" />
-                  Запустить
-                </Button>
-              </div>
-            </div>
-            <CardContent className="p-0">
-              <pre className="p-6 overflow-x-auto text-sm">
-                <code className="text-foreground font-mono leading-relaxed">
-                  {codeExample}
-                </code>
-              </pre>
-            </CardContent>
-          </Card>
+          <CyberCodeBlock language="csharp" filename="SimpleAgent.cs">
+            {codeExample}
+          </CyberCodeBlock>
 
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
             <Card className="bg-card/30 backdrop-blur-sm border-border">
