@@ -66,10 +66,16 @@ const highlight = (code: string, language: Language): string => {
   }
 };
 
+const COLLAPSE_THRESHOLD = 10;
+
 const CyberCodeBlock = ({ children, language = "python", filename }: CyberCodeBlockProps) => {
   const [copied, setCopied] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const highlighted = useMemo(() => highlight(children, language), [children, language]);
+  const lines = useMemo(() => highlighted.split('\n'), [highlighted]);
+  const isLong = lines.length > COLLAPSE_THRESHOLD;
+  const visibleLines = isLong && !expanded ? lines.slice(0, COLLAPSE_THRESHOLD) : lines;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(children);
@@ -103,7 +109,7 @@ const CyberCodeBlock = ({ children, language = "python", filename }: CyberCodeBl
       {/* Code area */}
       <pre className="p-0 overflow-x-auto text-sm leading-relaxed bg-[hsl(230,30%,6%)]">
         <code className="font-mono block py-4">
-          {highlighted.split('\n').map((line, i) => (
+          {visibleLines.map((line, i) => (
             <div key={i} className="flex">
               <span className="select-none text-right pr-4 pl-4 min-w-[3rem] text-muted-foreground/40 border-r border-primary/10">{i + 1}</span>
               <span className="pl-4 flex-1" dangerouslySetInnerHTML={{ __html: line || ' ' }} />
@@ -111,6 +117,16 @@ const CyberCodeBlock = ({ children, language = "python", filename }: CyberCodeBl
           ))}
         </code>
       </pre>
+
+      {/* Expand/Collapse */}
+      {isLong && (
+        <button
+          onClick={() => setExpanded(e => !e)}
+          className="w-full py-1.5 text-xs font-mono text-primary/70 hover:text-primary bg-[hsl(230,30%,8%)] border-t border-primary/20 transition-colors cursor-pointer"
+        >
+          {expanded ? `▲ Свернуть (${lines.length} строк)` : `▼ Показать всё (${lines.length} строк)`}
+        </button>
+      )}
     </div>
   );
 };
