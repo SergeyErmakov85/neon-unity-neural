@@ -4,14 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Slider } from "@/components/ui/slider";
-import { ArrowLeft, FlaskConical, Play } from "lucide-react";
-
-const codeBlock = (code: string) => (
-  <pre className="bg-card/80 border border-primary/20 rounded-lg p-4 overflow-x-auto text-xs md:text-sm font-mono leading-relaxed">
-    <code>{code}</code>
-  </pre>
-);
-
+import { ArrowLeft, FlaskConical } from "lucide-react";
+import CyberCodeBlock from "@/components/CyberCodeBlock";
 // Lab 1: Discounting interactive
 const DiscountLab = () => {
   const [gamma, setGamma] = useState(0.99);
@@ -40,7 +34,7 @@ const DiscountLab = () => {
         </p>
       </div>
 
-      {codeBlock(`def compute_discounted_return(rewards, gamma=0.99):
+      <CyberCodeBlock language="python" filename="discount.py">{`def compute_discounted_return(rewards, gamma=0.99):
     """Вычисляет дисконтированный возврат."""
     G = 0
     returns = []
@@ -52,7 +46,7 @@ const DiscountLab = () => {
 rewards = [1, 1, 1, 1, 1, 10]
 for gamma in [0.5, 0.9, 0.99, 0.999]:
     returns = compute_discounted_return(rewards, gamma)
-    print(f"γ={gamma}: G_0={returns[0]:.2f}")`)}
+    print(f"γ={gamma}: G_0={returns[0]:.2f}")`}</CyberCodeBlock>
 
       <Card className="border-primary/30">
         <CardHeader><CardTitle className="text-sm">Интерактивный эксперимент</CardTitle></CardHeader>
@@ -102,7 +96,7 @@ const ExplorationLab = () => (
       </p>
     </div>
 
-    {codeBlock(`import numpy as np
+    <CyberCodeBlock language="python" filename="exploration.py">{`import numpy as np
 
 def epsilon_greedy(q_values, epsilon=0.1):
     """ε-жадная политика"""
@@ -119,7 +113,7 @@ def softmax_exploration(q_values, temperature=1.0):
 def ucb_action(q_values, counts, t, c=2.0):
     """Upper Confidence Bound"""
     ucb = q_values + c * np.sqrt(np.log(t + 1) / (counts + 1e-5))
-    return np.argmax(ucb)`)}
+    return np.argmax(ucb)`}</CyberCodeBlock>
 
     <div>
       <h3 className="text-lg font-semibold text-primary mb-2">Задания</h3>
@@ -143,7 +137,7 @@ const ReplayLab = () => (
       </p>
     </div>
 
-    {codeBlock(`import random
+    <CyberCodeBlock language="python" filename="replay_buffer.py">{`import random
 from collections import deque
 
 class ReplayBuffer:
@@ -184,7 +178,7 @@ class PrioritizedReplayBuffer:
         weights = (len(self.buffer) * probs[indices]) ** (-beta)
         weights /= weights.max()
         batch = [self.buffer[i] for i in indices]
-        return batch, indices, weights`)}
+        return batch, indices, weights`}</CyberCodeBlock>
 
     <div>
       <h3 className="text-lg font-semibold text-primary mb-2">Задания</h3>
