@@ -101,11 +101,15 @@ const CyberCodeBlock = ({ children, language = "python", filename }: CyberCodeBl
       </div>
 
       {/* Code area */}
-      <pre className="p-4 overflow-x-auto text-sm leading-relaxed bg-[hsl(230,30%,6%)]">
-        <code
-          className="font-mono"
-          dangerouslySetInnerHTML={{ __html: highlighted }}
-        />
+      <pre className="p-0 overflow-x-auto text-sm leading-relaxed bg-[hsl(230,30%,6%)]">
+        <code className="font-mono block py-4">
+          {highlighted.split('\n').map((line, i) => (
+            <div key={i} className="flex">
+              <span className="select-none text-right pr-4 pl-4 min-w-[3rem] text-muted-foreground/40 border-r border-primary/10">{i + 1}</span>
+              <span className="pl-4 flex-1" dangerouslySetInnerHTML={{ __html: line || ' ' }} />
+            </div>
+          ))}
+        </code>
       </pre>
     </div>
   );
