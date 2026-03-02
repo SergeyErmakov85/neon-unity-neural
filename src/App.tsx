@@ -16,6 +16,7 @@ const MathRLModule3 = lazy(() => import("./pages/MathRLModule3"));
 const MathRLModule4 = lazy(() => import("./pages/MathRLModule4"));
 const MathRLModule5 = lazy(() => import("./pages/MathRLModule5"));
 const PyTorchModule = lazy(() => import("./pages/PyTorchModule"));
+const PyTorchCheatSheet = lazy(() => import("./pages/PyTorchCheatSheet"));
 const UnityMLAgentsModule = lazy(() => import("./pages/UnityMLAgentsModule"));
 const AlgorithmsHub = lazy(() => import("./pages/AlgorithmsHub"));
 const PPOModule = lazy(() => import("./pages/PPOModule"));
@@ -64,6 +65,7 @@ const App = () => (
             <Route path="/math-rl/module-4" element={<MathRLModule4 />} />
             <Route path="/math-rl/module-5" element={<MathRLModule5 />} />
             <Route path="/pytorch" element={<PyTorchModule />} />
+            <Route path="/pytorch/cheatsheet" element={<PyTorchCheatSheet />} />
             <Route path="/unity-ml-agents" element={<UnityMLAgentsModule />} />
             <Route path="/algorithms" element={<AlgorithmsHub />} />
             <Route path="/algorithms/ppo" element={<PPOModule />} />
