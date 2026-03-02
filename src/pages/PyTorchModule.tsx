@@ -30,6 +30,17 @@ const PyTorchModule = () => {
           Практическая реализация Deep Q-Network для задачи навигации такси с использованием PyTorch и Gymnasium
         </p>
 
+        {/* Cheat Sheet Link */}
+        <div className="mb-10 p-6 rounded-lg bg-card/60 border border-secondary/30 text-center">
+          <h3 className="text-xl font-bold text-foreground mb-2">📋 Шпаргалка по PyTorch</h3>
+          <p className="text-muted-foreground text-sm mb-4">
+            Исчерпывающее руководство: тензоры, autograd, нейросети, цикл обучения, сохранение моделей и многое другое
+          </p>
+          <Button onClick={() => navigate("/pytorch/cheatsheet")} className="bg-secondary hover:bg-secondary/80 text-secondary-foreground">
+            Открыть шпаргалку
+          </Button>
+        </div>
+
         {/* Section 1: Overview */}
         <Section icon={<Brain className="w-5 h-5 text-primary" />} title="Обзор задачи">
           <p>
@@ -245,16 +256,6 @@ plt.show()`}</CyberCodeBlock>
           </ol>
         </Section>
 
-        {/* Cheat Sheet Link */}
-        <div className="mt-12 p-6 rounded-lg bg-card/60 border border-secondary/30 text-center">
-          <h3 className="text-xl font-bold text-foreground mb-2">📋 Шпаргалка по PyTorch</h3>
-          <p className="text-muted-foreground text-sm mb-4">
-            Исчерпывающее руководство: тензоры, autograd, нейросети, цикл обучения, сохранение моделей и многое другое
-          </p>
-          <Button onClick={() => navigate("/pytorch/cheatsheet")} className="bg-secondary hover:bg-secondary/80 text-secondary-foreground">
-            Открыть шпаргалку
-          </Button>
-        </div>
 
         {/* Back */}
         <div className="mt-16 flex justify-center">
