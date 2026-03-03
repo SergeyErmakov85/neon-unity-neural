@@ -348,6 +348,14 @@ const DeepRLModule = () => {
                 <Button
                   variant="outline"
                   size="sm"
+                  className="border-pink-500/50 text-pink-400 hover:bg-pink-500/10"
+                  onClick={() => navigate("/math-rl")}
+                >
+                  Математические основы →
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
                   className="border-primary/50 text-primary hover:bg-primary/10"
                   onClick={() => navigate("/pytorch")}
                 >
@@ -368,6 +376,14 @@ const DeepRLModule = () => {
                   onClick={() => navigate("/algorithms")}
                 >
                   Алгоритмы →
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-green-500/50 text-green-400 hover:bg-green-500/10"
+                  onClick={() => navigate("/unity-projects")}
+                >
+                  Проекты Unity →
                 </Button>
               </div>
             </CardContent>
