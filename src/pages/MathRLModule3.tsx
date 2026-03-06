@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
 
 const sections = [
-  { id: 1, title: "Теория вероятности", icon: BookOpen, color: "primary" as const },
+  { id: 1, title: "Теория вероятностей", icon: BookOpen, color: "primary" as const },
   { id: 2, title: "Статистика", icon: BarChart3, color: "secondary" as const },
   { id: 3, title: "Марковские процессы", icon: GitBranch, color: "accent" as const },
   { id: 4, title: "Функции ценности и уравнения Беллмана", icon: Brain, color: "primary" as const },
@@ -138,7 +138,7 @@ const SectionHeader = ({ icon, title }: { icon: React.ReactNode; title: string }
 
 const Section1 = () => (
   <div className="text-muted-foreground leading-relaxed space-y-3">
-    <SectionHeader icon={<BookOpen className="w-7 h-7 text-primary" />} title="1. Теория вероятности" />
+    <SectionHeader icon={<BookOpen className="w-7 h-7 text-primary" />} title="1. Теория вероятностей" />
     <p>
       Теория вероятности — краеугольный камень для понимания неопределённости в задачах RL. Агент взаимодействует со стохастической средой, и вероятность предоставляет аппарат для моделирования такой неопределённости.
     </p>
