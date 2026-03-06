@@ -97,7 +97,7 @@ const MathRL = () => {
             return (
               <Card
                 key={mod.id}
-                className={`bg-card/60 backdrop-blur-sm ${colors.border} ${mod.available ? `${colors.shadow} cursor-pointer` : "opacity-60 cursor-not-allowed"} transition-all duration-300 flex flex-col`}
+                className={`bg-card/60 backdrop-blur-sm ${colors.border} ${mod.available ? `${colors.shadow} cursor-pointer` : "opacity-60 cursor-not-allowed"} transition-all duration-300 flex flex-col w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]`}
                 onClick={() => mod.available && navigate(`/math-rl/module-${mod.id}`)}
               >
                 <CardContent className="p-6 flex flex-col flex-1">
