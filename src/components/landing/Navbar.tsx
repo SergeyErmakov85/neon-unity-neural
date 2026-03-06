@@ -200,7 +200,7 @@ const Navbar = () => {
                     const el = document.querySelector('#learning-path');
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }}>
-                    Войти
+                    Начать
                   </Button>
                   <Button className="w-full bg-gradient-neon hover:shadow-glow-cyan" onClick={() => { setIsOpen(false); navigate("/beginner-course"); }}>
                     Начать обучение
