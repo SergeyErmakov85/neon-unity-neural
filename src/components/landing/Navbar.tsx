@@ -43,7 +43,7 @@ const Navbar = () => {
     }
     setIsOpen(false);
   };
-  return <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/90 backdrop-blur-md border-b border-primary/30 shadow-glow-cyan" : "bg-transparent"}`}>
+  return <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background backdrop-blur-md border-b border-primary/30 shadow-glow-cyan" : "bg-background"}`}>
       <div className="container px-4 mx-auto">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
