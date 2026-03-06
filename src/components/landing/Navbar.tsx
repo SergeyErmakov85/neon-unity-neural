@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Zap, X, Calculator, Flame, Gamepad2, Brain, Boxes, Eye, FlaskConical, Sparkles } from "lucide-react";
+import { Menu, Calculator, Brain, Boxes, Eye, FlaskConical, Sparkles } from "lucide-react";
+import logoImage from "@/assets/Logo_RL_platform.png";
 const navLinks = [{
   href: "#problem",
   label: "Проблема"
@@ -46,20 +47,14 @@ const Navbar = () => {
       <div className="container px-4 mx-auto">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group mx-[7px]" onClick={(e) => {
+          <a href="#" className="flex items-center group" onClick={(e) => {
           e.preventDefault();
           window.scrollTo({
             top: 0,
             behavior: "smooth"
           });
         }}>
-            <div className="relative">
-              <Zap className="w-8 h-8 text-primary transition-all duration-300 group-hover:drop-shadow-[0_0_10px_hsl(var(--primary))]" />
-              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 mx-0" />
-            </div>
-            <span className="text-xl font-bold bg-gradient-neon bg-clip-text text-transparent">
-              RL Platform
-            </span>
+            <img src={logoImage} alt="RL Platform" className="h-12 md:h-14 w-auto transition-all duration-300 group-hover:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]" />
           </a>
 
           {/* Desktop CTA */}
@@ -109,10 +104,7 @@ const Navbar = () => {
               <div className="flex flex-col h-full pt-8">
                 {/* Mobile Logo */}
                 <div className="flex items-center gap-2 mb-8 px-2">
-                  <Zap className="w-8 h-8 text-primary" />
-                  <span className="text-xl font-bold bg-gradient-neon bg-clip-text text-transparent">
-                    RL Platform
-                  </span>
+                  <img src={logoImage} alt="RL Platform" className="h-10 w-auto" />
                 </div>
 
                 {/* Mobile Navigation Links */}
