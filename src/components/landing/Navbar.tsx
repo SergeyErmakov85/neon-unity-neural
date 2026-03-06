@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Zap, X, Calculator, Flame, Gamepad2, Brain, Boxes, Eye, FlaskConical, Sparkles } from "lucide-react";
+import { Menu, Calculator, Brain, Boxes, Eye, FlaskConical, Sparkles } from "lucide-react";
+import logoImage from "@/assets/Logo_RL_platform.png";
 const navLinks = [{
   href: "#problem",
   label: "Проблема"
