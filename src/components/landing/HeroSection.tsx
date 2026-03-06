@@ -77,7 +77,7 @@ const HeroSection = () => {
               const el = document.querySelector('#learning-path');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}>
-              Начать
+              Карта обучения
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8">
               Просмотр демо
