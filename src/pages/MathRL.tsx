@@ -91,13 +91,13 @@ const MathRL = () => {
 
       {/* Modules Grid */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto justify-items-center">
+        <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
           {modules.map((mod) => {
             const colors = colorMap[mod.color];
             return (
               <Card
                 key={mod.id}
-                className={`bg-card/60 backdrop-blur-sm ${colors.border} ${mod.available ? `${colors.shadow} cursor-pointer` : "opacity-60 cursor-not-allowed"} transition-all duration-300 flex flex-col`}
+                className={`bg-card/60 backdrop-blur-sm ${colors.border} ${mod.available ? `${colors.shadow} cursor-pointer` : "opacity-60 cursor-not-allowed"} transition-all duration-300 flex flex-col w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]`}
                 onClick={() => mod.available && navigate(`/math-rl/module-${mod.id}`)}
               >
                 <CardContent className="p-6 flex flex-col flex-1">
