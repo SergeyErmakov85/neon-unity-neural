@@ -79,14 +79,6 @@ const Navbar = () => {
               <Calculator className="w-4 h-4 mr-1" />
               Математика RL
             </Button>
-            <Button variant="outline" size="sm" className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:shadow-glow-cyan transition-all duration-300" onClick={() => navigate("/pytorch")}>
-              <Flame className="w-4 h-4 mr-1" />
-              PyTorch
-            </Button>
-            <Button variant="outline" size="sm" className="border-primary/50 text-primary hover:bg-primary/10 hover:border-primary hover:shadow-glow-cyan transition-all duration-300" onClick={() => navigate("/unity-ml-agents")}>
-              <Gamepad2 className="w-4 h-4 mr-1" />
-              UnityML-Agents
-            </Button>
             <Button variant="outline" size="sm" className="border-secondary/50 text-secondary hover:bg-secondary/10 hover:border-secondary hover:shadow-glow-pink transition-all duration-300" onClick={() => navigate("/algorithms")}>
               <Brain className="w-4 h-4 mr-1" />
               Алгоритмы
@@ -146,13 +138,6 @@ const Navbar = () => {
                     <Calculator className="w-4 h-4 mr-1" />
                     Математика RL
                   </Button>
-                  <Button variant="outline" className="w-full border-primary/50 text-primary hover:bg-primary/10 hover:border-primary" onClick={() => {
-                  setIsOpen(false);
-                  navigate("/pytorch");
-                }}>
-                    <Flame className="w-4 h-4 mr-1" />
-                    PyTorch
-                  </Button>
                   <Button variant="outline" className="w-full border-secondary/50 text-secondary hover:bg-secondary/10 hover:border-secondary" onClick={() => {
                   setIsOpen(false);
                   navigate("/algorithms");
@@ -166,13 +151,6 @@ const Navbar = () => {
                 }}>
                     <Boxes className="w-4 h-4 mr-1" />
                     Проекты
-                  </Button>
-                  <Button variant="outline" className="w-full border-primary/50 text-primary hover:bg-primary/10 hover:border-primary" onClick={() => {
-                  setIsOpen(false);
-                  navigate("/unity-ml-agents");
-                }}>
-                    <Gamepad2 className="w-4 h-4 mr-1" />
-                    UnityML-Agents
                   </Button>
                   <Button variant="outline" className="w-full border-accent/50 text-accent hover:bg-accent/10 hover:border-accent" onClick={() => {
                   setIsOpen(false);
