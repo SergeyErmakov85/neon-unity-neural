@@ -62,13 +62,7 @@ const Navbar = () => {
             </span>
           </a>
 
-          {/* Desktop Navigation */}
-          
-
-
-
-
-
+          {/* Desktop CTA */}
 
 
 
