@@ -195,7 +195,11 @@ const Navbar = () => {
                     <FlaskConical className="w-4 h-4 mr-1" />
                     Практикумы
                   </Button>
-                  <Button variant="outline" className="w-full border-primary/50 text-primary hover:bg-primary/10 hover:border-primary">
+                  <Button variant="outline" className="w-full border-primary/50 text-primary hover:bg-primary/10 hover:border-primary" onClick={() => {
+                    setIsOpen(false);
+                    const el = document.querySelector('#learning-path');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}>
                     Войти
                   </Button>
                   <Button className="w-full bg-gradient-neon hover:shadow-glow-cyan" onClick={() => { setIsOpen(false); navigate("/beginner-course"); }}>

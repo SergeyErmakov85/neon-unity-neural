@@ -73,7 +73,10 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-            <Button size="lg" variant="cyber" className="text-lg px-8 group">
+            <Button size="lg" variant="cyber" className="text-lg px-8 group" onClick={() => {
+              const el = document.querySelector('#learning-path');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}>
               Войти
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8">
