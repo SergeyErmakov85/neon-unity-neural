@@ -54,7 +54,7 @@ const Navbar = () => {
             behavior: "smooth"
           });
         }}>
-            <img src={logoImage} alt="RL Platform" className="h-12 md:h-14 w-auto transition-all duration-300 group-hover:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]" />
+            <img src={logoImage} alt="RL Platform" className="h-16 md:h-20 w-auto transition-all duration-300 group-hover:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]" />
           </a>
 
           {/* Desktop CTA */}
