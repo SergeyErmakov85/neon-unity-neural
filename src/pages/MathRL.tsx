@@ -91,17 +91,17 @@ const MathRL = () => {
 
       {/* Modules Grid */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto justify-items-center">
           {modules.map((mod) => {
             const colors = colorMap[mod.color];
             return (
               <Card
                 key={mod.id}
-                className={`bg-card/60 backdrop-blur-sm ${colors.border} ${mod.available ? `${colors.shadow} cursor-pointer` : "opacity-60 cursor-not-allowed"} transition-all duration-300`}
+                className={`bg-card/60 backdrop-blur-sm ${colors.border} ${mod.available ? `${colors.shadow} cursor-pointer` : "opacity-60 cursor-not-allowed"} transition-all duration-300 flex flex-col`}
                 onClick={() => mod.available && navigate(`/math-rl/module-${mod.id}`)}
               >
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-center justify-between">
+                <CardContent className="p-6 flex flex-col flex-1">
+                  <div className="flex items-center justify-between mb-4">
                     <span className={`text-xs font-medium px-3 py-1 rounded-full ${colors.badge}`}>
                       Модуль {mod.id}
                     </span>
@@ -111,10 +111,10 @@ const MathRL = () => {
                       <Lock className="w-5 h-5 text-muted-foreground" />
                     )}
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground">{mod.title}</h3>
-                  <p className="text-sm text-muted-foreground">{mod.description}</p>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{mod.title}</h3>
+                  <p className="text-sm text-muted-foreground flex-1">{mod.description}</p>
                   {mod.available && (
-                    <Button variant="outline" size="sm" className={`${colors.border} ${colors.icon} w-full`}>
+                    <Button variant="outline" size="sm" className={`${colors.border} ${colors.icon} w-full mt-4`}>
                       Открыть модуль
                     </Button>
                   )}
