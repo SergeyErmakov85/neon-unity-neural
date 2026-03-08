@@ -35,6 +35,8 @@ const Labs = lazy(() => import("./pages/Labs"));
 const DemoProject = lazy(() => import("./pages/DemoProject"));
 const DeepRLModule = lazy(() => import("./pages/DeepRLModule"));
 const Courses = lazy(() => import("./pages/Courses"));
+const CourseLesson1_1 = lazy(() => import("./pages/CourseLesson1_1"));
+const CourseLesson1_2 = lazy(() => import("./pages/CourseLesson1_2"));
 const Blog = lazy(() => import("./pages/Blog"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const FAQ = lazy(() => import("./pages/FAQ"));
