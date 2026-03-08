@@ -3,6 +3,7 @@ import { Brain, Gamepad2, Code2, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 import gamepadImg from "@/assets/gamepad-hero.png";
+import NeuralNetworkViz from "./NeuralNetworkViz";
 
 const HeroSection = () => {
   const navigate = useNavigate();
