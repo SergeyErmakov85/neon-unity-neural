@@ -191,7 +191,7 @@ public override void Heuristic(in ActionBuffers actionsOut)
             превзойти эксперта. В YAML это настраивается параметром <code className="text-primary">strength</code>
             и <code className="text-primary">gail_reward_signal</code>:
           </p>
-          <CyberCodeBlock language="python" title="gail_config.yaml">
+          <CyberCodeBlock language="python" filename="gail_config.yaml">
 {`behaviors:
   ImitationAgent:
     trainer_type: ppo
