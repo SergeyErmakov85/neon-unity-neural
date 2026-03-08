@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import SEOHead from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Clock, User, Search, X, Tag } from "lucide-react";
 import { Input } from "@/components/ui/input";
