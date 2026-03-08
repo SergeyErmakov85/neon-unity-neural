@@ -456,7 +456,7 @@ public class BasicAgent : Agent
     difficulty: "advanced",
     popularity: 88,
     date: "2026-02-10",
-    colabUrl: "#",
+    colabUrl: "https://colab.research.google.com/",
     code: `import torch
 import torch.nn as nn
 import torch.optim as optim
