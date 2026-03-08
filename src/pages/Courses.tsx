@@ -220,6 +220,12 @@ const Courses = () => {
                                 </span>
                               </div>
 
+                              {/* Level progress bar */}
+                              <div className="space-y-1">
+                                <Progress value={getLevelCompletionPercent(index)} className="h-1.5 bg-muted" />
+                                <p className="text-xs text-muted-foreground">{getLevelCompletionPercent(index)}% завершено</p>
+                              </div>
+
                               <div className={`flex items-center gap-1.5 text-xs font-medium ${styles.icon}`}>
                                 {status.icon}
                                 {status.label}
