@@ -32,16 +32,16 @@ const NeuralNetworkViz = () => {
   const positions = getPositions();
   const svgRef = useRef<SVGSVGElement>(null);
 
-  // Animate random connections
+  // Respect reduced motion
   useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const svg = svgRef.current;
-    if (!svg) return;
+    if (!svg || prefersReduced) return;
     const lines = svg.querySelectorAll<SVGLineElement>(".nn-conn");
     if (!lines.length) return;
 
     let frame: number;
     const animate = () => {
-      // pick 3-5 random connections to light up
       const count = 3 + Math.floor(Math.random() * 3);
       for (let i = 0; i < count; i++) {
         const line = lines[Math.floor(Math.random() * lines.length)];
