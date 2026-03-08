@@ -3,6 +3,7 @@ import { Brain, Gamepad2, Code2, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 import gamepadImg from "@/assets/gamepad-hero.png";
+import NeuralNetworkViz from "./NeuralNetworkViz";
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -89,8 +90,13 @@ const HeroSection = () => {
             </Button>
           </div>
 
+          {/* Neural Network Visualization */}
+          <div className="pt-12">
+            <NeuralNetworkViz />
+          </div>
+
           {/* Trust Indicators */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-16 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 max-w-3xl mx-auto">
             <div className="space-y-2 p-4 rounded-lg bg-card/30 backdrop-blur-sm border border-border/50">
               <div className="text-2xl md:text-3xl font-bold text-primary">20+</div>
               <div className="text-xs md:text-sm text-muted-foreground">Практических проектов</div>
