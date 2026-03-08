@@ -65,7 +65,7 @@ const snippets: Snippet[] = [
     difficulty: "beginner",
     popularity: 95,
     date: "2025-12-01",
-    colabUrl: "#",
+    colabUrl: "https://colab.research.google.com/",
     code: `import random
 from collections import deque
 import torch
@@ -101,7 +101,7 @@ class ReplayBuffer:
     difficulty: "intermediate",
     popularity: 98,
     date: "2026-01-15",
-    colabUrl: "#",
+    colabUrl: "https://colab.research.google.com/",
     code: `import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -153,7 +153,7 @@ class PPOAgent:
     difficulty: "beginner",
     popularity: 90,
     date: "2025-11-20",
-    colabUrl: "#",
+    colabUrl: "https://colab.research.google.com/",
     code: `import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -456,7 +456,7 @@ public class BasicAgent : Agent
     difficulty: "advanced",
     popularity: 88,
     date: "2026-02-10",
-    colabUrl: "#",
+    colabUrl: "https://colab.research.google.com/",
     code: `import torch
 import torch.nn as nn
 import torch.optim as optim

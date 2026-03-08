@@ -121,12 +121,12 @@ const FooterSection = () => {
               © {new Date().getFullYear()} RL Learning Platform. Все права защищены.
             </div>
             <div className="flex gap-6">
-              <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200">
+              <span className="text-xs text-muted-foreground">
                 Политика конфиденциальности
-              </a>
-              <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200">
+              </span>
+              <span className="text-xs text-muted-foreground">
                 Условия использования
-              </a>
+              </span>
             </div>
           </div>
         </div>
