@@ -3,6 +3,7 @@ import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Check, Sparkles, Crown, Users, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
+import AffiliateSection from "@/components/AffiliateSection";
 
 const plans = [
   {
@@ -232,6 +233,9 @@ const Pricing = () => {
             ))}
           </div>
         </div>
+
+        {/* Affiliate Section */}
+        <AffiliateSection />
       </main>
     </div>
   );

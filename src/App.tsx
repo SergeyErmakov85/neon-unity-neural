@@ -67,6 +67,7 @@ const Pricing = lazy(() => import("./pages/Pricing"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const Community = lazy(() => import("./pages/Community"));
 const OnboardingQuiz = lazy(() => import("./pages/OnboardingQuiz"));
+const CertificatePreview = lazy(() => import("./pages/CertificatePreview"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -149,6 +150,7 @@ const App = () => (
             <Route path="/faq" element={<FAQ />} />
             <Route path="/community" element={<Community />} />
             <Route path="/onboarding" element={<OnboardingQuiz />} />
+            <Route path="/certificate-preview" element={<CertificatePreview />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
