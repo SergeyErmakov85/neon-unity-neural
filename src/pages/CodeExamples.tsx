@@ -65,7 +65,7 @@ const snippets: Snippet[] = [
     difficulty: "beginner",
     popularity: 95,
     date: "2025-12-01",
-    colabUrl: "#",
+    colabUrl: "https://colab.research.google.com/",
     code: `import random
 from collections import deque
 import torch
