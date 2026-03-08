@@ -192,7 +192,7 @@ class MLPPolicy(nn.Module):
             Если агент не видит полного состояния среды (Partially Observable MDP),
             LSTM позволяет «запоминать» предыдущие наблюдения:
           </p>
-          <CyberCodeBlock language="python" title="LSTM Policy">
+          <CyberCodeBlock language="python" filename="lstm_policy.py">
 {`class LSTMPolicy(nn.Module):
     """LSTM для частично наблюдаемых сред."""
     def __init__(self, obs_size: int, action_size: int, hidden: int = 128):
