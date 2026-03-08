@@ -150,6 +150,7 @@ const App = () => (
             <Route path="/faq" element={<FAQ />} />
             <Route path="/community" element={<Community />} />
             <Route path="/onboarding" element={<OnboardingQuiz />} />
+            <Route path="/certificate-preview" element={<CertificatePreview />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

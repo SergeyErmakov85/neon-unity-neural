@@ -48,6 +48,7 @@ const Index = () => {
       <UniqueValueSection />
       <TestimonialSection />
       <FinalCTASection />
+      <EmailCapture />
       <FooterSection />
     </div>);
 
