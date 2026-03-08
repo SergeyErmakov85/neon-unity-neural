@@ -35,6 +35,8 @@ const Labs = lazy(() => import("./pages/Labs"));
 const DemoProject = lazy(() => import("./pages/DemoProject"));
 const DeepRLModule = lazy(() => import("./pages/DeepRLModule"));
 const Courses = lazy(() => import("./pages/Courses"));
+const CourseLesson1_1 = lazy(() => import("./pages/CourseLesson1_1"));
+const CourseLesson1_2 = lazy(() => import("./pages/CourseLesson1_2"));
 const Blog = lazy(() => import("./pages/Blog"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const FAQ = lazy(() => import("./pages/FAQ"));
@@ -89,6 +91,8 @@ const App = () => (
             <Route path="/demo-project" element={<DemoProject />} />
             <Route path="/deep-rl" element={<DeepRLModule />} />
             <Route path="/courses" element={<Courses />} />
+            <Route path="/courses/1-1" element={<CourseLesson1_1 />} />
+            <Route path="/courses/1-2" element={<CourseLesson1_2 />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/faq" element={<FAQ />} />
