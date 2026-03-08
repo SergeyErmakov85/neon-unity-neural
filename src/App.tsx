@@ -65,6 +65,7 @@ const BlogJupyterToUnity = lazy(() => import("./pages/BlogJupyterToUnity"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const Community = lazy(() => import("./pages/Community"));
+const OnboardingQuiz = lazy(() => import("./pages/OnboardingQuiz"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
