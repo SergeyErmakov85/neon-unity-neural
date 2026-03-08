@@ -68,6 +68,7 @@ const FAQ = lazy(() => import("./pages/FAQ"));
 const Community = lazy(() => import("./pages/Community"));
 const OnboardingQuiz = lazy(() => import("./pages/OnboardingQuiz"));
 const CertificatePreview = lazy(() => import("./pages/CertificatePreview"));
+const DemoPage = lazy(() => import("./pages/DemoPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
