@@ -5,6 +5,9 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search } from "lucide-react";
 import logoImage from "@/assets/Logo_RL_platform.png";
 import GlobalSearch from "@/components/GlobalSearch";
+import UserProfilePopover from "@/components/UserProfilePopover";
+import XpNotification from "@/components/XpNotification";
+import { checkStreak } from "@/lib/gamification";
 
 const navLinks = [
   { href: "/courses", label: "Курсы", icon: GraduationCap },
