@@ -47,10 +47,10 @@ const level3Lessons: LessonMeta[] = [
   { id: "3-2", path: "/courses/3-2", title: "MA-POCA и Self-Play", type: "lesson" },
   { id: "3-3", path: "/courses/3-3", title: "Curriculum Learning", type: "lesson" },
   { id: "3-4", path: "/courses/3-4", title: "Имитационное обучение (GAIL)", type: "lesson" },
-  { id: "3-5", path: "/courses/3-5", title: "Оптимизация гиперпараметров", type: "lesson" },
-  { id: "3-6", path: "/courses/3-6", title: "Деплой моделей", type: "lesson" },
-  { id: "3-7", path: "/courses/3-7", title: "Transfer Learning", type: "lesson" },
-  { id: "3-p", path: "/courses/project-4", title: "Проект: Soccer Agents", type: "project" },
+  { id: "3-5", path: "/courses/3-5", title: "Деплой модели: ONNX", type: "lesson" },
+  { id: "3-6", path: "/courses/3-6", title: "Оптимизация гиперпараметров", type: "lesson" },
+  { id: "3-7", path: "/courses/3-7", title: "Архитектуры нейросетей", type: "lesson" },
+  { id: "3-fp", path: "/courses/final-project", title: "Финальный проект", type: "project" },
 ];
 
 const levelConfigs = [
