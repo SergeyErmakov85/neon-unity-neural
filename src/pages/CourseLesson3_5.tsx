@@ -133,7 +133,7 @@ print("✅ Модель экспортирована: model.onnx")`}
             запуска нейросетей прямо в Unity. Он поддерживает GPU и CPU-бекенды, оптимизирован для
             игровых движков.
           </p>
-          <CyberCodeBlock language="csharp" title="Подключение ONNX к Agent">
+          <CyberCodeBlock language="csharp" filename="DeployedAgent.cs">
 {`// 1. Импортируйте .onnx файл в Assets/ML-Models/
 // 2. Unity автоматически создаст NNModel asset
 // 3. В компоненте BehaviorParameters на агенте:
