@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Brain, Gamepad2, Code2, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
+import gamepadImg from "@/assets/gamepad-hero.png";
 
 const HeroSection = () => {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ const HeroSection = () => {
             <span className="text-foreground">через тренировку</span>
             <br />
             <span className="bg-gradient-neon bg-clip-text text-transparent">
-              игровых агентов 🎮
+              игровых агентов <img src={gamepadImg} alt="Gamepad" className="inline-block h-12 md:h-16 lg:h-20 w-auto align-middle -mt-2 drop-shadow-[0_0_15px_hsl(var(--secondary)/0.6)]" />
             </span>
           </h1>
 
