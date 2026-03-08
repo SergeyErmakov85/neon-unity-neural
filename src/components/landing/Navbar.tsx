@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users } from "lucide-react";
+import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search } from "lucide-react";
 import logoImage from "@/assets/Logo_RL_platform.png";
+import GlobalSearch from "@/components/GlobalSearch";
 
 const navLinks = [
   { href: "/courses", label: "Курсы", icon: GraduationCap },
