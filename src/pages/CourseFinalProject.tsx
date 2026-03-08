@@ -113,7 +113,7 @@ const CourseFinalProject = () => {
         {/* Starter Template */}
         <section>
           <h2 className="text-2xl font-bold text-foreground mb-4">Стартовый шаблон агента</h2>
-          <CyberCodeBlock language="csharp" title="GameNPCAgent.cs">
+          <CyberCodeBlock language="csharp" filename="GameNPCAgent.cs">
 {`using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
