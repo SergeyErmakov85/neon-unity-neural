@@ -170,7 +170,7 @@ const Courses = () => {
                   {index < levels.length - 1 && (
                     <div
                       className={`absolute left-[1.45rem] top-10 w-0.5 h-[calc(100%+2rem)] ${
-                        level.status === "completed" ? styles.line : "bg-border"
+                        (level.status as string) === "completed" ? styles.line : "bg-border"
                       }`}
                     />
                   )}
