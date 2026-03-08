@@ -1,30 +1,274 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Construction } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import {
+  ArrowLeft,
+  Lock,
+  ChevronDown,
+  BookOpen,
+  FolderKanban,
+  Clock,
+  CheckCircle2,
+  Circle,
+  PlayCircle,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
-const Courses = () => (
-  <div className="min-h-screen bg-background">
-    <header className="border-b border-border/50 bg-card/50 backdrop-blur-sm">
-      <div className="container mx-auto px-4 py-4">
-        <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-          <ArrowLeft className="w-4 h-4" />
-          На главную
-        </Link>
-      </div>
-    </header>
-    <main className="container mx-auto px-4 py-20">
-      <div className="max-w-2xl mx-auto text-center space-y-6">
-        <Construction className="w-16 h-16 mx-auto text-primary drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]" />
-        <h1 className="text-4xl md:text-5xl font-bold">
-          <span className="bg-gradient-neon bg-clip-text text-transparent">Курсы</span>
-        </h1>
-        <p className="text-muted-foreground text-lg">Раздел в разработке</p>
-        <Button variant="outline" asChild>
-          <Link to="/">Вернуться на главную</Link>
-        </Button>
-      </div>
-    </main>
-  </div>
-);
+const levels = [
+  {
+    title: "Новичок",
+    tag: "FREE",
+    tagColor: "bg-green-500/20 text-green-400 border-green-500/30",
+    accentColor: "green",
+    weeks: 4,
+    lessonsCount: 4,
+    projectsCount: 1,
+    status: "in_progress" as const,
+    locked: false,
+    lessons: [
+      { title: "Основы Reinforcement Learning", type: "lesson" },
+      { title: "Установка окружения PyTorch + Unity", type: "lesson" },
+      { title: "Первый агент: CartPole", type: "lesson" },
+      { title: "Базовый DQN алгоритм", type: "lesson" },
+      { title: "Проект: GridWorld Agent", type: "project" },
+    ],
+  },
+  {
+    title: "Средний",
+    tag: "PRO",
+    tagColor: "bg-secondary/20 text-secondary border-secondary/30",
+    accentColor: "purple",
+    weeks: 6,
+    lessonsCount: 6,
+    projectsCount: 2,
+    status: "locked" as const,
+    locked: true,
+    lessons: [
+      { title: "Policy Gradient методы", type: "lesson" },
+      { title: "PPO алгоритм с нуля", type: "lesson" },
+      { title: "A3C и асинхронное обучение", type: "lesson" },
+      { title: "Работа с непрерывными действиями", type: "lesson" },
+      { title: "Обучение в Unity ML-Agents", type: "lesson" },
+      { title: "Curriculum Learning", type: "lesson" },
+      { title: "Проект: Ball Balance", type: "project" },
+      { title: "Проект: Racing Car", type: "project" },
+    ],
+  },
+  {
+    title: "Продвинутый",
+    tag: "PRO",
+    tagColor: "bg-orange-500/20 text-orange-400 border-orange-500/30",
+    accentColor: "orange",
+    weeks: 8,
+    lessonsCount: 7,
+    projectsCount: 1,
+    status: "locked" as const,
+    locked: true,
+    lessons: [
+      { title: "SAC и off-policy методы", type: "lesson" },
+      { title: "Многоагентное обучение (MAPOCA)", type: "lesson" },
+      { title: "Имитационное обучение (GAIL)", type: "lesson" },
+      { title: "Reward Shaping продвинутый", type: "lesson" },
+      { title: "Оптимизация гиперпараметров", type: "lesson" },
+      { title: "Деплой моделей в продакшн", type: "lesson" },
+      { title: "Transfer Learning в RL", type: "lesson" },
+      { title: "Финальный проект: Soccer Agents", type: "project" },
+    ],
+  },
+];
+
+const accentStyles: Record<string, { border: string; glow: string; line: string; dot: string; icon: string }> = {
+  green: {
+    border: "border-green-500/40 hover:border-green-500/70",
+    glow: "hover:shadow-[0_0_25px_hsl(140_70%_45%/0.3)]",
+    line: "bg-green-500",
+    dot: "bg-green-500",
+    icon: "text-green-400",
+  },
+  purple: {
+    border: "border-secondary/40 hover:border-secondary/70",
+    glow: "hover:shadow-glow-purple",
+    line: "bg-secondary",
+    dot: "bg-secondary",
+    icon: "text-secondary",
+  },
+  orange: {
+    border: "border-orange-500/40 hover:border-orange-500/70",
+    glow: "hover:shadow-[0_0_25px_hsl(25_90%_50%/0.3)]",
+    line: "bg-orange-500",
+    dot: "bg-orange-500",
+    icon: "text-orange-400",
+  },
+};
+
+const statusLabels: Record<string, { label: string; icon: React.ReactNode }> = {
+  locked: { label: "Заблокирован", icon: <Lock className="w-4 h-4" /> },
+  in_progress: { label: "В процессе", icon: <PlayCircle className="w-4 h-4" /> },
+  completed: { label: "Завершён", icon: <CheckCircle2 className="w-4 h-4" /> },
+};
+
+const Courses = () => {
+  const [openLevel, setOpenLevel] = useState<number | null>(null);
+  const progress = 0;
+
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="border-b border-border/50 bg-card/50 backdrop-blur-sm sticky top-0 z-30">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            На главную
+          </Link>
+        </div>
+      </header>
+
+      <main className="container mx-auto px-4 py-12 max-w-3xl">
+        {/* Title */}
+        <div className="text-center mb-10 space-y-3">
+          <h1 className="text-4xl md:text-5xl font-bold">
+            <span className="bg-gradient-neon bg-clip-text text-transparent">Карта обучения</span>
+          </h1>
+          <p className="text-muted-foreground text-lg">
+            3 уровня · 17 уроков · 4 проекта · ~18 недель
+          </p>
+        </div>
+
+        {/* Progress Bar */}
+        <div className="mb-12 space-y-2">
+          <div className="flex justify-between text-sm">
+            <span className="text-muted-foreground">Общий прогресс</span>
+            <span className="text-primary font-semibold">{progress}%</span>
+          </div>
+          <Progress value={progress} className="h-3 bg-muted" />
+        </div>
+
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-border" />
+
+          <div className="space-y-8">
+            {levels.map((level, index) => {
+              const styles = accentStyles[level.accentColor];
+              const status = statusLabels[level.status];
+              const isOpen = openLevel === index;
+
+              return (
+                <div key={index} className="relative pl-16">
+                  {/* Timeline dot */}
+                  <div
+                    className={`absolute left-4 top-6 w-5 h-5 rounded-full border-2 border-background ${styles.dot} z-10`}
+                  />
+
+                  {/* Connector to next */}
+                  {index < levels.length - 1 && (
+                    <div
+                      className={`absolute left-[1.45rem] top-10 w-0.5 h-[calc(100%+2rem)] ${
+                        level.status === "completed" ? styles.line : "bg-border"
+                      }`}
+                    />
+                  )}
+
+                  <Collapsible open={isOpen} onOpenChange={() => setOpenLevel(isOpen ? null : index)}>
+                    <CollapsibleTrigger asChild>
+                      <Card
+                        className={`bg-card/60 backdrop-blur-sm ${styles.border} ${styles.glow} transition-all duration-300 cursor-pointer`}
+                      >
+                        <CardContent className="p-5">
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="space-y-2 flex-1">
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <h3 className="text-xl font-bold text-foreground">
+                                  Уровень {index + 1} — {level.title}
+                                </h3>
+                                <span
+                                  className={`text-xs font-semibold px-2 py-0.5 rounded-full border ${level.tagColor}`}
+                                >
+                                  {level.tag}
+                                </span>
+                              </div>
+
+                              <div className="flex items-center gap-4 text-sm text-muted-foreground flex-wrap">
+                                <span className="flex items-center gap-1">
+                                  <BookOpen className="w-3.5 h-3.5" />
+                                  {level.lessonsCount} уроков
+                                </span>
+                                <span className="flex items-center gap-1">
+                                  <FolderKanban className="w-3.5 h-3.5" />
+                                  {level.projectsCount} проект{level.projectsCount > 1 ? "а" : ""}
+                                </span>
+                                <span className="flex items-center gap-1">
+                                  <Clock className="w-3.5 h-3.5" />~{level.weeks} недель
+                                </span>
+                              </div>
+
+                              <div className={`flex items-center gap-1.5 text-xs font-medium ${styles.icon}`}>
+                                {status.icon}
+                                {status.label}
+                              </div>
+                            </div>
+
+                            <div className="flex items-center gap-2 pt-1">
+                              {level.locked && <Lock className="w-5 h-5 text-muted-foreground/50" />}
+                              <ChevronDown
+                                className={`w-5 h-5 text-muted-foreground transition-transform duration-200 ${
+                                  isOpen ? "rotate-180" : ""
+                                }`}
+                              />
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </CollapsibleTrigger>
+
+                    <CollapsibleContent>
+                      <div className="mt-2 ml-2 border-l-2 border-border pl-4 space-y-1.5 py-2">
+                        {level.lessons.map((lesson, li) => (
+                          <div
+                            key={li}
+                            className={`flex items-center gap-3 py-1.5 px-3 rounded-md text-sm transition-colors ${
+                              level.locked
+                                ? "text-muted-foreground/50"
+                                : "text-muted-foreground hover:text-foreground hover:bg-muted/30"
+                            }`}
+                          >
+                            {level.locked ? (
+                              <Lock className="w-3.5 h-3.5 flex-shrink-0" />
+                            ) : (
+                              <Circle className="w-3.5 h-3.5 flex-shrink-0" />
+                            )}
+                            <span>{lesson.title}</span>
+                            {lesson.type === "project" && (
+                              <span className={`text-xs px-1.5 py-0.5 rounded border ${level.tagColor} ml-auto`}>
+                                Проект
+                              </span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </CollapsibleContent>
+                  </Collapsible>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="text-center mt-16">
+          <Button variant="cyber" size="lg" asChild>
+            <Link to="/beginner-course">Начать обучение</Link>
+          </Button>
+        </div>
+      </main>
+    </div>
+  );
+};
 
 export default Courses;
