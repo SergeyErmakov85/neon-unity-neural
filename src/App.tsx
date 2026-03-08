@@ -65,6 +65,7 @@ const BlogJupyterToUnity = lazy(() => import("./pages/BlogJupyterToUnity"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const Community = lazy(() => import("./pages/Community"));
+const OnboardingQuiz = lazy(() => import("./pages/OnboardingQuiz"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -145,6 +146,7 @@ const App = () => (
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/community" element={<Community />} />
+            <Route path="/onboarding" element={<OnboardingQuiz />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -85,8 +85,8 @@ const HeroSection = () => {
             }}>
               Карта обучения
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8">
-              Просмотр демо
+            <Button size="lg" variant="outline" className="text-lg px-8" onClick={() => navigate("/onboarding")}>
+              Пройти тест
             </Button>
           </div>
 
