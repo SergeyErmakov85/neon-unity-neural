@@ -61,7 +61,7 @@ const HeroSection = () => {
             <span className="text-foreground">через тренировку</span>
             <br />
             <span className="bg-gradient-neon bg-clip-text text-transparent">
-              игровых агентов 🎮
+              игровых агентов <img src={gamepadImg} alt="Gamepad" className="inline-block h-12 md:h-16 lg:h-20 w-auto align-middle -mt-2 drop-shadow-[0_0_15px_hsl(var(--secondary)/0.6)]" />
             </span>
           </h1>
 
