@@ -133,7 +133,7 @@ class MLPPolicy(nn.Module):
             Когда агент «видит» мир через камеру (пиксели), необходимы свёрточные слои
             для извлечения признаков из изображений:
           </p>
-          <CyberCodeBlock language="python" title="CNN Policy для визуальных наблюдений">
+          <CyberCodeBlock language="python" filename="cnn_policy.py">
 {`class CNNPolicy(nn.Module):
     """CNN для агента с камерой (84x84 grayscale)."""
     def __init__(self, action_size: int):
