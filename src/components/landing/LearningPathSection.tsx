@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2, Circle, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import AlgorithmTable from "./AlgorithmTable";
 
 const levels = [
   {
