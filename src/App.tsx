@@ -110,6 +110,11 @@ const App = () => (
             <Route path="/courses/2-1" element={<CourseLesson2_1 />} />
             <Route path="/courses/2-2" element={<CourseLesson2_2 />} />
             <Route path="/courses/2-3" element={<CourseLesson2_3 />} />
+            <Route path="/courses/2-4" element={<CourseLesson2_4 />} />
+            <Route path="/courses/2-5" element={<CourseLesson2_5 />} />
+            <Route path="/courses/2-6" element={<CourseLesson2_6 />} />
+            <Route path="/courses/project-2" element={<CourseProject2 />} />
+            <Route path="/courses/project-3" element={<CourseProject3 />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/faq" element={<FAQ />} />
