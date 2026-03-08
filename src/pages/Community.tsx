@@ -19,6 +19,7 @@ import {
   Target,
 } from "lucide-react";
 import Navbar from "@/components/landing/Navbar";
+import Leaderboard from "@/components/Leaderboard";
 
 const discordChannels = [
   {
