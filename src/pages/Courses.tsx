@@ -112,7 +112,18 @@ const statusLabels: Record<string, { label: string; icon: React.ReactNode }> = {
 
 const Courses = () => {
   const [openLevel, setOpenLevel] = useState<number | null>(null);
-  const progress = 0;
+  const [, setTick] = useState(0);
+
+  useEffect(() => {
+    const handler = () => setTick((t) => t + 1);
+    window.addEventListener("progress-updated", handler);
+    return () => window.removeEventListener("progress-updated", handler);
+  }, []);
+
+  const userProgress = getProgress();
+  const totalLessons = 17;
+  const completedTotal = userProgress.completedLessons.length;
+  const progress = Math.round((completedTotal / totalLessons) * 100);
 
   return (
     <div className="min-h-screen bg-background">
