@@ -115,6 +115,9 @@ const SolutionSection = () => {
               </div>
             ))}
           </div>
+
+          {/* Interactive Learning Rate Chart */}
+          <LearningRateChart />
         </div>
       </div>
     </section>

@@ -156,6 +156,9 @@ const LearningPathSection = () => {
             </div>
           </div>
         </div>
+
+        {/* Algorithm Comparison Table */}
+        <AlgorithmTable />
       </div>
     </section>
   );
