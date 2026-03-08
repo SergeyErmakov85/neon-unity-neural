@@ -111,7 +111,7 @@ print("✅ Модель экспортирована: model.onnx")`}
           <Card className="border-accent/20 bg-card/50 mt-4">
             <CardContent className="p-4">
               <h4 className="font-semibold text-foreground mb-2">ML-Agents автоматический экспорт</h4>
-              <CyberCodeBlock language="python" title="Из директории результатов">
+              <CyberCodeBlock language="python" filename="results_dir.sh">
 {`# После обучения через mlagents-learn:
 # results/<run-id>/<BehaviorName>.onnx
 
