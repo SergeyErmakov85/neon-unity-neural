@@ -34,6 +34,11 @@ const AdvancedTopics = lazy(() => import("./pages/AdvancedTopics"));
 const Labs = lazy(() => import("./pages/Labs"));
 const DemoProject = lazy(() => import("./pages/DemoProject"));
 const DeepRLModule = lazy(() => import("./pages/DeepRLModule"));
+const Courses = lazy(() => import("./pages/Courses"));
+const Blog = lazy(() => import("./pages/Blog"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const FAQ = lazy(() => import("./pages/FAQ"));
+const Community = lazy(() => import("./pages/Community"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
