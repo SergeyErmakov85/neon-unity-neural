@@ -90,7 +90,7 @@ const CourseLesson3_7 = () => {
             Стандартная архитектура для RL: полносвязные слои с активацией ReLU/Tanh.
             Подходит для векторных наблюдений (позиции, скорости, расстояния).
           </p>
-          <CyberCodeBlock language="python" title="MLP для RL-агента">
+          <CyberCodeBlock language="python" filename="mlp_policy.py">
 {`import torch.nn as nn
 
 class MLPPolicy(nn.Module):
