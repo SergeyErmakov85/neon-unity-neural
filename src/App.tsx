@@ -126,6 +126,11 @@ const App = () => (
             <Route path="/courses/3-1" element={<CourseLesson3_1 />} />
             <Route path="/courses/3-2" element={<CourseLesson3_2 />} />
             <Route path="/courses/3-3" element={<CourseLesson3_3 />} />
+            <Route path="/courses/3-4" element={<CourseLesson3_4 />} />
+            <Route path="/courses/3-5" element={<CourseLesson3_5 />} />
+            <Route path="/courses/3-6" element={<CourseLesson3_6 />} />
+            <Route path="/courses/3-7" element={<CourseLesson3_7 />} />
+            <Route path="/courses/final-project" element={<CourseFinalProject />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/faq" element={<FAQ />} />
