@@ -15,6 +15,7 @@ import {
   PlayCircle,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getLevelCompletionPercent, getProgress } from "@/lib/gamification";
 
 const levels = [
   {
