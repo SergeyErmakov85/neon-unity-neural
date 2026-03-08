@@ -149,6 +149,7 @@ const LessonLayout = ({
 
         {/* Main content */}
         <main className="flex-1 min-w-0 max-w-3xl">
+          <LessonBreadcrumbs items={breadcrumbItems} />
           {/* Lesson header */}
           <div className="mb-8 space-y-3">
             <div className="flex items-center gap-3 flex-wrap">
