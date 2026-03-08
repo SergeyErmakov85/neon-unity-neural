@@ -48,6 +48,10 @@ const HeroSection = () => {
               <Code2 className="w-5 h-5 text-accent" />
               <span className="text-sm font-medium text-foreground">Deep RL</span>
             </button>
+            <button onClick={() => navigate("/math-rl")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-accent/30 shadow-glow-pink hover:bg-accent/10 hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Sparkles className="w-5 h-5 text-accent" />
+              <span className="text-sm font-medium text-foreground">Математика RL</span>
+            </button>
           </div>
 
           {/* Main Heading */}
