@@ -102,6 +102,7 @@ const Navbar = () => {
             >
               Начать обучение
             </Button>
+            <UserProfilePopover />
           </div>
 
           {/* Mobile Menu */}
