@@ -153,7 +153,7 @@ class PPOAgent:
     difficulty: "beginner",
     popularity: 90,
     date: "2025-11-20",
-    colabUrl: "#",
+    colabUrl: "https://colab.research.google.com/",
     code: `import torch
 import torch.nn as nn
 import torch.optim as optim
