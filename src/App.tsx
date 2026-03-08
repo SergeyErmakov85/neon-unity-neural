@@ -91,6 +91,8 @@ const App = () => (
             <Route path="/demo-project" element={<DemoProject />} />
             <Route path="/deep-rl" element={<DeepRLModule />} />
             <Route path="/courses" element={<Courses />} />
+            <Route path="/courses/1-1" element={<CourseLesson1_1 />} />
+            <Route path="/courses/1-2" element={<CourseLesson1_2 />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/faq" element={<FAQ />} />
