@@ -303,6 +303,10 @@ const Community = () => {
             </CardContent>
           </Card>
         </section>
+        {/* Section 5 — Leaderboard */}
+        <section>
+          <Leaderboard />
+        </section>
       </main>
     </div>
   );
