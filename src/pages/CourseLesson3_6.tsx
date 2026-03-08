@@ -119,7 +119,7 @@ const CourseLesson3_6 = () => {
             <Zap className="w-6 h-6 text-secondary" />
             Optuna: Study, Objective, Pruning
           </h2>
-          <CyberCodeBlock language="python" title="optuna_ppo_search.py">
+          <CyberCodeBlock language="python" filename="optuna_ppo_search.py">
 {`import optuna
 from optuna.pruners import MedianPruner
 import subprocess
