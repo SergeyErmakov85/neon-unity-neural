@@ -194,7 +194,7 @@ public class DeployedAgent : Agent
               </tbody>
             </table>
           </div>
-          <CyberCodeBlock language="python" title="Квантизация ONNX-модели">
+          <CyberCodeBlock language="python" filename="quantize.py">
 {`from onnxruntime.quantization import quantize_dynamic, QuantType
 
 # Float16 квантизация (рекомендуется для игр)

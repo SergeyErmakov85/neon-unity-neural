@@ -224,7 +224,7 @@ public override void Heuristic(in ActionBuffers actionsOut)
           <Card className="border-accent/20 bg-card/50 mt-4">
             <CardContent className="p-4">
               <h4 className="font-semibold text-foreground mb-2">Behavioral Cloning в YAML</h4>
-              <CyberCodeBlock language="python" title="bc_config.yaml">
+              <CyberCodeBlock language="python" filename="bc_config.yaml">
 {`behaviors:
   BCAgent:
     trainer_type: ppo

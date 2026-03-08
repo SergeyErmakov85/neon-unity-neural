@@ -240,7 +240,7 @@ parameters:
 # wandb agent <sweep_id> --count 30`}
           </CyberCodeBlock>
 
-          <CyberCodeBlock language="python" title="train_agent.py (с W&B логированием)">
+          <CyberCodeBlock language="python" filename="train_agent.py">
 {`import wandb
 
 def train():

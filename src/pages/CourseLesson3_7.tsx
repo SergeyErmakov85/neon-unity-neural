@@ -248,7 +248,7 @@ class MLPPolicy(nn.Module):
             Attention позволяет агенту <strong className="text-foreground">фокусироваться</strong> на
             наиболее важных частях наблюдения. Особенно полезен для сред с переменным числом объектов:
           </p>
-          <CyberCodeBlock language="python" title="Self-Attention для RL">
+          <CyberCodeBlock language="python" filename="attention_policy.py">
 {`class AttentionPolicy(nn.Module):
     """Attention для сред с множеством объектов."""
     def __init__(self, entity_dim: int, n_heads: int = 4, hidden: int = 128):

@@ -217,7 +217,7 @@ public class GameNPCAgent : Agent
 }`}
           </CyberCodeBlock>
 
-          <CyberCodeBlock language="python" title="final_project_config.yaml">
+          <CyberCodeBlock language="python" filename="final_project_config.yaml">
 {`behaviors:
   GameNPC:
     trainer_type: ppo
