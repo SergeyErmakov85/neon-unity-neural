@@ -157,8 +157,24 @@ const FAQ = () => {
 
   const totalQuestions = faqGroups.reduce((s, g) => s + g.items.length, 0);
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqGroups.flatMap(g => g.items.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+    })))
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="FAQ | RL Platform — часто задаваемые вопросы"
+        description="Ответы на популярные вопросы о курсах по Reinforcement Learning, Unity ML-Agents, PyTorch и обучении с подкреплением."
+        path="/faq"
+        jsonLd={faqJsonLd}
+      />
       <Navbar />
 
       <main className="container mx-auto px-4 pt-28 pb-20">
