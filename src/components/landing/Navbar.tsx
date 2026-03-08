@@ -76,6 +76,18 @@ const Navbar = () => {
               );
             })}
             <Button
+              variant="ghost"
+              size="sm"
+              className="text-muted-foreground hover:text-foreground hover:bg-primary/5"
+              onClick={() => {
+                const event = new KeyboardEvent("keydown", { key: "k", ctrlKey: true });
+                document.dispatchEvent(event);
+              }}
+            >
+              <Search className="w-4 h-4 mr-1" />
+              <span className="text-xs text-muted-foreground">Ctrl+K</span>
+            </Button>
+            <Button
               size="sm"
               className="ml-2 bg-gradient-neon hover:shadow-glow-cyan hover:scale-105 transition-all duration-300"
               onClick={() => navigate("/beginner-course")}
