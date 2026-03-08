@@ -367,7 +367,10 @@ plt.show()`}
       </section>
 
       {/* Quiz */}
-      <Quiz title="Проверь себя: DQN" questions={quizQuestions} />
+      <Quiz title="Проверь себя: DQN" questions={quizQuestions} lessonPath="/courses/1-4" nextLesson={{ path: "/courses/project-1", title: "Проект: Балансировка шеста" }} />
+
+      {/* PRO Upgrade Banner */}
+      <ProUpgradeBanner />
     </LessonLayout>
   );
 };
