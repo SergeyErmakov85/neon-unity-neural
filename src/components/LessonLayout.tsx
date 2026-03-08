@@ -42,9 +42,21 @@ const level2Lessons: LessonMeta[] = [
   { id: "2-p2", path: "/courses/project-3", title: "Проект: Racing Car", type: "project" },
 ];
 
+const level3Lessons: LessonMeta[] = [
+  { id: "3-1", path: "/courses/3-1", title: "SAC — Soft Actor-Critic", type: "lesson" },
+  { id: "3-2", path: "/courses/3-2", title: "MA-POCA и Self-Play", type: "lesson" },
+  { id: "3-3", path: "/courses/3-3", title: "Curriculum Learning", type: "lesson" },
+  { id: "3-4", path: "/courses/3-4", title: "Имитационное обучение (GAIL)", type: "lesson" },
+  { id: "3-5", path: "/courses/3-5", title: "Оптимизация гиперпараметров", type: "lesson" },
+  { id: "3-6", path: "/courses/3-6", title: "Деплой моделей", type: "lesson" },
+  { id: "3-7", path: "/courses/3-7", title: "Transfer Learning", type: "lesson" },
+  { id: "3-p", path: "/courses/project-4", title: "Проект: Soccer Agents", type: "project" },
+];
+
 const levelConfigs = [
   { label: "Уровень 1 — Новичок", lessons: level1Lessons, tag: "FREE", tagClass: "text-green-400" },
   { label: "Уровень 2 — Средний", lessons: level2Lessons, tag: "PRO", tagClass: "text-secondary" },
+  { label: "Уровень 3 — Продвинутый", lessons: level3Lessons, tag: "PRO", tagClass: "text-orange-400" },
 ];
 
 const LessonLayout = ({

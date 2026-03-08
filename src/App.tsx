@@ -48,6 +48,9 @@ const CourseLesson2_5 = lazy(() => import("./pages/CourseLesson2_5"));
 const CourseLesson2_6 = lazy(() => import("./pages/CourseLesson2_6"));
 const CourseProject2 = lazy(() => import("./pages/CourseProject2"));
 const CourseProject3 = lazy(() => import("./pages/CourseProject3"));
+const CourseLesson3_1 = lazy(() => import("./pages/CourseLesson3_1"));
+const CourseLesson3_2 = lazy(() => import("./pages/CourseLesson3_2"));
+const CourseLesson3_3 = lazy(() => import("./pages/CourseLesson3_3"));
 const Blog = lazy(() => import("./pages/Blog"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const FAQ = lazy(() => import("./pages/FAQ"));
@@ -115,6 +118,9 @@ const App = () => (
             <Route path="/courses/2-6" element={<CourseLesson2_6 />} />
             <Route path="/courses/project-2" element={<CourseProject2 />} />
             <Route path="/courses/project-3" element={<CourseProject3 />} />
+            <Route path="/courses/3-1" element={<CourseLesson3_1 />} />
+            <Route path="/courses/3-2" element={<CourseLesson3_2 />} />
+            <Route path="/courses/3-3" element={<CourseLesson3_3 />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/faq" element={<FAQ />} />
