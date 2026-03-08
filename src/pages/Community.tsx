@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import SEOHead from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -111,6 +112,11 @@ const Community = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Сообщество RL Platform | Обсуждения и лидерборд"
+        description="Присоединяйтесь к сообществу разработчиков RL: Discord, таблица лидеров, еженедельные челленджи."
+        path="/community"
+      />
       <Navbar />
 
       <main className="container mx-auto px-4 pt-28 pb-20 space-y-24">
