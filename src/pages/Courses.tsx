@@ -128,6 +128,19 @@ const Courses = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Курсы по RL: от новичка до продвинутого | Unity ML-Agents"
+        description="Структурированные курсы по Reinforcement Learning: 3 уровня, 18+ уроков, практические проекты на PyTorch и Unity ML-Agents."
+        path="/courses"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Course",
+          "name": "Reinforcement Learning: полный курс",
+          "description": "От основ до мультиагентных систем в Unity ML-Agents",
+          "provider": { "@type": "Organization", "name": "RL Platform" },
+          "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "online" }
+        }}
+      />
       {/* Header */}
       <header className="border-b border-border/50 bg-card/50 backdrop-blur-sm sticky top-0 z-30">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">

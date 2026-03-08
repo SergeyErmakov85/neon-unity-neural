@@ -83,6 +83,11 @@ const Pricing = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Тарифы | RL Platform — курсы по обучению с подкреплением"
+        description="Выберите подходящий тариф: бесплатный доступ к основам, PRO для полного курса или Team для команд."
+        path="/pricing"
+      />
       {/* Header */}
       <header className="border-b border-border/50 bg-card/50 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4">

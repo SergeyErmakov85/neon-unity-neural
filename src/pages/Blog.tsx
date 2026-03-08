@@ -94,6 +94,11 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Блог о Reinforcement Learning и Unity ML-Agents"
+        description="Статьи, руководства и сравнения алгоритмов RL: PPO vs SAC, параллельные среды, MA-POCA и многое другое."
+        path="/blog"
+      />
       <header className="border-b border-border/50 bg-card/50 backdrop-blur-sm sticky top-0 z-30">
         <div className="container mx-auto px-4 py-4">
           <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
