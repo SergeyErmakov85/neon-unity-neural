@@ -101,7 +101,7 @@ class ReplayBuffer:
     difficulty: "intermediate",
     popularity: 98,
     date: "2026-01-15",
-    colabUrl: "#",
+    colabUrl: "https://colab.research.google.com/",
     code: `import torch
 import torch.nn as nn
 import torch.optim as optim
