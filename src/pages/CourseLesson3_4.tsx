@@ -157,7 +157,7 @@ const CourseLesson3_4 = () => {
             Unity ML-Agents предоставляет компонент <code className="text-primary">DemonstrationRecorder</code>,
             который записывает действия игрока в <code>.demo</code> файл:
           </p>
-          <CyberCodeBlock language="csharp" title="DemonstrationRecorder Setup">
+          <CyberCodeBlock language="csharp" filename="DemonstrationRecorder Setup">
 {`// 1. Добавьте компонент DemonstrationRecorder к Agent
 // 2. Настройте в Inspector:
 //    - Record: true
