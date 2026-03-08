@@ -57,6 +57,11 @@ const CourseLesson3_6 = lazy(() => import("./pages/CourseLesson3_6"));
 const CourseLesson3_7 = lazy(() => import("./pages/CourseLesson3_7"));
 const CourseFinalProject = lazy(() => import("./pages/CourseFinalProject"));
 const Blog = lazy(() => import("./pages/Blog"));
+const BlogPpoVsSac = lazy(() => import("./pages/BlogPpoVsSac"));
+const BlogTop5Mistakes = lazy(() => import("./pages/BlogTop5Mistakes"));
+const BlogParallelEnvs = lazy(() => import("./pages/BlogParallelEnvs"));
+const BlogMapoca = lazy(() => import("./pages/BlogMapoca"));
+const BlogJupyterToUnity = lazy(() => import("./pages/BlogJupyterToUnity"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const Community = lazy(() => import("./pages/Community"));
@@ -132,6 +137,11 @@ const App = () => (
             <Route path="/courses/3-7" element={<CourseLesson3_7 />} />
             <Route path="/courses/final-project" element={<CourseFinalProject />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/ppo-vs-sac" element={<BlogPpoVsSac />} />
+            <Route path="/blog/top-5-mistakes" element={<BlogTop5Mistakes />} />
+            <Route path="/blog/parallel-envs" element={<BlogParallelEnvs />} />
+            <Route path="/blog/mapoca-guide" element={<BlogMapoca />} />
+            <Route path="/blog/jupyter-to-unity" element={<BlogJupyterToUnity />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/community" element={<Community />} />
