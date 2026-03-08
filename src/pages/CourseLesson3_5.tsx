@@ -80,7 +80,7 @@ const CourseLesson3_5 = () => {
             После обучения ML-Agents автоматически сохраняет <code className="text-primary">.onnx</code> файл
             в директории <code>results/</code>. Но можно экспортировать и вручную:
           </p>
-          <CyberCodeBlock language="python" title="Экспорт из PyTorch в ONNX">
+          <CyberCodeBlock language="python" filename="export_onnx.py">
 {`import torch
 import torch.onnx
 
