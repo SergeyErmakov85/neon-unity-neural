@@ -32,6 +32,10 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    checkStreak();
+  }, []);
+
   const isActive = (href: string) => location.pathname === href;
 
   return (
