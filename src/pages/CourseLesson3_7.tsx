@@ -227,7 +227,7 @@ class MLPPolicy(nn.Module):
           <Card className="border-primary/20 bg-card/50 mt-4">
             <CardContent className="p-4">
               <h4 className="font-semibold text-foreground mb-2">ML-Agents: включение памяти</h4>
-              <CyberCodeBlock language="python" title="memory_config.yaml">
+              <CyberCodeBlock language="python" filename="memory_config.yaml">
 {`behaviors:
   MemoryAgent:
     trainer_type: ppo
