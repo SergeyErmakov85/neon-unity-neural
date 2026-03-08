@@ -30,9 +30,9 @@ const levels = [
     lessons: [
       { title: "Что такое обучение с подкреплением?", type: "lesson", path: "/courses/1-1" },
       { title: "Установка окружения: PyTorch + Unity ML-Agents", type: "lesson", path: "/courses/1-2" },
-      { title: "Первый агент: CartPole", type: "lesson", path: "/courses/1-3" },
-      { title: "Базовый DQN алгоритм", type: "lesson", path: "/courses/1-4" },
-      { title: "Проект: GridWorld Agent", type: "project", path: "/courses/1-project" },
+      { title: "CartPole — твой первый RL-агент", type: "lesson", path: "/courses/1-3" },
+      { title: "DQN с нуля на PyTorch", type: "lesson", path: "/courses/1-4" },
+      { title: "Проект: Балансировка шеста", type: "project", path: "/courses/project-1" },
     ],
   },
   {

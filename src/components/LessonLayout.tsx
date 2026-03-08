@@ -24,9 +24,9 @@ interface LessonLayoutProps {
 const level1Lessons: LessonMeta[] = [
   { id: "1-1", path: "/courses/1-1", title: "Что такое обучение с подкреплением?", type: "lesson" },
   { id: "1-2", path: "/courses/1-2", title: "Установка окружения: PyTorch + Unity ML-Agents", type: "lesson" },
-  { id: "1-3", path: "/courses/1-3", title: "Первый агент: CartPole", type: "lesson" },
-  { id: "1-4", path: "/courses/1-4", title: "Базовый DQN алгоритм", type: "lesson" },
-  { id: "1-p", path: "/courses/1-project", title: "Проект: GridWorld Agent", type: "project" },
+  { id: "1-3", path: "/courses/1-3", title: "CartPole — первый агент", type: "lesson" },
+  { id: "1-4", path: "/courses/1-4", title: "DQN с нуля на PyTorch", type: "lesson" },
+  { id: "1-p", path: "/courses/project-1", title: "Проект: Балансировка шеста", type: "project" },
 ];
 
 const LessonLayout = ({
