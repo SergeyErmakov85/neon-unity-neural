@@ -5,6 +5,9 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search } from "lucide-react";
 import logoImage from "@/assets/Logo_RL_platform.png";
 import GlobalSearch from "@/components/GlobalSearch";
+import UserProfilePopover from "@/components/UserProfilePopover";
+import XpNotification from "@/components/XpNotification";
+import { checkStreak } from "@/lib/gamification";
 
 const navLinks = [
   { href: "/courses", label: "Курсы", icon: GraduationCap },
@@ -29,11 +32,16 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    checkStreak();
+  }, []);
+
   const isActive = (href: string) => location.pathname === href;
 
   return (
     <>
     <GlobalSearch />
+    <XpNotification />
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/80 backdrop-blur-xl border-b border-primary/30 shadow-[var(--glow-cyan)]" : "bg-background"}`}>
       <div className="container px-4 mx-auto">
         <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? "h-14" : "h-16 md:h-20"}`}>
@@ -94,6 +102,7 @@ const Navbar = () => {
             >
               Начать обучение
             </Button>
+            <UserProfilePopover />
           </div>
 
           {/* Mobile Menu */}

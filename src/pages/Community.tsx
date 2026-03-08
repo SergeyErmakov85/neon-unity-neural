@@ -19,6 +19,7 @@ import {
   Target,
 } from "lucide-react";
 import Navbar from "@/components/landing/Navbar";
+import Leaderboard from "@/components/Leaderboard";
 
 const discordChannels = [
   {
@@ -301,6 +302,10 @@ const Community = () => {
               </Button>
             </CardContent>
           </Card>
+        </section>
+        {/* Section 5 — Leaderboard */}
+        <section>
+          <Leaderboard />
         </section>
       </main>
     </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -15,6 +15,7 @@ import {
   PlayCircle,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getLevelCompletionPercent, getProgress } from "@/lib/gamification";
 
 const levels = [
   {
@@ -111,7 +112,18 @@ const statusLabels: Record<string, { label: string; icon: React.ReactNode }> = {
 
 const Courses = () => {
   const [openLevel, setOpenLevel] = useState<number | null>(null);
-  const progress = 0;
+  const [, setTick] = useState(0);
+
+  useEffect(() => {
+    const handler = () => setTick((t) => t + 1);
+    window.addEventListener("progress-updated", handler);
+    return () => window.removeEventListener("progress-updated", handler);
+  }, []);
+
+  const userProgress = getProgress();
+  const totalLessons = 17;
+  const completedTotal = userProgress.completedLessons.length;
+  const progress = Math.round((completedTotal / totalLessons) * 100);
 
   return (
     <div className="min-h-screen bg-background">
@@ -206,6 +218,12 @@ const Courses = () => {
                                 <span className="flex items-center gap-1">
                                   <Clock className="w-3.5 h-3.5" />~{level.weeks} недель
                                 </span>
+                              </div>
+
+                              {/* Level progress bar */}
+                              <div className="space-y-1">
+                                <Progress value={getLevelCompletionPercent(index)} className="h-1.5 bg-muted" />
+                                <p className="text-xs text-muted-foreground">{getLevelCompletionPercent(index)}% завершено</p>
                               </div>
 
                               <div className={`flex items-center gap-1.5 text-xs font-medium ${styles.icon}`}>
