@@ -1,117 +1,130 @@
-import { Github, Mail, MessageCircle, FileQuestion, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Github, Mail, MessageCircle, Twitter, Youtube, ExternalLink } from "lucide-react";
+
+const footerLinks = {
+  learn: {
+    title: "Обучение",
+    links: [
+      { label: "Все курсы", href: "/courses" },
+      { label: "Примеры кода", href: "/code-examples" },
+      { label: "Математика RL", href: "/math-rl" },
+      { label: "Алгоритмы", href: "/algorithms" },
+      { label: "Unity проекты", href: "/unity-projects" },
+    ],
+  },
+  resources: {
+    title: "Ресурсы",
+    links: [
+      { label: "Блог", href: "/blog" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Визуализации", href: "/visualizations" },
+      { label: "PyTorch", href: "/pytorch" },
+      { label: "Onboarding-тест", href: "/onboarding" },
+    ],
+  },
+  community: {
+    title: "Сообщество",
+    links: [
+      { label: "Сообщество", href: "/community" },
+      { label: "Тарифы", href: "/pricing" },
+    ],
+  },
+};
+
+const socialLinks = [
+  { icon: Github, href: "https://github.com", label: "GitHub" },
+  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+  { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+  { icon: MessageCircle, href: "https://discord.gg", label: "Discord" },
+  { icon: Mail, href: "mailto:support@rlplatform.ru", label: "Email" },
+];
 
 const FooterSection = () => {
   return (
     <footer className="border-t border-border bg-card/30 backdrop-blur-sm py-16 px-4">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
-          <div className="md:col-span-2 space-y-4">
+          <div className="space-y-4">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-primary animate-glow-pulse" />
-              <span className="text-xl font-bold bg-gradient-neon bg-clip-text text-transparent">
-                RL Learning Platform
+              <span className="text-lg font-bold bg-gradient-neon bg-clip-text text-transparent">
+                RL Platform
               </span>
-              <div className="w-2 h-2 rounded-full bg-secondary animate-glow-pulse" />
             </div>
-            <p className="text-muted-foreground text-sm max-w-md leading-relaxed">
+            <p className="text-muted-foreground text-sm leading-relaxed">
               Практическая платформа для изучения Reinforcement Learning. 
-              Создавайте умных игровых агентов с PyTorch и Unity ML-Agents.
+              PyTorch + Unity ML-Agents.
             </p>
-            <div className="flex gap-4">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-card border border-border flex items-center justify-center hover:border-primary/50 hover:shadow-glow-cyan transition-all duration-300"
-              >
-                <Github className="w-5 h-5 text-muted-foreground hover:text-primary" />
-              </a>
-              <a
-                href="mailto:contact@example.com"
-                className="w-10 h-10 rounded-lg bg-card border border-border flex items-center justify-center hover:border-secondary/50 hover:shadow-glow-purple transition-all duration-300"
-              >
-                <Mail className="w-5 h-5 text-muted-foreground hover:text-secondary" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-card border border-border flex items-center justify-center hover:border-accent/50 hover:shadow-glow-pink transition-all duration-300"
-              >
-                <MessageCircle className="w-5 h-5 text-muted-foreground hover:text-accent" />
-              </a>
+            <div className="flex gap-3 flex-wrap">
+              {socialLinks.map((s) => {
+                const Icon = s.icon;
+                return (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="w-9 h-9 rounded-lg bg-card border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 hover:shadow-glow-cyan transition-all duration-300"
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
-          {/* Links */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Навигация</h4>
-            <ul className="space-y-3">
-              <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                  Курсы
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                  Примеры кода
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                  Демо
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                  Блог
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Link columns */}
+          {Object.values(footerLinks).map((group) => (
+            <div key={group.title} className="space-y-4">
+              <h4 className="font-semibold text-foreground text-sm">{group.title}</h4>
+              <ul className="space-y-2.5">
+                {group.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      to={link.href}
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
 
-          {/* Support */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Поддержка</h4>
-            <ul className="space-y-3">
-              <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                  <FileQuestion className="w-4 h-4" />
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  Контакты
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
-                >
-                  <Github className="w-4 h-4" />
-                  GitHub
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </li>
-            </ul>
-          </div>
+        {/* Contact row */}
+        <div className="py-6 border-t border-border/50 mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 text-sm text-muted-foreground">
+          <span>📧 Поддержка:</span>
+          <a href="mailto:support@rlplatform.ru" className="hover:text-primary transition-colors duration-200">
+            support@rlplatform.ru
+          </a>
+          <span className="hidden sm:inline text-border">|</span>
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 hover:text-primary transition-colors duration-200"
+          >
+            <Github className="w-4 h-4" />
+            GitHub репозиторий
+            <ExternalLink className="w-3 h-3" />
+          </a>
         </div>
 
         {/* Bottom */}
-        <div className="pt-8 border-t border-border/50">
+        <div className="pt-6 border-t border-border/50">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-xs text-muted-foreground/60">
-              © 2024 RL Learning Platform. Все права защищены.
+            <div className="text-xs text-muted-foreground">
+              © {new Date().getFullYear()} RL Learning Platform. Все права защищены.
             </div>
             <div className="flex gap-6">
-              <a href="#" className="text-xs text-muted-foreground/60 hover:text-muted-foreground transition-colors">
+              <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Политика конфиденциальности
               </a>
-              <a href="#" className="text-xs text-muted-foreground/60 hover:text-muted-foreground transition-colors">
+              <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200">
                 Условия использования
               </a>
             </div>
