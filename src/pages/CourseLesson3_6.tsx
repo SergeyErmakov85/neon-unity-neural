@@ -209,7 +209,7 @@ print(f"Best params: {study.best_params}")`}
             W&B Sweeps предоставляют визуализацию пространства поиска, корреляцию параметров
             и командный доступ к результатам:
           </p>
-          <CyberCodeBlock language="python" title="sweep_config.yaml">
+          <CyberCodeBlock language="python" filename="sweep_config.yaml">
 {`# wandb sweep config
 program: train_agent.py
 method: bayes          # bayesian optimization
