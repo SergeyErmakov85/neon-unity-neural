@@ -229,28 +229,35 @@ const Courses = () => {
 
                     <CollapsibleContent>
                       <div className="mt-2 ml-2 border-l-2 border-border pl-4 space-y-1.5 py-2">
-                        {level.lessons.map((lesson, li) => (
-                          <div
-                            key={li}
-                            className={`flex items-center gap-3 py-1.5 px-3 rounded-md text-sm transition-colors ${
-                              level.locked
-                                ? "text-muted-foreground/50"
-                                : "text-muted-foreground hover:text-foreground hover:bg-muted/30"
-                            }`}
-                          >
-                            {level.locked ? (
-                              <Lock className="w-3.5 h-3.5 flex-shrink-0" />
-                            ) : (
-                              <Circle className="w-3.5 h-3.5 flex-shrink-0" />
-                            )}
-                            <span>{lesson.title}</span>
-                            {lesson.type === "project" && (
-                              <span className={`text-xs px-1.5 py-0.5 rounded border ${level.tagColor} ml-auto`}>
-                                Проект
-                              </span>
-                            )}
-                          </div>
-                        ))}
+                        {level.lessons.map((lesson, li) => {
+                          const hasLink = !level.locked && lesson.path;
+                          const inner = (
+                            <div
+                              className={`flex items-center gap-3 py-1.5 px-3 rounded-md text-sm transition-colors ${
+                                level.locked
+                                  ? "text-muted-foreground/50"
+                                  : "text-muted-foreground hover:text-foreground hover:bg-muted/30 cursor-pointer"
+                              }`}
+                            >
+                              {level.locked ? (
+                                <Lock className="w-3.5 h-3.5 flex-shrink-0" />
+                              ) : (
+                                <Circle className="w-3.5 h-3.5 flex-shrink-0" />
+                              )}
+                              <span>{lesson.title}</span>
+                              {lesson.type === "project" && (
+                                <span className={`text-xs px-1.5 py-0.5 rounded border ${level.tagColor} ml-auto`}>
+                                  Проект
+                                </span>
+                              )}
+                            </div>
+                          );
+                          return hasLink ? (
+                            <Link key={li} to={lesson.path!}>{inner}</Link>
+                          ) : (
+                            <div key={li}>{inner}</div>
+                          );
+                        })}
                       </div>
                     </CollapsibleContent>
                   </Collapsible>
