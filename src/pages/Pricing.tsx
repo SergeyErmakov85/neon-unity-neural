@@ -233,6 +233,9 @@ const Pricing = () => {
             ))}
           </div>
         </div>
+
+        {/* Affiliate Section */}
+        <AffiliateSection />
       </main>
     </div>
   );
