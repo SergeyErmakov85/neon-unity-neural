@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowLeft, ArrowRight, BookOpen, FolderKanban, Circle, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, FolderKanban, Circle, CheckCircle2, Lock, Crown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -17,6 +17,7 @@ interface LessonLayoutProps {
   lessonNumber: string;
   duration: string;
   tags: string[];
+  level?: number;
   prevLesson?: { path: string; title: string };
   nextLesson?: { path: string; title: string };
 }
@@ -29,16 +30,34 @@ const level1Lessons: LessonMeta[] = [
   { id: "1-p", path: "/courses/project-1", title: "Проект: Балансировка шеста", type: "project" },
 ];
 
+const level2Lessons: LessonMeta[] = [
+  { id: "2-1", path: "/courses/2-1", title: "Policy Gradient и теорема градиента", type: "lesson" },
+  { id: "2-2", path: "/courses/2-2", title: "PPO — реализация с нуля", type: "lesson" },
+  { id: "2-3", path: "/courses/2-3", title: "Непрерывные действия и Actor-Critic", type: "lesson" },
+  { id: "2-4", path: "/courses/2-4", title: "Обучение в Unity ML-Agents", type: "lesson" },
+  { id: "2-5", path: "/courses/2-5", title: "Curriculum Learning", type: "lesson" },
+  { id: "2-6", path: "/courses/2-6", title: "A3C и асинхронное обучение", type: "lesson" },
+  { id: "2-p1", path: "/courses/project-2", title: "Проект: Ball Balance", type: "project" },
+  { id: "2-p2", path: "/courses/project-3", title: "Проект: Racing Car", type: "project" },
+];
+
+const levelConfigs = [
+  { label: "Уровень 1 — Новичок", lessons: level1Lessons, tag: "FREE", tagClass: "text-green-400" },
+  { label: "Уровень 2 — Средний", lessons: level2Lessons, tag: "PRO", tagClass: "text-secondary" },
+];
+
 const LessonLayout = ({
   children,
   lessonTitle,
   lessonNumber,
   duration,
   tags,
+  level = 1,
   prevLesson,
   nextLesson,
 }: LessonLayoutProps) => {
   const location = useLocation();
+  const isPro = level >= 2;
 
   return (
     <div className="min-h-screen bg-background">
@@ -60,34 +79,43 @@ const LessonLayout = ({
       <div className="container mx-auto px-4 py-8 flex gap-8">
         {/* Sidebar — desktop only */}
         <aside className="hidden lg:block w-64 flex-shrink-0">
-          <div className="sticky top-20 space-y-1">
-            <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3 px-3">
-              Уровень 1 — Новичок
-            </h3>
-            {level1Lessons.map((l) => {
-              const active = location.pathname === l.path;
-              return (
-                <Link
-                  key={l.id}
-                  to={l.path}
-                  className={cn(
-                    "flex items-center gap-2.5 px-3 py-2 rounded-md text-sm transition-colors",
-                    active
-                      ? "bg-primary/10 text-primary border border-primary/20"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/30"
-                  )}
-                >
-                  {l.type === "project" ? (
-                    <FolderKanban className="w-3.5 h-3.5 flex-shrink-0" />
-                  ) : active ? (
-                    <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0" />
-                  ) : (
-                    <Circle className="w-3.5 h-3.5 flex-shrink-0" />
-                  )}
-                  <span className="truncate">{l.title}</span>
-                </Link>
-              );
-            })}
+          <div className="sticky top-20 space-y-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
+            {levelConfigs.map((cfg, li) => (
+              <div key={li}>
+                <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 px-3 flex items-center gap-2">
+                  {cfg.label}
+                  {cfg.tag === "PRO" && <Crown className="w-3 h-3 text-secondary" />}
+                </h3>
+                <div className="space-y-0.5">
+                  {cfg.lessons.map((l) => {
+                    const active = location.pathname === l.path;
+                    return (
+                      <Link
+                        key={l.id}
+                        to={l.path}
+                        className={cn(
+                          "flex items-center gap-2 px-3 py-1.5 rounded-md text-xs transition-colors",
+                          active
+                            ? "bg-primary/10 text-primary border border-primary/20"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted/30"
+                        )}
+                      >
+                        {l.type === "project" ? (
+                          <FolderKanban className="w-3 h-3 flex-shrink-0" />
+                        ) : active ? (
+                          <CheckCircle2 className="w-3 h-3 flex-shrink-0" />
+                        ) : cfg.tag === "PRO" ? (
+                          <Lock className="w-3 h-3 flex-shrink-0" />
+                        ) : (
+                          <Circle className="w-3 h-3 flex-shrink-0" />
+                        )}
+                        <span className="truncate">{l.title}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
         </aside>
 
@@ -96,8 +124,13 @@ const LessonLayout = ({
           {/* Lesson header */}
           <div className="mb-8 space-y-3">
             <div className="flex items-center gap-3 flex-wrap">
-              <span className="text-xs font-semibold px-2 py-0.5 rounded-full border bg-green-500/20 text-green-400 border-green-500/30">
-                FREE
+              <span className={cn(
+                "text-xs font-semibold px-2 py-0.5 rounded-full border",
+                isPro
+                  ? "bg-secondary/20 text-secondary border-secondary/30"
+                  : "bg-green-500/20 text-green-400 border-green-500/30"
+              )}>
+                {isPro ? "PRO" : "FREE"}
               </span>
               <span className="text-xs text-muted-foreground flex items-center gap-1">
                 <BookOpen className="w-3 h-3" /> {duration}
