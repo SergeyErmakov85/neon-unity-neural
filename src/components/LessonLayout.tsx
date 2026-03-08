@@ -34,10 +34,11 @@ const level2Lessons: LessonMeta[] = [
   { id: "2-1", path: "/courses/2-1", title: "Policy Gradient и теорема градиента", type: "lesson" },
   { id: "2-2", path: "/courses/2-2", title: "PPO — реализация с нуля", type: "lesson" },
   { id: "2-3", path: "/courses/2-3", title: "Непрерывные действия и Actor-Critic", type: "lesson" },
-  { id: "2-4", path: "/courses/2-4", title: "Обучение в Unity ML-Agents", type: "lesson" },
-  { id: "2-5", path: "/courses/2-5", title: "Curriculum Learning", type: "lesson" },
-  { id: "2-6", path: "/courses/2-6", title: "A3C и асинхронное обучение", type: "lesson" },
-  { id: "2-p1", path: "/courses/project-2", title: "Проект: Ball Balance", type: "project" },
+  { id: "2-4", path: "/courses/2-4", title: "Reward Shaping", type: "lesson" },
+  { id: "2-5", path: "/courses/2-5", title: "Параллельные среды", type: "lesson" },
+  { id: "2-6", path: "/courses/2-6", title: "TensorBoard и W&B", type: "lesson" },
+  { id: "2-p1", path: "/courses/project-2", title: "Проект: 3D-охотник", type: "project" },
+  { id: "2-p2", path: "/courses/project-3", title: "Проект: Гоночный агент", type: "project" },
   { id: "2-p2", path: "/courses/project-3", title: "Проект: Racing Car", type: "project" },
 ];
 
