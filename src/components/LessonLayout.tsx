@@ -3,6 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 import { ArrowLeft, ArrowRight, BookOpen, FolderKanban, Circle, CheckCircle2, Lock, Crown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
+import ScrollToTop from "@/components/ScrollToTop";
+import LessonBreadcrumbs from "@/components/LessonBreadcrumbs";
 
 interface LessonMeta {
   id: string;
