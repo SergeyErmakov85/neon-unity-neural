@@ -85,6 +85,20 @@ All colors MUST be HSL.
   }
 }
 
+/* Mobile-friendly tables and code blocks */
+.prose-cyber table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose-cyber pre,
+.prose-cyber code {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+
 /* Cyberpunk syntax highlighting */
 .cyber-keyword {
   color: hsl(280 100% 70%);

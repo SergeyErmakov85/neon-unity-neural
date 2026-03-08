@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users } from "lucide-react";
+import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search } from "lucide-react";
 import logoImage from "@/assets/Logo_RL_platform.png";
+import GlobalSearch from "@/components/GlobalSearch";
 
 const navLinks = [
   { href: "/courses", label: "Курсы", icon: GraduationCap },
@@ -31,9 +32,11 @@ const Navbar = () => {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background backdrop-blur-md border-b border-primary/30 shadow-glow-cyan" : "bg-background"}`}>
+    <>
+    <GlobalSearch />
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/80 backdrop-blur-xl border-b border-primary/30 shadow-[var(--glow-cyan)]" : "bg-background"}`}>
       <div className="container px-4 mx-auto">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? "h-14" : "h-16 md:h-20"}`}>
           {/* Logo */}
           <a
             href="/"
@@ -72,6 +75,18 @@ const Navbar = () => {
                 </Button>
               );
             })}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-muted-foreground hover:text-foreground hover:bg-primary/5"
+              onClick={() => {
+                const event = new KeyboardEvent("keydown", { key: "k", ctrlKey: true });
+                document.dispatchEvent(event);
+              }}
+            >
+              <Search className="w-4 h-4 mr-1" />
+              <span className="text-xs text-muted-foreground">Ctrl+K</span>
+            </Button>
             <Button
               size="sm"
               className="ml-2 bg-gradient-neon hover:shadow-glow-cyan hover:scale-105 transition-all duration-300"
@@ -141,6 +156,7 @@ const Navbar = () => {
       {/* Neon line at bottom */}
       <div className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent transition-opacity duration-300 ${isScrolled ? "opacity-100" : "opacity-0"}`} />
     </nav>
+    </>
   );
 };
 

@@ -3,6 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 import { ArrowLeft, ArrowRight, BookOpen, FolderKanban, Circle, CheckCircle2, Lock, Crown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
+import ScrollToTop from "@/components/ScrollToTop";
+import LessonBreadcrumbs from "@/components/LessonBreadcrumbs";
 
 interface LessonMeta {
   id: string;
@@ -72,10 +75,22 @@ const LessonLayout = ({
   const location = useLocation();
   const isPro = level >= 2;
 
+  const progressColor = level === 1 ? "bg-green-500" : level === 2 ? "bg-secondary" : "bg-orange-500";
+
+  // Build breadcrumb items
+  const levelLabel = level === 1 ? "Уровень 1" : level === 2 ? "Уровень 2" : "Уровень 3";
+  const breadcrumbItems = [
+    { label: "Курсы", href: "/courses" },
+    { label: levelLabel, href: "/courses" },
+    { label: `Урок ${lessonNumber}` },
+  ];
+
   return (
     <div className="min-h-screen bg-background">
+      <ScrollProgressBar color={progressColor} />
+      <ScrollToTop />
       {/* Header */}
-      <header className="border-b border-border/50 bg-card/50 backdrop-blur-sm sticky top-0 z-30">
+      <header className="border-b border-border/50 bg-card/80 backdrop-blur-xl sticky top-0 z-30">
         <div className="container mx-auto px-4 py-3 flex items-center gap-4">
           <Link
             to="/courses"
@@ -134,6 +149,7 @@ const LessonLayout = ({
 
         {/* Main content */}
         <main className="flex-1 min-w-0 max-w-3xl">
+          <LessonBreadcrumbs items={breadcrumbItems} />
           {/* Lesson header */}
           <div className="mb-8 space-y-3">
             <div className="flex items-center gap-3 flex-wrap">
