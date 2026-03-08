@@ -169,7 +169,7 @@ class MLPPolicy(nn.Module):
           <Card className="border-secondary/20 bg-card/50 mt-4">
             <CardContent className="p-4">
               <h4 className="font-semibold text-foreground mb-2">Unity ML-Agents: визуальные наблюдения</h4>
-              <CyberCodeBlock language="python" title="trainer_config.yaml">
+              <CyberCodeBlock language="python" filename="trainer_config.yaml">
 {`behaviors:
   VisualAgent:
     trainer_type: ppo
