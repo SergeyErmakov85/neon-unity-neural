@@ -123,7 +123,9 @@ const Navbar = () => {
             </Button>
             {userName ? (
               <div className="flex items-center gap-2 ml-2">
-                <span className="text-sm text-foreground">{userName}</span>
+                <Button size="sm" variant="ghost" onClick={() => navigate("/profile")} className="text-foreground hover:text-primary">
+                  {userName}
+                </Button>
                 <Button size="sm" variant="ghost" onClick={handleLogout} className="text-muted-foreground hover:text-destructive">
                   <LogOut className="w-4 h-4" />
                 </Button>
@@ -180,7 +182,9 @@ const Navbar = () => {
                 <div className="mt-auto flex flex-col gap-3 px-2 pb-8">
                   {userName ? (
                     <>
-                      <p className="text-sm text-foreground text-center">{userName}</p>
+                      <Button variant="ghost" className="w-full justify-start" onClick={() => { setIsOpen(false); navigate("/profile"); }}>
+                        {userName}
+                      </Button>
                       <Button variant="outline" className="w-full" onClick={() => { setIsOpen(false); handleLogout(); }}>
                         <LogOut className="w-4 h-4 mr-2" /> Выйти
                       </Button>
