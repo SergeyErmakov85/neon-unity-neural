@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -9,6 +9,7 @@ import UserProfilePopover from "@/components/UserProfilePopover";
 import XpNotification from "@/components/XpNotification";
 import { checkStreak } from "@/lib/gamification";
 import { supabase } from "@/integrations/supabase/client";
+import type { User } from "@supabase/supabase-js";
 
 const navLinks = [
   { href: "/courses", label: "Курсы", icon: GraduationCap },
@@ -22,9 +23,23 @@ const navLinks = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [authUser, setAuthUser] = useState<User | null>(null);
   const [userName, setUserName] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const loadUserDisplayName = useCallback(async (user: User) => {
+    const metadataName = typeof user.user_metadata?.name === "string" ? user.user_metadata.name : null;
+    const fallbackName = metadataName || user.email || "User";
+
+    const { data } = await supabase
+      .from("profiles")
+      .select("name")
+      .eq("id", user.id)
+      .maybeSingle();
+
+    setUserName(data?.name?.trim() || fallbackName);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,30 +54,54 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      if (session?.user) {
-        const { data } = await supabase.from("profiles").select("name").eq("id", session.user.id).single();
-        setUserName(data?.name || session.user.email || "User");
-      } else {
+    let mounted = true;
+
+    const syncAuthState = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+
+      if (!mounted) return;
+
+      if (!user) {
+        setAuthUser(null);
         setUserName(null);
+        return;
       }
-    });
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      if (session?.user) {
-        const { data } = await supabase.from("profiles").select("name").eq("id", session.user.id).single();
-        setUserName(data?.name || session.user.email || "User");
+
+      setAuthUser(user);
+      await loadUserDisplayName(user);
+    };
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      const nextUser = session?.user ?? null;
+      setAuthUser(nextUser);
+
+      if (!nextUser) {
+        setUserName(null);
+        return;
       }
+
+      void loadUserDisplayName(nextUser);
     });
-    return () => subscription.unsubscribe();
-  }, []);
+
+    void syncAuthState();
+    window.addEventListener("focus", syncAuthState);
+
+    return () => {
+      mounted = false;
+      window.removeEventListener("focus", syncAuthState);
+      subscription.unsubscribe();
+    };
+  }, [loadUserDisplayName]);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
+    setAuthUser(null);
     setUserName(null);
     navigate("/");
   };
 
   const isActive = (href: string) => location.pathname === href;
+  const displayName = userName || authUser?.email || "Профиль";
 
   return (
     <>
