@@ -25,6 +25,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [authUser, setAuthUser] = useState<User | null>(null);
   const [userName, setUserName] = useState<string | null>(null);
+  const [authLoading, setAuthLoading] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
 
