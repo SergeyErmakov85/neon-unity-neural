@@ -32,7 +32,23 @@ const Login = () => {
     }
   };
 
-  return (
+  const handleForgotPassword = async () => {
+    if (!email) {
+      toast({ title: "Введите email", description: "Укажите email для сброса пароля", variant: "destructive" });
+      return;
+    }
+    setResetLoading(true);
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    setResetLoading(false);
+    if (error) {
+      toast({ title: "Ошибка", description: error.message, variant: "destructive" });
+    } else {
+      toast({ title: "Письмо отправлено!", description: "Проверьте почту для сброса пароля" });
+      setResetMode(false);
+    }
+  };
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
       <Card className="w-full max-w-md border-primary/20 bg-card/80 backdrop-blur-xl">
         <CardHeader className="text-center">
