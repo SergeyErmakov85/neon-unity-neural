@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search, LogOut } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
 import logoImage from "@/assets/Logo_RL_platform.png";
 import GlobalSearch from "@/components/GlobalSearch";
 import UserProfilePopover from "@/components/UserProfilePopover";
@@ -25,6 +26,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [authUser, setAuthUser] = useState<User | null>(null);
   const [userName, setUserName] = useState<string | null>(null);
+  const [authLoading, setAuthLoading] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -64,11 +66,13 @@ const Navbar = () => {
       if (!user) {
         setAuthUser(null);
         setUserName(null);
+        setAuthLoading(false);
         return;
       }
 
       setAuthUser(user);
       await loadUserDisplayName(user);
+      if (mounted) setAuthLoading(false);
     };
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -77,6 +81,7 @@ const Navbar = () => {
 
       if (!nextUser) {
         setUserName(null);
+        setAuthLoading(false);
         return;
       }
 
@@ -160,7 +165,12 @@ const Navbar = () => {
               <Search className="w-4 h-4 mr-1" />
               <span className="text-xs text-muted-foreground">Ctrl+K</span>
             </Button>
-            {authUser ? (
+            {authLoading ? (
+              <div className="flex items-center gap-2 ml-2">
+                <Skeleton className="h-8 w-24 rounded-md" />
+                <Skeleton className="h-8 w-8 rounded-full" />
+              </div>
+            ) : authUser ? (
               <div className="flex items-center gap-2 ml-2">
                 <Button size="sm" variant="ghost" onClick={() => navigate("/profile")} className="text-foreground hover:text-primary">
                   {displayName}
@@ -219,7 +229,12 @@ const Navbar = () => {
 
                 {/* Mobile CTA */}
                 <div className="mt-auto flex flex-col gap-3 px-2 pb-8">
-                  {authUser ? (
+                  {authLoading ? (
+                    <div className="flex flex-col gap-2">
+                      <Skeleton className="h-10 w-full rounded-md" />
+                      <Skeleton className="h-10 w-full rounded-md" />
+                    </div>
+                  ) : authUser ? (
                     <>
                       <Button variant="ghost" className="w-full justify-start" onClick={() => { setIsOpen(false); navigate("/profile"); }}>
                         {displayName}
