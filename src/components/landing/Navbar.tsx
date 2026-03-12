@@ -65,11 +65,13 @@ const Navbar = () => {
       if (!user) {
         setAuthUser(null);
         setUserName(null);
+        setAuthLoading(false);
         return;
       }
 
       setAuthUser(user);
       await loadUserDisplayName(user);
+      if (mounted) setAuthLoading(false);
     };
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -78,6 +80,7 @@ const Navbar = () => {
 
       if (!nextUser) {
         setUserName(null);
+        setAuthLoading(false);
         return;
       }
 
