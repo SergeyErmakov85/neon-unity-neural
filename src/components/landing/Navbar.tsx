@@ -121,13 +121,19 @@ const Navbar = () => {
               <Search className="w-4 h-4 mr-1" />
               <span className="text-xs text-muted-foreground">Ctrl+K</span>
             </Button>
-            <Button
-              size="sm"
-              className="ml-2 bg-gradient-neon hover:shadow-glow-cyan hover:scale-105 transition-all duration-300"
-              onClick={() => navigate("/beginner-course")}
-            >
-              Начать обучение
-            </Button>
+            {userName ? (
+              <div className="flex items-center gap-2 ml-2">
+                <span className="text-sm text-foreground">{userName}</span>
+                <Button size="sm" variant="ghost" onClick={handleLogout} className="text-muted-foreground hover:text-destructive">
+                  <LogOut className="w-4 h-4" />
+                </Button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 ml-2">
+                <Button size="sm" variant="outline" onClick={() => navigate("/login")}>Войти</Button>
+                <Button size="sm" className="bg-gradient-neon hover:shadow-glow-cyan hover:scale-105 transition-all duration-300" onClick={() => navigate("/register")}>Регистрация</Button>
+              </div>
+            )}
             <UserProfilePopover />
           </div>
 
