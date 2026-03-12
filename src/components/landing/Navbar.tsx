@@ -165,7 +165,12 @@ const Navbar = () => {
               <Search className="w-4 h-4 mr-1" />
               <span className="text-xs text-muted-foreground">Ctrl+K</span>
             </Button>
-            {authUser ? (
+            {authLoading ? (
+              <div className="flex items-center gap-2 ml-2">
+                <Skeleton className="h-8 w-24 rounded-md" />
+                <Skeleton className="h-8 w-8 rounded-full" />
+              </div>
+            ) : authUser ? (
               <div className="flex items-center gap-2 ml-2">
                 <Button size="sm" variant="ghost" onClick={() => navigate("/profile")} className="text-foreground hover:text-primary">
                   {displayName}
