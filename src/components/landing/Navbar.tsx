@@ -182,7 +182,9 @@ const Navbar = () => {
                 <div className="mt-auto flex flex-col gap-3 px-2 pb-8">
                   {userName ? (
                     <>
-                      <p className="text-sm text-foreground text-center">{userName}</p>
+                      <Button variant="ghost" className="w-full justify-start" onClick={() => { setIsOpen(false); navigate("/profile"); }}>
+                        {userName}
+                      </Button>
                       <Button variant="outline" className="w-full" onClick={() => { setIsOpen(false); handleLogout(); }}>
                         <LogOut className="w-4 h-4 mr-2" /> Выйти
                       </Button>
