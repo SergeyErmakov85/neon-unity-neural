@@ -72,6 +72,7 @@ const CertificatePreview = lazy(() => import("./pages/CertificatePreview"));
 const DemoPage = lazy(() => import("./pages/DemoPage"));
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
+const Profile = lazy(() => import("./pages/Profile"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
