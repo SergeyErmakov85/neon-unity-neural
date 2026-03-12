@@ -136,7 +136,7 @@ const Navbar = () => {
                 <Button size="sm" className="bg-gradient-neon hover:shadow-glow-cyan hover:scale-105 transition-all duration-300" onClick={() => navigate("/register")}>Регистрация</Button>
               </div>
             )}
-            <UserProfilePopover />
+            {userName && <UserProfilePopover />}
           </div>
 
           {/* Mobile Menu */}
