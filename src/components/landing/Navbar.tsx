@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search } from "lucide-react";
+import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search, LogOut } from "lucide-react";
 import logoImage from "@/assets/Logo_RL_platform.png";
 import GlobalSearch from "@/components/GlobalSearch";
 import UserProfilePopover from "@/components/UserProfilePopover";
 import XpNotification from "@/components/XpNotification";
 import { checkStreak } from "@/lib/gamification";
+import { supabase } from "@/integrations/supabase/client";
 
 const navLinks = [
   { href: "/courses", label: "Курсы", icon: GraduationCap },
