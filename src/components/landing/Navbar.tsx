@@ -22,6 +22,7 @@ const navLinks = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [userName, setUserName] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -36,6 +37,30 @@ const Navbar = () => {
   useEffect(() => {
     checkStreak();
   }, []);
+
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      if (session?.user) {
+        const { data } = await supabase.from("profiles").select("name").eq("id", session.user.id).single();
+        setUserName(data?.name || session.user.email || "User");
+      } else {
+        setUserName(null);
+      }
+    });
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
+      if (session?.user) {
+        const { data } = await supabase.from("profiles").select("name").eq("id", session.user.id).single();
+        setUserName(data?.name || session.user.email || "User");
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setUserName(null);
+    navigate("/");
+  };
 
   const isActive = (href: string) => location.pathname === href;
 
