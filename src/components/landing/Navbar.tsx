@@ -229,7 +229,12 @@ const Navbar = () => {
 
                 {/* Mobile CTA */}
                 <div className="mt-auto flex flex-col gap-3 px-2 pb-8">
-                  {authUser ? (
+                  {authLoading ? (
+                    <div className="flex flex-col gap-2">
+                      <Skeleton className="h-10 w-full rounded-md" />
+                      <Skeleton className="h-10 w-full rounded-md" />
+                    </div>
+                  ) : authUser ? (
                     <>
                       <Button variant="ghost" className="w-full justify-start" onClick={() => { setIsOpen(false); navigate("/profile"); }}>
                         {displayName}
