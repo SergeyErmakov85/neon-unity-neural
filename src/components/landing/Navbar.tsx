@@ -160,10 +160,10 @@ const Navbar = () => {
               <Search className="w-4 h-4 mr-1" />
               <span className="text-xs text-muted-foreground">Ctrl+K</span>
             </Button>
-            {userName ? (
+            {authUser ? (
               <div className="flex items-center gap-2 ml-2">
                 <Button size="sm" variant="ghost" onClick={() => navigate("/profile")} className="text-foreground hover:text-primary">
-                  {userName}
+                  {displayName}
                 </Button>
                 <Button size="sm" variant="ghost" onClick={handleLogout} className="text-muted-foreground hover:text-destructive">
                   <LogOut className="w-4 h-4" />
@@ -175,7 +175,7 @@ const Navbar = () => {
                 <Button size="sm" className="bg-gradient-neon hover:shadow-glow-cyan hover:scale-105 transition-all duration-300" onClick={() => navigate("/register")}>Регистрация</Button>
               </div>
             )}
-            {userName && <UserProfilePopover />}
+            {authUser && <UserProfilePopover />}
           </div>
 
           {/* Mobile Menu */}
