@@ -60,15 +60,15 @@ const Profile = () => {
 
   useEffect(() => {
     const loadProfile = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session?.user) {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
         navigate("/login");
         return;
       }
-      setUserId(session.user.id);
-      setEmail(session.user.email || "");
+      setUserId(user.id);
+      setEmail(user.email || "");
 
-      const { data } = await supabase.from("profiles").select("name, avatar_url, created_at").eq("id", session.user.id).single();
+      const { data } = await supabase.from("profiles").select("name, avatar_url, created_at").eq("id", user.id).single();
       if (data) {
         setName(data.name || "");
         setAvatarUrl(data.avatar_url);
