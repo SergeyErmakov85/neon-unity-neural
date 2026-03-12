@@ -33,7 +33,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 mx-auto px-4 pt-10 pb-20">
+      <div className="container relative z-10 mx-auto px-4 pt-32 pb-20">
         <div className="max-w-5xl mx-auto text-center space-y-8 animate-slide-up">
           {/* Tech Stack Badges */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
