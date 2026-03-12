@@ -70,6 +70,8 @@ const Community = lazy(() => import("./pages/Community"));
 const OnboardingQuiz = lazy(() => import("./pages/OnboardingQuiz"));
 const CertificatePreview = lazy(() => import("./pages/CertificatePreview"));
 const DemoPage = lazy(() => import("./pages/DemoPage"));
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -147,6 +149,8 @@ const App = () => (
             <Route path="/onboarding" element={<OnboardingQuiz />} />
             <Route path="/certificate-preview" element={<CertificatePreview />} />
             <Route path="/demo" element={<DemoPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

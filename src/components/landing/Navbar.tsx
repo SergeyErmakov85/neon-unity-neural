@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search } from "lucide-react";
+import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search, LogOut } from "lucide-react";
 import logoImage from "@/assets/Logo_RL_platform.png";
 import GlobalSearch from "@/components/GlobalSearch";
 import UserProfilePopover from "@/components/UserProfilePopover";
 import XpNotification from "@/components/XpNotification";
 import { checkStreak } from "@/lib/gamification";
+import { supabase } from "@/integrations/supabase/client";
 
 const navLinks = [
   { href: "/courses", label: "Курсы", icon: GraduationCap },
@@ -21,6 +22,7 @@ const navLinks = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [userName, setUserName] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -35,6 +37,30 @@ const Navbar = () => {
   useEffect(() => {
     checkStreak();
   }, []);
+
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      if (session?.user) {
+        const { data } = await supabase.from("profiles").select("name").eq("id", session.user.id).single();
+        setUserName(data?.name || session.user.email || "User");
+      } else {
+        setUserName(null);
+      }
+    });
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
+      if (session?.user) {
+        const { data } = await supabase.from("profiles").select("name").eq("id", session.user.id).single();
+        setUserName(data?.name || session.user.email || "User");
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setUserName(null);
+    navigate("/");
+  };
 
   const isActive = (href: string) => location.pathname === href;
 
@@ -95,13 +121,19 @@ const Navbar = () => {
               <Search className="w-4 h-4 mr-1" />
               <span className="text-xs text-muted-foreground">Ctrl+K</span>
             </Button>
-            <Button
-              size="sm"
-              className="ml-2 bg-gradient-neon hover:shadow-glow-cyan hover:scale-105 transition-all duration-300"
-              onClick={() => navigate("/beginner-course")}
-            >
-              Начать обучение
-            </Button>
+            {userName ? (
+              <div className="flex items-center gap-2 ml-2">
+                <span className="text-sm text-foreground">{userName}</span>
+                <Button size="sm" variant="ghost" onClick={handleLogout} className="text-muted-foreground hover:text-destructive">
+                  <LogOut className="w-4 h-4" />
+                </Button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 ml-2">
+                <Button size="sm" variant="outline" onClick={() => navigate("/login")}>Войти</Button>
+                <Button size="sm" className="bg-gradient-neon hover:shadow-glow-cyan hover:scale-105 transition-all duration-300" onClick={() => navigate("/register")}>Регистрация</Button>
+              </div>
+            )}
             <UserProfilePopover />
           </div>
 
@@ -146,15 +178,19 @@ const Navbar = () => {
 
                 {/* Mobile CTA */}
                 <div className="mt-auto flex flex-col gap-3 px-2 pb-8">
-                  <Button
-                    className="w-full bg-gradient-neon hover:shadow-glow-cyan"
-                    onClick={() => {
-                      setIsOpen(false);
-                      navigate("/beginner-course");
-                    }}
-                  >
-                    Начать обучение
-                  </Button>
+                  {userName ? (
+                    <>
+                      <p className="text-sm text-foreground text-center">{userName}</p>
+                      <Button variant="outline" className="w-full" onClick={() => { setIsOpen(false); handleLogout(); }}>
+                        <LogOut className="w-4 h-4 mr-2" /> Выйти
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button className="w-full bg-gradient-neon hover:shadow-glow-cyan" onClick={() => { setIsOpen(false); navigate("/register"); }}>Регистрация</Button>
+                      <Button variant="outline" className="w-full" onClick={() => { setIsOpen(false); navigate("/login"); }}>Войти</Button>
+                    </>
+                  )}
                 </div>
               </div>
             </SheetContent>
