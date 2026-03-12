@@ -49,6 +49,38 @@ const Login = () => {
       setResetMode(false);
     }
   };
+
+  if (resetMode) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background px-4">
+        <Card className="w-full max-w-md border-primary/20 bg-card/80 backdrop-blur-xl">
+          <CardHeader className="text-center">
+            <div className="mx-auto mb-4 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+              <LogIn className="w-6 h-6 text-primary" />
+            </div>
+            <CardTitle className="text-2xl text-foreground">Сброс пароля</CardTitle>
+            <CardDescription>Введите email для получения ссылки сброса</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="reset-email">Email</Label>
+              <Input id="reset-email" type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required className="border-primary/20 bg-background/50 focus:border-primary" />
+            </div>
+          </CardContent>
+          <CardFooter className="flex flex-col gap-4">
+            <Button className="w-full bg-gradient-neon hover:shadow-glow-cyan" disabled={resetLoading} onClick={handleForgotPassword}>
+              {resetLoading ? "Отправка..." : "Отправить ссылку"}
+            </Button>
+            <button type="button" className="text-sm text-primary hover:underline" onClick={() => setResetMode(false)}>
+              Вернуться ко входу
+            </button>
+          </CardFooter>
+        </Card>
+      </div>
+    );
+  }
+
+  return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
       <Card className="w-full max-w-md border-primary/20 bg-card/80 backdrop-blur-xl">
         <CardHeader className="text-center">
@@ -65,7 +97,12 @@ const Login = () => {
               <Input id="email" type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required className="border-primary/20 bg-background/50 focus:border-primary" />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Пароль</Label>
+              <div className="flex justify-between items-center">
+                <Label htmlFor="password">Пароль</Label>
+                <button type="button" className="text-xs text-primary hover:underline" onClick={() => setResetMode(true)}>
+                  Забыли пароль?
+                </button>
+              </div>
               <Input id="password" type="password" placeholder="Ваш пароль" value={password} onChange={(e) => setPassword(e.target.value)} required className="border-primary/20 bg-background/50 focus:border-primary" />
             </div>
           </CardContent>
