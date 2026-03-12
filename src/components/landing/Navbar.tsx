@@ -178,15 +178,19 @@ const Navbar = () => {
 
                 {/* Mobile CTA */}
                 <div className="mt-auto flex flex-col gap-3 px-2 pb-8">
-                  <Button
-                    className="w-full bg-gradient-neon hover:shadow-glow-cyan"
-                    onClick={() => {
-                      setIsOpen(false);
-                      navigate("/beginner-course");
-                    }}
-                  >
-                    Начать обучение
-                  </Button>
+                  {userName ? (
+                    <>
+                      <p className="text-sm text-foreground text-center">{userName}</p>
+                      <Button variant="outline" className="w-full" onClick={() => { setIsOpen(false); handleLogout(); }}>
+                        <LogOut className="w-4 h-4 mr-2" /> Выйти
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Button className="w-full bg-gradient-neon hover:shadow-glow-cyan" onClick={() => { setIsOpen(false); navigate("/register"); }}>Регистрация</Button>
+                      <Button variant="outline" className="w-full" onClick={() => { setIsOpen(false); navigate("/login"); }}>Войти</Button>
+                    </>
+                  )}
                 </div>
               </div>
             </SheetContent>
