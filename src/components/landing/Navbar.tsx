@@ -171,7 +171,7 @@ const Navbar = () => {
                 <Skeleton className="h-8 w-8 rounded-full" />
               </div>
             ) : authUser ? (
-              <div className="flex items-center gap-2 ml-2">
+              <div className="flex items-center gap-2 ml-2 animate-fade-in">
                 <Button size="sm" variant="ghost" onClick={() => navigate("/profile")} className="text-foreground hover:text-primary">
                   {displayName}
                 </Button>
@@ -180,7 +180,7 @@ const Navbar = () => {
                 </Button>
               </div>
             ) : (
-              <div className="flex items-center gap-2 ml-2">
+              <div className="flex items-center gap-2 ml-2 animate-fade-in">
                 <Button size="sm" variant="outline" onClick={() => navigate("/login")}>Войти</Button>
                 <Button size="sm" className="bg-gradient-neon hover:shadow-glow-cyan hover:scale-105 transition-all duration-300" onClick={() => navigate("/register")}>Регистрация</Button>
               </div>
