@@ -171,7 +171,7 @@ const Navbar = () => {
                 <Skeleton className="h-8 w-8 rounded-full" />
               </div>
             ) : authUser ? (
-              <div className="flex items-center gap-2 ml-2">
+              <div className="flex items-center gap-2 ml-2 animate-fade-in">
                 <Button size="sm" variant="ghost" onClick={() => navigate("/profile")} className="text-foreground hover:text-primary">
                   {displayName}
                 </Button>
@@ -180,7 +180,7 @@ const Navbar = () => {
                 </Button>
               </div>
             ) : (
-              <div className="flex items-center gap-2 ml-2">
+              <div className="flex items-center gap-2 ml-2 animate-fade-in">
                 <Button size="sm" variant="outline" onClick={() => navigate("/login")}>Войти</Button>
                 <Button size="sm" className="bg-gradient-neon hover:shadow-glow-cyan hover:scale-105 transition-all duration-300" onClick={() => navigate("/register")}>Регистрация</Button>
               </div>
@@ -235,19 +235,19 @@ const Navbar = () => {
                       <Skeleton className="h-10 w-full rounded-md" />
                     </div>
                   ) : authUser ? (
-                    <>
+                    <div className="animate-fade-in flex flex-col gap-3">
                       <Button variant="ghost" className="w-full justify-start" onClick={() => { setIsOpen(false); navigate("/profile"); }}>
                         {displayName}
                       </Button>
                       <Button variant="outline" className="w-full" onClick={() => { setIsOpen(false); handleLogout(); }}>
                         <LogOut className="w-4 h-4 mr-2" /> Выйти
                       </Button>
-                    </>
+                    </div>
                   ) : (
-                    <>
+                    <div className="animate-fade-in flex flex-col gap-3">
                       <Button className="w-full bg-gradient-neon hover:shadow-glow-cyan" onClick={() => { setIsOpen(false); navigate("/register"); }}>Регистрация</Button>
                       <Button variant="outline" className="w-full" onClick={() => { setIsOpen(false); navigate("/login"); }}>Войти</Button>
-                    </>
+                    </div>
                   )}
                 </div>
               </div>
