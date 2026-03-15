@@ -235,19 +235,19 @@ const Navbar = () => {
                       <Skeleton className="h-10 w-full rounded-md" />
                     </div>
                   ) : authUser ? (
-                    <>
+                    <div className="animate-fade-in flex flex-col gap-3">
                       <Button variant="ghost" className="w-full justify-start" onClick={() => { setIsOpen(false); navigate("/profile"); }}>
                         {displayName}
                       </Button>
                       <Button variant="outline" className="w-full" onClick={() => { setIsOpen(false); handleLogout(); }}>
                         <LogOut className="w-4 h-4 mr-2" /> Выйти
                       </Button>
-                    </>
+                    </div>
                   ) : (
-                    <>
+                    <div className="animate-fade-in flex flex-col gap-3">
                       <Button className="w-full bg-gradient-neon hover:shadow-glow-cyan" onClick={() => { setIsOpen(false); navigate("/register"); }}>Регистрация</Button>
                       <Button variant="outline" className="w-full" onClick={() => { setIsOpen(false); navigate("/login"); }}>Войти</Button>
-                    </>
+                    </div>
                   )}
                 </div>
               </div>
