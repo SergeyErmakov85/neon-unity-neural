@@ -23,6 +23,7 @@ const sections = [
   { id: "training", label: "Обучение" },
   { id: "export", label: "Экспорт" },
   { id: "test", label: "Тест" },
+  { id: "audit", label: "Аудит" },
 ];
 
 /* ───────── Optimizations Data ───────── */
