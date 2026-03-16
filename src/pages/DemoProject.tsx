@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/landing/Navbar";
 import FooterSection from "@/components/landing/FooterSection";
 import SEOHead from "@/components/SEOHead";
+import CyberCodeBlock from "@/components/CyberCodeBlock";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
@@ -617,16 +618,15 @@ const DemoProject = () => {
 };
 
 /* ───────── Full Code Display Component ───────── */
-const FullCodeDisplay = () => {
-  const [expanded, setExpanded] = useState(false);
-
-  const fullCode = `# ▓▓▓ FoodCollector · REINFORCE Training · v3 (Fixed) ▓▓▓
+const fullNotebookCode = `# ▓▓▓ FoodCollector · REINFORCE Training · v3 (Fixed) ▓▓▓
 # Unity ML-Agents · Policy Gradient · ONNX Export Pipeline
 # Среда: FoodCollector (Release 22)
 # Алгоритм: REINFORCE + Baseline (Actor-Critic Lite)
 # Действия: Hybrid (3 continuous + 1 discrete branch)
 
+# ═══════════════════════════════════════════════════════
 # §1 · Зависимости
+# ═══════════════════════════════════════════════════════
 import os, time
 import numpy as np
 from collections import deque
@@ -645,7 +645,9 @@ from mlagents_envs.base_env import ActionTuple
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
+# ═══════════════════════════════════════════════════════
 # §2 · Подключение к Unity
+# ═══════════════════════════════════════════════════════
 engine_channel = EngineConfigurationChannel()
 env = UnityEnvironment(file_name=None, seed=42,
     side_channels=[engine_channel], worker_id=0)
@@ -662,14 +664,20 @@ total_obs_size = sum(int(np.prod(s)) for s in obs_shapes)
 continuous_size = spec.action_spec.continuous_size
 discrete_branches = spec.action_spec.discrete_branches
 
+# ═══════════════════════════════════════════════════════
 # §3 · HybridPolicyNetwork
+# ═══════════════════════════════════════════════════════
 class HybridPolicyNetwork(nn.Module):
+    """
+    Policy network для гибридных действий FoodCollector.
+    obs → encoder → {continuous_head, discrete_heads, value_head}
+    """
     def __init__(self, obs_size, cont_size, disc_branches, hidden=256):
         super().__init__()
         self.obs_size = obs_size
         self.continuous_size = cont_size
         self.discrete_branches = disc_branches
-        
+
         self.encoder = nn.Sequential(
             nn.Linear(obs_size, hidden), nn.ReLU(),
             nn.Linear(hidden, hidden), nn.ReLU(),
@@ -680,8 +688,9 @@ class HybridPolicyNetwork(nn.Module):
             [nn.Linear(hidden, b) for b in disc_branches]
         )
         self.value_head = nn.Linear(hidden, 1)
-    
+
     def forward(self, obs):
+        """Общий forward: возвращает (c_mean, c_std, d_logits, val)."""
         h = self.encoder(obs)
         c_mean = self.cont_mean(h)
         c_std = torch.clamp(self.cont_logstd, -5.0, 2.0).exp().expand_as(c_mean)
@@ -691,38 +700,64 @@ class HybridPolicyNetwork(nn.Module):
 
     @torch.no_grad()
     def act(self, obs):
+        """
+        Rollout-фаза: сэмплирует действия без построения графа.
+        Возвращает:
+            c_raw  : [n_agents, cont_size]  — raw sample, для log_prob
+            c_act  : [n_agents, cont_size]  — clamped [-1,1], для Unity
+            d_acts : list of [n_agents]     — дискретные действия
+            val    : [n_agents]             — baseline value (detached)
+        """
         c_mean, c_std, d_logits, val = self.forward(obs)
+
+        # [FIX 4] Сохраняем RAW sample (до clamp) для корректного log_prob
+        # [FIX 9] Единый clamp [-1, 1]
         c_dist = Normal(c_mean, c_std)
-        c_raw = c_dist.sample()            # pre-clamp
-        c_act = c_raw.clamp(-1.0, 1.0)     # для Unity
+        c_raw = c_dist.sample()            # pre-clamp: для evaluate_actions
+        c_act = c_raw.clamp(-1.0, 1.0)     # post-clamp: для Unity
+
         d_acts = [Categorical(logits=l).sample() for l in d_logits]
         return c_raw, c_act, d_acts, val
 
     def evaluate_actions(self, obs, c_act_stored, d_acts_stored):
+        """
+        Update-фаза: один батчевый forward С градиентом.
+        Пересчитывает log_prob и entropy по РАНЕЕ сэмплированным действиям.
+        """
         c_mean, c_std, d_logits, val = self.forward(obs)
         lp = torch.zeros(obs.shape[0], device=obs.device)
         ent = torch.zeros_like(lp)
+
+        # Непрерывные: log_prob от сохранённых raw-действий
         if self.continuous_size > 0:
             dist_c = Normal(c_mean, c_std)
             lp += dist_c.log_prob(c_act_stored).sum(-1)
             ent += dist_c.entropy().sum(-1)
+
+        # Дискретные: log_prob от сохранённых действий
         for i, logits in enumerate(d_logits):
             dist_d = Categorical(logits=logits)
             lp += dist_d.log_prob(d_acts_stored[i])
             ent += dist_d.entropy()
+
         return lp, ent, val
 
+# ═══════════════════════════════════════════════════════
 # §4 · Утилиты
+# ═══════════════════════════════════════════════════════
 def obs_to_tensor(decision_steps):
+    """DecisionSteps → flat tensor [n_agents, total_obs_size]."""
     parts = [o.reshape(o.shape[0], -1) for o in decision_steps.obs]
     return torch.from_numpy(np.concatenate(parts, 1)).float().to(device)
 
 def make_action_tuple(cont, disc, n):
+    """PyTorch tensors → ActionTuple для env.set_actions()."""
     c = np.clip(cont.cpu().numpy(), -1, 1).astype(np.float32)
     d = np.stack([a.cpu().numpy() for a in disc], 1).astype(np.int32)
     return ActionTuple(continuous=c, discrete=d)
 
 def discounted_returns(rewards, gamma=0.99):
+    """Список наград → нормализованные дисконтированные возвраты."""
     G, out = 0.0, []
     for r in reversed(rewards):
         G = r + gamma * G
@@ -731,11 +766,13 @@ def discounted_returns(rewards, gamma=0.99):
     ret = np.array(out, np.float32)
     return (ret - ret.mean()) / (ret.std() + 1e-8) if len(ret) > 1 else ret
 
-# §5 · Тренировочный цикл
+# ═══════════════════════════════════════════════════════
+# §5 · Тренировочный цикл · REINFORCE + Baseline
+# ═══════════════════════════════════════════════════════
 NUM_EPISODES = 300
-MAX_STEPS = 1000         # FIX 1
+MAX_STEPS = 1000         # [FIX 1] было 100
 GAMMA = 0.99
-ENTROPY_COEFF = 0.02     # FIX 5
+ENTROPY_COEFF = 0.02     # [FIX 5] было 0.01
 VALUE_COEFF = 0.5
 CLIP_GRAD = 1.0
 
@@ -752,21 +789,22 @@ for ep in range(1, NUM_EPISODES + 1):
     stored_n, buf_val, buf_rew = [], [], []
     ep_reward, ep_steps = 0.0, 0
 
-    # ROLLOUT
+    # ═══════ ROLLOUT — torch.no_grad() внутри act() ═══════
     for _ in range(MAX_STEPS):
         dec, term = env.get_steps(behavior_name)
         if len(dec) == 0:
             if len(term) > 0: break
             env.step(); continue
-        
+
         obs_t = obs_to_tensor(dec)
         c_raw, c_act, d_acts, val = policy.act(obs_t)
-        env.set_actions(behavior_name, make_action_tuple(c_act, d_acts, len(dec)))
+        env.set_actions(behavior_name,
+            make_action_tuple(c_act, d_acts, len(dec)))
         env.step()
-        
+
         r = float(np.mean(dec.reward))
         stored_obs.append(obs_t)
-        stored_cont.append(c_raw)     # FIX 4: raw
+        stored_cont.append(c_raw)     # [FIX 4] raw pre-clamp
         stored_disc.append(d_acts)
         stored_n.append(len(dec))
         buf_val.append(val.mean().item())
@@ -777,12 +815,14 @@ for ep in range(1, NUM_EPISODES + 1):
 
     if not buf_rew: continue
 
-    # UPDATE
+    # ═══════ UPDATE — один батчевый forward С градиентом ═══════
     T = len(buf_rew)
     all_obs = torch.cat(stored_obs, 0)
     all_cont = torch.cat(stored_cont, 0)
-    all_disc = [torch.cat([stored_disc[t][b] for t in range(T)], 0)
-                for b in range(len(discrete_branches))]
+    all_disc = [
+        torch.cat([stored_disc[t][b] for t in range(T)], 0)
+        for b in range(len(discrete_branches))
+    ]
 
     lp_flat, ent_flat, val_flat = policy.evaluate_actions(
         all_obs, all_cont, all_disc)
@@ -791,15 +831,16 @@ for ep in range(1, NUM_EPISODES + 1):
     ent_t = torch.stack([c.mean() for c in torch.split(ent_flat, stored_n)])
     val_t = torch.stack([c.mean() for c in torch.split(val_flat, stored_n)])
 
-    ret_t = torch.from_numpy(discounted_returns(buf_rew, GAMMA)).to(device)
+    ret_t = torch.from_numpy(
+        discounted_returns(buf_rew, GAMMA)).to(device)
     adv = ret_t - val_t.detach()
 
-    # FIX 2: Нормализация advantage
+    # [FIX 2] Нормализация advantage
     if adv.shape[0] > 1:
         adv = (adv - adv.mean()) / (adv.std() + 1e-8)
 
     p_loss = -(lp_t * adv).mean()
-    v_loss = nn.functional.mse_loss(val_t, ret_t.detach())  # FIX 3
+    v_loss = nn.functional.mse_loss(val_t, ret_t.detach())  # [FIX 3]
     e_bon = ent_t.mean()
     loss = p_loss + VALUE_COEFF * v_loss - ENTROPY_COEFF * e_bon
 
@@ -811,7 +852,7 @@ for ep in range(1, NUM_EPISODES + 1):
     reward_buf.append(ep_reward)
     avg100 = float(np.mean(reward_buf))
 
-    # FIX 6: Checkpoint guard ep>=20
+    # [FIX 6] Checkpoint guard ep>=20
     if avg100 > best_avg and ep >= 20:
         best_avg = avg100
         torch.save({
@@ -821,50 +862,100 @@ for ep in range(1, NUM_EPISODES + 1):
             'avg_reward': avg100,
         }, 'best_model_checkpoint.pth')
 
-# §6 · Экспорт ONNX
+# ═══════════════════════════════════════════════════════
+# §6 · Экспорт ONNX для Unity
+# ═══════════════════════════════════════════════════════
 class UnityONNXWrapper(nn.Module):
+    """Обёртка: добавляет version_number и memory_size для Unity."""
     def __init__(self, net, grid_c=None, grid_h=None, grid_w=None):
         super().__init__()
         self.net = net
         self.grid_c = grid_c
+        self.grid_h = grid_h
+        self.grid_w = grid_w
         self.register_buffer('version_number', torch.tensor([3.0]))
         self.register_buffer('memory_size', torch.tensor([0.0]))
-    
+
     def forward(self, obs_0, action_masks=None):
-        obs_flat = obs_0.reshape(obs_0.shape[0], -1)
+        if obs_0.dim() == 4:
+            obs_flat = obs_0.reshape(obs_0.shape[0], -1)
+        else:
+            obs_flat = obs_0.reshape(obs_0.shape[0], -1)
+
         c_mean, _, d_logits, _ = self.net(obs_flat)
         cont_out = torch.tanh(c_mean)
-        disc_parts = [logits.argmax(-1, keepdim=True) for logits in d_logits]
+        disc_parts = [
+            logits.argmax(-1, keepdim=True) for logits in d_logits
+        ]
         disc_out = torch.cat(disc_parts, -1).long()
-        return cont_out, disc_out, self.version_number, self.memory_size
+        return (cont_out, disc_out,
+                self.version_number, self.memory_size)
 
-# torch.onnx.export(wrapper, ..., opset_version=15)
-# Добавить metadata_props в ONNX файл
-# Проверить форму входов: grid [1, C, H, W]
-# Скопировать .onnx в Assets/ML-Agents/
+# Экспорт
+policy.eval()
+GRID_H, GRID_W, GRID_C = 40, 40, 5
+wrapper = UnityONNXWrapper(
+    policy, grid_c=GRID_C, grid_h=GRID_H, grid_w=GRID_W
+).to(device).eval()
 
-env.close()`;
+onnx_path = 'FoodCollector_REINFORCE.onnx'
+dummy_obs = torch.randn(1, GRID_C, GRID_H, GRID_W, device=device)
+dummy_mask = torch.ones(1, sum(discrete_branches), device=device)
 
-  return (
-    <div className="relative">
-      <div className={`overflow-hidden transition-all duration-500 ${expanded ? "max-h-none" : "max-h-96"}`}>
-        <pre className="bg-background/80 rounded-lg p-4 overflow-x-auto text-xs font-mono text-foreground border border-border/50 leading-relaxed">
-          <code>{fullCode}</code>
-        </pre>
-      </div>
-      {!expanded && (
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-card to-transparent" />
-      )}
-      <Button
-        variant="outline"
-        size="sm"
-        className="mt-4 w-full"
-        onClick={() => setExpanded(!expanded)}
-      >
-        {expanded ? "Свернуть" : "Показать весь код"}
-      </Button>
-    </div>
-  );
+with torch.no_grad():
+    torch.onnx.export(
+        wrapper, (dummy_obs, dummy_mask), onnx_path,
+        export_params=True,
+        opset_version=15,
+        input_names=['obs_0', 'action_masks'],
+        output_names=[
+            'continuous_actions', 'discrete_actions',
+            'continuous_action_output_shape',
+            'discrete_action_output_shape',
+            'version_number', 'memory_size',
+        ],
+        dynamic_axes={
+            'obs_0': {0: 'batch'},
+            'action_masks': {0: 'batch'},
+            'continuous_actions': {0: 'batch'},
+            'discrete_actions': {0: 'batch'},
+        },
+    )
+
+# Добавление metadata_props
+import onnx, json
+model_onnx = onnx.load(onnx_path)
+metadata = {
+    'version_number': '0.3.0',
+    'memory_size': '0',
+    'is_continuous_control': '1',
+    'action_output_shape': str(policy.continuous_size),
+}
+for key, value in metadata.items():
+    model_onnx.metadata_props.append(
+        onnx.StringStringEntryProto(key=key, value=value))
+onnx.save(model_onnx, onnx_path)
+
+# Валидация
+import onnxruntime as ort
+onnx.checker.check_model(model_onnx)
+session = ort.InferenceSession(onnx_path)
+# [FIX 8] Форма входа: grid [1, C, H, W], не flat
+test_obs = np.random.randn(1, GRID_C, GRID_H, GRID_W).astype(np.float32)
+test_mask = np.ones((1, sum(discrete_branches)), dtype=np.float32)
+ort_outputs = session.run(None, {
+    'obs_0': test_obs, 'action_masks': test_mask
+})
+
+# ═══════════════════════════════════════════════════════
+# §7 · Cleanup
+# ═══════════════════════════════════════════════════════
+writer.close()
+env.close()
+# Готово! Скопируйте .onnx в Assets/ML-Agents/ Unity-проекта`;
+
+const FullCodeDisplay = () => {
+  return <CyberCodeBlock language="python" filename="FoodCollector_REINFORCE_v3.py">{fullNotebookCode}</CyberCodeBlock>;
 };
 
 export default DemoProject;
