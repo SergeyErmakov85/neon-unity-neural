@@ -348,7 +348,7 @@ const DemoProject = () => {
                           <span className="text-sm font-medium text-foreground leading-tight">{opt.title}</span>
                         </button>
                       </HoverCardTrigger>
-                      <HoverCardContent className="w-80 bg-popover backdrop-blur-xl border-primary/20 shadow-xl">
+                      <HoverCardContent className="w-80 border-primary/20 shadow-xl z-[100]" style={{ backgroundColor: 'hsl(230, 20%, 10%)' }}>
                         <div className="space-y-2.5">
                           <p className="text-sm font-semibold text-foreground">{opt.title}</p>
                           <p className="text-xs text-muted-foreground leading-relaxed">{opt.what}</p>
