@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Brain, Gamepad2, Code2, Sparkles } from "lucide-react";
+import { Brain, Gamepad2, Code2, Sparkles, Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 import gamepadImg from "@/assets/gamepad-hero.png";
@@ -48,6 +48,10 @@ const HeroSection = () => {
             <button onClick={() => navigate("/deep-rl")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-accent/30 shadow-glow-pink hover:bg-accent/10 hover:scale-105 transition-all duration-300 cursor-pointer">
               <Code2 className="w-5 h-5 text-accent" />
               <span className="text-sm font-medium text-foreground">Deep RL</span>
+            </button>
+            <button onClick={() => navigate("/demo-project")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-secondary/30 shadow-glow-purple hover:bg-secondary/10 hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Rocket className="w-5 h-5 text-secondary" />
+              <span className="text-sm font-medium text-foreground">Пример проекта</span>
             </button>
             <button onClick={() => navigate("/math-rl")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-accent/30 shadow-glow-pink hover:bg-accent/10 hover:scale-105 transition-all duration-300 cursor-pointer">
               <Sparkles className="w-5 h-5 text-accent" />
