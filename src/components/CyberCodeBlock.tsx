@@ -32,9 +32,14 @@ const highlightPython = (code: string): string => {
     [/#.*/, 'cyber-comment'],
     [/"""[\s\S]*?"""|'''[\s\S]*?'''|"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/, 'cyber-string'],
     [/@\w+/, 'cyber-decorator'],
-    [/\b(?:import|from|as|def|class|return|if|else|elif|for|while|in|not|and|or|is|None|True|False|with|try|except|finally|raise|yield|lambda|pass|break|continue|self|super)\b/, 'cyber-keyword'],
-    [/\b(?:print|range|len|int|float|str|list|dict|tuple|set|type|isinstance|enumerate|zip|map|filter|max|min|sum|abs|round|sorted|reversed|format|input|open|super)\s*(?=\()/, 'cyber-builtin'],
+    [/\b(?:import|from|as|def|class|return|if|else|elif|for|while|in|not|and|or|is|None|True|False|with|try|except|finally|raise|yield|lambda|pass|break|continue|assert)\b/, 'cyber-keyword'],
+    [/\bself\b/, 'cyber-self'],
+    [/\b(?:torch|nn|np|optim|os|time|onnx|ort|json)\b/, 'cyber-module'],
+    [/\b(?:Sequential|Linear|ReLU|Module|ModuleList|Parameter|Normal|Categorical|Adam|SummaryWriter|UnityEnvironment|ActionTuple|EngineConfigurationChannel)\b/, 'cyber-type'],
+    [/\b(?:print|range|len|int|float|str|list|dict|tuple|set|type|isinstance|enumerate|zip|map|filter|max|min|sum|abs|round|sorted|reversed|format|input|open|super|hasattr|getattr|setattr)\s*(?=\()/, 'cyber-builtin'],
+    [/\.(?:to|forward|backward|step|zero_grad|parameters|eval|train|load|save|export|squeeze|clamp|mean|std|shape|dim|item|numpy|append|sample|log_prob|entropy|expand_as|sum|cat|stack|split|reshape|view|detach|cpu|cuda|no_grad|clip_grad_norm_|mse_loss|zeros|zeros_like|ones|randn|from_numpy|float32|manual_seed|is_available|device|tanh|argmax|contiguous|long)\b/, 'cyber-method'],
     [/\b\d+\.?\d*(?:e[+-]?\d+)?f?\b/, 'cyber-number'],
+    [/\b(?:FIX \d+)\b/, 'cyber-fix'],
   ]);
 };
 
