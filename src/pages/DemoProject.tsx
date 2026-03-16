@@ -281,40 +281,40 @@ const DemoProject = () => {
               </p>
             </div>
 
-            {/* Optimization Cards */}
+            {/* Optimization Cards — hover to reveal */}
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-8 text-center">
                 Ключевые оптимизации v3
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {optimizations.map((opt) => {
                   const Icon = opt.icon;
                   return (
-                    <Card
-                      key={opt.id}
-                      className="bg-card/60 backdrop-blur-sm border-border/50 hover:border-primary/50 hover:shadow-[0_0_20px_hsl(var(--primary)/0.15)] transition-all duration-300 group"
-                    >
-                      <CardHeader className="pb-3">
-                        <div className="flex items-center gap-3">
-                          <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <HoverCard key={opt.id} openDelay={100} closeDelay={100}>
+                      <HoverCardTrigger asChild>
+                        <button className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-card/60 backdrop-blur-sm border border-border/50 hover:border-primary/50 hover:shadow-[0_0_20px_hsl(var(--primary)/0.15)] transition-all duration-300 text-left w-full group">
+                          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
                             <Icon className="w-4 h-4 text-primary" />
                           </div>
-                          <CardTitle className="text-sm font-semibold text-foreground leading-tight">{opt.title}</CardTitle>
+                          <span className="text-sm font-medium text-foreground leading-tight">{opt.title}</span>
+                        </button>
+                      </HoverCardTrigger>
+                      <HoverCardContent className="w-72 bg-popover/95 backdrop-blur-xl border-primary/20">
+                        <div className="space-y-3">
+                          <p className="text-sm font-semibold text-foreground">{opt.title}</p>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs font-mono px-2 py-0.5 rounded bg-destructive/10 text-destructive border border-destructive/20">
+                              {opt.was}
+                            </span>
+                            <ChevronRight className="w-3 h-3 text-muted-foreground" />
+                            <span className="text-xs font-mono px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">
+                              {opt.now}
+                            </span>
+                          </div>
+                          <p className="text-xs text-muted-foreground">{opt.why}</p>
                         </div>
-                      </CardHeader>
-                      <CardContent className="space-y-3">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-mono px-2 py-0.5 rounded bg-destructive/10 text-destructive border border-destructive/20">
-                            {opt.was}
-                          </span>
-                          <ChevronRight className="w-3 h-3 text-muted-foreground" />
-                          <span className="text-xs font-mono px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">
-                            {opt.now}
-                          </span>
-                        </div>
-                        <p className="text-xs text-muted-foreground">{opt.why}</p>
-                      </CardContent>
-                    </Card>
+                      </HoverCardContent>
+                    </HoverCard>
                   );
                 })}
               </div>
