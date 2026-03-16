@@ -13,8 +13,10 @@ import { Badge } from "@/components/ui/badge";
 import {
   ArrowLeft, Download, Brain, Zap, Shield, Target, Layers,
   GitBranch, CheckCircle2, XCircle, ChevronRight, Sparkles,
-  Play, Database, RefreshCw, Save, FileCode, Box
+  Play, Database, RefreshCw, Save, FileCode, Box, BookOpen
 } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import Math from "@/components/Math";
 
 /* ───────── Section Navigation ───────── */
 const sections = [
@@ -23,6 +25,7 @@ const sections = [
   { id: "training", label: "Обучение" },
   { id: "export", label: "Экспорт" },
   { id: "test", label: "Тест" },
+  { id: "audit", label: "Аудит" },
 ];
 
 /* ───────── Optimizations Data ───────── */
@@ -656,6 +659,470 @@ const DemoProject = () => {
                 <FullCodeDisplay />
               </CardContent>
             </Card>
+          </AnimatedSection>
+
+          {/* ════════ SECTION 6: TECHNICAL AUDIT ════════ */}
+          <AnimatedSection id="audit" className="pt-8">
+            <div className="space-y-6">
+              <div className="text-center space-y-4 mb-12">
+                <Badge variant="outline" className="border-secondary/50 text-secondary px-4 py-1">
+                  Deep Research · Gemini Pro
+                </Badge>
+                <h2 className="text-3xl sm:text-4xl font-bold">
+                  <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-clip-text text-transparent">
+                    Технический аудит REINFORCE + Baseline
+                  </span>
+                </h2>
+                <p className="text-muted-foreground max-w-3xl mx-auto">
+                  Комплексный технический аудит и теоретическое обоснование реализации алгоритма глубокого обучения
+                  с подкреплением на базе PyTorch: Архитектура Actor-Critic Lite в гибридных пространствах действий.
+                </p>
+              </div>
+
+              <Accordion type="multiple" className="space-y-4">
+
+                {/* ─── Аннотация ─── */}
+                <AccordionItem value="abstract" className="border border-border/50 rounded-xl overflow-hidden bg-card/40">
+                  <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-muted/20">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center">
+                        <BookOpen className="w-4 h-4 text-secondary" />
+                      </div>
+                      <span className="text-lg font-semibold text-foreground">Аннотация</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6">
+                    <div className="prose-cyber space-y-4 text-sm text-muted-foreground leading-relaxed">
+                      <p>
+                        В настоящей исследовательской статье представлен исчерпывающий технический аудит и глубокий теоретический разбор
+                        программной реализации алгоритма глубокого обучения с подкреплением (Deep Reinforcement Learning, DRL) с использованием
+                        фреймворка PyTorch. Объектом исследования выступает кодовая база <span className="text-primary font-mono text-xs">«FoodCollector · REINFORCE Training · v3 (Fixed)»</span>,
+                        предназначенная для обучения агентов в симуляционной среде Unity ML-Agents.
+                      </p>
+                      <p>
+                        Ключевой особенностью анализируемой системы является её работа с <strong className="text-foreground">гибридным пространством действий</strong>,
+                        которое требует одновременной генерации как непрерывных, так и дискретных управляющих сигналов. Отчет включает детальное
+                        теоретическое обоснование методов градиента политики, сопоставление их с фундаментальными работами в области DRL
+                        (DQN, PPO), а также построчный анализ критических сегментов кода.
+                      </p>
+                      <p>
+                        В рамках аудита v3 подробно разбираются: правильная обработка «сырых» сэмплов (raw samples) для устранения смещения
+                        градиентов, методы нормализации преимуществ, механизмы регуляризации энтропии для баланса exploration/exploitation,
+                        а также изоляция вычислительных графов для предотвращения некорректного обратного распространения ошибки.
+                      </p>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+
+                {/* ─── Введение ─── */}
+                <AccordionItem value="introduction" className="border border-border/50 rounded-xl overflow-hidden bg-card/40">
+                  <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-muted/20">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <Brain className="w-4 h-4 text-primary" />
+                      </div>
+                      <span className="text-lg font-semibold text-foreground">Введение: от DQN к гибридным пространствам</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6">
+                    <div className="prose-cyber space-y-4 text-sm text-muted-foreground leading-relaxed">
+                      <p>
+                        Исторический прорыв в DRL был ознаменован публикацией работы Mnih et al. (2015), в которой алгоритм <strong className="text-foreground">Deep Q-Network (DQN)</strong> продемонстрировал способность обучаться игре в видеоигры Atari на уровне человека. Однако DQN изначально проектировался для сред с дискретным пространством действий.
+                      </p>
+                      <p>
+                        С переходом к управлению робототехническими системами и навигации в 3D-пространстве, дискретизация непрерывных действий стала приводить к <strong className="text-foreground">«проклятию размерности»</strong>. Для преодоления этого ограничения исследователи обратились к методам <strong className="text-foreground">градиента политики</strong> (Policy Gradient) — алгоритмы REINFORCE и PPO (Schulman et al., 2017).
+                      </p>
+                      <p>
+                        Многие реальные задачи требуют одновременного контроля как дискретных механизмов (включение двигателей, стрельба), так и непрерывных параметров движения (угол поворота, ускорение). Инструментарий <strong className="text-foreground">Unity ML-Agents</strong> стал стандартом де-факто для создания таких комплексных симуляций.
+                      </p>
+                      <p>
+                        Для студентов DRL понимание разрыва между математическими уравнениями и их программной реализацией на PyTorch критически важно. Механизмы стохастического сэмплирования, clipping, управления тензорами и построения вычислительных графов часто становятся источниками <em>скрытых ошибок</em>, которые не вызывают явных сбоев, но фатально нарушают математическую логику обучения.
+                      </p>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+
+                {/* ─── Теоретическое обоснование ─── */}
+                <AccordionItem value="theory" className="border border-border/50 rounded-xl overflow-hidden bg-card/40">
+                  <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-muted/20">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
+                        <Sparkles className="w-4 h-4 text-accent" />
+                      </div>
+                      <span className="text-lg font-semibold text-foreground">Теоретическое обоснование</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6">
+                    <div className="prose-cyber space-y-6 text-sm text-muted-foreground leading-relaxed">
+
+                      <div>
+                        <h4 className="text-foreground font-semibold mb-2">Марковские процессы принятия решений (MDP)</h4>
+                        <p>Обучение с подкреплением формализуется через MDP, определяемый кортежем <code className="text-primary text-xs">(S, A, P, R, γ)</code>, где S — множество состояний, A — пространство действий, P — динамика переходных вероятностей среды, R — функция награды, а γ — фактор дисконтирования.</p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-foreground font-semibold mb-2">Теорема о градиенте политики и REINFORCE</h4>
+                        <p>Целевая функция: <Math display={false}>{"J(\\pi_\\theta) = \\mathbb{E}_{\\tau \\sim \\pi_\\theta}[R(\\tau)]"}</Math>. Градиент:</p>
+                        <Math>{"\\nabla_\\theta J(\\pi_\\theta) = \\mathbb{E}_{\\tau \\sim \\pi_\\theta} \\left[ \\sum_{t=0}^{T} \\nabla_\\theta \\log \\pi_\\theta(a_t|s_t) \\cdot G_t \\right]"}</Math>
+                        <p>где <Math display={false}>{"G_t = \\sum_{k=t}^{T} \\gamma^{k-t} r_k"}</Math> — кумулятивная дисконтированная награда (reward-to-go).</p>
+                        <p className="mt-2">В PyTorch максимизация J(π) заменяется минимизацией policy loss:</p>
+                        <Math>{"L_{policy} = -\\frac{1}{N} \\sum \\log \\pi_\\theta(a_t|s_t) \\cdot G_t"}</Math>
+                      </div>
+
+                      <div>
+                        <h4 className="text-foreground font-semibold mb-2">Actor-Critic Lite и Advantage</h4>
+                        <p>Классический REINFORCE страдает от колоссальной дисперсии оценок градиента. Решение — <strong className="text-foreground">базовая линия (baseline)</strong> V_w(s):</p>
+                        <Math>{"A(s_t, a_t) = G_t - V_w(s_t)"}</Math>
+                        <p>Если A &gt; 0 — действие лучше среднего, вероятность увеличивается. Если A &lt; 0 — уменьшается.</p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-foreground font-semibold mb-2">Регуляризация энтропии</h4>
+                        <Math>{"L_{total} = L_{policy} + \\alpha L_{value} - \\beta H(\\pi)"}</Math>
+                        <p>где β = <code className="text-primary text-xs">ENTROPY_COEFF = 0.02</code>. Вычитание энтропии из loss эквивалентно её максимизации — предотвращает преждевременную сходимость.</p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-foreground font-semibold mb-2">Гибридное пространство действий</h4>
+                        <Math>{"\\pi_\\theta(a|s) = \\pi_{cont}(a_{cont}|s) \\cdot \\pi_{disc}(a_{disc}|s)"}</Math>
+                        <p>Логарифм произведения = сумма логарифмов:</p>
+                        <Math>{"\\log \\pi_\\theta(a|s) = \\sum_{i=1}^{3} \\log \\mathcal{N}(a_{cont,i}|\\mu_i, \\sigma_i) + \\log \\text{Cat}(a_{disc}|p)"}</Math>
+                      </div>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+
+                {/* ─── Описание архитектуры ─── */}
+                <AccordionItem value="arch-detail" className="border border-border/50 rounded-xl overflow-hidden bg-card/40">
+                  <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-muted/20">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <Layers className="w-4 h-4 text-primary" />
+                      </div>
+                      <span className="text-lg font-semibold text-foreground">Архитектура нейронной сети и среды</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6">
+                    <div className="prose-cyber space-y-6 text-sm text-muted-foreground leading-relaxed">
+
+                      <div>
+                        <h4 className="text-foreground font-semibold mb-2">Среда FoodCollector и GridSensor</h4>
+                        <p>В среде FoodCollector (Release 22) агенты соревнуются за сбор ресурсов в 3D-пространстве: <span className="text-primary">зелёные объекты</span> — положительная награда, <span className="text-destructive">красные</span> — отрицательная. Ключевой сенсор — <strong className="text-foreground">GridSensor</strong>, проецирующий локальное 3D-окружение на 2D-ортографическую сетку.</p>
+                        <p className="mt-2">Важно: Unity использует формат <code className="text-primary text-xs">HWC</code>, а PyTorch (<code className="text-primary text-xs">nn.Conv2d</code>) требует <code className="text-primary text-xs">CHW</code>. Код ожидает вход <code className="text-primary text-xs">[1, C, H, W]</code>.</p>
+                      </div>
+
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-xs border-collapse">
+                          <thead>
+                            <tr className="border-b border-border/50">
+                              <th className="text-left py-2 px-3 text-foreground font-semibold">Компонент</th>
+                              <th className="text-left py-2 px-3 text-foreground font-semibold">PyTorch реализация</th>
+                              <th className="text-left py-2 px-3 text-foreground font-semibold">Назначение</th>
+                            </tr>
+                          </thead>
+                          <tbody className="text-muted-foreground">
+                            <tr className="border-b border-border/30">
+                              <td className="py-2 px-3"><strong className="text-primary">Энкодер</strong></td>
+                              <td className="py-2 px-3 font-mono">Conv2d → ReLU → Flatten()</td>
+                              <td className="py-2 px-3">Извлечение пространственных признаков → латентный вектор h_t</td>
+                            </tr>
+                            <tr className="border-b border-border/30">
+                              <td className="py-2 px-3"><strong className="text-secondary">Critic Head</strong></td>
+                              <td className="py-2 px-3 font-mono">Linear → ReLU → Linear(1)</td>
+                              <td className="py-2 px-3">Аппроксимация V_w(s) — скалярная оценка ценности</td>
+                            </tr>
+                            <tr className="border-b border-border/30">
+                              <td className="py-2 px-3"><strong className="text-accent">Discrete Actor</strong></td>
+                              <td className="py-2 px-3 font-mono">Linear(K) → Categorical(logits)</td>
+                              <td className="py-2 px-3">Логиты для K дискретных действий</td>
+                            </tr>
+                            <tr>
+                              <td className="py-2 px-3"><strong className="text-primary">Continuous Actor</strong></td>
+                              <td className="py-2 px-3 font-mono">Linear(3) → Normal(μ, σ)</td>
+                              <td className="py-2 px-3">Вектор μ (ускорение, поворот), σ — nn.Parameter</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+
+                {/* ─── Разбор реализации ─── */}
+                <AccordionItem value="impl-audit" className="border border-border/50 rounded-xl overflow-hidden bg-card/40">
+                  <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-muted/20">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-destructive/10 flex items-center justify-center">
+                        <Shield className="w-4 h-4 text-destructive" />
+                      </div>
+                      <span className="text-lg font-semibold text-foreground">Разбор реализации: аудит критических секций v3</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6">
+                    <div className="prose-cyber space-y-8 text-sm text-muted-foreground leading-relaxed">
+
+                      {/* 4.1 GridSensor Patch */}
+                      <div className="p-4 rounded-lg border border-border/50 bg-background/50">
+                        <h4 className="text-foreground font-semibold mb-3 flex items-center gap-2">
+                          <span className="text-primary">§4.1</span> Патч GridSensor — обработка пространственных наблюдений
+                        </h4>
+                        <p className="mb-3">Специальный патч для корректной распаковки данных GridSensor из Unity и их приведения к формату CHW для PyTorch:</p>
+                        <CyberCodeBlock language="python" filename="gridsensor_patch.py">{`_orig_obs_fn = getattr(_rpc, '_observation_to_np_array', None)
+
+def _patched_obs_to_np(obs, expected_shape):
+    """Обёртка: пробует оригинал, при ошибке — ручная декомпрессия."""
+    try:
+        return _orig_obs_fn(obs, expected_shape)
+    except UnityObservationException:
+        pass
+
+    if obs.compression_type == COMPRESSION_TYPE_NONE:
+        img = np.array(obs.float_data.data, dtype=np.float32).reshape(obs.shape)
+    else:
+        ch = obs.shape if len(obs.shape) >= 3 else None
+        img = process_pixels(obs.compressed_data, ch, list(obs.compressed_channel_mapping))
+
+    # Брутфорс-поиск правильной перестановки осей
+    if len(expected_shape) == 3 and img.shape != tuple(expected_shape):
+        for perm in [(0,1,2),(0,2,1),(1,0,2),(1,2,0),(2,0,1),(2,1,0)]:
+            if np.transpose(img, perm).shape == tuple(expected_shape):
+                img = np.transpose(img, perm)
+                break
+    return img`}</CyberCodeBlock>
+                        <p className="mt-3">Критический участок — цикл поиска перестановки размерностей. Если форма массива не совпадает с <code className="text-primary text-xs">expected_shape</code> (CHW), алгоритм перебирает все 6 пермутаций осей через <code className="text-primary text-xs">np.transpose</code>.</p>
+                      </div>
+
+                      {/* 4.2 StatsSideChannel */}
+                      <div className="p-4 rounded-lg border border-border/50 bg-background/50">
+                        <h4 className="text-foreground font-semibold mb-3 flex items-center gap-2">
+                          <span className="text-primary">§4.2</span> Интеграция StatsSideChannel
+                        </h4>
+                        <CyberCodeBlock language="python" filename="stats_channel.py">{`class StatsSideChannel(SideChannel):
+    """Минимальная заглушка StatsSideChannel."""
+    def __init__(self):
+        super().__init__(
+            _uuid.UUID("a1d8f7b7-cec8-50f9-b78b-d3e165a78520")
+        )
+        self.stats = {}
+
+    def on_message_received(self, msg: IncomingMessage) -> None:
+        key = msg.read_string()
+        val = msg.read_float32()
+        _   = msg.read_int32()  # aggregation type
+        self.stats.setdefault(key, []).append(val)
+
+    def get_and_reset_stats(self):
+        s = self.stats
+        self.stats = {}
+        return s`}</CyberCodeBlock>
+                        <p className="mt-3">UUID <code className="text-primary text-xs">"a1d8f7b7-..."</code> жёстко зарезервирован в ML-Agents для передачи метрик среды. Без этого класса внутренние награды Unity недоступны для аналитики в TensorBoard.</p>
+                      </div>
+
+                      {/* 4.3 Advantage Normalization */}
+                      <div className="p-4 rounded-lg border border-primary/20 bg-primary/5">
+                        <h4 className="text-foreground font-semibold mb-3 flex items-center gap-2">
+                          <span className="text-primary">§4.3</span> Нормализация преимуществ (Fix 2)
+                        </h4>
+                        <CyberCodeBlock language="python" filename="advantage_norm.py">{`adv = returns - values.detach()
+adv = (adv - adv.mean()) / (adv.std() + 1e-8)`}</CyberCodeBlock>
+                        <div className="mt-3 space-y-2">
+                          <p><strong className="text-foreground">Зачем:</strong> Без нормализации масштаб градиентов «плавает» от батча к батчу. Аномально высокие adv → Gradient Explosion.</p>
+                          <p><strong className="text-foreground">Эффект 1:</strong> Стабилизация градиентов — можно использовать более высокий learning rate без расходимости.</p>
+                          <p><strong className="text-foreground">Эффект 2:</strong> Ровно половина действий получает положительный adv (↑ вероятность), половина — отрицательный (↓). Обучение инвариантно к сдвигу награды.</p>
+                          <p><code className="text-primary text-xs">1e-8</code> предотвращает деление на ноль (NaN) при нулевой дисперсии.</p>
+                        </div>
+                      </div>
+
+                      {/* 4.4 Value Target Detachment */}
+                      <div className="p-4 rounded-lg border border-secondary/20 bg-secondary/5">
+                        <h4 className="text-foreground font-semibold mb-3 flex items-center gap-2">
+                          <span className="text-secondary">§4.4</span> Изоляция графов вычислений — .detach() (Fix 3)
+                        </h4>
+                        <p className="mb-3">В Actor-Critic полная функция потерь:</p>
+                        <Math>{"L_{total} = L_{policy} + c_1 L_{value} - c_2 L_{entropy}"}</Math>
+                        <p className="mt-3">
+                          <strong className="text-foreground">Проблема autograd:</strong> Без <code className="text-primary text-xs">.detach()</code> на G_t механизм autograd пропустит градиенты сквозь целевое значение обратно в сеть. Результат: <code className="text-destructive text-xs">RuntimeError: Trying to backward through the graph a second time</code> или некорректные градиенты, уничтожающие critic.
+                        </p>
+                        <p className="mt-2"><code className="text-primary text-xs">.detach()</code> отсекает тензор от графа вычислений, превращая его в константу для текущего шага оптимизации.</p>
+                      </div>
+
+                      {/* 4.5 Raw Samples */}
+                      <div className="p-4 rounded-lg border border-accent/20 bg-accent/5">
+                        <h4 className="text-foreground font-semibold mb-3 flex items-center gap-2">
+                          <span className="text-accent">§4.5</span> Критическая проблема «сырых сэмплов» (Fix 4)
+                        </h4>
+                        <p className="mb-3">Самое неочевидное, но фундаментально важное исправление v3.</p>
+                        <p><strong className="text-foreground">Ошибка до v3:</strong></p>
+                        <ol className="list-decimal list-inside space-y-1 ml-2 my-2">
+                          <li>Агент сэмплирует: <Math display={false}>{"\\tilde{a} \\sim \\mathcal{N}(\\mu, \\sigma^2)"}</Math></li>
+                          <li>Усечение: <Math display={false}>{"a = \\text{clamp}(\\tilde{a}, -1, 1)"}</Math></li>
+                          <li>В буфер сохранялось <em>усечённое</em> a</li>
+                          <li>На этапе оптимизации: <Math display={false}>{"\\log \\pi_\\theta(a|s)"}</Math> — <span className="text-destructive font-semibold">некорректно!</span></li>
+                        </ol>
+                        <p className="mt-3"><strong className="text-foreground">Пример:</strong> μ=2.0, σ=1.0, сэмплирован ã=2.5, clamped a=1.0. Градиент от <code className="text-primary text-xs">log_prob(1.0)</code> при μ=2.0 укажет оптимизатору сдвинуть μ к 1.0 вместо 2.5. Возникает <strong className="text-destructive">Gradient Bias</strong>.</p>
+                        <CyberCodeBlock language="python" filename="fix4_raw_samples.py">{`# Правильно: сохраняем raw_action
+dist_cont = Normal(mu, sigma)
+raw_action = dist_cont.sample()       # Сырой сэмпл (напр. 2.5)
+clamped_action = raw_action.clamp(-1, 1)  # Для среды (1.0)
+# В буфер → raw_action
+
+# При update: log_prob строго по СЫРОМУ сэмплу
+dist_cont = Normal(new_mu, new_sigma)
+log_prob_cont = dist_cont.log_prob(raw_action)  # ✓ Корректно`}</CyberCodeBlock>
+                      </div>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+
+                {/* ─── Таблица гиперпараметров ─── */}
+                <AccordionItem value="hyperparams" className="border border-border/50 rounded-xl overflow-hidden bg-card/40">
+                  <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-muted/20">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <Target className="w-4 h-4 text-primary" />
+                      </div>
+                      <span className="text-lg font-semibold text-foreground">Ключевые гиперпараметры v3</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6">
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-xs border-collapse">
+                        <thead>
+                          <tr className="border-b border-border/50">
+                            <th className="text-left py-3 px-3 text-foreground font-semibold">Параметр</th>
+                            <th className="text-left py-3 px-3 text-foreground font-semibold">Значение</th>
+                            <th className="text-left py-3 px-3 text-foreground font-semibold">Обоснование</th>
+                            <th className="text-left py-3 px-3 text-foreground font-semibold">PyTorch API</th>
+                          </tr>
+                        </thead>
+                        <tbody className="text-muted-foreground">
+                          <tr className="border-b border-border/30">
+                            <td className="py-2 px-3 font-semibold text-foreground">Алгоритм</td>
+                            <td className="py-2 px-3 font-mono text-primary">REINFORCE w/ Baseline</td>
+                            <td className="py-2 px-3">Снижение дисперсии MC</td>
+                            <td className="py-2 px-3 font-mono">Actor-Critic Lite</td>
+                          </tr>
+                          <tr className="border-b border-border/30">
+                            <td className="py-2 px-3 font-semibold text-foreground">MAX_STEPS</td>
+                            <td className="py-2 px-3 font-mono text-primary">1000</td>
+                            <td className="py-2 px-3">Увеличен со 100</td>
+                            <td className="py-2 px-3 font-mono">Размер тензоров → loss.backward()</td>
+                          </tr>
+                          <tr className="border-b border-border/30">
+                            <td className="py-2 px-3 font-semibold text-foreground">Action Space</td>
+                            <td className="py-2 px-3 font-mono text-primary">3 Cont + 1 Disc</td>
+                            <td className="py-2 px-3">Гибридное управление</td>
+                            <td className="py-2 px-3 font-mono">Normal() + Categorical()</td>
+                          </tr>
+                          <tr className="border-b border-border/30">
+                            <td className="py-2 px-3 font-semibold text-foreground">Action Clamp</td>
+                            <td className="py-2 px-3 font-mono text-primary">[-1, 1]</td>
+                            <td className="py-2 px-3">Требования Unity</td>
+                            <td className="py-2 px-3 font-mono">torch.clamp()</td>
+                          </tr>
+                          <tr className="border-b border-border/30">
+                            <td className="py-2 px-3 font-semibold text-foreground">Adv. Norm.</td>
+                            <td className="py-2 px-3 font-mono text-primary">Включено</td>
+                            <td className="py-2 px-3">Стабилизация градиентов</td>
+                            <td className="py-2 px-3 font-mono">(adv - mean) / (std + 1e-8)</td>
+                          </tr>
+                          <tr className="border-b border-border/30">
+                            <td className="py-2 px-3 font-semibold text-foreground">ENTROPY_COEFF</td>
+                            <td className="py-2 px-3 font-mono text-primary">0.02</td>
+                            <td className="py-2 px-3">Увеличен с 0.01</td>
+                            <td className="py-2 px-3 font-mono">Штраф в L_total</td>
+                          </tr>
+                          <tr>
+                            <td className="py-2 px-3 font-semibold text-foreground">Raw Samples</td>
+                            <td className="py-2 px-3 font-mono text-primary">Да (pre-clamp)</td>
+                            <td className="py-2 px-3">Корректность ∇log π</td>
+                            <td className="py-2 px-3 font-mono">До torch.clamp()</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+
+                {/* ─── Ожидаемые кривые обучения ─── */}
+                <AccordionItem value="training-curves" className="border border-border/50 rounded-xl overflow-hidden bg-card/40">
+                  <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-muted/20">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center">
+                        <RefreshCw className="w-4 h-4 text-secondary" />
+                      </div>
+                      <span className="text-lg font-semibold text-foreground">Ожидаемые кривые обучения (TensorBoard)</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6">
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <Card className="bg-background/50 border-border/50">
+                        <CardHeader className="pb-2">
+                          <CardTitle className="text-sm text-primary">📈 Cumulative Reward</CardTitle>
+                        </CardHeader>
+                        <CardContent className="text-xs text-muted-foreground">
+                          Плавный асимптотический рост от околонулевых значений до стабильного плато по мере наработки сотен тысяч эпизодов.
+                        </CardContent>
+                      </Card>
+                      <Card className="bg-background/50 border-border/50">
+                        <CardHeader className="pb-2">
+                          <CardTitle className="text-sm text-secondary">📊 Policy Loss</CardTitle>
+                        </CardHeader>
+                        <CardContent className="text-xs text-muted-foreground">
+                          <strong className="text-foreground">Не стремится к нулю!</strong> Колеблется вокруг нуля (среднее adv = 0), постепенно снижая амплитуду осцилляций.
+                        </CardContent>
+                      </Card>
+                      <Card className="bg-background/50 border-border/50">
+                        <CardHeader className="pb-2">
+                          <CardTitle className="text-sm text-accent">📉 Value Loss</CardTitle>
+                        </CardHeader>
+                        <CardContent className="text-xs text-muted-foreground">
+                          Высокий пик на первых итерациях (V(s) случайная), затем экспоненциальное падение — критик научился предсказывать G_t.
+                        </CardContent>
+                      </Card>
+                      <Card className="bg-background/50 border-border/50">
+                        <CardHeader className="pb-2">
+                          <CardTitle className="text-sm text-primary">🔀 Entropy</CardTitle>
+                        </CardHeader>
+                        <CardContent className="text-xs text-muted-foreground">
+                          Плавное снижение от максимума. <span className="text-destructive">⚠️ Резкое падение до нуля</span> = policy collapse!
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+
+                {/* ─── Заключение ─── */}
+                <AccordionItem value="conclusion" className="border border-border/50 rounded-xl overflow-hidden bg-card/40">
+                  <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-muted/20">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <CheckCircle2 className="w-4 h-4 text-primary" />
+                      </div>
+                      <span className="text-lg font-semibold text-foreground">Заключение</span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6">
+                    <div className="prose-cyber space-y-4 text-sm text-muted-foreground leading-relaxed">
+                      <p>
+                        Проведённый аудит REINFORCE (Actor-Critic Lite) v3 для среды FoodCollector демонстрирует высокую инженерную и математическую зрелость подхода. Интеграция DRL со сложными физическими движками требует <strong className="text-foreground">глубокого понимания</strong> вычислительной математики тензорных графов и теории вероятностей.
+                      </p>
+                      <p>Критические точки отказа — не синтаксические ошибки, а <strong className="text-destructive">скрытые семантические нарушения</strong>:</p>
+                      <ul className="list-disc list-inside space-y-1 ml-2">
+                        <li>Неправильный порядок осей [C, H, W] при обработке данных GridSensor</li>
+                        <li>Некорректное вычисление градиентов из-за clamp до расчёта log_prob</li>
+                        <li>Нестабильность из-за ненормализованных преимуществ</li>
+                        <li>Отсутствие изоляции графов через .detach()</li>
+                      </ul>
+                      <p>
+                        Реализация v3 элегантно нивелирует эти ловушки. Гибридное пространство действий в рамках единой многоголовой архитектуры делает модель применимой от автономной робототехники до навигации NPC в видеоиграх.
+                      </p>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+
+              </Accordion>
+            </div>
           </AnimatedSection>
         </div>
       </main>
