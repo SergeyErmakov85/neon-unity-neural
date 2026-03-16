@@ -348,19 +348,23 @@ const DemoProject = () => {
                           <span className="text-sm font-medium text-foreground leading-tight">{opt.title}</span>
                         </button>
                       </HoverCardTrigger>
-                      <HoverCardContent className="w-72 bg-popover/95 backdrop-blur-xl border-primary/20">
-                        <div className="space-y-3">
+                      <HoverCardContent className="w-80 bg-popover/95 backdrop-blur-xl border-primary/20">
+                        <div className="space-y-2.5">
                           <p className="text-sm font-semibold text-foreground">{opt.title}</p>
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs font-mono px-2 py-0.5 rounded bg-destructive/10 text-destructive border border-destructive/20">
-                              {opt.was}
-                            </span>
-                            <ChevronRight className="w-3 h-3 text-muted-foreground" />
-                            <span className="text-xs font-mono px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">
-                              {opt.now}
-                            </span>
+                          <p className="text-xs text-muted-foreground leading-relaxed">{opt.what}</p>
+                          <div className="space-y-1.5">
+                            <p className="text-xs text-destructive/90 leading-relaxed">
+                              <span className="font-semibold text-destructive">Проблема: </span>{opt.problem}
+                            </p>
+                            <p className="text-xs leading-relaxed">
+                              <span className="font-semibold text-primary">Код: </span>
+                              <code className="text-[11px] font-mono text-primary/80 bg-primary/5 px-1 py-0.5 rounded">{opt.code}</code>
+                            </p>
+                            <p className="text-xs leading-relaxed">
+                              <span className="font-semibold text-accent-foreground">Эффект: </span>
+                              <span className="text-muted-foreground">{opt.effect}</span>
+                            </p>
                           </div>
-                          <p className="text-xs text-muted-foreground">{opt.why}</p>
                         </div>
                       </HoverCardContent>
                     </HoverCard>
