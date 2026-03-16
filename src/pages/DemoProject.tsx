@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/landing/Navbar";
 import FooterSection from "@/components/landing/FooterSection";
 import SEOHead from "@/components/SEOHead";
+import CyberCodeBlock from "@/components/CyberCodeBlock";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
