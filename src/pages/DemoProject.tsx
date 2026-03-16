@@ -386,9 +386,7 @@ const DemoProject = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <pre className="bg-background/80 rounded-lg p-4 overflow-x-auto text-sm font-mono text-foreground border border-border/50">
-                      <code>{codeAct}</code>
-                    </pre>
+                    <CyberCodeBlock language="python" filename="act.py">{codeAct}</CyberCodeBlock>
                   </CardContent>
                 </Card>
               </TabsContent>
