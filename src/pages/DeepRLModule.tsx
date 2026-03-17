@@ -389,17 +389,6 @@ const DeepRLModule = () => {
 
         </section>
 
-        {/* Навигация */}
-        <div className="flex justify-center pt-8 border-t border-border/50">
-          <Button
-            variant="outline"
-            onClick={() => navigate("/")}
-            className="border-accent/50 text-accent hover:bg-accent/10"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            На главную
-          </Button>
-        </div>
         </div>
       </div>
     </div>

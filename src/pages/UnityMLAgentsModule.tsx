@@ -365,24 +365,6 @@ torch.onnx.export(network, dummy_input, "model.onnx")`}
           </Card>
         </section>
 
-        {/* Навигация */}
-        <div className="flex justify-between items-center pt-8 border-t border-border/50">
-          <Button
-            variant="outline"
-            onClick={() => navigate("/pytorch")}
-            className="border-primary/50 text-primary hover:bg-primary/10"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Модуль 6: DQN PyTorch
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => navigate("/")}
-            className="border-primary/50 text-primary hover:bg-primary/10"
-          >
-            На главную
-          </Button>
-        </div>
       </div>
     </div>
   );

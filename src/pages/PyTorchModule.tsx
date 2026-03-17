@@ -553,13 +553,6 @@ print("Оценка DQN завершена.")`}</CyberCodeBlock>
           </ol>
         </Section>
 
-        {/* Back */}
-        <div className="mt-16 flex justify-center">
-          <Button variant="outline" onClick={() => navigate("/")} className="border-primary/50 text-primary">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            На главную
-          </Button>
-        </div>
       </article>
     </div>
   );

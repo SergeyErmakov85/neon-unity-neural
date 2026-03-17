@@ -296,14 +296,8 @@ const DemoProject = () => {
       <main className="pt-36 pb-20 px-4">
         <div className="container mx-auto max-w-5xl space-y-32">
 
-          {/* Back + Download */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <Link to="/">
-              <Button variant="ghost" className="gap-2">
-                <ArrowLeft className="w-4 h-4" />
-                Назад на главную
-              </Button>
-            </Link>
+          {/* Download */}
+          <div className="flex justify-end">
             <a href="/FoodCollector_REINFORCE_v3.ipynb" download>
               <Button variant="outline" className="gap-2">
                 <Download className="w-4 h-4" />
