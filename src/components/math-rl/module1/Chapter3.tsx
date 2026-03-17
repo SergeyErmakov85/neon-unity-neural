@@ -54,6 +54,8 @@ const Chapter3 = () => (
         <strong className="text-primary">В Unity ML-Agents:</strong> если вы забудете добавить критический параметр в <code className="text-primary">CollectObservations</code> (например, время перезарядки оружия NPC), алгоритмы будут работать нестабильно.
       </p>
     </InfoBox>
+
+    <MDPTreeViz />
   </Section>
 );
 

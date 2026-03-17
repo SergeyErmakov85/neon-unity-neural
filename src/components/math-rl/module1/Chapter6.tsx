@@ -65,6 +65,9 @@ const Chapter6 = () => (
       <p className="text-sm mb-2">Обновляет Q-значение так, как будто на следующем шаге агент гарантированно выберет лучшее действие — прямо зашит оператор <Math display={false}>{"\\max"}</Math> из уравнения оптимальности Беллмана:</p>
       <Math>{"Q(S_t, A_t) \\leftarrow Q(S_t, A_t) + \\alpha\\left[ R_{t+1} + \\gamma \\max_{a'} Q(S_{t+1}, a') - Q(S_t, A_t) \\right]"}</Math>
     </InfoBox>
+
+    <TDErrorViz />
+    <SarsaVsQLearningViz />
   </Section>
 );
 
