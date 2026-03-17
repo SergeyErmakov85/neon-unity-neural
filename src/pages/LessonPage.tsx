@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { LEARNING_MAP } from "@/content/learningMap";
 import type { ContextLink } from "@/content/lessonContextLinks";
 import type { HubId } from "@/content/hubs";
+import { useLearningProgress } from "@/hooks/useLearningProgress";
 import ContextBridgeCard from "@/components/ContextBridgeCard";
 import HubQuickViewDrawer from "@/components/HubQuickViewDrawer";
 import { Button } from "@/components/ui/button";
@@ -14,7 +15,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, Lock } from "lucide-react";
 
 type Placement = ContextLink["placement"];
 
@@ -44,6 +45,7 @@ const DUMMY_SECTIONS: { placement: Placement; heading: string; body: string }[] 
 const LessonPage = () => {
   const { stageSlug, lessonSlug } = useParams<{ stageSlug: string; lessonSlug: string }>();
   const navigate = useNavigate();
+  const { getStatus, completeLesson, getNextSlug } = useLearningProgress();
 
   const [drawerHub, setDrawerHub] = useState<HubId | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -53,6 +55,8 @@ const LessonPage = () => {
     const l = s?.lessons.find((ls) => ls.slug === lessonSlug);
     return { stage: s ?? null, lesson: l ?? null };
   }, [stageSlug, lessonSlug]);
+
+  const status = lessonSlug ? getStatus(lessonSlug) : ("locked" as const);
 
   const linksByPlacement = useMemo(() => {
     const map: Record<Placement, ContextLink[]> = {
@@ -70,6 +74,7 @@ const LessonPage = () => {
     setDrawerOpen(true);
   };
 
+  // Not found
   if (!stage || !lesson) {
     return (
       <div className="min-h-screen bg-background flex flex-col items-center justify-center gap-4">
@@ -81,13 +86,39 @@ const LessonPage = () => {
     );
   }
 
-  // Find next/prev lessons across stages
+  // Locked
+  if (status === "locked") {
+    return (
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center gap-6">
+        <Lock className="w-12 h-12 text-muted-foreground" />
+        <p className="text-muted-foreground text-center max-w-sm">
+          Этот урок ещё закрыт. Завершите предыдущие уроки, чтобы разблокировать его.
+        </p>
+        <Button variant="outline" onClick={() => navigate("/")}>
+          <ArrowLeft className="w-4 h-4 mr-2" /> К карте обучения
+        </Button>
+      </div>
+    );
+  }
+
+  // Prev / Next
   const allLessons = LEARNING_MAP.flatMap((s) =>
     s.lessons.map((l) => ({ stageSlug: s.slug, ...l }))
   );
   const currentIdx = allLessons.findIndex((l) => l.slug === lessonSlug);
   const prev = currentIdx > 0 ? allLessons[currentIdx - 1] : null;
   const next = currentIdx < allLessons.length - 1 ? allLessons[currentIdx + 1] : null;
+
+  const isCompleted = status === "completed";
+  const nextSlug = getNextSlug(lessonSlug!);
+
+  const handleComplete = () => {
+    completeLesson(lessonSlug!);
+    if (nextSlug) {
+      const nextStage = LEARNING_MAP.find((s) => s.lessons.some((l) => l.slug === nextSlug));
+      if (nextStage) navigate(`/learn/${nextStage.slug}/${nextSlug}`);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -117,10 +148,17 @@ const LessonPage = () => {
       {/* Content */}
       <div className="container mx-auto px-4 py-10 max-w-3xl space-y-10">
         <div>
-          <span className="text-xs font-medium px-3 py-1 rounded-full bg-primary/10 text-primary">
-            {stage.title}
-          </span>
-          <h1 className="mt-4 text-3xl md:text-4xl font-bold">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-xs font-medium px-3 py-1 rounded-full bg-primary/10 text-primary">
+              {stage.title}
+            </span>
+            {isCompleted && (
+              <span className="flex items-center gap-1 text-xs font-medium text-emerald-400">
+                <CheckCircle2 className="w-3.5 h-3.5" /> Завершён
+              </span>
+            )}
+          </div>
+          <h1 className="text-3xl md:text-4xl font-bold">
             <span className="bg-gradient-neon bg-clip-text text-transparent">{lesson.title}</span>
           </h1>
         </div>
@@ -130,7 +168,6 @@ const LessonPage = () => {
             <h2 className="text-xl font-semibold text-foreground">{section.heading}</h2>
             <p className="text-muted-foreground leading-relaxed">{section.body}</p>
 
-            {/* Render context bridge cards for this slot */}
             {linksByPlacement[section.placement].length > 0 && (
               <div className="space-y-3 pt-2">
                 {linksByPlacement[section.placement].map((cl, i) => (
@@ -149,6 +186,20 @@ const LessonPage = () => {
           </div>
         ))}
 
+        {/* Mark complete */}
+        {!isCompleted && (
+          <div className="flex justify-center pt-4">
+            <Button
+              size="lg"
+              className="bg-gradient-neon hover:shadow-glow-cyan text-primary-foreground"
+              onClick={handleComplete}
+            >
+              <CheckCircle2 className="w-5 h-5 mr-2" />
+              Завершить урок
+            </Button>
+          </div>
+        )}
+
         {/* Prev / Next nav */}
         <div className="flex items-center justify-between pt-8 border-t border-border/50">
           {prev ? (
@@ -157,14 +208,17 @@ const LessonPage = () => {
             </Button>
           ) : <div />}
           {next ? (
-            <Button variant="ghost" onClick={() => navigate(`/learn/${next.stageSlug}/${next.slug}`)}>
+            <Button
+              variant="ghost"
+              onClick={() => navigate(`/learn/${next.stageSlug}/${next.slug}`)}
+              disabled={getStatus(next.slug) === "locked"}
+            >
               {next.title} <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           ) : <div />}
         </div>
       </div>
 
-      {/* Drawer — lesson stays visible behind */}
       <HubQuickViewDrawer hubId={drawerHub} open={drawerOpen} onOpenChange={setDrawerOpen} />
     </div>
   );

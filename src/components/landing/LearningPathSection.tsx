@@ -1,8 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Info } from "lucide-react";
+import { ArrowRight, CheckCircle2, Circle, Lock, Info } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { LEARNING_MAP } from "@/content/learningMap";
 import { SUPPORT_HUBS, type HubId } from "@/content/hubs";
+import { useLearningProgress } from "@/hooks/useLearningProgress";
 import AlgorithmTable from "./AlgorithmTable";
 
 const stageColors = [
@@ -31,6 +32,7 @@ const stageColors = [
 
 const LearningPathSection = () => {
   const navigate = useNavigate();
+  const { getStatus } = useLearningProgress();
 
   return (
     <section id="learning-path" className="py-20 px-4 relative overflow-hidden">
@@ -91,18 +93,37 @@ const LearningPathSection = () => {
                           <p className="text-xs text-muted-foreground mt-1">{stage.description}</p>
                         </div>
 
-                        <div className="space-y-2 pt-2">
+                        <div className="space-y-1 pt-2">
                           {stage.lessons.map((lesson) => {
-                            // Collect unique hub ids referenced by this lesson
+                            const status = getStatus(lesson.slug);
                             const hubIds = [...new Set(lesson.contextLinks.map((cl) => cl.hubId))];
+                            const isLocked = status === "locked";
+                            const isCompleted = status === "completed";
+                            const isCurrent = status === "current";
 
                             return (
                               <button
                                 key={lesson.id}
-                                onClick={() => navigate(`/learn/${stage.slug}/${lesson.slug}`)}
-                                className="w-full flex items-center justify-between gap-2 rounded-lg px-3 py-2.5 text-left text-sm text-foreground hover:bg-primary/5 border border-transparent hover:border-border/50 transition-colors group"
+                                onClick={() => !isLocked && navigate(`/learn/${stage.slug}/${lesson.slug}`)}
+                                disabled={isLocked}
+                                className={`w-full flex items-center justify-between gap-2 rounded-lg px-3 py-2.5 text-left text-sm transition-colors group ${
+                                  isCompleted
+                                    ? "text-muted-foreground"
+                                    : isCurrent
+                                      ? "text-foreground bg-primary/5 border border-primary/30"
+                                      : "text-muted-foreground/50 cursor-not-allowed"
+                                } ${!isLocked ? "hover:bg-primary/5" : ""}`}
                               >
-                                <span className="truncate">{lesson.title}</span>
+                                <div className="flex items-center gap-2 truncate">
+                                  {isCompleted ? (
+                                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                                  ) : isCurrent ? (
+                                    <Circle className={`w-4 h-4 ${colors.text} shrink-0`} />
+                                  ) : (
+                                    <Lock className="w-3.5 h-3.5 text-muted-foreground/40 shrink-0" />
+                                  )}
+                                  <span className="truncate">{lesson.title}</span>
+                                </div>
 
                                 <div className="flex items-center gap-1 shrink-0">
                                   {hubIds.map((hId) => {
@@ -110,12 +131,14 @@ const LearningPathSection = () => {
                                     return (
                                       <span
                                         key={hId}
-                                        className={`inline-block w-2 h-2 rounded-full ${hub.colorAccent.replace("text-", "bg-")}`}
+                                        className={`inline-block w-2 h-2 rounded-full ${isLocked ? "bg-muted-foreground/20" : hub.colorAccent.replace("text-", "bg-")}`}
                                         title={hub.label}
                                       />
                                     );
                                   })}
-                                  <ArrowRight className="w-3.5 h-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
+                                  {!isLocked && (
+                                    <ArrowRight className="w-3.5 h-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
+                                  )}
                                 </div>
                               </button>
                             );
@@ -144,7 +167,6 @@ const LearningPathSection = () => {
           </div>
         </div>
 
-        {/* Algorithm Comparison Table */}
         <AlgorithmTable />
       </div>
     </section>
