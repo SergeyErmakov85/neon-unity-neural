@@ -114,11 +114,11 @@ const Navbar = () => {
     <XpNotification />
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/80 backdrop-blur-xl border-b border-primary/30 shadow-[var(--glow-cyan)]" : "bg-background"}`}>
       <div className="container px-4 mx-auto">
-        <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? "h-14" : "h-16 md:h-20"}`}>
-          {/* Logo */}
+        <div className={`relative flex items-center justify-center transition-all duration-300 ${isScrolled ? "h-14" : "h-16 md:h-20"}`}>
+          {/* Logo - positioned left */}
           <a
             href="/"
-            className="flex items-center group"
+            className="absolute left-0 flex items-center group"
             onClick={(e) => {
               e.preventDefault();
               navigate("/");
@@ -155,8 +155,15 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Menu - positioned right */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <div className="absolute right-0">
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10 hover:shadow-glow-cyan">
+                <Menu className="w-6 h-6" />
+              </Button>
+            </SheetTrigger>
+            </div>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10 hover:shadow-glow-cyan">
                 <Menu className="w-6 h-6" />
