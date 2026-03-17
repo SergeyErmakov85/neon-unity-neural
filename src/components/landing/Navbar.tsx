@@ -133,23 +133,23 @@ const Navbar = () => {
 
           {/* Desktop Navigation - Tech Stack Badges */}
           <div className="hidden lg:flex items-center gap-3 ml-2">
-            <button onClick={() => navigate("/hub/pytorch")} className={`flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/pytorch" ? "border-primary/70 bg-primary/15 shadow-glow-cyan" : "border-primary/30 shadow-glow-cyan hover:bg-primary/10"}`}>
+            <button onClick={() => navigate("/pytorch")} className={`flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/pytorch" ? "border-primary/70 bg-primary/15 shadow-glow-cyan" : "border-primary/30 shadow-glow-cyan hover:bg-primary/10"}`}>
               <Brain className="w-5 h-5 text-primary" />
               <span className="text-sm font-medium text-foreground">PyTorch</span>
             </button>
-            <button onClick={() => navigate("/hub/unity-ml-agents")} className={`flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/unity-ml-agents" ? "border-secondary/70 bg-secondary/15 shadow-glow-purple" : "border-secondary/30 shadow-glow-purple hover:bg-secondary/10"}`}>
+            <button onClick={() => navigate("/unity-ml-agents")} className={`flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/unity-ml-agents" ? "border-secondary/70 bg-secondary/15 shadow-glow-purple" : "border-secondary/30 shadow-glow-purple hover:bg-secondary/10"}`}>
               <Gamepad2 className="w-5 h-5 text-secondary" />
               <span className="text-sm font-medium text-foreground">Unity ML-Agents</span>
             </button>
-            <button onClick={() => navigate("/hub/deep-rl")} className={`flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/deep-rl" ? "border-accent/70 bg-accent/15 shadow-glow-pink" : "border-accent/30 shadow-glow-pink hover:bg-accent/10"}`}>
+            <button onClick={() => navigate("/deep-rl")} className={`flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/deep-rl" ? "border-accent/70 bg-accent/15 shadow-glow-pink" : "border-accent/30 shadow-glow-pink hover:bg-accent/10"}`}>
               <Code2 className="w-5 h-5 text-accent" />
               <span className="text-sm font-medium text-foreground">Deep RL</span>
             </button>
-            <button onClick={() => navigate("/hub/project")} className={`flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/project" ? "border-secondary/70 bg-secondary/15 shadow-glow-purple" : "border-secondary/30 shadow-glow-purple hover:bg-secondary/10"}`}>
+            <button onClick={() => navigate("/demo-project")} className={`flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/demo-project" ? "border-secondary/70 bg-secondary/15 shadow-glow-purple" : "border-secondary/30 shadow-glow-purple hover:bg-secondary/10"}`}>
               <Rocket className="w-5 h-5 text-secondary" />
-              <span className="text-sm font-medium text-foreground">Проекты</span>
+              <span className="text-sm font-medium text-foreground">Пример проекта</span>
             </button>
-            <button onClick={() => navigate("/hub/math-rl")} className={`flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/math-rl" ? "border-accent/70 bg-accent/15 shadow-glow-pink" : "border-accent/30 shadow-glow-pink hover:bg-accent/10"}`}>
+            <button onClick={() => navigate("/math-rl")} className={`flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/math-rl" ? "border-accent/70 bg-accent/15 shadow-glow-pink" : "border-accent/30 shadow-glow-pink hover:bg-accent/10"}`}>
               <Sparkles className="w-5 h-5 text-accent" />
               <span className="text-sm font-medium text-foreground">Математика RL</span>
             </button>
