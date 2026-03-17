@@ -157,21 +157,6 @@ const Navbar = () => {
             </button>
           </div>
           </div>
-          {/* Logo */}
-          <a
-            href="/"
-            className="flex items-center group"
-            onClick={(e) => {
-              e.preventDefault();
-              navigate("/");
-            }}
-          >
-            <img
-              src={logoImage}
-              alt="RL Platform"
-              className="h-12 md:h-14 lg:h-16 w-auto transition-all duration-300 group-hover:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]"
-            />
-          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">

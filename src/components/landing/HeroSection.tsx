@@ -51,29 +51,6 @@ const HeroSection = () => {
             </span>
           </h1>
 
-          {/* Tech Stack Badges */}
-          <div className="flex flex-wrap justify-center gap-4 mt-4">
-            <button onClick={() => navigate("/pytorch")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-primary/30 shadow-glow-cyan hover:bg-primary/10 hover:scale-105 transition-all duration-300 cursor-pointer">
-              <Brain className="w-5 h-5 text-primary" />
-              <span className="text-sm font-medium text-foreground">PyTorch</span>
-            </button>
-            <button onClick={() => navigate("/unity-ml-agents")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-secondary/30 shadow-glow-purple hover:bg-secondary/10 hover:scale-105 transition-all duration-300 cursor-pointer">
-              <Gamepad2 className="w-5 h-5 text-secondary" />
-              <span className="text-sm font-medium text-foreground">Unity ML-Agents</span>
-            </button>
-            <button onClick={() => navigate("/deep-rl")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-accent/30 shadow-glow-pink hover:bg-accent/10 hover:scale-105 transition-all duration-300 cursor-pointer">
-              <Code2 className="w-5 h-5 text-accent" />
-              <span className="text-sm font-medium text-foreground">Deep RL</span>
-            </button>
-            <button onClick={() => navigate("/demo-project")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-secondary/30 shadow-glow-purple hover:bg-secondary/10 hover:scale-105 transition-all duration-300 cursor-pointer">
-              <Rocket className="w-5 h-5 text-secondary" />
-              <span className="text-sm font-medium text-foreground">Пример проекта</span>
-            </button>
-            <button onClick={() => navigate("/math-rl")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-accent/30 shadow-glow-pink hover:bg-accent/10 hover:scale-105 transition-all duration-300 cursor-pointer">
-              <Sparkles className="w-5 h-5 text-accent" />
-              <span className="text-sm font-medium text-foreground">Математика RL</span>
-            </button>
-          </div>
 
           {/* Subheading */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
