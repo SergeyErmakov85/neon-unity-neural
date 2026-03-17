@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const LAYERS = [4, 6, 10, 6, 4];
+const LAYERS = [4, 6, 8, 6, 4];
 const NEURON_R = 12;
 const LAYER_GAP = 180;
 const NEURON_GAP = 50;
