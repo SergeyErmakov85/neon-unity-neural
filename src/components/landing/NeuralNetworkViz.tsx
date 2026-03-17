@@ -79,7 +79,7 @@ const NeuralNetworkViz = () => {
     };
 
     const deactivateLine = (line: SVGLineElement) => {
-      line.style.opacity = "0.1";
+      line.style.opacity = "0.25";
       line.style.strokeWidth = "1";
       line.style.stroke = line.dataset.origcolor!;
     };
@@ -200,7 +200,7 @@ const NeuralNetworkViz = () => {
               y2={to.y}
               stroke={from.color}
               strokeWidth="1"
-              opacity="0.1"
+              opacity="0.25"
               style={{ transition: "opacity 0.3s, stroke-width 0.3s, stroke 0.3s" }}
             />
           ))
