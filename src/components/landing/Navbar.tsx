@@ -155,8 +155,15 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Menu - positioned right */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <div className="absolute right-0">
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10 hover:shadow-glow-cyan">
+                <Menu className="w-6 h-6" />
+              </Button>
+            </SheetTrigger>
+            </div>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10 hover:shadow-glow-cyan">
                 <Menu className="w-6 h-6" />
