@@ -342,68 +342,27 @@ print(f"Сумма 50 членов: {s:.8f}")
           </Section>
 
           {/* ── 8. Jupyter-демонстрации ── */}
-          <Section icon={<Code2 className="w-5 h-5 text-secondary" />} title="8. Визуализация сходимости: Jupyter-демонстрации">
+          <Section icon={<Code2 className="w-5 h-5 text-secondary" />} title="8. Интерактивные визуализации сходимости">
             <h3 className="text-xl font-semibold text-foreground mt-4 mb-3">8.1 Сходимость геометрического ряда</h3>
             <p>
-              Частичная сумма <Math display={false}>{`S_N = \\sum_{t=0}^{N} \\gamma^t`}</Math> для разных <Math display={false}>{`\\gamma`}</Math>:
+              Частичная сумма <Math display={false}>{`S_N = \\sum_{t=0}^{N} \\gamma^t`}</Math> для разных <Math display={false}>{`\\gamma`}</Math>. Перемещайте слайдеры, чтобы наблюдать зависимость скорости сходимости от <Math display={false}>{`\\gamma`}</Math>:
             </p>
 
-            <CyberCodeBlock language="python" filename="geometric_series.py">
-{`import numpy as np
-import matplotlib.pyplot as plt
+            <GeometricSeriesChart />
 
-N = 30
-gammas = [0.5, 0.9]
-colors = ['gold', 'crimson']
-
-fig, ax = plt.subplots(figsize=(8, 5))
-for gamma, color in zip(gammas, colors):
-    partial_sums = np.cumsum([gamma**t for t in range(N+1)])
-    ax.plot(range(N+1), partial_sums, color=color,
-            label=f'γ={gamma}, S∞={1/(1-gamma):.1f}')
-    ax.axhline(y=1/(1-gamma), color=color, linestyle='--', alpha=0.5)
-
-ax.set_xlabel('Число слагаемых N')
-ax.set_ylabel('Частичная сумма Sₙ')
-ax.set_title('Сходимость геометрического ряда Σγᵗ')
-ax.legend()
-plt.show()`}
-            </CyberCodeBlock>
             <p>
               При <Math display={false}>{`\\gamma = 0.5`}</Math> ряд сходится за ~6 членов. При <Math display={false}>{`\\gamma = 0.9`}</Math> — значительно медленнее, к N=30 приближаясь к ~9.58 (предел 10). Это аналог «длинного хвоста» учёта будущего в RL.
             </p>
 
             <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">8.2 Визуализация итерации ценности</h3>
-
-            <CyberCodeBlock language="python" filename="value_iteration_viz.py">
-{`import matplotlib.pyplot as plt
-
-gamma = 0.9
-V1_hist, V2_hist = [0.0], [0.0]
-v1, v2 = 0.0, 0.0
-
-for _ in range(30):
-    v1_new = 2 + gamma * v2
-    v2_new = 0 + gamma * v1
-    v1, v2 = v1_new, v2_new
-    V1_hist.append(v1)
-    V2_hist.append(v2)
-
-fig, ax = plt.subplots(figsize=(8, 5))
-ax.step(range(len(V1_hist)), V1_hist, where='post',
-        color='gold', label='V(S₁)')
-ax.step(range(len(V2_hist)), V2_hist, where='post',
-        color='orange', label='V(S₂)')
-ax.axhline(y=10.526, color='gold', linestyle='--', alpha=0.5)
-ax.axhline(y=9.474, color='orange', linestyle='--', alpha=0.5)
-ax.set_xlabel('Итерация k')
-ax.set_ylabel('Vₖ(s)')
-ax.set_title('Сходимость итерации ценности (γ=0.9)')
-ax.legend()
-plt.show()`}
-            </CyberCodeBlock>
             <p>
-              Значения осциллируют, но расстояние до предела убывает ~в <Math display={false}>{`\\gamma = 0.9`}</Math> раза каждую итерацию — визуальное подтверждение <strong className="text-foreground">контрактности оператора Беллмана</strong>.
+              Наблюдайте, как значения <Math display={false}>{`V(S_1)`}</Math> и <Math display={false}>{`V(S_2)`}</Math> сходятся к оптимуму в MDP с двумя состояниями. Измените <Math display={false}>{`\\gamma`}</Math>, чтобы увидеть влияние на скорость и характер сходимости:
+            </p>
+
+            <ValueIterationChart />
+
+            <p>
+              Значения осциллируют, но расстояние до предела убывает ~в <Math display={false}>{`\\gamma`}</Math> раза каждую итерацию — визуальное подтверждение <strong className="text-foreground">контрактности оператора Беллмана</strong>.
             </p>
           </Section>
 
