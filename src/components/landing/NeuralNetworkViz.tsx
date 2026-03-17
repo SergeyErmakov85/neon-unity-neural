@@ -87,93 +87,94 @@ const NeuralNetworkViz = () => {
     let timeout: number;
     let cancelled = false;
 
-    const runWave = () => {
+    // Helper: pick N random unique indices from [0..max)
+    const pickRandom = (max: number, count: number) => {
+      const all = Array.from({ length: max }, (_, i) => i);
+      for (let i = all.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [all[i], all[j]] = [all[j], all[i]];
+      }
+      return all.slice(0, Math.min(count, max));
+    };
+
+    const runForwardPass = () => {
       if (cancelled) return;
       const waveColor = ACTIVE_COLORS[Math.floor(Math.random() * ACTIVE_COLORS.length)];
-      // Pick a random starting neuron in layer 0
-      const startNeuron = Math.floor(Math.random() * LAYERS[0]);
-      
-      // For each layer transition, pick 1-2 random paths
-      // Build the full path first
-      const path: { layer: number; neuron: number }[] = [{ layer: 0, neuron: startNeuron }];
-      for (let li = 0; li < LAYERS.length - 1; li++) {
-        const nextNeuron = Math.floor(Math.random() * LAYERS[li + 1]);
-        path.push({ layer: li + 1, neuron: nextNeuron });
+
+      // Build activation map: which neurons are active per layer
+      // Layer 0: ALL 4 input neurons fire
+      const activePerLayer: number[][] = [];
+      activePerLayer[0] = Array.from({ length: LAYERS[0] }, (_, i) => i);
+
+      // Hidden layers: random subset activates (40-70% of neurons)
+      for (let li = 1; li < LAYERS.length - 1; li++) {
+        const minActive = Math.max(2, Math.floor(LAYERS[li] * 0.4));
+        const maxActive = Math.ceil(LAYERS[li] * 0.7);
+        const count = minActive + Math.floor(Math.random() * (maxActive - minActive + 1));
+        activePerLayer[li] = pickRandom(LAYERS[li], count);
       }
 
-      const STEP_DELAY = 300;
-      const HOLD = 400;
+      // Output layer: exactly 1 neuron activates
+      activePerLayer[LAYERS.length - 1] = [Math.floor(Math.random() * LAYERS[LAYERS.length - 1])];
 
-      // Animate each step
-      path.forEach((step, idx) => {
-        const delay = idx * STEP_DELAY;
+      const STEP_DELAY = 350;
+      const HOLD = 600;
+
+      // Track all elements to deactivate at the end
+      const toDeactivate: { nid: string; layer: number; line?: SVGLineElement }[] = [];
+
+      // Animate layer by layer
+      activePerLayer.forEach((activeNeurons, li) => {
+        const delay = li * STEP_DELAY;
 
         setTimeout(() => {
           if (cancelled) return;
-          const nid = `${step.layer}-${step.neuron}`;
-          activateNeuron(nid, waveColor);
 
-          // Activate the connection line from previous to this
-          if (idx > 0) {
-            const prev = path[idx - 1];
-            const line = getLinesBetween(prev.layer, prev.neuron, step.neuron);
-            if (line) activateLine(line, waveColor);
+          // Activate neurons in this layer
+          activeNeurons.forEach((ni) => {
+            const nid = `${li}-${ni}`;
+            activateNeuron(nid, waveColor);
+            toDeactivate.push({ nid, layer: li });
+          });
+
+          // Activate connections from previous active layer to this layer
+          if (li > 0) {
+            const prevActive = activePerLayer[li - 1];
+            prevActive.forEach((fi) => {
+              activeNeurons.forEach((ti) => {
+                const line = getLinesBetween(li - 1, fi, ti);
+                if (line) {
+                  activateLine(line, waveColor);
+                  toDeactivate.push({ nid: "", layer: li, line });
+                }
+              });
+            });
           }
-
-          // Deactivate after hold
-          setTimeout(() => {
-            if (cancelled) return;
-            deactivateNeuron(nid, colors[step.layer]);
-            if (idx > 0) {
-              const prev = path[idx - 1];
-              const line = getLinesBetween(prev.layer, prev.neuron, step.neuron);
-              if (line) deactivateLine(line);
-            }
-          }, HOLD);
         }, delay);
       });
 
-      // Schedule next wave
-      const totalDuration = path.length * STEP_DELAY + HOLD + 200;
-      timeout = window.setTimeout(runWave, totalDuration + Math.random() * 600);
+      // Deactivate everything after the wave completes
+      const totalSteps = activePerLayer.length * STEP_DELAY;
+      setTimeout(() => {
+        if (cancelled) return;
+        toDeactivate.forEach(({ nid, layer, line }) => {
+          if (line) {
+            deactivateLine(line);
+          } else {
+            deactivateNeuron(nid, colors[layer]);
+          }
+        });
+      }, totalSteps + HOLD);
+
+      // Schedule next forward pass
+      timeout = window.setTimeout(runForwardPass, totalSteps + HOLD + 400 + Math.random() * 600);
     };
 
-    // Run waves and also random sparkles
-    runWave();
-
-    // Additional random sparkles
-    const lines = svg.querySelectorAll<SVGLineElement>(".nn-conn");
-    let sparkleTimeout: number;
-    const sparkle = () => {
-      if (cancelled) return;
-      const count = 2 + Math.floor(Math.random() * 2);
-      for (let i = 0; i < count; i++) {
-        const line = lines[Math.floor(Math.random() * lines.length)];
-        const color = ACTIVE_COLORS[Math.floor(Math.random() * ACTIVE_COLORS.length)];
-        const fromId = line.dataset.from!;
-        const toId = line.dataset.to!;
-
-        activateLine(line, color);
-        activateNeuron(fromId, color);
-        activateNeuron(toId, color);
-
-        setTimeout(() => {
-          if (cancelled) return;
-          deactivateLine(line);
-          const [fli, fni] = fromId.split("-").map(Number);
-          const [tli, tni] = toId.split("-").map(Number);
-          deactivateNeuron(fromId, colors[fli]);
-          deactivateNeuron(toId, colors[tli]);
-        }, 400 + Math.random() * 300);
-      }
-      sparkleTimeout = window.setTimeout(sparkle, 800 + Math.random() * 800);
-    };
-    sparkle();
+    runForwardPass();
 
     return () => {
       cancelled = true;
       clearTimeout(timeout);
-      clearTimeout(sparkleTimeout);
     };
   }, []);
 
