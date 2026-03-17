@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 const modules = [
   {
     id: 1,
-    title: "Пределы, последовательности и ряды",
-    description: "Фундаментальные понятия предела и их связь с алгоритмами RL: сходимость, дисконтирование, уравнения Беллмана.",
+    title: "Фундаментальная математика обучения с подкреплением",
+    description: "От теории вероятностей и MDP через уравнения Беллмана и TD-обучение до градиентов политики, Actor-Critic и практики в Unity ML-Agents.",
     available: true,
     color: "primary" as const,
   },
