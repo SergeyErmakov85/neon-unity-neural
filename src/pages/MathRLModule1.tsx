@@ -372,7 +372,7 @@ plt.show()`}
 
             <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">8.2 Визуализация итерации ценности</h3>
 
-            <CyberCodeBlock language="python" title="Итерация ценности: 2 состояния">
+            <CyberCodeBlock language="python" filename="value_iteration_viz.py">
 {`import matplotlib.pyplot as plt
 
 gamma = 0.9
