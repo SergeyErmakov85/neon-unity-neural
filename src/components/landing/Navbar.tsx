@@ -155,10 +155,10 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Sheet for mobile - no visible trigger on desktop */}
+          {/* Hamburger menu - inline after badges */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="absolute right-0 lg:hidden text-primary hover:bg-primary/10 hover:shadow-glow-cyan">
+              <Button variant="ghost" size="icon" className="ml-2 text-[hsl(185,100%,65%)] hover:text-[hsl(185,100%,80%)] hover:bg-[hsl(185,100%,65%)]/10 hover:shadow-[0_0_12px_hsl(185,100%,65%/0.4)] transition-all duration-300">
                 <Menu className="w-6 h-6" />
               </Button>
             </SheetTrigger>
