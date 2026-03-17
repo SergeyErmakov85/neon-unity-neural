@@ -17,6 +17,7 @@ const MathRLModule2 = lazy(() => import("./pages/MathRLModule2"));
 const MathRLModule3 = lazy(() => import("./pages/MathRLModule3"));
 const MathRLModule4 = lazy(() => import("./pages/MathRLModule4"));
 const MathRLModule5 = lazy(() => import("./pages/MathRLModule5"));
+const MathRLModule6 = lazy(() => import("./pages/MathRLModule6"));
 const PyTorchModule = lazy(() => import("./pages/PyTorchModule"));
 const PyTorchCheatSheet = lazy(() => import("./pages/PyTorchCheatSheet"));
 const UnityMLAgentsModule = lazy(() => import("./pages/UnityMLAgentsModule"));
