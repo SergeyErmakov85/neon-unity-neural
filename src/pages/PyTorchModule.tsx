@@ -9,16 +9,6 @@ const PyTorchModule = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="border-b border-border/50 bg-card/30 backdrop-blur-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-4 flex items-center gap-4">
-          <Button variant="ghost" onClick={() => navigate("/")} className="text-muted-foreground hover:text-foreground">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            На главную
-          </Button>
-          <span className="text-xs font-medium px-3 py-1 rounded-full bg-primary/10 text-primary">PyTorch</span>
-        </div>
-      </div>
 
       <article className="container mx-auto px-4 py-12 max-w-4xl">
         <h1 className="text-3xl md:text-4xl font-bold mb-4">
