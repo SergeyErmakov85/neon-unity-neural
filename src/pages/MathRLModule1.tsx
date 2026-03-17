@@ -318,7 +318,7 @@ for i in range(1, 21):
             </p>
             <Math>{`S = \\frac{0.8}{1 - 0.8} = \\frac{0.8}{0.2} = 4`}</Math>
 
-            <CyberCodeBlock language="python" title="Проверка: частичные суммы">
+            <CyberCodeBlock language="python" filename="partial_sums.py">
 {`s = 0.0
 for n in range(1, 51):
     s += 0.8**n
