@@ -409,6 +409,7 @@ const DeepRLModule = () => {
             На главную
           </Button>
         </div>
+        </div>
       </div>
     </div>
   );
