@@ -41,7 +41,7 @@ const DeepRLModule = () => {
       <div className="container mx-auto px-4 py-12 flex gap-8">
         {/* Sticky TOC sidebar */}
         <aside className="hidden lg:block w-64 flex-shrink-0">
-          <div className="sticky top-24">
+          <div className="sticky top-[200px]">
             <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
               <CardContent className="p-5">
                 <h2 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
