@@ -1,5 +1,6 @@
+import { Button } from "@/components/ui/button";
 import { Code2, Brain, Lightbulb, Settings2, Download, Layers } from "lucide-react";
-import Math from "@/components/Math";
+import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 
