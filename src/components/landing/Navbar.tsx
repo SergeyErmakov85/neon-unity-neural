@@ -132,7 +132,7 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation - Tech Stack Badges */}
-          <div className="hidden lg:flex items-center gap-3 -ml-8">
+          <div className="hidden lg:flex items-center gap-3 -ml-2">
             <button onClick={() => navigate("/pytorch")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-primary/30 shadow-glow-cyan hover:bg-primary/10 hover:scale-105 transition-all duration-300 cursor-pointer">
               <Brain className="w-5 h-5 text-primary" />
               <span className="text-sm font-medium text-foreground">PyTorch</span>
