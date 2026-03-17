@@ -132,7 +132,7 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation - Tech Stack Badges */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3 -ml-8">
             <button onClick={() => navigate("/pytorch")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-primary/30 shadow-glow-cyan hover:bg-primary/10 hover:scale-105 transition-all duration-300 cursor-pointer">
               <Brain className="w-5 h-5 text-primary" />
               <span className="text-sm font-medium text-foreground">PyTorch</span>
@@ -155,17 +155,10 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Menu - positioned right */}
+          {/* Sheet for mobile - no visible trigger on desktop */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <div className="absolute right-0">
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10 hover:shadow-glow-cyan">
-                <Menu className="w-6 h-6" />
-              </Button>
-            </SheetTrigger>
-            </div>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10 hover:shadow-glow-cyan">
+              <Button variant="ghost" size="icon" className="absolute right-0 lg:hidden text-primary hover:bg-primary/10 hover:shadow-glow-cyan">
                 <Menu className="w-6 h-6" />
               </Button>
             </SheetTrigger>
