@@ -287,6 +287,8 @@ for i in range(1, 21):
               </table>
             </div>
 
+            <DiscountImpactChart />
+
             <InfoBox variant="accent">
               <p className="text-sm font-semibold text-accent mb-2">Аналогия из финансов</p>
               <p className="text-sm">
