@@ -37,23 +37,29 @@ const DeepRLModule = () => {
         </div>
       </div>
 
-      {/* Content */}
-      <div className="container mx-auto px-4 py-12 max-w-4xl space-y-12">
+      {/* Content with sticky sidebar */}
+      <div className="container mx-auto px-4 py-12 flex gap-8">
+        {/* Sticky TOC sidebar */}
+        <aside className="hidden lg:block w-64 flex-shrink-0">
+          <div className="sticky top-24">
+            <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
+              <CardContent className="p-5">
+                <h2 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+                  <BookOpen className="w-5 h-5 text-accent" />
+                  Содержание
+                </h2>
+                <ol className="list-decimal list-inside space-y-3 text-sm text-muted-foreground">
+                  <li><a href="#foundations" className="text-accent hover:underline">Основы Deep RL</a></li>
+                  <li><a href="#algorithms" className="text-accent hover:underline">Ключевые алгоритмы</a></li>
+                  <li><a href="#practice" className="text-accent hover:underline">Практическое применение</a></li>
+                </ol>
+              </CardContent>
+            </Card>
+          </div>
+        </aside>
 
-        {/* Содержание */}
-        <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
-          <CardContent className="p-6">
-            <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-accent" />
-              Содержание
-            </h2>
-            <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
-              <li><a href="#foundations" className="text-accent hover:underline">Основы Deep RL</a></li>
-              <li><a href="#algorithms" className="text-accent hover:underline">Ключевые алгоритмы</a></li>
-              <li><a href="#practice" className="text-accent hover:underline">Практическое применение</a></li>
-            </ol>
-          </CardContent>
-        </Card>
+        {/* Main content */}
+        <div className="flex-1 max-w-4xl space-y-12">
 
         {/* С чего начать на нашей платформе */}
         <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
@@ -402,6 +408,7 @@ const DeepRLModule = () => {
             <ArrowLeft className="w-4 h-4 mr-2" />
             На главную
           </Button>
+        </div>
         </div>
       </div>
     </div>
