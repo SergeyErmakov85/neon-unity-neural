@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 const modules = [
   {
     id: 1,
-    title: "Фундаментальная математика обучения с подкреплением",
-    description: "От теории вероятностей и MDP через уравнения Беллмана и TD-обучение до градиентов политики, Actor-Critic и практики в Unity ML-Agents.",
+    title: "Пределы, последовательности и ряды",
+    description: "Фундаментальные понятия предела, сходимости рядов и их связь с алгоритмами RL: дисконтирование, уравнения Беллмана, итерация ценности.",
     available: true,
     color: "primary" as const,
   },
@@ -34,10 +34,17 @@ const modules = [
   },
   {
     id: 5,
+    title: "Фундаментальная математика обучения с подкреплением",
+    description: "От теории вероятностей и MDP через уравнения Беллмана и TD-обучение до градиентов политики, Actor-Critic и практики в Unity ML-Agents.",
+    available: true,
+    color: "secondary" as const,
+  },
+  {
+    id: 6,
     title: "Учебное пособие по математике и глубокому обучению с подкреплением",
     description: "Комплексное пособие, интегрирующее все модули: Deep RL, MDP, Беллман, DQN, Policy Gradient, распределения, MLE/MAP, ОДУ.",
     available: true,
-    color: "secondary" as const,
+    color: "accent" as const,
   },
 ];
 
@@ -84,7 +91,7 @@ const MathRL = () => {
             </span>
           </h1>
           <p className="text-muted-foreground mt-2 max-w-2xl">
-            Пять учебных модулей по математическим основам обучения с подкреплением.
+            Шесть учебных модулей по математическим основам обучения с подкреплением.
           </p>
         </div>
       </div>
