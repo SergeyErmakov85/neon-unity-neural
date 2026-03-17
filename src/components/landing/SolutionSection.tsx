@@ -29,7 +29,7 @@ const SolutionSection = () => {
 
         {/* Solution Flow */}
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-stretch">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] gap-4 md:gap-6 items-stretch">
             {/* Math Card */}
             <Card className="bg-card/60 backdrop-blur-sm border-primary/30 hover:border-primary/60 transition-all duration-300 hover:shadow-glow-cyan group">
               <CardContent className="p-6 text-center space-y-4">
