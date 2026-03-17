@@ -200,7 +200,7 @@ const NeuralNetworkViz = () => {
               y2={to.y}
               stroke={from.color}
               strokeWidth="1"
-              opacity="0.25"
+              opacity="0.4"
               style={{ transition: "opacity 0.3s, stroke-width 0.3s, stroke 0.3s" }}
             />
           ))
