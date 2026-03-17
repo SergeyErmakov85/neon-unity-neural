@@ -130,10 +130,14 @@ const NeuralNetworkViz = () => {
         setTimeout(() => {
           if (cancelled) return;
 
+          // Output layer uses a special color
+          const isOutputLayer = li === LAYERS.length - 1;
+          const neuronColor = isOutputLayer ? "#00FF88" : waveColor;
+
           // Activate neurons in this layer
           activeNeurons.forEach((ni) => {
             const nid = `${li}-${ni}`;
-            activateNeuron(nid, waveColor);
+            activateNeuron(nid, neuronColor);
             toDeactivate.push({ nid, layer: li });
           });
 
