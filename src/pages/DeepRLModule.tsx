@@ -55,6 +55,80 @@ const DeepRLModule = () => {
           </CardContent>
         </Card>
 
+        {/* С чего начать на нашей платформе */}
+        <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
+          <CardContent className="p-6 space-y-4">
+            <h3 className="text-lg font-semibold text-foreground">С чего начать на нашей платформе</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Платформа предоставляет структурированный путь изучения Deep RL:
+            </p>
+            <ol className="list-decimal list-inside space-y-3 text-muted-foreground">
+              <li>
+                <strong className="text-foreground">Математические основы</strong> — модули 1–5 покрывают
+                вероятности, нейронные сети, MDP, оптимизацию и Q-learning.
+              </li>
+              <li>
+                <strong className="text-foreground">PyTorch</strong> — модуль 6 с реализацией DQN для
+                среды Taxi-v3. Полный код с пошаговыми комментариями.
+              </li>
+              <li>
+                <strong className="text-foreground">Unity ML-Agents</strong> — модуль 7 с интеграцией
+                PyTorch и Unity для обучения агентов в 3D-средах.
+              </li>
+              <li>
+                <strong className="text-foreground">Алгоритмы</strong> — детальный разбор PPO, SAC, DQN
+                и A3C с математикой, кодом и квизами.
+              </li>
+              <li>
+                <strong className="text-foreground">Проекты Unity</strong> — практические проекты:
+                Ball Balance, GridWorld, Racing Car, Soccer.
+              </li>
+            </ol>
+            <div className="flex flex-wrap gap-3 mt-6">
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-pink-500/50 text-pink-400 hover:bg-pink-500/10"
+                onClick={() => navigate("/math-rl")}
+              >
+                Математические основы →
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-primary/50 text-primary hover:bg-primary/10"
+                onClick={() => navigate("/pytorch")}
+              >
+                PyTorch →
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-secondary/50 text-secondary hover:bg-secondary/10"
+                onClick={() => navigate("/unity-ml-agents")}
+              >
+                Unity ML-Agents →
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-accent/50 text-accent hover:bg-accent/10"
+                onClick={() => navigate("/algorithms")}
+              >
+                Алгоритмы →
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-green-500/50 text-green-400 hover:bg-green-500/10"
+                onClick={() => navigate("/unity-projects")}
+              >
+                Проекты Unity →
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* 1. Основы Deep RL */}
         <section id="foundations" className="space-y-6">
           <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
@@ -316,78 +390,6 @@ const DeepRLModule = () => {
             </CardContent>
           </Card>
 
-          <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
-            <CardContent className="p-6 space-y-4">
-              <h3 className="text-lg font-semibold text-foreground">С чего начать на нашей платформе</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Платформа предоставляет структурированный путь изучения Deep RL:
-              </p>
-              <ol className="list-decimal list-inside space-y-3 text-muted-foreground">
-                <li>
-                  <strong className="text-foreground">Математические основы</strong> — модули 1–5 покрывают
-                  вероятности, нейронные сети, MDP, оптимизацию и Q-learning.
-                </li>
-                <li>
-                  <strong className="text-foreground">PyTorch</strong> — модуль 6 с реализацией DQN для
-                  среды Taxi-v3. Полный код с пошаговыми комментариями.
-                </li>
-                <li>
-                  <strong className="text-foreground">Unity ML-Agents</strong> — модуль 7 с интеграцией
-                  PyTorch и Unity для обучения агентов в 3D-средах.
-                </li>
-                <li>
-                  <strong className="text-foreground">Алгоритмы</strong> — детальный разбор PPO, SAC, DQN
-                  и A3C с математикой, кодом и квизами.
-                </li>
-                <li>
-                  <strong className="text-foreground">Проекты Unity</strong> — практические проекты:
-                  Ball Balance, GridWorld, Racing Car, Soccer.
-                </li>
-              </ol>
-              <div className="flex flex-wrap gap-3 mt-6">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="border-pink-500/50 text-pink-400 hover:bg-pink-500/10"
-                  onClick={() => navigate("/math-rl")}
-                >
-                  Математические основы →
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="border-primary/50 text-primary hover:bg-primary/10"
-                  onClick={() => navigate("/pytorch")}
-                >
-                  PyTorch →
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="border-secondary/50 text-secondary hover:bg-secondary/10"
-                  onClick={() => navigate("/unity-ml-agents")}
-                >
-                  Unity ML-Agents →
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="border-accent/50 text-accent hover:bg-accent/10"
-                  onClick={() => navigate("/algorithms")}
-                >
-                  Алгоритмы →
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="border-green-500/50 text-green-400 hover:bg-green-500/10"
-                  onClick={() => navigate("/unity-projects")}
-                >
-                  Проекты Unity →
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
         </section>
 
         {/* Навигация */}
