@@ -1,6 +1,7 @@
 import { GitBranch } from "lucide-react";
 import Math from "@/components/Math";
 import { Section, InfoBox } from "./Section";
+import { TDErrorViz, SarsaVsQLearningViz } from "./Module5Charts";
 
 const Chapter6 = () => (
   <Section icon={<GitBranch className="w-5 h-5 text-accent" />} title="Глава 6. От динамического программирования к Model-Free RL">
