@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, BookOpen, Cpu, Layers, Settings, Code, Wrench, Rocket } from "lucide-react";
+import { BookOpen, Cpu, Layers, Settings, Code, Wrench, Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const UnityMLAgentsModule = () => {
@@ -8,17 +7,8 @@ const UnityMLAgentsModule = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <div className="border-b border-border/50 bg-card/30 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4">
-          <Button
-            variant="ghost"
-            onClick={() => navigate("/")}
-            className="text-muted-foreground hover:text-foreground mb-4"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            На главную
-          </Button>
           <div className="flex items-center gap-3 mb-2">
             <span className="text-xs font-medium px-3 py-1 rounded-full bg-primary/10 text-primary">
               Модуль 7
@@ -374,24 +364,6 @@ torch.onnx.export(network, dummy_input, "model.onnx")`}
           </Card>
         </section>
 
-        {/* Навигация */}
-        <div className="flex justify-between items-center pt-8 border-t border-border/50">
-          <Button
-            variant="outline"
-            onClick={() => navigate("/pytorch")}
-            className="border-primary/50 text-primary hover:bg-primary/10"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Модуль 6: DQN PyTorch
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => navigate("/")}
-            className="border-primary/50 text-primary hover:bg-primary/10"
-          >
-            На главную
-          </Button>
-        </div>
       </div>
     </div>
   );

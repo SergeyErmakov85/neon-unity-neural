@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Code2, Brain, Lightbulb, Settings2, Download, Layers } from "lucide-react";
+import { Code2, Brain, Lightbulb, Settings2, Download, Layers } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
@@ -9,16 +9,6 @@ const PyTorchModule = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="border-b border-border/50 bg-card/30 backdrop-blur-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-4 flex items-center gap-4">
-          <Button variant="ghost" onClick={() => navigate("/")} className="text-muted-foreground hover:text-foreground">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            На главную
-          </Button>
-          <span className="text-xs font-medium px-3 py-1 rounded-full bg-primary/10 text-primary">PyTorch</span>
-        </div>
-      </div>
 
       <article className="container mx-auto px-4 py-12 max-w-4xl">
         <h1 className="text-3xl md:text-4xl font-bold mb-4">
@@ -563,13 +553,6 @@ print("Оценка DQN завершена.")`}</CyberCodeBlock>
           </ol>
         </Section>
 
-        {/* Back */}
-        <div className="mt-16 flex justify-center">
-          <Button variant="outline" onClick={() => navigate("/")} className="border-primary/50 text-primary">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            На главную
-          </Button>
-        </div>
       </article>
     </div>
   );
