@@ -10,7 +10,7 @@ const DeepRLModule = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="border-b border-border/50 bg-card/30 backdrop-blur-sm">
+      <div className="sticky top-0 z-30 border-b border-border/50 bg-card/80 backdrop-blur-md">
         <div className="container mx-auto px-4 py-4">
           <Button
             variant="ghost"
