@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
 
 const LAYERS = [4, 6, 6, 4];
-const NEURON_R = 8;
-const LAYER_GAP = 140;
-const NEURON_GAP = 40;
-const WIDTH = (LAYERS.length - 1) * LAYER_GAP + 80;
-const HEIGHT = Math.max(...LAYERS) * NEURON_GAP + 40;
+const NEURON_R = 12;
+const LAYER_GAP = 210;
+const NEURON_GAP = 60;
+const WIDTH = (LAYERS.length - 1) * LAYER_GAP + 120;
+const HEIGHT = Math.max(...LAYERS) * NEURON_GAP + 60;
 
 const colors = [
   "hsl(var(--primary))",
