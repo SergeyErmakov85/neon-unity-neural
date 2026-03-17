@@ -9,17 +9,8 @@ const DeepRLModule = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="sticky top-0 z-30 border-b border-border/50 bg-card/80 backdrop-blur-md">
+      <div className="border-b border-border/50 bg-card/80 backdrop-blur-md">
         <div className="container mx-auto px-4 py-4">
-          <Button
-            variant="ghost"
-            onClick={() => navigate("/")}
-            className="text-muted-foreground hover:text-foreground mb-4"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            На главную
-          </Button>
           <div className="flex items-center gap-3 mb-2">
             <span className="text-xs font-medium px-3 py-1 rounded-full bg-accent/10 text-accent">
               Deep RL
