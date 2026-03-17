@@ -345,7 +345,7 @@ print(f"Сумма 50 членов: {s:.8f}")
               Частичная сумма <Math display={false}>{`S_N = \\sum_{t=0}^{N} \\gamma^t`}</Math> для разных <Math display={false}>{`\\gamma`}</Math>:
             </p>
 
-            <CyberCodeBlock language="python" title="Сходимость геометрического ряда">
+            <CyberCodeBlock language="python" filename="geometric_series.py">
 {`import numpy as np
 import matplotlib.pyplot as plt
 
