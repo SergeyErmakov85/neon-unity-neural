@@ -98,23 +98,6 @@ const SolutionSection = () => {
             </Card>
           </div>
 
-          {/* Benefits */}
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              "Понятные визуализации",
-              "Воспроизводимые эксперименты",
-              "Пошаговые проекты",
-              "Реальные результаты",
-            ].map((benefit, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-3 p-4 rounded-lg bg-card/40 backdrop-blur-sm border border-border/50"
-              >
-                <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                <span className="text-sm font-medium text-foreground">{benefit}</span>
-              </div>
-            ))}
-          </div>
 
           {/* Interactive Learning Rate Chart */}
           <LearningRateChart />
