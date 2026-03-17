@@ -1,49 +1,37 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle2, Circle, ArrowRight } from "lucide-react";
+import { ArrowRight, Info } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { LEARNING_MAP } from "@/content/learningMap";
+import { SUPPORT_HUBS, type HubId } from "@/content/hubs";
 import AlgorithmTable from "./AlgorithmTable";
 
-const levels = [
+const stageColors = [
   {
-    level: "Новичок",
-    duration: "4 недели",
-    color: "primary",
-    topics: [
-      "Основы Reinforcement Learning",
-      "Установка окружения PyTorch + Unity",
-      "Первый агент: CartPole",
-      "Базовый DQN алгоритм",
-    ],
-    isActive: true,
+    border: "border-primary/30 hover:border-primary/60",
+    shadow: "hover:shadow-glow-cyan",
+    text: "text-primary",
+    bg: "bg-primary",
+    bgLight: "bg-primary/10",
   },
   {
-    level: "Средний",
-    duration: "6 недель",
-    color: "secondary",
-    topics: [
-      "Policy Gradient методы",
-      "PPO алгоритм с нуля",
-      "Работа с непрерывными действиями",
-      "Обучение в Unity ML-Agents",
-    ],
-    isActive: false,
+    border: "border-secondary/30 hover:border-secondary/60",
+    shadow: "hover:shadow-glow-purple",
+    text: "text-secondary",
+    bg: "bg-secondary",
+    bgLight: "bg-secondary/10",
   },
   {
-    level: "Продвинутый",
-    duration: "8 недель",
-    color: "accent",
-    topics: [
-      "SAC и off-policy методы",
-      "Многоагентное обучение (MAPOCA)",
-      "Curriculum Learning",
-      "Деплой моделей в продакшн",
-    ],
-    isActive: false,
+    border: "border-accent/30 hover:border-accent/60",
+    shadow: "hover:shadow-glow-pink",
+    text: "text-accent",
+    bg: "bg-accent",
+    bgLight: "bg-accent/10",
   },
 ];
 
 const LearningPathSection = () => {
   const navigate = useNavigate();
+
   return (
     <section id="learning-path" className="py-20 px-4 relative overflow-hidden">
       {/* Background Effects */}
@@ -71,35 +59,11 @@ const LearningPathSection = () => {
             <div className="hidden lg:block absolute top-24 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {levels.map((level, index) => {
-                const colorClasses = {
-                  primary: {
-                    border: "border-primary/30 hover:border-primary/60",
-                    shadow: "hover:shadow-glow-cyan",
-                    text: "text-primary",
-                    bg: "bg-primary",
-                    bgLight: "bg-primary/10",
-                  },
-                  secondary: {
-                    border: "border-secondary/30 hover:border-secondary/60",
-                    shadow: "hover:shadow-glow-purple",
-                    text: "text-secondary",
-                    bg: "bg-secondary",
-                    bgLight: "bg-secondary/10",
-                  },
-                  accent: {
-                    border: "border-accent/30 hover:border-accent/60",
-                    shadow: "hover:shadow-glow-pink",
-                    text: "text-accent",
-                    bg: "bg-accent",
-                    bgLight: "bg-accent/10",
-                  },
-                };
-                
-                const colors = colorClasses[level.color as keyof typeof colorClasses];
+              {LEARNING_MAP.map((stage, index) => {
+                const colors = stageColors[index] ?? stageColors[0];
 
                 return (
-                  <div key={index} className="relative">
+                  <div key={stage.id} className="relative">
                     {/* Timeline Node - Desktop */}
                     <div className="hidden lg:flex justify-center mb-8">
                       <div className={`w-12 h-12 rounded-full ${colors.bg} flex items-center justify-center z-10 relative`}>
@@ -112,41 +76,50 @@ const LearningPathSection = () => {
                       <div className={`w-10 h-10 rounded-full ${colors.bg} flex items-center justify-center`}>
                         <span className="text-sm font-bold text-background">{index + 1}</span>
                       </div>
-                      {index < levels.length - 1 && (
+                      {index < LEARNING_MAP.length - 1 && (
                         <ArrowRight className={`w-5 h-5 ${colors.text}`} />
                       )}
                     </div>
 
-                    <Card 
-                      className={`bg-card/60 backdrop-blur-sm ${colors.border} ${colors.shadow} transition-all duration-300 ${level.isActive ? 'cursor-pointer' : ''}`}
-                      onClick={() => level.isActive && navigate("/beginner-course")}
-                    >
+                    <Card className={`bg-card/60 backdrop-blur-sm ${colors.border} ${colors.shadow} transition-all duration-300`}>
                       <CardContent className="p-6 space-y-4">
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <div className={`text-sm ${colors.text} font-medium mb-1`}>
-                              Этап {index + 1}
-                            </div>
-                            <h3 className="text-xl font-bold text-foreground">{level.level}</h3>
+                        <div>
+                          <div className={`text-sm ${colors.text} font-medium mb-1`}>
+                            Этап {index + 1}
                           </div>
-                          <div className={`px-3 py-1 rounded-full ${colors.bgLight} border ${colors.border.split(' ')[0]}`}>
-                            <span className={`text-xs font-medium ${colors.text}`}>{level.duration}</span>
-                          </div>
+                          <h3 className="text-xl font-bold text-foreground">{stage.title}</h3>
+                          <p className="text-xs text-muted-foreground mt-1">{stage.description}</p>
                         </div>
 
-                        <div className="space-y-3 pt-2">
-                          {level.topics.map((topic, topicIndex) => (
-                            <div key={topicIndex} className="flex items-start gap-3">
-                              {level.isActive ? (
-                                <CheckCircle2 className={`w-4 h-4 ${colors.text} flex-shrink-0 mt-0.5`} />
-                              ) : (
-                                <Circle className="w-4 h-4 text-muted-foreground/50 flex-shrink-0 mt-0.5" />
-                              )}
-                              <span className={`text-sm ${level.isActive ? 'text-foreground' : 'text-muted-foreground'}`}>
-                                {topic}
-                              </span>
-                            </div>
-                          ))}
+                        <div className="space-y-2 pt-2">
+                          {stage.lessons.map((lesson) => {
+                            // Collect unique hub ids referenced by this lesson
+                            const hubIds = [...new Set(lesson.contextLinks.map((cl) => cl.hubId))];
+
+                            return (
+                              <button
+                                key={lesson.id}
+                                onClick={() => navigate(`/learn/${stage.slug}/${lesson.slug}`)}
+                                className="w-full flex items-center justify-between gap-2 rounded-lg px-3 py-2.5 text-left text-sm text-foreground hover:bg-primary/5 border border-transparent hover:border-border/50 transition-colors group"
+                              >
+                                <span className="truncate">{lesson.title}</span>
+
+                                <div className="flex items-center gap-1 shrink-0">
+                                  {hubIds.map((hId) => {
+                                    const hub = SUPPORT_HUBS[hId];
+                                    return (
+                                      <span
+                                        key={hId}
+                                        className={`inline-block w-2 h-2 rounded-full ${hub.colorAccent.replace("text-", "bg-")}`}
+                                        title={hub.label}
+                                      />
+                                    );
+                                  })}
+                                  <ArrowRight className="w-3.5 h-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
+                                </div>
+                              </button>
+                            );
+                          })}
                         </div>
                       </CardContent>
                     </Card>
@@ -154,6 +127,20 @@ const LearningPathSection = () => {
                 );
               })}
             </div>
+          </div>
+
+          {/* Legend */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1.5"><Info className="w-3.5 h-3.5" /> Цветные точки — хабы поддержки:</span>
+            {(Object.keys(SUPPORT_HUBS) as HubId[]).map((hId) => {
+              const hub = SUPPORT_HUBS[hId];
+              return (
+                <span key={hId} className="flex items-center gap-1">
+                  <span className={`inline-block w-2 h-2 rounded-full ${hub.colorAccent.replace("text-", "bg-")}`} />
+                  {hub.label}
+                </span>
+              );
+            })}
           </div>
         </div>
 
