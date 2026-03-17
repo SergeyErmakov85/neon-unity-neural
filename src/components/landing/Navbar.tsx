@@ -131,61 +131,28 @@ const Navbar = () => {
             />
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => {
-              const Icon = link.icon;
-              const active = isActive(link.href);
-              return (
-                <Button
-                  key={link.href}
-                  variant="ghost"
-                  size="sm"
-                  className={`transition-all duration-300 ${
-                    active
-                      ? "text-primary bg-primary/10 shadow-glow-cyan"
-                      : "text-muted-foreground hover:text-foreground hover:bg-primary/5"
-                  }`}
-                  onClick={() => navigate(link.href)}
-                >
-                  <Icon className="w-4 h-4 mr-1" />
-                  {link.label}
-                </Button>
-              );
-            })}
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-muted-foreground hover:text-foreground hover:bg-primary/5"
-              onClick={() => {
-                const event = new KeyboardEvent("keydown", { key: "k", ctrlKey: true });
-                document.dispatchEvent(event);
-              }}
-            >
-              <Search className="w-4 h-4 mr-1" />
-              <span className="text-xs text-muted-foreground">Ctrl+K</span>
-            </Button>
-            {authLoading ? (
-              <div className="flex items-center gap-2 ml-2">
-                <Skeleton className="h-8 w-24 rounded-md" />
-                <Skeleton className="h-8 w-8 rounded-full" />
-              </div>
-            ) : authUser ? (
-              <div className="flex items-center gap-2 ml-2 animate-fade-in">
-                <Button size="sm" variant="ghost" onClick={() => navigate("/profile")} className="text-foreground hover:text-primary">
-                  {displayName}
-                </Button>
-                <Button size="sm" variant="ghost" onClick={handleLogout} className="text-muted-foreground hover:text-destructive">
-                  <LogOut className="w-4 h-4" />
-                </Button>
-              </div>
-            ) : (
-              <div className="flex items-center gap-2 ml-2 animate-fade-in">
-                <Button size="sm" variant="outline" onClick={() => navigate("/login")}>Войти</Button>
-                <Button size="sm" className="bg-gradient-neon hover:shadow-glow-cyan hover:scale-105 transition-all duration-300" onClick={() => navigate("/register")}>Регистрация</Button>
-              </div>
-            )}
-            {authUser && <UserProfilePopover />}
+          {/* Desktop Navigation - Tech Stack Badges */}
+          <div className="hidden lg:flex items-center gap-3">
+            <button onClick={() => navigate("/pytorch")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-primary/30 shadow-glow-cyan hover:bg-primary/10 hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Brain className="w-5 h-5 text-primary" />
+              <span className="text-sm font-medium text-foreground">PyTorch</span>
+            </button>
+            <button onClick={() => navigate("/unity-ml-agents")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-secondary/30 shadow-glow-purple hover:bg-secondary/10 hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Gamepad2 className="w-5 h-5 text-secondary" />
+              <span className="text-sm font-medium text-foreground">Unity ML-Agents</span>
+            </button>
+            <button onClick={() => navigate("/deep-rl")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-accent/30 shadow-glow-pink hover:bg-accent/10 hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Code2 className="w-5 h-5 text-accent" />
+              <span className="text-sm font-medium text-foreground">Deep RL</span>
+            </button>
+            <button onClick={() => navigate("/demo-project")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-secondary/30 shadow-glow-purple hover:bg-secondary/10 hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Rocket className="w-5 h-5 text-secondary" />
+              <span className="text-sm font-medium text-foreground">Пример проекта</span>
+            </button>
+            <button onClick={() => navigate("/math-rl")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-accent/30 shadow-glow-pink hover:bg-accent/10 hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Sparkles className="w-5 h-5 text-accent" />
+              <span className="text-sm font-medium text-foreground">Математика RL</span>
+            </button>
           </div>
 
           {/* Mobile Menu */}
