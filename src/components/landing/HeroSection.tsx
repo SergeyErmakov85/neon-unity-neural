@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { Brain, Gamepad2, Code2, Sparkles, Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
+import gamepadImg from "@/assets/gamepad-hero.png";
+import NeuralNetworkViz from "./NeuralNetworkViz";
 import gamepadImg from "@/assets/gamepad-hero.png";
 import NeuralNetworkViz from "./NeuralNetworkViz";
 
