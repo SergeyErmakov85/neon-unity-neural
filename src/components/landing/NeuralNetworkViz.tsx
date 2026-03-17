@@ -79,7 +79,7 @@ const NeuralNetworkViz = () => {
     };
 
     const deactivateLine = (line: SVGLineElement) => {
-      line.style.opacity = "0.1";
+      line.style.opacity = "0.25";
       line.style.strokeWidth = "1";
       line.style.stroke = line.dataset.origcolor!;
     };
