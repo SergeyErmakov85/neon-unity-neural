@@ -1,6 +1,7 @@
 import { Box } from "lucide-react";
 import Math from "@/components/Math";
 import { Section, InfoBox } from "./Section";
+import { MDPTreeViz } from "./Module5Charts";
 
 const Chapter3 = () => (
   <Section icon={<Box className="w-5 h-5 text-primary" />} title="Глава 3. Марковские процессы принятия решений (MDP)">
