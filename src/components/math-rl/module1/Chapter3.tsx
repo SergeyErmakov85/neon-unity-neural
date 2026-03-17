@@ -1,6 +1,7 @@
 import { Box } from "lucide-react";
 import Math from "@/components/Math";
 import { Section, InfoBox } from "./Section";
+import { MDPTreeViz } from "./Module5Charts";
 
 const Chapter3 = () => (
   <Section icon={<Box className="w-5 h-5 text-primary" />} title="Глава 3. Марковские процессы принятия решений (MDP)">
@@ -53,6 +54,8 @@ const Chapter3 = () => (
         <strong className="text-primary">В Unity ML-Agents:</strong> если вы забудете добавить критический параметр в <code className="text-primary">CollectObservations</code> (например, время перезарядки оружия NPC), алгоритмы будут работать нестабильно.
       </p>
     </InfoBox>
+
+    <MDPTreeViz />
   </Section>
 );
 
