@@ -1,9 +1,19 @@
-import { useMemo } from "react";
+import { useMemo, lazy, Suspense } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { SUPPORT_HUBS, type HubId } from "@/content/hubs";
 import { LEARNING_MAP, type Stage, type Lesson } from "@/content/learningMap";
 import { Button } from "@/components/ui/button";
+import { PageSkeleton } from "@/components/SkeletonCard";
 import { ArrowLeft, ArrowRight, BookOpen } from "lucide-react";
+
+// Lazy-load original page content for each hub
+const HUB_CONTENT: Record<HubId, React.LazyExoticComponent<React.ComponentType>> = {
+  pytorch: lazy(() => import("@/pages/PyTorchModule")),
+  "unity-ml-agents": lazy(() => import("@/pages/UnityMLAgentsModule")),
+  "deep-rl": lazy(() => import("@/pages/DeepRLModule")),
+  project: lazy(() => import("@/pages/DemoProject")),
+  "math-rl": lazy(() => import("@/pages/MathRL")),
+};
 
 interface BackLink {
   stage: Stage;
@@ -53,44 +63,19 @@ const HubPage = () => {
     );
   }
 
-  const Icon = hub.icon;
+  const ContentComponent = HUB_CONTENT[hub.id];
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="border-b border-border/50 bg-card/30 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4 flex items-center gap-3">
-          <Button variant="ghost" onClick={() => navigate("/")} className="text-muted-foreground hover:text-foreground">
-            <ArrowLeft className="w-4 h-4 mr-2" /> Карта обучения
-          </Button>
-        </div>
-      </div>
+      {/* Embedded original page content */}
+      <Suspense fallback={<PageSkeleton />}>
+        <ContentComponent />
+      </Suspense>
 
-      <div className="container mx-auto px-4 py-12 max-w-3xl space-y-12">
-        {/* Hero */}
-        <div className="flex items-start gap-4">
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10">
-            <Icon className={`h-7 w-7 ${hub.colorAccent}`} />
-          </div>
-          <div>
-            <h1 className="text-3xl md:text-4xl font-bold">
-              <span className="bg-gradient-neon bg-clip-text text-transparent">{hub.label}</span>
-            </h1>
-            <p className="mt-2 text-muted-foreground leading-relaxed">{hub.shortDescription}</p>
-          </div>
-        </div>
-
-        {/* Placeholder content */}
-        <div className="rounded-xl border border-border/50 bg-card/40 p-6 space-y-3">
-          <h2 className="text-lg font-semibold text-foreground">Материалы хаба</h2>
-          <p className="text-sm text-muted-foreground">
-            Здесь будут справочники, шпаргалки, примеры кода и дополнительные ресурсы по теме «{hub.label}».
-          </p>
-        </div>
-
-        {/* Back-links section */}
-        {groupedByStage.length > 0 && (
-          <div className="space-y-6">
+      {/* Back-links section (appended after content) */}
+      {groupedByStage.length > 0 && (
+        <div className="border-t border-border/50 bg-card/20">
+          <div className="container mx-auto px-4 py-12 max-w-3xl space-y-6">
             <div className="flex items-center gap-2">
               <BookOpen className="h-5 w-5 text-primary" />
               <h2 className="text-xl font-semibold text-foreground">Где это пригодится в обучении</h2>
@@ -116,14 +101,8 @@ const HubPage = () => {
               </div>
             ))}
           </div>
-        )}
-
-        <div className="flex justify-center pt-4">
-          <Button variant="outline" onClick={() => navigate("/")} className="border-primary/50 text-primary hover:bg-primary/10">
-            <ArrowLeft className="w-4 h-4 mr-2" /> На главную
-          </Button>
         </div>
-      </div>
+      )}
     </div>
   );
 };
