@@ -1,7 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, BookOpen, Cpu, Layers, Settings, Code, Wrench, Rocket } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { BookOpen, Cpu, Layers, Settings, Code, Wrench, Rocket } from "lucide-react";
 
 const UnityMLAgentsModule = () => {
   const navigate = useNavigate();

@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, BookOpen, Lock } from "lucide-react";
+import { BookOpen, Lock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const modules = [

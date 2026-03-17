@@ -1,7 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, BookOpen, Brain, Zap, Target, Code2, TrendingUp, Layers } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { BookOpen, Brain, Zap, Target, Code2, TrendingUp, Layers } from "lucide-react";
+import CyberCodeBlock from "@/components/CyberCodeBlock";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 
 const DeepRLModule = () => {
