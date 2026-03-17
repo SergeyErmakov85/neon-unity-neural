@@ -35,8 +35,23 @@ const HeroSection = () => {
       {/* Content */}
       <div className="container relative z-10 mx-auto px-4 pt-32 pb-20">
         <div className="max-w-5xl mx-auto text-center space-y-8 animate-slide-up">
+          {/* Main Heading */}
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-relaxed">
+            <span className="text-foreground">Освойте</span>
+            <br />
+            <span className="bg-gradient-neon bg-clip-text text-transparent">
+              Reinforcement Learning
+            </span>
+            <br />
+            <span className="text-foreground">через тренировку</span>
+            <br />
+            <span className="bg-gradient-neon bg-clip-text text-transparent">
+              игровых агентов <img src={gamepadImg} alt="Gamepad" className="inline-block h-12 md:h-16 lg:h-20 w-auto align-middle -mt-2 drop-shadow-[0_0_15px_hsl(var(--secondary)/0.6)]" />
+            </span>
+          </h1>
+
           {/* Tech Stack Badges */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <div className="flex flex-wrap justify-center gap-4 mt-4">
             <button onClick={() => navigate("/pytorch")} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border border-primary/30 shadow-glow-cyan hover:bg-primary/10 hover:scale-105 transition-all duration-300 cursor-pointer">
               <Brain className="w-5 h-5 text-primary" />
               <span className="text-sm font-medium text-foreground">PyTorch</span>
@@ -58,21 +73,6 @@ const HeroSection = () => {
               <span className="text-sm font-medium text-foreground">Математика RL</span>
             </button>
           </div>
-
-          {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-relaxed">
-            <span className="text-foreground">Освойте</span>
-            <br />
-            <span className="bg-gradient-neon bg-clip-text text-transparent">
-              Reinforcement Learning
-            </span>
-            <br />
-            <span className="text-foreground">через тренировку</span>
-            <br />
-            <span className="bg-gradient-neon bg-clip-text text-transparent">
-              игровых агентов <img src={gamepadImg} alt="Gamepad" className="inline-block h-12 md:h-16 lg:h-20 w-auto align-middle -mt-2 drop-shadow-[0_0_15px_hsl(var(--secondary)/0.6)]" />
-            </span>
-          </h1>
 
           {/* Subheading */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
