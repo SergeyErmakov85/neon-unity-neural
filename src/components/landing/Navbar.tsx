@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search, LogOut } from "lucide-react";
+import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search, LogOut, Brain, Gamepad2, Sparkles, Rocket } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import logoImage from "@/assets/Logo_RL_platform.png";
 import GlobalSearch from "@/components/GlobalSearch";
@@ -115,6 +115,8 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/80 backdrop-blur-xl border-b border-primary/30 shadow-[var(--glow-cyan)]" : "bg-background"}`}>
       <div className="container px-4 mx-auto">
         <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? "h-14" : "h-16 md:h-20"}`}>
+          {/* Logo + Badges */}
+          <div className="flex items-center gap-4">
           {/* Logo */}
           <a
             href="/"
@@ -130,6 +132,31 @@ const Navbar = () => {
               className="h-12 md:h-14 lg:h-16 w-auto transition-all duration-300 group-hover:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]"
             />
           </a>
+
+          {/* Tech Stack Badges */}
+          <div className="hidden lg:flex items-center gap-2">
+            <button onClick={() => navigate("/pytorch")} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card/60 backdrop-blur-sm border border-primary/30 hover:bg-primary/10 hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Brain className="w-4 h-4 text-primary" />
+              <span className="text-xs font-medium text-foreground">PyTorch</span>
+            </button>
+            <button onClick={() => navigate("/unity-ml-agents")} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card/60 backdrop-blur-sm border border-secondary/30 hover:bg-secondary/10 hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Gamepad2 className="w-4 h-4 text-secondary" />
+              <span className="text-xs font-medium text-foreground">ML-Agents</span>
+            </button>
+            <button onClick={() => navigate("/deep-rl")} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card/60 backdrop-blur-sm border border-accent/30 hover:bg-accent/10 hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Code2 className="w-4 h-4 text-accent" />
+              <span className="text-xs font-medium text-foreground">Deep RL</span>
+            </button>
+            <button onClick={() => navigate("/demo-project")} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card/60 backdrop-blur-sm border border-secondary/30 hover:bg-secondary/10 hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Rocket className="w-4 h-4 text-secondary" />
+              <span className="text-xs font-medium text-foreground">Проект</span>
+            </button>
+            <button onClick={() => navigate("/math-rl")} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card/60 backdrop-blur-sm border border-accent/30 hover:bg-accent/10 hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Sparkles className="w-4 h-4 text-accent" />
+              <span className="text-xs font-medium text-foreground">Математика</span>
+            </button>
+          </div>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
