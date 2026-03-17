@@ -99,6 +99,7 @@ const App = () => (
             <Route path="/math-rl/module-3" element={<MathRLModule3 />} />
             <Route path="/math-rl/module-4" element={<MathRLModule4 />} />
             <Route path="/math-rl/module-5" element={<MathRLModule5 />} />
+            <Route path="/math-rl/module-6" element={<MathRLModule6 />} />
             <Route path="/pytorch" element={<PyTorchModule />} />
             <Route path="/pytorch/cheatsheet" element={<PyTorchCheatSheet />} />
             <Route path="/unity-ml-agents" element={<UnityMLAgentsModule />} />
