@@ -234,7 +234,7 @@ const MathRLModule1 = () => {
               Подставляя: <Math display={false}>{`v_1 = 2 + 0.81 v_1`}</Math>, откуда <Math display={false}>{`v_1 \\approx 10.53`}</Math>, <Math display={false}>{`v_2 \\approx 9.47`}</Math>.
             </p>
 
-            <CyberCodeBlock language="python" title="Итерация ценности: 2 состояния">
+            <CyberCodeBlock language="python" filename="value_iteration_2states.py">
 {`gamma = 0.9
 V = [0.0, 0.0]  # V[0] = V(S1), V[1] = V(S2)
 
