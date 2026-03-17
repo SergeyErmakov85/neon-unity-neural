@@ -7,7 +7,7 @@ const NEURON_GAP = 50;
 const WIDTH = (LAYERS.length - 1) * LAYER_GAP + 120;
 const HEIGHT = Math.max(...LAYERS) * NEURON_GAP + 60;
 
-const ACTIVE_COLORS = ["#FFD700", "#FF8C00", "#FFA500", "#FFAE42"];
+const ACTIVE_COLORS = ["#00BFFF", "#1E90FF", "#00CED1", "#4FC3F7"];
 
 const colors = [
   "hsl(var(--primary))",
