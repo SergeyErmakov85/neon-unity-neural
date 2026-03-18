@@ -18,9 +18,9 @@ const ScrollProgressBar = ({ color = "bg-primary" }: ScrollProgressBarProps) => 
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] h-0.5">
+    <div className="fixed top-14 md:top-20 left-0 right-0 z-40 h-[3px] bg-white/10">
       <div
-        className={`h-full ${color} transition-[width] duration-100 shadow-[0_0_8px_hsl(var(--primary)/0.6)]`}
+        className={`h-full ${color} transition-[width] duration-100 ease-out shadow-[0_0_8px_hsl(var(--primary)/0.6)]`}
         style={{ width: `${progress}%` }}
       />
     </div>
