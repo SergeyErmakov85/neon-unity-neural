@@ -256,10 +256,10 @@ const OnboardingQuiz = () => {
           <Card className="border-primary/30 bg-card/80 backdrop-blur-sm overflow-hidden">
             <div className="h-1 bg-gradient-neon" />
             <CardContent className="p-8 space-y-6">
-              <div className="text-center space-y-2">
-                <Rocket className="w-12 h-12 text-primary mx-auto" />
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-                  Ваш персональный план
+              <div className="text-center space-y-3">
+                <Rocket className="w-14 h-14 text-primary mx-auto animate-pulse" />
+                <h2 className="text-2xl md:text-3xl font-bold bg-gradient-neon bg-clip-text text-transparent">
+                  Ваш персональный план обучения
                 </h2>
                 <p className="text-muted-foreground">На основе ваших ответов мы подобрали оптимальный путь</p>
               </div>
