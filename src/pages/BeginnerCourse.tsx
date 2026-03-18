@@ -81,7 +81,7 @@ const BeginnerCourse = () => {
         description="Первый урок курса по Reinforcement Learning: ключевые концепции, код CartPole и тест."
         path="/beginner-course"
       />
-      <ScrollProgressBar color="bg-green-500" />
+      <ScrollProgressBar />
       <ScrollToTop />
 
       {/* Sticky header */}
