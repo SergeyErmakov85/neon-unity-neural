@@ -215,14 +215,14 @@ const Navbar = () => {
                 <div className="flex flex-col gap-1 mt-4 pt-4 border-t border-border/30">
                   <p className="px-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Быстрый доступ</p>
                   {[
-                    { href: "/hub/pytorch", label: "PyTorch", Icon: Brain, color: "text-primary" },
-                    { href: "/hub/unity-ml-agents", label: "Unity ML-Agents", Icon: Gamepad2, color: "text-secondary" },
-                    { href: "/hub/deep-rl", label: "Deep RL", Icon: Code2, color: "text-accent" },
-                    { href: "/hub/project", label: "Проекты", Icon: Rocket, color: "text-secondary" },
-                    { href: "/hub/math-rl", label: "Математика RL", Icon: Sparkles, color: "text-accent" },
+                    { href: "/code-examples", label: "PyTorch", Icon: Brain, color: "text-primary" },
+                    { href: "/courses", label: "Unity ML-Agents", Icon: Gamepad2, color: "text-secondary" },
+                    { href: "/blog", label: "Deep RL", Icon: Code2, color: "text-accent" },
+                    { href: "/community", label: "Проекты", Icon: Rocket, color: "text-secondary" },
+                    { href: "/math-rl", label: "Математика RL", Icon: Sparkles, color: "text-accent" },
                   ].map((item) => (
                     <button
-                      key={item.href}
+                      key={item.href + item.label}
                       onClick={() => { setIsOpen(false); navigate(item.href); }}
                       className={`flex items-center px-4 py-3 text-left rounded-lg transition-all duration-300 group ${
                         isActive(item.href)
@@ -234,6 +234,25 @@ const Navbar = () => {
                       {item.label}
                     </button>
                   ))}
+                </div>
+
+                {/* Utility links */}
+                <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-border/30 px-2">
+                  <button
+                    onClick={() => { setIsOpen(false); navigate("/pricing"); }}
+                    className={`flex items-center px-4 py-3 text-left rounded-lg transition-all duration-300 ${
+                      isActive("/pricing") ? "text-primary bg-primary/10" : "text-muted-foreground hover:text-primary hover:bg-primary/10"
+                    }`}
+                  >
+                    <CreditCard className="w-4 h-4 mr-3" />
+                    Тарифы
+                  </button>
+                  <Button
+                    className="w-full bg-gradient-neon hover:shadow-glow-cyan"
+                    onClick={() => { setIsOpen(false); navigate("/courses"); }}
+                  >
+                    Начать бесплатно
+                  </Button>
                 </div>
 
                 {/* Mobile CTA */}
