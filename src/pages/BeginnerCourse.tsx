@@ -1,563 +1,225 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, BookOpen, Code, Video, CheckSquare, Play } from "lucide-react";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft, ArrowRight, Bot, Globe, Trophy, Brain, Copy, ExternalLink, CheckCircle2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { Progress } from "@/components/ui/progress";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import LessonBreadcrumbs from "@/components/LessonBreadcrumbs";
+import SEOHead from "@/components/SEOHead";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
+import ScrollToTop from "@/components/ScrollToTop";
 import { toast } from "sonner";
 
-const lessons = [
+const concepts = [
+  { icon: Bot, title: "Агент (Agent)", desc: "Принимает решения на основе наблюдений" },
+  { icon: Globe, title: "Среда (Environment)", desc: "Мир, в котором действует агент" },
+  { icon: Trophy, title: "Награда (Reward)", desc: "Числовой сигнал качества действия" },
+  { icon: Brain, title: "Политика (Policy)", desc: "Стратегия выбора действий агентом" },
+];
+
+const codeSnippet = `import gym
+import torch
+
+env = gym.make('CartPole-v1')
+obs, _ = env.reset(seed=42)
+
+for step in range(200):
+    action = env.action_space.sample()  # случайная политика
+    obs, reward, done, truncated, info = env.step(action)
+    print(f"Шаг {step}: награда={reward:.1f}, done={done}")
+    if done or truncated:
+        obs, _ = env.reset()
+env.close()`;
+
+const quizData = [
   {
-    id: 1,
-    title: "Основы Reinforcement Learning",
-    duration: "30 мин",
-    theory: `Unity ML-Agents Toolkit - это открытая библиотека, которая позволяет играм и симуляциям служить средой для обучения интеллектуальных агентов.
-
-Основные компоненты:
-• Unity Environment - игровая среда, где агент обучается
-• Python API - для обучения моделей с использованием PyTorch
-• Unity Package - для интеграции в Unity проекты
-
-ML-Agents использует алгоритмы обучения с подкреплением (Reinforcement Learning), где агент учится принимать решения, получая награды за правильные действия.`,
-    code: `# Установка через pip
-pip3 install mlagents
-
-# Проверка установки
-mlagents-learn --help
-
-# Клонирование репозитория с примерами
-git clone https://github.com/Unity-Technologies/ml-agents.git
-
-# Установка пакета в Unity Package Manager
-# Window -> Package Manager -> Add package from git URL
-# com.unity.ml-agents`,
-    videoId: "zPFU30tbyKs",
-    tasks: [
-      "Установите Python 3.8+ и проверьте версию",
-      "Установите mlagents через pip",
-      "Создайте новый Unity проект версии 2021.3 или новее",
-      "Установите ML-Agents пакет через Package Manager",
-      "Откройте пример сцены из пакета ML-Agents"
-    ]
+    question: "Что такое политика (Policy) в RL?",
+    options: ["Функция ошибки", "Стратегия выбора действий", "Среда симуляции", "Оценка наград"],
+    correct: 1,
   },
   {
-    id: 2,
-    title: "Установка окружения PyTorch + Unity",
-    duration: "45 мин",
-    theory: `Агент в ML-Agents - это объект, который может наблюдать за окружением, принимать решения и выполнять действия.
-
-Ключевые методы класса Agent:
-• OnEpisodeBegin() - вызывается в начале каждого эпизода обучения
-• CollectObservations() - собирает данные об окружении
-• OnActionReceived() - получает и выполняет действия от нейросети
-• Heuristic() - ручное управление для тестирования
-
-Цикл обучения:
-1. Агент собирает наблюдения
-2. Нейросеть принимает решение
-3. Агент выполняет действие
-4. Получает награду
-5. Повторяется до конца эпизода`,
-    code: `using Unity.MLAgents;
-using Unity.MLAgents.Actuators;
-using Unity.MLAgents.Sensors;
-using UnityEngine;
-
-public class RollerAgent : Agent
-{
-    Rigidbody rBody;
-    public Transform Target;
-    public float speed = 10f;
-
-    void Start()
-    {
-        rBody = GetComponent<Rigidbody>();
-    }
-
-    public override void OnEpisodeBegin()
-    {
-        // Сброс если агент упал
-        if (transform.localPosition.y < 0)
-        {
-            rBody.angularVelocity = Vector3.zero;
-            rBody.velocity = Vector3.zero;
-            transform.localPosition = new Vector3(0, 0.5f, 0);
-        }
-
-        // Рандомная позиция цели
-        Target.localPosition = new Vector3(
-            Random.value * 8 - 4,
-            0.5f,
-            Random.value * 8 - 4
-        );
-    }
-
-    public override void CollectObservations(VectorSensor sensor)
-    {
-        // Позиция цели (3 значения)
-        sensor.AddObservation(Target.localPosition);
-        // Позиция агента (3 значения)
-        sensor.AddObservation(transform.localPosition);
-        // Скорость агента (3 значения)
-        sensor.AddObservation(rBody.velocity);
-    }
-
-    public override void OnActionReceived(ActionBuffers actions)
-    {
-        // Получение действий
-        Vector3 controlSignal = Vector3.zero;
-        controlSignal.x = actions.ContinuousActions[0];
-        controlSignal.z = actions.ContinuousActions[1];
-        
-        // Применение силы
-        rBody.AddForce(controlSignal * speed);
-
-        // Награды и штрафы
-        float distanceToTarget = Vector3.Distance(
-            transform.localPosition, 
-            Target.localPosition
-        );
-
-        // Достиг цели
-        if (distanceToTarget < 1.42f)
-        {
-            SetReward(1.0f);
-            EndEpisode();
-        }
-
-        // Упал с платформы
-        if (transform.localPosition.y < 0)
-        {
-            EndEpisode();
-        }
-    }
-
-    public override void Heuristic(in ActionBuffers actionsOut)
-    {
-        // Ручное управление для тестирования
-        var continuousActionsOut = actionsOut.ContinuousActions;
-        continuousActionsOut[0] = Input.GetAxis("Horizontal");
-        continuousActionsOut[1] = Input.GetAxis("Vertical");
-    }
-}`,
-    videoId: "fiQsmdwEGT8",
-    tasks: [
-      "Создайте сцену с плоскостью-платформой",
-      "Добавьте куб-агента с Rigidbody",
-      "Создайте скрипт RollerAgent и прикрепите к агенту",
-      "Добавьте компоненты Behavior Parameters и Decision Requester",
-      "Создайте цель (Target) и привяжите в инспекторе",
-      "Протестируйте ручное управление через Heuristic"
-    ]
+    question: "Какой сигнал агент получает от среды после каждого действия?",
+    options: ["Градиент", "Потеря", "Награда", "Веса сети"],
+    correct: 2,
   },
   {
-    id: 3,
-    title: "Первый агент: CartPole",
-    duration: "40 мин",
-    theory: `Обучение с подкреплением (Reinforcement Learning) - это метод машинного обучения, где агент учится принимать решения через взаимодействие со средой.
-
-Ключевые концепции:
-• State (Состояние) - наблюдения агента об окружении
-• Action (Действие) - что может делать агент
-• Reward (Награда) - обратная связь за действия
-• Policy (Политика) - стратегия принятия решений
-• Episode (Эпизод) - один цикл от начала до конца
-
-Алгоритмы ML-Agents:
-• PPO (Proximal Policy Optimization) - стабильный, универсальный
-• SAC (Soft Actor-Critic) - для непрерывных действий
-• POCA - для многоагентных систем
-
-Система наград:
-✓ Давайте награду за достижение цели (+1.0)
-✓ Маленькие награды за прогресс (+0.01)
-✗ Штрафы за нежелательное поведение (-0.1)
-✗ Не давайте награды слишком часто`,
-    code: `# Конфигурация обучения (config.yaml)
-behaviors:
-  RollerBall:
-    trainer_type: ppo
-    hyperparameters:
-      batch_size: 10
-      buffer_size: 100
-      learning_rate: 0.0003
-      beta: 0.005
-      epsilon: 0.2
-      lambd: 0.99
-      num_epoch: 3
-      learning_rate_schedule: linear
-    network_settings:
-      normalize: false
-      hidden_units: 128
-      num_layers: 2
-    reward_signals:
-      extrinsic:
-        gamma: 0.99
-        strength: 1.0
-    max_steps: 500000
-    time_horizon: 64
-    summary_freq: 10000`,
-    videoId: "VMp6pq6_QjI",
-    tasks: [
-      "Создайте файл конфигурации config.yaml",
-      "Настройте параметры для вашего агента",
-      "Запустите обучение: mlagents-learn config.yaml --run-id=FirstRun",
-      "Следите за процессом в TensorBoard",
-      "Проанализируйте графики обучения",
-      "Экспортируйте обученную модель .onnx"
-    ]
+    question: "Что означает seed=42 в коде?",
+    options: ["Скорость обучения", "Воспроизводимость результатов", "Число эпизодов", "Размер батча"],
+    correct: 1,
   },
-  {
-    id: 4,
-    title: "Базовый DQN алгоритм",
-    duration: "60 мин",
-    theory: `Классический пример ML-Agents - балансировка мяча на платформе. Агент учится наклонять платформу, чтобы удерживать мяч.
+];
 
-Архитектура проекта:
-• Платформа с возможностью вращения
-• Мяч с физикой
-• Область обучения (Training Area)
-• Система наград
-
-Наблюдения агента (8 float):
-- Вращение платформы (x, z)
-- Позиция мяча относительно платформы (x, y, z)
-- Скорость мяча (x, y, z)
-
-Действия (2 continuous):
-- Вращение вокруг оси X
-- Вращение вокруг оси Z
-
-Награды:
-+0.1 каждый кадр, когда мяч на платформе
--1.0 если мяч упал
-Эпизод завершается после падения`,
-    code: `using Unity.MLAgents;
-using Unity.MLAgents.Actuators;
-using Unity.MLAgents.Sensors;
-using UnityEngine;
-
-public class Ball3DAgent : Agent
-{
-    [Header("References")]
-    public GameObject ball;
-    public GameObject platform;
-    
-    [Header("Settings")]
-    public float rotationSpeed = 50f;
-    
-    private Rigidbody ballRb;
-    private Vector3 ballStartPos;
-    private Quaternion platformStartRot;
-
-    public override void Initialize()
-    {
-        ballRb = ball.GetComponent<Rigidbody>();
-        ballStartPos = ball.transform.localPosition;
-        platformStartRot = platform.transform.localRotation;
-    }
-
-    public override void OnEpisodeBegin()
-    {
-        // Сброс позиций
-        platform.transform.localRotation = platformStartRot;
-        ball.transform.localPosition = ballStartPos;
-        ballRb.velocity = Vector3.zero;
-        ballRb.angularVelocity = Vector3.zero;
-    }
-
-    public override void CollectObservations(VectorSensor sensor)
-    {
-        // Вращение платформы (2)
-        sensor.AddObservation(platform.transform.localRotation.z);
-        sensor.AddObservation(platform.transform.localRotation.x);
-        
-        // Позиция мяча (3)
-        sensor.AddObservation(ball.transform.localPosition);
-        
-        // Скорость мяча (3)
-        sensor.AddObservation(ballRb.velocity);
-    }
-
-    public override void OnActionReceived(ActionBuffers actions)
-    {
-        // Получение действий
-        float rotateX = actions.ContinuousActions[0];
-        float rotateZ = actions.ContinuousActions[1];
-
-        // Применение вращения
-        Vector3 rotation = new Vector3(rotateX, 0, rotateZ);
-        platform.transform.Rotate(
-            rotation * rotationSpeed * Time.deltaTime
-        );
-
-        // Проверка - мяч на платформе
-        if (ball.transform.localPosition.y > 0.5f && 
-            ball.transform.localPosition.y < 5f)
-        {
-            // Награда за удержание мяча
-            AddReward(0.1f);
-        }
-
-        // Мяч упал
-        if (ball.transform.localPosition.y < 0)
-        {
-            SetReward(-1f);
-            EndEpisode();
-        }
-
-        // Ограничение длительности эпизода
-        if (StepCount > 5000)
-        {
-            EndEpisode();
-        }
-    }
-
-    public override void Heuristic(in ActionBuffers actionsOut)
-    {
-        var continuousActions = actionsOut.ContinuousActions;
-        continuousActions[0] = Input.GetAxis("Horizontal");
-        continuousActions[1] = Input.GetAxis("Vertical");
-    }
-}`,
-    videoId: "zPFU30tbyKs",
-    tasks: [
-      "Создайте 3D сцену с платформой и мячом",
-      "Настройте физику (Rigidbody, Colliders)",
-      "Реализуйте скрипт Ball3DAgent",
-      "Добавьте Behavior Parameters (Space Type: Continuous, Actions: 2)",
-      "Создайте 16 копий Training Area для ускорения обучения",
-      "Запустите обучение на 500k шагов",
-      "Протестируйте обученную модель"
-    ]
-  }
+const breadcrumbItems = [
+  { label: "Курсы", href: "/courses" },
+  { label: "Уровень 1", href: "/courses" },
+  { label: "Урок 1.1" },
 ];
 
 const BeginnerCourse = () => {
-  const [completedTasks, setCompletedTasks] = useState<Record<number, Set<number>>>({});
+  const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [checked, setChecked] = useState(false);
 
-  const toggleTask = (lessonId: number, taskIndex: number) => {
-    setCompletedTasks(prev => {
-      const lessonTasks = new Set(prev[lessonId] || []);
-      if (lessonTasks.has(taskIndex)) {
-        lessonTasks.delete(taskIndex);
-        toast.info("Задание отмечено как невыполненное");
-      } else {
-        lessonTasks.add(taskIndex);
-        toast.success("Задание выполнено!");
-      }
-      return { ...prev, [lessonId]: lessonTasks };
-    });
+  const handleCopy = () => {
+    navigator.clipboard.writeText(codeSnippet);
+    toast.success("Код скопирован!");
+  };
+
+  const handleCheck = () => {
+    setChecked(true);
+    const correct = quizData.every((q, i) => answers[i] === String(q.correct));
+    if (correct) toast.success("Все ответы верны! 🎉");
+    else toast.error("Есть ошибки — попробуй ещё раз");
   };
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/">
-              <Button variant="ghost" className="gap-2">
-                <ArrowLeft className="w-4 h-4" />
-                Назад
-              </Button>
-            </Link>
-            <h1 className="text-xl font-bold bg-gradient-neon bg-clip-text text-transparent">
-              Основы ML-Agents
-            </h1>
-            <Badge variant="secondary" className="hidden sm:flex">
-              Начальный уровень
-            </Badge>
-          </div>
+      <SEOHead
+        title="Урок 1.1: Что такое Reinforcement Learning? | RL Platform"
+        description="Первый урок курса по Reinforcement Learning: ключевые концепции, код CartPole и тест."
+        path="/beginner-course"
+      />
+      <ScrollProgressBar color="bg-green-500" />
+      <ScrollToTop />
+
+      {/* Sticky header */}
+      <header className="border-b border-border/50 bg-card/80 backdrop-blur-xl sticky top-0 z-30">
+        <div className="container mx-auto px-4 py-3 flex items-center gap-3">
+          <Link to="/courses" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm">
+            <ArrowLeft className="w-4 h-4" />
+            <span className="hidden sm:inline">Курсы</span>
+          </Link>
+          <span className="text-border">|</span>
+          <span className="text-sm text-muted-foreground">Урок 1.1</span>
         </div>
       </header>
 
-      {/* Content */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-5xl mx-auto space-y-8">
-          {/* Course Header */}
-          <div className="text-center space-y-4 mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold">
-              <span className="bg-gradient-neon bg-clip-text text-transparent">
-                Начальный курс
-              </span>
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              4 урока • ~3 часа обучения • Практические задания
-            </p>
+      <div className="container mx-auto px-4 py-8 max-w-3xl">
+        {/* Breadcrumbs */}
+        <LessonBreadcrumbs items={breadcrumbItems} />
+
+        {/* 1. HEADER */}
+        <div className="mb-6 space-y-3">
+          <div className="flex items-center gap-3 flex-wrap">
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-full border bg-green-500/20 text-green-400 border-green-500/30">FREE</span>
+            <span className="text-xs text-muted-foreground">⏱ 20 мин</span>
+            <span className="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">#theory</span>
+            <span className="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">#pytorch</span>
           </div>
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+            <span className="text-muted-foreground font-normal text-2xl md:text-3xl">1.1. </span>
+            Что такое Reinforcement Learning?
+          </h1>
+        </div>
 
-          {/* Lessons */}
-          {lessons.map((lesson) => (
-            <Card
-              key={lesson.id}
-              className="bg-card/50 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-300"
-            >
-              <CardHeader>
-                <div className="flex items-start justify-between gap-4">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-3">
-                      <Badge className="bg-primary/20 text-primary border-primary/30">
-                        Урок {lesson.id}
-                      </Badge>
-                      <Badge variant="outline">{lesson.duration}</Badge>
-                    </div>
-                    <CardTitle className="text-2xl">{lesson.title}</CardTitle>
-                  </div>
+        {/* 2. PROGRESS BAR */}
+        <div className="mb-8">
+          <div className="flex items-center justify-between text-xs text-muted-foreground mb-1.5">
+            <span>Урок 1 из 4</span>
+            <span>25%</span>
+          </div>
+          <Progress value={25} className="h-1.5 bg-muted" />
+        </div>
+
+        {/* 3. THEORY — Concept Cards */}
+        <section className="mb-10">
+          <h2 className="text-xl font-semibold text-foreground mb-4">Ключевые концепции</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {concepts.map((c) => (
+              <Card key={c.title} className="bg-card border-l-2 border-l-primary border-border/50 p-4 flex items-start gap-3">
+                <c.icon className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-foreground text-sm">{c.title}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{c.desc}</p>
                 </div>
-              </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </section>
 
-              <CardContent>
-                <Tabs defaultValue="theory" className="w-full">
-                  <TabsList className="grid w-full grid-cols-4 bg-muted/50">
-                    <TabsTrigger value="theory" className="gap-2">
-                      <BookOpen className="w-4 h-4" />
-                      <span className="hidden sm:inline">Теория</span>
-                    </TabsTrigger>
-                    <TabsTrigger value="code" className="gap-2">
-                      <Code className="w-4 h-4" />
-                      <span className="hidden sm:inline">Код</span>
-                    </TabsTrigger>
-                    <TabsTrigger value="video" className="gap-2">
-                      <Video className="w-4 h-4" />
-                      <span className="hidden sm:inline">Видео</span>
-                    </TabsTrigger>
-                    <TabsTrigger value="tasks" className="gap-2">
-                      <CheckSquare className="w-4 h-4" />
-                      <span className="hidden sm:inline">Задания</span>
-                    </TabsTrigger>
-                  </TabsList>
+        {/* 4. CODE BLOCK */}
+        <section className="mb-10">
+          <h2 className="text-xl font-semibold text-foreground mb-4">Минимальная среда CartPole на Python</h2>
+          <div className="relative rounded-lg border border-border/50 bg-card overflow-hidden">
+            <div className="flex items-center justify-between px-4 py-2 border-b border-border/50 bg-muted/30">
+              <span className="text-xs text-muted-foreground font-mono">python</span>
+              <Button variant="ghost" size="sm" className="h-7 gap-1.5 text-xs text-muted-foreground hover:text-primary" onClick={handleCopy}>
+                <Copy className="w-3 h-3" /> Копировать
+              </Button>
+            </div>
+            <pre className="p-4 overflow-x-auto text-sm leading-relaxed">
+              <code className="font-mono text-foreground/90">{codeSnippet}</code>
+            </pre>
+          </div>
+          <a
+            href="https://colab.research.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 mt-4 px-4 py-2.5 rounded-lg border border-yellow-500/30 bg-yellow-500/10 text-yellow-300 hover:bg-yellow-500/20 transition-colors text-sm font-medium"
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16.941 4.976a7.033 7.033 0 0 0-4.93 2.064 7.033 7.033 0 0 0-.124 9.807l2.395-2.395a3.646 3.646 0 0 1 5.15-5.148l2.397-2.399a7.033 7.033 0 0 0-4.888-1.93z" />
+              <path d="M7.074 4.976a7.033 7.033 0 0 0-4.888 1.93l2.397 2.398a3.646 3.646 0 0 1 5.15 5.149l2.395 2.395a7.033 7.033 0 0 0-.124-9.808 7.033 7.033 0 0 0-4.93-2.064z" />
+              <path d="M7.074 19.024a7.033 7.033 0 0 0 4.93-2.064l-2.395-2.395a3.646 3.646 0 0 1-5.15-5.149L2.063 7.019A7.033 7.033 0 0 0 7.074 19.024z" />
+            </svg>
+            Открыть в Google Colab
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+        </section>
 
-                  <TabsContent value="theory" className="mt-6 space-y-4">
-                    <div className="prose prose-invert max-w-none">
-                      <div className="text-foreground/90 whitespace-pre-line leading-relaxed">
-                        {lesson.theory}
+        {/* 5. QUIZ */}
+        <section className="mb-10">
+          <h2 className="text-xl font-semibold text-foreground mb-4">Проверь себя</h2>
+          <div className="space-y-6">
+            {quizData.map((q, qi) => {
+              const isCorrect = checked && answers[qi] === String(q.correct);
+              const isWrong = checked && answers[qi] !== undefined && answers[qi] !== String(q.correct);
+              return (
+                <Card key={qi} className={`p-5 bg-card border-border/50 ${isCorrect ? "border-green-500/50" : isWrong ? "border-destructive/50" : ""}`}>
+                  <p className="font-medium text-foreground text-sm mb-3">
+                    {qi + 1}. {q.question}
+                  </p>
+                  <RadioGroup value={answers[qi] ?? ""} onValueChange={(v) => { setChecked(false); setAnswers((p) => ({ ...p, [qi]: v })); }}>
+                    {q.options.map((opt, oi) => (
+                      <div key={oi} className="flex items-center gap-2 py-1">
+                        <RadioGroupItem value={String(oi)} id={`q${qi}-o${oi}`} />
+                        <Label htmlFor={`q${qi}-o${oi}`} className="text-sm text-muted-foreground cursor-pointer">
+                          {opt}
+                        </Label>
+                        {checked && oi === q.correct && <CheckCircle2 className="w-3.5 h-3.5 text-green-400" />}
                       </div>
-                    </div>
-                  </TabsContent>
+                    ))}
+                  </RadioGroup>
+                </Card>
+              );
+            })}
+          </div>
+          <Button className="mt-4" onClick={handleCheck} disabled={Object.keys(answers).length < quizData.length}>
+            Проверить
+          </Button>
+        </section>
 
-                  <TabsContent value="code" className="mt-6">
-                    <Card className="bg-card/50 backdrop-blur-sm border-primary/20 shadow-glow-cyan overflow-hidden">
-                      <div className="bg-gradient-cyber p-3 flex items-center justify-between border-b border-primary/20">
-                        <div className="flex items-center gap-2">
-                          <div className="w-3 h-3 rounded-full bg-destructive" />
-                          <div className="w-3 h-3 rounded-full bg-accent" />
-                          <div className="w-3 h-3 rounded-full bg-primary" />
-                          <span className="ml-4 text-sm text-foreground font-mono">
-                            {lesson.id === 3 ? "config.yaml" : "Agent.cs"}
-                          </span>
-                        </div>
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          onClick={() => {
-                            navigator.clipboard.writeText(lesson.code);
-                            toast.success("Код скопирован");
-                          }}
-                          className="hover:bg-primary/10"
-                        >
-                          Копировать
-                        </Button>
-                      </div>
-                      <div className="p-6 overflow-x-auto">
-                        <pre className="text-sm">
-                          <code className="text-foreground font-mono leading-relaxed">
-                            {lesson.code}
-                          </code>
-                        </pre>
-                      </div>
-                    </Card>
-                  </TabsContent>
-
-                  <TabsContent value="video" className="mt-6">
-                    <Card className="bg-card/30 backdrop-blur-sm border-border overflow-hidden">
-                      <div className="aspect-video bg-muted/50 flex items-center justify-center relative">
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10" />
-                        <div className="relative z-10 text-center space-y-4">
-                          <Play className="w-16 h-16 mx-auto text-primary" />
-                          <p className="text-muted-foreground">
-                            Видео-урок будет доступен после запуска курса
-                          </p>
-                          <Button variant="outline" size="sm">
-                            Открыть видео
-                          </Button>
-                        </div>
-                      </div>
-                    </Card>
-                  </TabsContent>
-
-                  <TabsContent value="tasks" className="mt-6">
-                    <div className="space-y-3">
-                      {lesson.tasks.map((task, idx) => {
-                        const isCompleted = completedTasks[lesson.id]?.has(idx);
-                        return (
-                          <Card
-                            key={idx}
-                            className={`bg-card/30 backdrop-blur-sm border transition-all cursor-pointer ${
-                              isCompleted
-                                ? "border-primary/50 bg-primary/5"
-                                : "border-border hover:border-primary/30"
-                            }`}
-                            onClick={() => toggleTask(lesson.id, idx)}
-                          >
-                            <CardContent className="p-4">
-                              <div className="flex items-start gap-3">
-                                <div
-                                  className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${
-                                    isCompleted
-                                      ? "bg-primary border-primary"
-                                      : "border-muted-foreground/30"
-                                  }`}
-                                >
-                                  {isCompleted && (
-                                    <CheckSquare className="w-3 h-3 text-primary-foreground" />
-                                  )}
-                                </div>
-                                <div className="flex-1">
-                                  <span
-                                    className={`text-sm ${
-                                      isCompleted
-                                        ? "text-foreground line-through"
-                                        : "text-foreground/90"
-                                    }`}
-                                  >
-                                    {task}
-                                  </span>
-                                </div>
-                              </div>
-                            </CardContent>
-                          </Card>
-                        );
-                      })}
-                    </div>
-                  </TabsContent>
-                </Tabs>
-              </CardContent>
-            </Card>
-          ))}
-
-          {/* Completion CTA */}
-          <Card className="bg-gradient-cyber border-primary/30 shadow-glow-cyan">
-            <CardContent className="p-8 text-center space-y-4">
-              <h3 className="text-2xl font-bold text-foreground">
-                Готовы к следующему уровню?
-              </h3>
-              <p className="text-muted-foreground">
-                После завершения начального курса переходите к продвинутым техникам
-              </p>
-              <div className="flex gap-4 justify-center flex-wrap">
-                <Link to="/">
-                  <Button variant="outline" size="lg">
-                    Вернуться на главную
-                  </Button>
-                </Link>
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
-                  Начать продвинутый курс
+        {/* 6. NAVIGATION FOOTER */}
+        <div className="flex items-center justify-between pt-6 border-t border-border/50">
+          <Button variant="outline" asChild>
+            <Link to="/courses" className="flex items-center gap-2">
+              <ArrowLeft className="w-4 h-4" />
+              На карту обучения
+            </Link>
+          </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <span>
+                <Button variant="default" disabled className="flex items-center gap-2">
+                  Следующий урок
+                  <ArrowRight className="w-4 h-4" />
                 </Button>
-              </div>
-            </CardContent>
-          </Card>
+              </span>
+            </TooltipTrigger>
+            <TooltipContent>Скоро: Установка PyTorch + Unity</TooltipContent>
+          </Tooltip>
         </div>
       </div>
     </div>
