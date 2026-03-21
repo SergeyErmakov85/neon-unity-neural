@@ -3,8 +3,38 @@ import { BookOpen, Cpu, Layers, Settings, Code, Wrench, Rocket } from "lucide-re
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
+const TOC_ITEMS = [
+  { id: "installation", label: "1. Установка и настройка" },
+  { id: "pytorch-basics", label: "2. Основы PyTorch для ML-Agents" },
+  { id: "neural-networks", label: "3. Создание нейронных сетей" },
+  { id: "training", label: "4. Особенности PyTorch в ML-Agents" },
+];
+
 const UnityMLAgentsModule = () => {
   const navigate = useNavigate();
+  const [activeId, setActiveId] = useState<string>("");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        }
+      },
+      { rootMargin: "-20% 0px -60% 0px" }
+    );
+    TOC_ITEMS.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -27,26 +57,33 @@ const UnityMLAgentsModule = () => {
         </div>
       </div>
 
-      {/* Content */}
-      <div className="container mx-auto px-4 py-12 max-w-4xl space-y-12">
-
-        {/* Содержание */}
-        <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
-          <CardContent className="p-6">
-            <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-primary" />
+      {/* Two-column layout */}
+      <div className="container mx-auto px-4 py-12 flex gap-8">
+        {/* Sticky sidebar TOC */}
+        <aside className="hidden lg:block w-64 shrink-0">
+          <nav className="sticky top-24 space-y-1">
+            <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3 flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-primary" />
               Содержание
             </h2>
-            <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
-              <li><a href="#installation" className="text-primary hover:underline">Установка и настройка</a></li>
-              <li><a href="#pytorch-basics" className="text-primary hover:underline">Основы PyTorch для ML-Agents</a></li>
-              <li><a href="#neural-networks" className="text-primary hover:underline">Создание нейронных сетей для ML-Agents</a></li>
-              <li><a href="#training" className="text-primary hover:underline">Процесс обучения и конфигурация</a></li>
-              <li><a href="#example" className="text-primary hover:underline">Пример реализации</a></li>
-              <li><a href="#troubleshooting" className="text-primary hover:underline">Устранение неполадок</a></li>
-            </ol>
-          </CardContent>
-        </Card>
+            {TOC_ITEMS.map(({ id, label }) => (
+              <button
+                key={id}
+                onClick={() => scrollTo(id)}
+                className={`block w-full text-left text-sm px-3 py-2 rounded-md transition-colors cursor-pointer border-l-2 ${
+                  activeId === id
+                    ? "border-primary text-primary bg-primary/10 font-medium"
+                    : "border-transparent text-muted-foreground hover:text-foreground hover:bg-muted/30"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </nav>
+        </aside>
+
+        {/* Main content */}
+        <div className="flex-1 max-w-4xl space-y-12">
 
         {/* Введение */}
         <section className="space-y-4">
