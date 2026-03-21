@@ -89,6 +89,32 @@ const UnityMLAgentsModule = () => {
 
           <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
             <CardContent className="p-6 space-y-4">
+              <h3 className="text-lg font-semibold text-foreground">Установка Anaconda Navigator</h3>
+              <p className="text-muted-foreground">
+                Anaconda — менеджер пакетов и виртуальных сред, который упрощает управление зависимостями Python для ML-проектов.
+              </p>
+              <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
+                <li>Перейдите на официальный сайт: <a href="https://www.anaconda.com/download" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">anaconda.com/download</a></li>
+                <li>Скачайте установщик для вашей ОС (Windows / macOS / Linux)</li>
+                <li>Запустите установщик и следуйте инструкциям (рекомендуется установка «Just Me»)</li>
+                <li>После установки откройте терминал (или Anaconda Prompt на Windows) и проверьте:</li>
+              </ol>
+              <pre className="bg-background/80 border border-border/50 rounded-lg p-4 overflow-x-auto text-sm text-foreground">
+{`# Проверяем, что conda установлена
+conda --version
+# conda 24.x.x
+
+# Обновляем conda до последней версии
+conda update conda -y`}
+              </pre>
+              <p className="text-muted-foreground text-sm">
+                💡 <strong className="text-foreground">Совет:</strong> На Windows используйте «Anaconda Prompt» вместо стандартной командной строки — в ней conda доступна сразу после установки.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
+            <CardContent className="p-6 space-y-4">
               <h3 className="text-lg font-semibold text-foreground">Установка Unity</h3>
               <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
                 <li>Скачайте и установите Unity Hub с официального сайта Unity</li>
