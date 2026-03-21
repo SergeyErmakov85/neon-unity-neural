@@ -100,10 +100,23 @@ const UnityMLAgentsModule = () => {
 
           <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
             <CardContent className="p-6 space-y-4">
-              <h3 className="text-lg font-semibold text-foreground">Установка Python и PyTorch</h3>
+              <h3 className="text-lg font-semibold text-foreground">Создание виртуальной среды и установка PyTorch</h3>
               <ol className="list-decimal list-inside space-y-2 text-muted-foreground mb-4">
-                <li>Скачайте и установите Python 3.10.x с официального сайта Python</li>
-                <li>Установите PyTorch с поддержкой CUDA или CPU-версию:</li>
+                <li>Создайте виртуальную среду с Python 3.10 через conda:</li>
+              </ol>
+              <pre className="bg-background/80 border border-border/50 rounded-lg p-4 overflow-x-auto text-sm text-foreground">
+{`# Создаём виртуальную среду с именем "mlagents-env" и Python 3.10
+conda create -n mlagents-env python=3.10 -y
+
+# Активируем среду
+conda activate mlagents-env
+
+# Проверяем версию Python
+python --version
+# Python 3.10.x`}
+              </pre>
+              <ol className="list-decimal list-inside space-y-2 text-muted-foreground mb-4" start={2}>
+                <li>Установите PyTorch внутри активированной среды:</li>
               </ol>
               <pre className="bg-background/80 border border-border/50 rounded-lg p-4 overflow-x-auto text-sm text-foreground">
 {`# Для CUDA версии (если у вас есть NVIDIA GPU)
