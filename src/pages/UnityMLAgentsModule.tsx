@@ -200,8 +200,8 @@ pip install -e ./ml-agents`}
 {`# Убедитесь, что виртуальная среда активирована
 conda activate mlagents-env
 
-# Клонируем репозиторий с конкретным релизом (Release 21)
-git clone --branch release_21 https://github.com/Unity-Technologies/ml-agents.git
+# Клонируем репозиторий с конкретным релизом (Release 23)
+git clone --branch release_23 https://github.com/Unity-Technologies/ml-agents.git
 cd ml-agents`}
               </pre>
 
@@ -241,7 +241,7 @@ mlagents-learn --help
 mlagents-learn config/ppo/3DBall.yaml --run-id=test_run`}
               </pre>
               <p className="text-xs text-muted-foreground mt-2">
-                ⚠️ Убедитесь, что версия Unity-пакета и Python-пакетов совпадают (например, Release 21).
+                ⚠️ Убедитесь, что версия Unity-пакета и Python-пакетов совпадают (например, Release 23).
                 Несовпадение версий — частая причина ошибок при подключении.
               </p>
             </CardContent>
