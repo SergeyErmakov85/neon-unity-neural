@@ -241,7 +241,7 @@ mlagents-learn --help
 mlagents-learn config/ppo/3DBall.yaml --run-id=test_run`}
               </pre>
               <p className="text-xs text-muted-foreground mt-2">
-                ⚠️ Убедитесь, что версия Unity-пакета и Python-пакетов совпадают (например, Release 21).
+                ⚠️ Убедитесь, что версия Unity-пакета и Python-пакетов совпадают (например, Release 23).
                 Несовпадение версий — частая причина ошибок при подключении.
               </p>
             </CardContent>
