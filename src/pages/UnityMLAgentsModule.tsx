@@ -216,6 +216,9 @@ pip install torch torchvision torchaudio`}
 cd ml-agents
 
 # Установка основного пакета ML-Agents
+# Из корневой директории репозитория выполните:
+pip3 install torch -f https://download.pytorch.org/whl/torch_stable.html
+
 pip install -e ./ml-agents-envs
 pip install -e ./ml-agents`}
               </pre>
