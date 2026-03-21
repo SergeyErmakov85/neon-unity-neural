@@ -200,8 +200,8 @@ pip install -e ./ml-agents`}
 {`# Убедитесь, что виртуальная среда активирована
 conda activate mlagents-env
 
-# Клонируем репозиторий с конкретным релизом (Release 21)
-git clone --branch release_21 https://github.com/Unity-Technologies/ml-agents.git
+# Клонируем репозиторий с конкретным релизом (Release 23)
+git clone --branch release_23 https://github.com/Unity-Technologies/ml-agents.git
 cd ml-agents`}
               </pre>
 
