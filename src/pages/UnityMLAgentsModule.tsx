@@ -170,7 +170,6 @@ pip install torch torchvision torchaudio`}
                 <li>Нажмите «+» в верхнем левом углу</li>
                 <li>Выберите «Add package from git URL...»</li>
                 <li>Введите <code className="bg-background/80 px-2 py-0.5 rounded text-primary text-xs">com.unity.ml-agents</code> и нажмите «Add»</li>
-                <li>Аналогично добавьте <code className="bg-background/80 px-2 py-0.5 rounded text-primary text-xs">com.unity.ml-agents.extensions</code></li>
               </ol>
 
               <h4 className="text-md font-semibold text-foreground mt-4">Python пакеты ML-Agents</h4>
@@ -182,6 +181,69 @@ cd ml-agents
 pip install -e ./ml-agents-envs
 pip install -e ./ml-agents`}
               </pre>
+            </CardContent>
+          </Card>
+
+          {/* Advanced Installation */}
+          <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
+            <CardContent className="p-6 space-y-4">
+              <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
+                🔧 Advanced Installation — Продвинутая установка
+              </h3>
+              <p className="text-muted-foreground">
+                Для полного контроля над версиями и возможности модификации исходного кода ML-Agents
+                рекомендуется установка напрямую из GitHub-репозитория.
+              </p>
+
+              <h4 className="text-md font-semibold text-foreground mt-2">1. Клонируем репозиторий ML-Agents</h4>
+              <pre className="bg-background/80 border border-border/50 rounded-lg p-4 overflow-x-auto text-sm text-foreground">
+{`# Убедитесь, что виртуальная среда активирована
+conda activate mlagents-env
+
+# Клонируем репозиторий с конкретным релизом (Release 21)
+git clone --branch release_21 https://github.com/Unity-Technologies/ml-agents.git
+cd ml-agents`}
+              </pre>
+
+              <h4 className="text-md font-semibold text-foreground mt-2">2. Устанавливаем Python-пакеты из локального репозитория</h4>
+              <pre className="bg-background/80 border border-border/50 rounded-lg p-4 overflow-x-auto text-sm text-foreground">
+{`# Установка среды взаимодействия с Unity
+pip install -e ./ml-agents-envs
+
+# Установка основного пакета обучения
+pip install -e ./ml-agents
+
+# (Опционально) Установка расширений
+pip install -e ./ml-agents-extensions`}
+              </pre>
+              <p className="text-xs text-muted-foreground">
+                Флаг <code className="bg-background/80 px-1.5 py-0.5 rounded text-primary">-e</code> (editable mode)
+                позволяет вносить изменения в исходный код пакетов без переустановки.
+              </p>
+
+              <h4 className="text-md font-semibold text-foreground mt-2">3. Подключаем локальный Unity-пакет</h4>
+              <p className="text-muted-foreground">
+                Вместо установки через Package Manager по имени, можно подключить пакет из склонированного репозитория:
+              </p>
+              <ol className="list-decimal list-inside space-y-2 text-muted-foreground">
+                <li>Откройте Unity → Window → Package Manager</li>
+                <li>Нажмите «+» → «Add package from disk...»</li>
+                <li>Укажите путь <code className="bg-background/80 px-1.5 py-0.5 rounded text-primary text-xs">ml-agents/com.unity.ml-agents/package.json</code></li>
+                <li>Повторите для <code className="bg-background/80 px-1.5 py-0.5 rounded text-primary text-xs">ml-agents/com.unity.ml-agents.extensions/package.json</code></li>
+              </ol>
+
+              <h4 className="text-md font-semibold text-foreground mt-2">4. Проверка</h4>
+              <pre className="bg-background/80 border border-border/50 rounded-lg p-4 overflow-x-auto text-sm text-foreground">
+{`# Проверяем версию mlagents
+mlagents-learn --help
+
+# Запускаем один из примеров для теста
+mlagents-learn config/ppo/3DBall.yaml --run-id=test_run`}
+              </pre>
+              <p className="text-xs text-muted-foreground mt-2">
+                ⚠️ Убедитесь, что версия Unity-пакета и Python-пакетов совпадают (например, Release 21).
+                Несовпадение версий — частая причина ошибок при подключении.
+              </p>
             </CardContent>
           </Card>
 
