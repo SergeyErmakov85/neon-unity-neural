@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { BookOpen, Cpu, Layers, Settings, Code, Wrench, Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const UnityMLAgentsModule = () => {
   const navigate = useNavigate();
