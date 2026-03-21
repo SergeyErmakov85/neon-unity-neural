@@ -248,7 +248,10 @@ cd ml-agents`}
 
               <h4 className="text-md font-semibold text-foreground mt-2">2. Устанавливаем Python-пакеты из локального репозитория</h4>
               <pre className="bg-background/80 border border-border/50 rounded-lg p-4 overflow-x-auto text-sm text-foreground">
-{`# Установка среды взаимодействия с Unity
+{`# Из корневой директории репозитория выполните:
+pip3 install torch -f https://download.pytorch.org/whl/torch_stable.html
+
+# Установка среды взаимодействия с Unity
 pip install -e ./ml-agents-envs
 
 # Установка основного пакета обучения
