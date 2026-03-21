@@ -503,7 +503,8 @@ torch.onnx.export(network, dummy_input, "model.onnx")`}
           </Card>
         </section>
 
-      </div>
+        </div>{/* end flex-1 main content */}
+      </div>{/* end flex container */}
     </div>
   );
 };
