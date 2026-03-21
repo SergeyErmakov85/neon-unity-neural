@@ -131,8 +131,8 @@ conda update conda -y`}
                 <li>Создайте виртуальную среду с Python 3.10 через conda:</li>
               </ol>
               <pre className="bg-background/80 border border-border/50 rounded-lg p-4 overflow-x-auto text-sm text-foreground">
-{`# Создаём виртуальную среду с именем "mlagents-env" и Python 3.10
-conda create -n mlagents-env python=3.10 -y
+{`# Создаём виртуальную среду с именем "mlagents-env" и Python 3.10.12
+conda create -n mlagents-env python=3.10.12 -y
 
 # Активируем среду
 conda activate mlagents-env
