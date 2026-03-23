@@ -73,10 +73,6 @@ const colorConfig = {
 const UniqueValueSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
     <section className="py-20 px-4 relative overflow-hidden">
       {/* Background Effects */}
@@ -112,9 +108,10 @@ const UniqueValueSection = () => {
                        style={{ height: '1px' }} />
                 )}
 
-                <button
-                  onClick={() => toggle(index)}
-                  className={`w-full text-left transition-all duration-300 border-b ${
+                <div
+                  onMouseEnter={() => setOpenIndex(index)}
+                  onMouseLeave={() => setOpenIndex(null)}
+                  className={`w-full text-left transition-all duration-300 border-b cursor-default ${
                     isOpen ? colors.activeBorder : 'border-border/30'
                   } ${isOpen ? colors.activeBg : 'hover:bg-muted/30'}`}
                 >
@@ -152,7 +149,7 @@ const UniqueValueSection = () => {
                       {value.description}
                     </p>
                   </div>
-                </button>
+                </div>
               </div>
             );
           })}
