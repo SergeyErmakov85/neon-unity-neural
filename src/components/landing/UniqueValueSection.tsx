@@ -1,46 +1,82 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { FlaskConical, Gamepad2, GraduationCap, Repeat, Eye, Zap } from "lucide-react";
+import { useState } from "react";
+import { FlaskConical, Gamepad2, GraduationCap, Repeat, Eye, Zap, ChevronDown } from "lucide-react";
 
 const values = [
   {
     icon: Repeat,
     title: "Воспроизводимые эксперименты",
     description: "Каждый проект включает фиксированные seed-значения, версии зависимостей и детальные инструкции. Получите те же результаты, что и в примерах",
-    color: "primary",
+    color: "primary" as const,
   },
   {
     icon: Gamepad2,
     title: "Реальные игровые среды",
     description: "Не абстрактные задачи, а полноценные Unity-проекты. Обучайте агентов в 3D-мирах с физикой, визуализацией и интерактивностью",
-    color: "secondary",
+    color: "secondary" as const,
   },
   {
     icon: FlaskConical,
     title: "Научный подход",
     description: "Следуем лучшим практикам из исследований. Алгоритмы реализованы согласно оригинальным статьям с понятными объяснениями",
-    color: "accent",
+    color: "accent" as const,
   },
   {
     icon: Eye,
     title: "Визуализация обучения",
     description: "Наблюдайте за процессом в реальном времени. Графики наград, траектории агентов, распределения действий — всё визуализировано",
-    color: "primary",
+    color: "primary" as const,
   },
   {
     icon: GraduationCap,
     title: "От основ до продвинутого",
     description: "Структурированная программа обучения. Начните с базовых концепций и дойдите до state-of-the-art алгоритмов",
-    color: "secondary",
+    color: "secondary" as const,
   },
   {
     icon: Zap,
     title: "Практика с первого дня",
     description: "Никакой месячной подготовки. Запустите первого агента в первый же день обучения и сразу увидите результаты",
-    color: "accent",
+    color: "accent" as const,
   },
 ];
 
+const colorConfig = {
+  primary: {
+    number: "text-primary",
+    border: "border-primary/20",
+    activeBorder: "border-primary/60",
+    text: "text-primary",
+    bg: "bg-primary/5",
+    activeBg: "bg-primary/10",
+    line: "bg-primary/40",
+  },
+  secondary: {
+    number: "text-secondary",
+    border: "border-secondary/20",
+    activeBorder: "border-secondary/60",
+    text: "text-secondary",
+    bg: "bg-secondary/5",
+    activeBg: "bg-secondary/10",
+    line: "bg-secondary/40",
+  },
+  accent: {
+    number: "text-accent",
+    border: "border-accent/20",
+    activeBorder: "border-accent/60",
+    text: "text-accent",
+    bg: "bg-accent/5",
+    activeBg: "bg-accent/10",
+    line: "bg-accent/40",
+  },
+};
+
 const UniqueValueSection = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <section className="py-20 px-4 relative overflow-hidden">
       {/* Background Effects */}
@@ -62,52 +98,62 @@ const UniqueValueSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="max-w-3xl mx-auto space-y-0">
           {values.map((value, index) => {
             const Icon = value.icon;
-            const colorClasses = {
-              primary: {
-                border: "border-primary/20 hover:border-primary/50",
-                shadow: "hover:shadow-glow-cyan",
-                text: "text-primary",
-                gradient: "from-primary/20 via-primary/10 to-transparent",
-              },
-              secondary: {
-                border: "border-secondary/20 hover:border-secondary/50",
-                shadow: "hover:shadow-glow-purple",
-                text: "text-secondary",
-                gradient: "from-secondary/20 via-secondary/10 to-transparent",
-              },
-              accent: {
-                border: "border-accent/20 hover:border-accent/50",
-                shadow: "hover:shadow-glow-pink",
-                text: "text-accent",
-                gradient: "from-accent/20 via-accent/10 to-transparent",
-              },
-            };
-            
-            const colors = colorClasses[value.color as keyof typeof colorClasses];
+            const colors = colorConfig[value.color];
+            const isOpen = openIndex === index;
 
             return (
-              <Card
-                key={index}
-                className={`group bg-card/50 backdrop-blur-sm ${colors.border} ${colors.shadow} transition-all duration-300 hover:-translate-y-1 overflow-hidden`}
-              >
-                {/* Gradient overlay */}
-                <div className={`absolute top-0 left-0 right-0 h-24 bg-gradient-to-b ${colors.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-                
-                <CardContent className="p-6 space-y-4 relative">
-                  <div className="w-12 h-12 rounded-lg bg-card border border-border/50 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Icon className={`w-6 h-6 ${colors.text}`} />
+              <div key={index} className="relative">
+                {/* Connecting line */}
+                {index < values.length - 1 && (
+                  <div className={`absolute left-6 top-full w-px h-0 ${colors.line} z-0`} 
+                       style={{ height: '1px' }} />
+                )}
+
+                <button
+                  onClick={() => toggle(index)}
+                  className={`w-full text-left transition-all duration-300 border-b ${
+                    isOpen ? colors.activeBorder : 'border-border/30'
+                  } ${isOpen ? colors.activeBg : 'hover:bg-muted/30'}`}
+                >
+                  <div className="flex items-center gap-5 py-5 px-4 md:px-6">
+                    {/* Number */}
+                    <span className={`text-sm font-mono font-bold ${colors.number} opacity-60 min-w-[2rem] text-right`}>
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+
+                    {/* Icon */}
+                    <div className={`w-10 h-10 rounded-lg ${colors.bg} flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? 'scale-110' : ''}`}>
+                      <Icon className={`w-5 h-5 ${colors.text}`} />
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-lg font-bold text-foreground flex-1">
+                      {value.title}
+                    </h3>
+
+                    {/* Chevron */}
+                    <ChevronDown
+                      className={`w-5 h-5 text-muted-foreground transition-transform duration-300 shrink-0 ${
+                        isOpen ? 'rotate-180' : ''
+                      }`}
+                    />
                   </div>
-                  <h3 className="text-lg font-bold text-foreground">
-                    {value.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {value.description}
-                  </p>
-                </CardContent>
-              </Card>
+
+                  {/* Expandable description */}
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ease-out ${
+                      isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <p className="text-sm text-muted-foreground leading-relaxed px-4 md:px-6 pb-5 pl-[5.75rem]">
+                      {value.description}
+                    </p>
+                  </div>
+                </button>
+              </div>
             );
           })}
         </div>
