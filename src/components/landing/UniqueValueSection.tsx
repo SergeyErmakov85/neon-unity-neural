@@ -108,9 +108,10 @@ const UniqueValueSection = () => {
                        style={{ height: '1px' }} />
                 )}
 
-                <button
-                  onClick={() => toggle(index)}
-                  className={`w-full text-left transition-all duration-300 border-b ${
+                <div
+                  onMouseEnter={() => setOpenIndex(index)}
+                  onMouseLeave={() => setOpenIndex(null)}
+                  className={`w-full text-left transition-all duration-300 border-b cursor-default ${
                     isOpen ? colors.activeBorder : 'border-border/30'
                   } ${isOpen ? colors.activeBg : 'hover:bg-muted/30'}`}
                 >
