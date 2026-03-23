@@ -73,10 +73,6 @@ const colorConfig = {
 const UniqueValueSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
     <section className="py-20 px-4 relative overflow-hidden">
       {/* Background Effects */}
