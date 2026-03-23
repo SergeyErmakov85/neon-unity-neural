@@ -149,7 +149,7 @@ const UniqueValueSection = () => {
                       {value.description}
                     </p>
                   </div>
-                </button>
+                </div>
               </div>
             );
           })}
