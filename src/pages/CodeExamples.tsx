@@ -43,7 +43,7 @@ interface Snippet {
   code: string;
 }
 
-const CATEGORIES = ["DQN", "PPO", "SAC", "MA-POCA", "Environments", "Utils", "Visualization"];
+const CATEGORIES = ["DQN", "PPO", "SAC", "REINFORCE", "MA-POCA", "Environments", "Utils", "Visualization"];
 const LANGUAGES: { value: Lang; label: string }[] = [
   { value: "python", label: "Python" },
   { value: "csharp", label: "C# (Unity)" },
@@ -65,7 +65,7 @@ const snippets: Snippet[] = [
     difficulty: "beginner",
     popularity: 95,
     date: "2025-12-01",
-    colabUrl: "https://colab.research.google.com/",
+    colabUrl: "/Taxi-v3.ipynb",
     code: `import random
 from collections import deque
 import torch
@@ -580,6 +580,102 @@ public class TeamAgent : Agent
     }
 }`,
   },
+  {
+    id: "gridsensor-patch",
+    title: "GridSensor Channel Patch",
+    description: "Патч для исправления порядка каналов 4D тензора GridSensor в PyTorch.",
+    categories: ["Environments", "Utils"],
+    language: "python" as Lang,
+    difficulty: "intermediate" as Difficulty,
+    popularity: 88,
+    date: "2026-03-01",
+    code: `def patch_gridsensor_obs(obs: torch.Tensor) -> torch.Tensor:
+    """
+    Unity ML-Agents GridSensor возвращает (B, H, W, C).
+    PyTorch Conv2d ожидает (B, C, H, W).
+    """
+    if obs.dim() == 4:
+        # (B, H, W, C) -> (B, C, H, W)
+        return obs.permute(0, 3, 1, 2).contiguous()
+    elif obs.dim() == 3:
+        # (H, W, C) -> (C, H, W)
+        return obs.permute(2, 0, 1).contiguous()
+    return obs`,
+  },
+  {
+    id: "unity-onnx-wrapper",
+    title: "UnityONNXWrapper",
+    description: "Обёртка для экспорта PyTorch модели в ONNX с метаданными Unity ML-Agents.",
+    categories: ["Utils"],
+    language: "python" as Lang,
+    difficulty: "advanced" as Difficulty,
+    popularity: 92,
+    date: "2026-03-05",
+    code: `class UnityONNXWrapper(nn.Module):
+    VERSION_NUMBER = torch.Tensor([3.0])
+    MEMORY_SIZE    = torch.Tensor([0])
+    IS_CONTINUOUS  = torch.Tensor([1])
+
+    def __init__(self, policy: nn.Module):
+        super().__init__()
+        self.policy = policy
+
+    def forward(self, obs: torch.Tensor):
+        action = self.policy(obs)
+        return (action, self.VERSION_NUMBER,
+                self.MEMORY_SIZE, self.IS_CONTINUOUS)
+
+# Экспорт
+wrapper = UnityONNXWrapper(trained_model)
+torch.onnx.export(wrapper, dummy_input, "policy.onnx",
+                  opset_version=9,
+                  input_names=["obs_0"],
+                  output_names=["continuous_actions",
+                                "version_number",
+                                "memory_size",
+                                "is_continuous_control"])`,
+  },
+  {
+    id: "reinforce-with-baseline",
+    title: "REINFORCE с baseline",
+    description: "Реализация REINFORCE с value baseline для снижения дисперсии gradient estimator.",
+    categories: ["REINFORCE", "Utils"],
+    language: "python" as Lang,
+    difficulty: "intermediate" as Difficulty,
+    popularity: 90,
+    date: "2026-03-10",
+    colabUrl: "/FoodCollector_REINFORCE_v3.ipynb",
+    code: `def reinforce_update(policy, value_net, optimizer_p, optimizer_v,
+                     states, actions, rewards, gamma=0.99):
+    # Дисконтированные возвраты
+    G, returns = 0, []
+    for r in reversed(rewards):
+        G = r + gamma * G
+        returns.insert(0, G)
+    returns = torch.tensor(returns, dtype=torch.float32)
+    returns = (returns - returns.mean()) / (returns.std() + 1e-8)
+
+    states_t  = torch.FloatTensor(states)
+    actions_t = torch.LongTensor(actions)
+
+    # Baseline: V(s)
+    values  = value_net(states_t).squeeze()
+    advantages = returns - values.detach()
+
+    # Policy loss (REINFORCE)
+    logits    = policy(states_t)
+    log_probs = F.log_softmax(logits, dim=-1)
+    log_probs_a = log_probs.gather(1, actions_t.unsqueeze(1)).squeeze()
+    policy_loss = -(log_probs_a * advantages).mean()
+
+    # Value loss (MSE)
+    value_loss = F.mse_loss(values, returns)
+
+    optimizer_p.zero_grad(); policy_loss.backward(); optimizer_p.step()
+    optimizer_v.zero_grad(); value_loss.backward();  optimizer_v.step()
+
+    return policy_loss.item(), value_loss.item()`,
+  },
 ];
 
 /* ─── Sort options ─── */
@@ -888,14 +984,22 @@ const CodeExamples = () => {
                           {isExpanded ? "Свернуть" : "Открыть полностью"}
                         </Button>
                       )}
-                      {snippet.colabUrl && (
-                        <Button variant="outline" size="sm" asChild className="gap-1.5">
-                          <a href={snippet.colabUrl} target="_blank" rel="noopener noreferrer">
+                      {snippet.colabUrl && (() => {
+                        const isSoon = snippet.colabUrl === "https://colab.research.google.com/";
+                        return isSoon ? (
+                          <Button variant="outline" size="sm" disabled className="gap-1.5 opacity-50">
                             <ExternalLink className="w-3.5 h-3.5" />
-                            Google Colab
-                          </a>
-                        </Button>
-                      )}
+                            Colab (soon)
+                          </Button>
+                        ) : (
+                          <Button variant="outline" size="sm" asChild className="gap-1.5 border-green-500/40 text-green-400 hover:bg-green-500/10 hover:border-green-500/60">
+                            <a href={snippet.colabUrl} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="w-3.5 h-3.5" />
+                              Открыть в Colab
+                            </a>
+                          </Button>
+                        );
+                      })()}
                     </div>
                   </CardContent>
                 </Card>
