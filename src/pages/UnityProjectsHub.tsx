@@ -1,9 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, ArrowRight, Gamepad2, CircleDot, Grid3X3, Car, Users, Apple } from "lucide-react";
+import { ArrowLeft, ArrowRight, Gamepad2, CircleDot, Grid3X3, Car, Users, Apple, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const projects = [
+  {
+    id: "taxi-v3",
+    name: "Taxi-v3: Q-Learning",
+    description: "Классическая среда Gymnasium: табличный Q-Learning, epsilon-greedy и REINFORCE на одном примере.",
+    difficulty: "Начальный",
+    actions: "Дискретные",
+    algorithm: "Q-Learning / REINFORCE",
+    observations: "500 дискретных состояний",
+    link: "/unity-projects/taxi-v3",
+    icon: MapPin,
+    ready: true,
+  },
   {
     id: "food-collector",
     name: "FoodCollector: REINFORCE",
