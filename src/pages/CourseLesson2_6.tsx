@@ -3,53 +3,62 @@ import ProGate from "@/components/ProGate";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import Quiz from "@/components/Quiz";
 import { Card, CardContent } from "@/components/ui/card";
-import { Lightbulb, BarChart3, AlertTriangle } from "lucide-react";
+import { Lightbulb, BarChart3, AlertTriangle, Activity, Eye } from "lucide-react";
 
 const quizQuestions = [
   {
-    question: "Какая встроенная система визуализации поддерживается ML-Agents?",
-    options: ["Matplotlib", "TensorBoard", "Weights & Biases", "Plotly"],
-    correctIndex: 1,
+    question: "Какой метрикой лучше всего отслеживать исследование среды агентом?",
+    options: [
+      "episode_reward_mean",
+      "policy_loss",
+      "policy_entropy",
+      "value_loss",
+    ],
+    correctIndex: 2,
+    explanation:
+      "policy_entropy показывает, насколько случайна политика. Высокая энтропия → агент активно исследует; падение к нулю → политика стала детерминированной.",
   },
   {
-    question: "Что указывает растущий value loss при стабильном reward?",
+    question: "Что означает резкий спад policy_entropy в самом начале обучения?",
     options: [
-      "Обучение идёт отлично",
-      "Critic не может предсказать returns — возможно переобучение или нестабильность",
+      "Агент нашёл оптимальную стратегию",
+      "Политика преждевременно схлопывается — агент перестал исследовать",
+      "Это нормальное поведение для REINFORCE",
       "Нужно увеличить learning rate",
-      "Value loss всегда растёт — это нормально",
     ],
     correctIndex: 1,
+    explanation:
+      "Раннее схлопывание энтропии — признак того, что агент зафиксировался на субоптимальном поведении. Решение: увеличить entropy_coeff (beta).",
   },
   {
-    question: "Что означает резкое падение entropy к нулю?",
+    question:
+      "Какой инструмент лучше всего подходит для сравнения нескольких запусков с разными гиперпараметрами?",
     options: [
-      "Агент обучился оптимальной политике",
-      "Политика стала детерминированной слишком рано — агент перестал исследовать",
-      "Entropy всегда падает к нулю — это нормально",
-      "Нужно уменьшить entropy coefficient",
+      "TensorBoard",
+      "Weights & Biases (W&B)",
+      "print() в консоль",
+      "Matplotlib",
     ],
     correctIndex: 1,
+    explanation:
+      "W&B хранит данные в облаке, автоматически логирует гиперпараметры и позволяет сравнивать запуски в интерактивных таблицах и графиках.",
   },
 ];
 
 const CourseLesson2_6 = () => {
   const preview = (
-    <>
-      <section>
-        <h2 className="text-2xl font-bold text-foreground mb-4">Зачем визуализировать обучение</h2>
-        <p className="text-muted-foreground leading-relaxed">
-          RL-обучение — процесс непредсказуемый. Без мониторинга вы не поймёте, обучается ли агент,
-          застрял ли он, или награды растут случайно. <strong className="text-foreground">TensorBoard</strong> и
-          <strong className="text-foreground"> Weights & Biases</strong> — два ключевых инструмента для
-          отслеживания прогресса.
-        </p>
-        <p className="text-muted-foreground leading-relaxed mt-3">
-          ML-Agents имеет встроенную интеграцию с TensorBoard — достаточно запустить команду,
-          и все метрики автоматически логируются.
-        </p>
-      </section>
-    </>
+    <section>
+      <h2 className="text-2xl font-bold text-foreground mb-4">
+        Зачем визуализировать обучение
+      </h2>
+      <p className="text-muted-foreground leading-relaxed">
+        RL-обучение — процесс непредсказуемый. Без мониторинга вы не поймёте,
+        обучается ли агент, застрял ли он, или награды растут случайно.{" "}
+        <strong className="text-foreground">TensorBoard</strong> и{" "}
+        <strong className="text-foreground">Weights &amp; Biases</strong> — два
+        ключевых инструмента для отслеживания прогресса.
+      </p>
+    </section>
   );
 
   return (
@@ -65,117 +74,217 @@ const CourseLesson2_6 = () => {
       <ProGate preview={preview}>
         {preview}
 
-        {/* TensorBoard integration */}
+        {/* ── Секция 1: Зачем нужен мониторинг ── */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">TensorBoard с ML-Agents</h2>
-          <CyberCodeBlock language="python" filename="terminal">
-{`# Запуск обучения (TensorBoard логи создаются автоматически)
-mlagents-learn config/trainer.yaml --run-id=experiment_01
+          <h2 className="text-2xl font-bold text-foreground mb-4">
+            Зачем нужен мониторинг
+          </h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Без мониторинга обучение RL-агента — <strong className="text-foreground">чёрный ящик</strong>.
+            Вы запускаете тренировку на часы или дни и не знаете, движется ли агент к цели
+            или уже давно застрял на плато. Мониторинг превращает обучение в управляемый процесс.
+          </p>
 
-# Логи сохраняются в: results/experiment_01/
-
-# Запуск TensorBoard
-tensorboard --logdir results --port 6006
-
-# Откройте в браузере: http://localhost:6006
-
-# Сравнение нескольких экспериментов
-tensorboard --logdir results  # Покажет все run-id`}
-          </CyberCodeBlock>
-        </section>
-
-        {/* Key metrics */}
-        <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">Ключевые метрики</h2>
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
-              { metric: "Cumulative Reward", desc: "Суммарная награда за эпизод. Главная метрика — должна расти.", icon: BarChart3, color: "text-primary" },
-              { metric: "Entropy", desc: "Мера случайности политики. Падает при обучении, но слишком быстрое падение → агент перестал исследовать.", icon: Lightbulb, color: "text-secondary" },
-              { metric: "Value Loss", desc: "Ошибка предсказания V(s). Должна сначала расти (critic учится), потом стабилизироваться.", icon: BarChart3, color: "text-accent" },
-              { metric: "Policy Loss", desc: "Потеря при обновлении политики. Нестабильная метрика — смотрите на тренд.", icon: BarChart3, color: "text-green-400" },
+              {
+                icon: BarChart3,
+                title: "episode_reward_mean",
+                desc: "Главная метрика — средняя награда за эпизод. Должна расти.",
+                color: "text-primary",
+              },
+              {
+                icon: Activity,
+                title: "policy_loss / value_loss",
+                desc: "Ошибки обновления политики и critic'а. Показывают стабильность обучения.",
+                color: "text-secondary",
+              },
+              {
+                icon: Eye,
+                title: "policy_entropy",
+                desc: "Мера случайности политики. Контролирует баланс исследования и эксплуатации.",
+                color: "text-accent",
+              },
+              {
+                icon: AlertTriangle,
+                title: "gradient_norm",
+                desc: "Норма градиентов. Слишком большая → взрыв, слишком маленькая → обучение застыло.",
+                color: "text-primary",
+              },
             ].map((item, i) => (
-              <div key={i} className="flex gap-3 items-start p-4 rounded-lg bg-card/40 border border-border/30">
-                <item.icon className={`w-5 h-5 ${item.color} flex-shrink-0 mt-0.5`} />
-                <div>
-                  <p className="font-semibold text-sm text-foreground">{item.metric}</p>
-                  <p className="text-xs text-muted-foreground mt-1">{item.desc}</p>
-                </div>
-              </div>
+              <Card key={i} className="bg-card/60 backdrop-blur-sm border-border/30">
+                <CardContent className="p-4 flex gap-3 items-start">
+                  <item.icon className={`w-5 h-5 ${item.color} flex-shrink-0 mt-0.5`} />
+                  <div>
+                    <p className="font-semibold text-sm text-foreground font-mono">
+                      {item.title}
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-1">{item.desc}</p>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </section>
 
-        {/* Interpretation */}
+        {/* ── Секция 2: TensorBoard для PyTorch ── */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">Интерпретация графиков</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Card className="bg-card/50 border-green-500/30">
+          <h2 className="text-2xl font-bold text-foreground mb-4">
+            TensorBoard для PyTorch
+          </h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            PyTorch имеет встроенную интеграцию через{" "}
+            <code className="text-primary font-mono text-sm">torch.utils.tensorboard</code>.
+            Достаточно создать <code className="text-primary font-mono text-sm">SummaryWriter</code> и
+            логировать скаляры, гистограммы и графы.
+          </p>
+
+          <CyberCodeBlock language="python" filename="train_with_tensorboard.py">
+{`from torch.utils.tensorboard import SummaryWriter
+
+writer = SummaryWriter("runs/food_collector_reinforce_v3")
+
+for episode in range(num_episodes):
+    total_reward, loss = run_episode(env, policy, optimizer)
+
+    writer.add_scalar("Train/EpisodeReward", total_reward, episode)
+    writer.add_scalar("Train/PolicyLoss", loss, episode)
+    writer.add_scalar("Train/Entropy", entropy, episode)
+
+    if episode % 100 == 0:
+        for name, param in policy.named_parameters():
+            writer.add_histogram(f"Weights/{name}", param, episode)
+
+writer.close()
+
+# Запуск: tensorboard --logdir=runs`}
+          </CyberCodeBlock>
+
+          <Card className="bg-card/60 backdrop-blur-sm border-primary/20 mt-4">
+            <CardContent className="p-4 flex gap-3 items-start">
+              <Lightbulb className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <p className="text-sm text-muted-foreground">
+                <strong className="text-foreground">Совет:</strong> используйте{" "}
+                <code className="text-primary font-mono">add_histogram</code> каждые 100 эпизодов,
+                чтобы отслеживать распределение весов — это помогает выявить vanishing/exploding gradients.
+              </p>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* ── Секция 3: TensorBoard в Unity ML-Agents ── */}
+        <section>
+          <h2 className="text-2xl font-bold text-foreground mb-4">
+            TensorBoard в Unity ML-Agents
+          </h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            ML-Agents автоматически пишет логи TensorBoard в папку{" "}
+            <code className="text-primary font-mono text-sm">results/</code>. Вам нужно лишь
+            указать <code className="text-primary font-mono text-sm">run-id</code> при запуске —
+            и все метрики (reward, loss, entropy) появятся в TensorBoard.
+          </p>
+
+          <CyberCodeBlock language="python" filename="config/trainer.yaml">
+{`behaviors:
+  FoodCollector:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 1024
+      buffer_size: 10240
+      learning_rate: 3.0e-4
+      beta: 0.01          # entropy regularization
+      epsilon: 0.2        # PPO clip range
+      num_epoch: 3
+    network_settings:
+      normalize: true
+      hidden_units: 256
+      num_layers: 2
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+    max_steps: 500000
+    summary_freq: 5000    # Частота записи в TensorBoard
+
+# Запуск обучения:
+# mlagents-learn config/trainer.yaml --run-id=fc_ppo_v1
+#
+# Просмотр логов:
+# tensorboard --logdir results --port 6006`}
+          </CyberCodeBlock>
+        </section>
+
+        {/* ── Секция 4: Weights & Biases ── */}
+        <section>
+          <h2 className="text-2xl font-bold text-foreground mb-4">
+            Weights &amp; Biases (W&amp;B)
+          </h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            W&amp;B — облачная платформа для эксперимент-трекинга. В отличие от TensorBoard,
+            данные хранятся в облаке, а гиперпараметры логируются автоматически — идеально
+            для сравнения десятков запусков.
+          </p>
+
+          <CyberCodeBlock language="python" filename="train_with_wandb.py">
+{`import wandb
+
+wandb.init(
+    project="food-collector-rl",
+    name="reinforce-v3-baseline",
+    config={
+        "algorithm": "REINFORCE",
+        "learning_rate": 3e-4,
+        "gamma": 0.99,
+        "entropy_coeff": 0.01,
+    }
+)
+
+for episode in range(num_episodes):
+    total_reward, loss = run_episode(env, policy, optimizer)
+
+    wandb.log({
+        "episode": episode,
+        "reward": total_reward,
+        "loss": loss,
+        "epsilon": epsilon,
+    })
+
+wandb.finish()`}
+          </CyberCodeBlock>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            <Card className="bg-card/60 backdrop-blur-sm border-green-500/30">
               <CardContent className="p-4 space-y-2">
-                <h3 className="font-bold text-sm text-green-400">✅ Здоровое обучение</h3>
+                <h3 className="font-bold text-sm text-green-400">✅ Плюсы W&amp;B</h3>
                 <ul className="text-xs text-muted-foreground space-y-1">
-                  <li>• Reward стабильно растёт</li>
-                  <li>• Entropy плавно снижается</li>
-                  <li>• Value loss растёт, затем стабилизируется</li>
-                  <li>• Episode length уменьшается (агент быстрее решает задачу)</li>
+                  <li>• Облачное хранение — доступ из любого места</li>
+                  <li>• Автоматическое логирование гиперпараметров</li>
+                  <li>• Таблицы сравнения экспериментов</li>
+                  <li>• Командная работа и sharing</li>
                 </ul>
               </CardContent>
             </Card>
-            <Card className="bg-card/50 border-destructive/30">
+            <Card className="bg-card/60 backdrop-blur-sm border-secondary/30">
               <CardContent className="p-4 space-y-2">
-                <h3 className="font-bold text-sm text-destructive">⚠️ Проблемы</h3>
+                <h3 className="font-bold text-sm text-secondary">📊 TensorBoard</h3>
                 <ul className="text-xs text-muted-foreground space-y-1">
-                  <li>• Reward на плато → уменьшите LR или добавьте curriculum</li>
-                  <li>• Entropy → 0 быстро → увеличьте beta (entropy coef)</li>
-                  <li>• Value loss растёт бесконечно → уменьшите LR</li>
-                  <li>• Reward осциллирует → уменьшите epsilon (PPO clip)</li>
+                  <li>• Локальный — не нужен аккаунт</li>
+                  <li>• Встроен в PyTorch и ML-Agents</li>
+                  <li>• Гистограммы весов и графы</li>
+                  <li>• Быстрый старт без настройки</li>
                 </ul>
               </CardContent>
             </Card>
           </div>
         </section>
 
-        {/* W&B */}
-        <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">Weights & Biases</h2>
-          <CyberCodeBlock language="python" filename="wandb_integration.py">
-{`import wandb
-from stable_baselines3 import PPO
-from stable_baselines3.common.callbacks import BaseCallback
-
-class WandbCallback(BaseCallback):
-    def __init__(self):
-        super().__init__()
-
-    def _on_step(self):
-        if self.n_calls % 1000 == 0:
-            wandb.log({
-                "reward": self.locals.get("rewards", [0])[-1],
-                "timesteps": self.num_timesteps,
-            })
-        return True
-
-# Инициализация W&B
-wandb.init(project="rl-course", name="ppo-cartpole")
-
-model = PPO("MlpPolicy", "CartPole-v1", verbose=1)
-model.learn(total_timesteps=100000, callback=WandbCallback())
-
-wandb.finish()`}
-          </CyberCodeBlock>
-
-          <Card className="bg-card/40 border-primary/20 mt-4">
-            <CardContent className="p-4 flex gap-3 items-start">
-              <Lightbulb className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div className="text-sm text-muted-foreground">
-                <strong className="text-foreground">W&B vs TensorBoard:</strong> W&B хранит данные в облаке,
-                позволяет сравнивать эксперименты в команде и автоматически логирует гиперпараметры.
-                Идеально для командных проектов.
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        <Quiz title="Проверь себя: Визуализация" questions={quizQuestions} />
+        {/* ── Quiz ── */}
+        <Quiz
+          title="Проверь себя: Мониторинг обучения"
+          questions={quizQuestions}
+          lessonPath="/courses/2-6"
+          nextLesson={{ path: "/courses/project-2", title: "Проект 2" }}
+        />
       </ProGate>
     </LessonLayout>
   );
