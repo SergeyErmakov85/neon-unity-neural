@@ -9,7 +9,7 @@ import { Progress } from "@/components/ui/progress";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
-import { getProgress, ALL_BADGES, getLevel, getLevelProgress } from "@/lib/gamification";
+import { getProgress, ALL_BADGES, getLevel, getLevelProgress, getLevelCompletionPercent } from "@/lib/gamification";
 import { User, Camera, BookOpen, Trophy, Settings, Lock, Trash2, Save, ArrowRight } from "lucide-react";
 import Navbar from "@/components/landing/Navbar";
 
@@ -284,7 +284,34 @@ const Profile = () => {
             </CardContent>
           </Card>
 
-          {/* Block 4 — Account Settings */}
+          {/* Block 4 — Module Progress */}
+          <Card className="border-primary/20 bg-card/80 backdrop-blur-xl">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-foreground">
+                <BookOpen className="w-5 h-5 text-primary" /> Прогресс по модулям
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-5">
+              {[
+                { label: "Уровень 1 — Основы RL", index: 0, color: "text-primary" },
+                { label: "Уровень 2 — Продвинутые методы", index: 1, color: "text-secondary" },
+                { label: "Уровень 3 — Мастерство", index: 2, color: "text-accent" },
+              ].map(({ label, index, color }) => {
+                const percent = getLevelCompletionPercent(index);
+                return (
+                  <div key={index}>
+                    <div className="flex justify-between text-sm mb-1.5">
+                      <span className={`font-medium ${color}`}>{label}</span>
+                      <span className="text-muted-foreground">{percent}%</span>
+                    </div>
+                    <Progress value={percent} className="h-2.5" />
+                  </div>
+                );
+              })}
+            </CardContent>
+          </Card>
+
+          {/* Block 5 — Account Settings */}
           <Card className="border-primary/20 bg-card/80 backdrop-blur-xl">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
