@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, ArrowRight, BookOpen, Shield, Target, Cpu, Code, Rocket } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Shield, Target, Cpu, Code, Rocket, FlaskConical } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
 import Quiz from "@/components/Quiz";
+import CyberCodeBlock from "@/components/CyberCodeBlock";
 
 const PPOModule = () => {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ const PPOModule = () => {
               <li><a href="#gae" className="text-secondary hover:underline">Generalized Advantage Estimation (GAE)</a></li>
               <li><a href="#architecture" className="text-secondary hover:underline">Архитектура Actor-Critic</a></li>
               <li><a href="#implementation" className="text-secondary hover:underline">Реализация на PyTorch</a></li>
+              <li><a href="#full-implementation" className="text-secondary hover:underline">Полная реализация PPO</a></li>
               <li><a href="#unity" className="text-secondary hover:underline">Конфигурация для Unity ML-Agents</a></li>
             </ol>
           </CardContent>
@@ -282,10 +284,95 @@ class PPOAgent(nn.Module):
           </Card>
         </section>
 
-        {/* 6. Unity ML-Agents */}
+        {/* 6. Полная реализация PPO */}
+        <section id="full-implementation" className="space-y-6">
+          <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
+            <FlaskConical className="w-6 h-6 text-secondary" /> 6. Полная реализация PPO (минимальная версия)
+          </h2>
+          <Card className="bg-card/60 backdrop-blur-sm border-primary/30">
+            <CardContent className="p-6 space-y-4">
+              <CyberCodeBlock language="python" filename="ppo_minimal.py">
+{`import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.distributions import MultivariateNormal
+import numpy as np
+
+class ActorCritic(nn.Module):
+    def __init__(self, obs_dim, action_dim):
+        super().__init__()
+        self.shared = nn.Sequential(
+            nn.Linear(obs_dim, 64), nn.Tanh(),
+            nn.Linear(64, 64), nn.Tanh(),
+        )
+        self.actor  = nn.Linear(64, action_dim)
+        self.critic = nn.Linear(64, 1)
+        self.log_std = nn.Parameter(torch.zeros(action_dim))
+
+    def forward(self, obs):
+        feat   = self.shared(obs)
+        mean   = self.actor(feat)
+        value  = self.critic(feat)
+        std    = torch.exp(self.log_std)
+        dist   = MultivariateNormal(mean, torch.diag(std))
+        return dist, value.squeeze(-1)
+
+def ppo_update(model, optimizer, obs, actions, old_log_probs,
+               advantages, returns, clip_eps=0.2, epochs=4):
+    for _ in range(epochs):
+        dist, values = model(obs)
+        new_log_probs = dist.log_prob(actions)
+        entropy = dist.entropy().mean()
+
+        # Clipped surrogate objective
+        ratio = torch.exp(new_log_probs - old_log_probs)
+        surr1 = ratio * advantages
+        surr2 = torch.clamp(ratio, 1 - clip_eps, 1 + clip_eps) * advantages
+
+        actor_loss  = -torch.min(surr1, surr2).mean()
+        critic_loss =  nn.functional.mse_loss(values, returns)
+        loss = actor_loss + 0.5 * critic_loss - 0.01 * entropy
+
+        optimizer.zero_grad()
+        loss.backward()
+        nn.utils.clip_grad_norm_(model.parameters(), 0.5)
+        optimizer.step()
+
+    return actor_loss.item(), critic_loss.item(), entropy.item()`}
+              </CyberCodeBlock>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-card/60 backdrop-blur-sm border-primary/30">
+            <CardContent className="p-6 space-y-4">
+              <h3 className="text-lg font-semibold text-foreground">Ключевые гиперпараметры PPO</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-border/50">
+                      <th className="text-left p-3 text-foreground">Параметр</th>
+                      <th className="text-left p-3 text-foreground">Типичное значение</th>
+                      <th className="text-left p-3 text-foreground">Описание</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-b border-border/30"><td className="p-3"><code className="text-primary text-xs">clip_eps</code></td><td className="p-3">0.1 — 0.3</td><td className="p-3">Клипинг соотношения вероятностей</td></tr>
+                    <tr className="border-b border-border/30"><td className="p-3"><code className="text-primary text-xs">epochs</code></td><td className="p-3">3 — 10</td><td className="p-3">Эпох обновления на один батч</td></tr>
+                    <tr className="border-b border-border/30"><td className="p-3"><code className="text-primary text-xs">gamma</code></td><td className="p-3">0.99</td><td className="p-3">Дисконтирование</td></tr>
+                    <tr className="border-b border-border/30"><td className="p-3"><code className="text-primary text-xs">lambda (GAE)</code></td><td className="p-3">0.95</td><td className="p-3">Λ в GAE</td></tr>
+                    <tr className="border-b border-border/30"><td className="p-3"><code className="text-primary text-xs">batch_size</code></td><td className="p-3">64 — 512</td><td className="p-3">Размер мини-батча</td></tr>
+                    <tr><td className="p-3"><code className="text-primary text-xs">entropy_coeff</code></td><td className="p-3">0.005 — 0.05</td><td className="p-3">Коэффициент бонуса энтропии</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* 7. Unity ML-Agents */}
         <section id="unity" className="space-y-6">
           <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
-            <Rocket className="w-6 h-6 text-secondary" /> 6. Конфигурация для Unity ML-Agents
+            <Rocket className="w-6 h-6 text-secondary" /> 7. Конфигурация для Unity ML-Agents
           </h2>
           <Card className="bg-card/60 backdrop-blur-sm border-secondary/20">
             <CardContent className="p-6 space-y-4">
