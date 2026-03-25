@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code2, Gamepad2, LineChart, BookOpen, Layers, Cpu } from "lucide-react";
+import { Code2, Gamepad2, LineChart, BookOpen, Layers, Cpu, FileCode2 } from "lucide-react";
 
 const features = [
   {
@@ -43,6 +43,14 @@ const features = [
     description: "Техники ускорения: параллельные среды, GPU-обучение, гиперпараметры. Эффективное использование ресурсов",
     color: "accent",
     gradient: "from-accent/20 to-accent/5",
+  },
+  {
+    icon: FileCode2,
+    title: "Jupyter-ноутбуки включены",
+    description: "Полностью рабочие .ipynb-файлы: Taxi-v3, FoodCollector REINFORCE. Скачай — запусти — получи результат. Никаких скрытых зависимостей.",
+    color: "primary",
+    gradient: "from-green-500/20 to-green-500/5",
+    customColor: "text-green-400 border-green-500/30 hover:border-green-500/60",
   },
 ];
 

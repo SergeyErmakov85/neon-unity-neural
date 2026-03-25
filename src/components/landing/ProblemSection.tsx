@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { BookX, Unlink, Brain, AlertTriangle } from "lucide-react";
+import { BookX, Unlink, Brain, AlertTriangle, FileX } from "lucide-react";
 
 const problems = [
   {
@@ -25,6 +25,12 @@ const problems = [
     title: "Отсутствие практики",
     description: "Нет пошаговых проектов, где можно увидеть результат своего обучения",
     color: "primary",
+  },
+  {
+    icon: FileX,
+    title: "Нет реального кода",
+    description: "Туториалы показывают теорию, но готовый воспроизводимый код для Unity ML-Agents с PyTorch найти сложно. Нужны рабочие ноутбуки, а не псевдокод.",
+    color: "accent",
   },
 ];
 
