@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
+import SEOHead from "@/components/SEOHead";
 import {
   Accordion,
   AccordionContent,
@@ -49,6 +50,11 @@ const OnnxSentisGuide = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="ONNX → Unity Sentis: Деплой RL-модели | RL Platform"
+        description="Пошаговый гайд по экспорту PyTorch модели в ONNX и инференсу через Unity Sentis."
+        path="/advanced/onnx-sentis"
+      />
       {/* Header */}
       <div className="border-b border-border/50 bg-card/30 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4">

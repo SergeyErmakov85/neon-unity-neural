@@ -322,6 +322,31 @@ const LessonLayout = ({
           </div>
         </main>
       </div>
+
+      {/* Mobile floating nav */}
+      {(prevLesson || nextLesson) && (
+        <div className="fixed bottom-4 right-4 z-40 flex gap-2 md:hidden">
+          {prevLesson && (
+            <Button
+              size="sm"
+              variant="outline"
+              className="bg-card/90 backdrop-blur-sm border-border/50 shadow-lg"
+              onClick={() => navigate(prevLesson.path)}
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </Button>
+          )}
+          {nextLesson && (
+            <Button
+              size="sm"
+              className="bg-gradient-neon shadow-lg"
+              onClick={() => navigate(nextLesson.path)}
+            >
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          )}
+        </div>
+      )}
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Clock, User, ChevronRight } from "lucide-react";
 import { blogPosts, BlogPost } from "@/pages/Blog";
+import SEOHead from "@/components/SEOHead";
 
 interface BlogLayoutProps {
   post: BlogPost;
@@ -11,6 +12,11 @@ interface BlogLayoutProps {
 
 const BlogLayout = ({ post, toc, children }: BlogLayoutProps) => (
   <div className="min-h-screen bg-background">
+    <SEOHead
+      title={`${post.title} | RL Blog`}
+      description={post.description}
+      path={`/blog/${post.slug}`}
+    />
     <header className="border-b border-border/50 bg-card/50 backdrop-blur-sm sticky top-0 z-30">
       <div className="container mx-auto px-4 py-3 flex items-center gap-2 text-sm">
         <Link to="/blog" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5">

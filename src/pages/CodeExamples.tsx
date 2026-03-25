@@ -1,9 +1,10 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
+import { SkeletonCard } from "@/components/SkeletonCard";
 import {
   ArrowLeft,
   Search,
@@ -697,6 +698,12 @@ const CodeExamples = () => {
   const [expanded, setExpanded] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 300);
+    return () => clearTimeout(t);
+  }, []);
 
   const toggleCat = (c: string) =>
     setSelectedCats((prev) => (prev.includes(c) ? prev.filter((x) => x !== c) : [...prev, c]));
@@ -902,7 +909,13 @@ const CodeExamples = () => {
         </Collapsible>
 
         {/* Snippets grid */}
-        {filtered.length === 0 ? (
+        {!mounted ? (
+          <div className="grid gap-5">
+            {[1, 2, 3].map((i) => (
+              <SkeletonCard key={i} />
+            ))}
+          </div>
+        ) : filtered.length === 0 ? (
           <div className="text-center py-20 space-y-3">
             <Code2 className="w-12 h-12 text-muted-foreground/40 mx-auto" />
             <p className="text-muted-foreground">Ничего не найдено. Попробуйте изменить фильтры.</p>
