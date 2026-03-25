@@ -27,50 +27,54 @@ const discordChannels = [
     name: "#general",
     icon: MessageCircle,
     description: "Общение на любые темы, знакомства, новости платформы и RL-индустрии",
-    members: "320+",
+    members: "400+",
   },
   {
     name: "#help",
     icon: HelpCircle,
     description: "Помощь с кодом, настройкой окружения, отладкой агентов и вопросами по курсу",
-    members: "210+",
+    members: "280+",
   },
   {
     name: "#showcase",
     icon: Image,
     description: "Делитесь своими проектами, GIF-анимациями обученных агентов и результатами",
-    members: "150+",
+    members: "200+",
   },
 ];
 
 const studentProjects = [
   {
-    title: "Drone Navigator",
-    author: "Алексей К.",
-    description: "Агент управляет дроном в 3D-среде, избегая препятствий и собирая контрольные точки",
-    tags: ["PPO", "Unity", "3D"],
+    title: "FoodCollector Navigator",
+    author: "Участник платформы",
+    description: "Агент обучен алгоритмом REINFORCE с гибридным пространством действий. Собирает еду и избегает врагов в 3D среде. Экспортирован в ONNX для Unity Sentis.",
+    tags: ["REINFORCE", "Unity ML-Agents", "ONNX"],
     gradient: "from-primary/40 to-cyan-500/40",
+    reward: "+18.4 (avg 500 ep.)",
   },
   {
-    title: "Chess Endgame Solver",
-    author: "Мария С.",
-    description: "RL-агент, обученный разыгрывать шахматные эндшпили с точностью 94%",
-    tags: ["DQN", "PyTorch", "Стратегия"],
-    gradient: "from-purple-500/40 to-primary/40",
+    title: "Taxi Solver",
+    author: "Участник платформы",
+    description: "Q-Learning агент для Taxi-v3. Сходится за 3000 эпизодов. Визуализация Q-таблицы и epsilon decay через TensorBoard.",
+    tags: ["Q-Learning", "Gymnasium", "TensorBoard"],
+    gradient: "from-green-500/40 to-primary/40",
+    reward: "+9.7 (avg 1000 ep.)",
   },
   {
-    title: "Traffic Controller",
-    author: "Дмитрий В.",
-    description: "Мультиагентная система управления светофорами, снижающая пробки на 35%",
-    tags: ["MA-POCA", "Multi-Agent", "Симуляция"],
-    gradient: "from-emerald-500/40 to-primary/40",
+    title: "BallBalance PPO",
+    author: "Участник платформы",
+    description: "PPO агент балансирует мяч на платформе. Обучение 500k шагов, stable-baselines3 + Unity ML-Agents. Достигает нулевого отклонения за 2 минуты.",
+    tags: ["PPO", "Unity", "Continuous Actions"],
+    gradient: "from-secondary/40 to-primary/40",
+    reward: "Σ deviation < 0.1",
   },
   {
-    title: "Robotic Arm Grabber",
-    author: "Елена П.",
-    description: "SAC-агент управляет роботизированной рукой для захвата объектов разной формы",
-    tags: ["SAC", "Continuous", "Робототехника"],
-    gradient: "from-orange-500/40 to-primary/40",
+    title: "Soccer MA-POCA",
+    author: "Участник платформы",
+    description: "Кооперативная команда из 4 агентов в среде Soccer. MA-POCA с Self-Play. Команда побеждает baseline за 2M шагов.",
+    tags: ["MA-POCA", "Multi-Agent", "Self-Play"],
+    gradient: "from-accent/40 to-secondary/40",
+    reward: "Win rate: 73%",
   },
 ];
 
@@ -259,6 +263,11 @@ const Community = () => {
                       </Badge>
                     ))}
                   </div>
+                  {proj.reward && (
+                    <p className="text-xs font-mono text-green-400">
+                      📊 Reward: {proj.reward}
+                    </p>
+                  )}
                 </CardContent>
               </Card>
             ))}
@@ -309,7 +318,36 @@ const Community = () => {
             </CardContent>
           </Card>
         </section>
-        {/* Section 5 — Leaderboard */}
+        {/* ===== SECTION 5 — Useful Resources ===== */}
+        <section className="space-y-6">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-lg bg-primary/10 text-primary">
+              <ExternalLink className="w-6 h-6" />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground">Полезные внешние ресурсы</h2>
+          </div>
+
+          <Card className="border-border/50 bg-card/40">
+            <CardContent className="p-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {[
+                { label: "Unity ML-Agents Документация", url: "https://unity-technologies.github.io/ml-agents/" },
+                { label: "Stable-Baselines3", url: "https://stable-baselines3.readthedocs.io/" },
+                { label: "Gymnasium (OpenAI Gym)", url: "https://gymnasium.farama.org/" },
+                { label: "PyTorch Tutorials", url: "https://pytorch.org/tutorials/" },
+                { label: "Hugging Face Deep RL Course", url: "https://huggingface.co/learn/deep-rl-course" },
+              ].map((res) => (
+                <Button key={res.label} variant="outline" asChild className="justify-start gap-2 h-auto py-3 text-left">
+                  <a href={res.url} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 shrink-0" />
+                    <span className="text-sm">{res.label}</span>
+                  </a>
+                </Button>
+              ))}
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Section 6 — Leaderboard */}
         <section>
           <Leaderboard />
         </section>
