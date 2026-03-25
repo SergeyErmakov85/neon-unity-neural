@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search, LogOut, Brain, Gamepad2, Sparkles, Rocket } from "lucide-react";
+import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search, LogOut, Brain, Gamepad2, Sparkles, Rocket, Network } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import logoImage from "@/assets/Logo_RL_platform.png";
 import GlobalSearch from "@/components/GlobalSearch";
@@ -153,6 +153,10 @@ const Navbar = () => {
               <Sparkles className="w-5 h-5 text-accent" />
               <span className="text-sm font-medium text-foreground">Математика RL</span>
             </button>
+            <button onClick={() => navigate("/hub/fca-rl")} className={`flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/fca-rl" ? "border-yellow-500/70 bg-yellow-500/15 shadow-[0_0_15px_hsl(45,100%,50%/0.3)]" : "border-yellow-500/30 hover:bg-yellow-500/10"}`}>
+              <Network className="w-5 h-5 text-yellow-400" />
+              <span className="text-sm font-medium text-foreground">FCA + RL</span>
+            </button>
 
             {/* Utility items */}
             <div className="flex items-center gap-3 ml-3 pl-3 border-l border-border/30">
@@ -220,6 +224,7 @@ const Navbar = () => {
                     { href: "/hub/deep-rl", label: "Deep RL", Icon: Code2, color: "text-accent" },
                     { href: "/hub/project", label: "Проекты", Icon: Rocket, color: "text-secondary" },
                     { href: "/hub/math-rl", label: "Математика RL", Icon: Sparkles, color: "text-accent" },
+                    { href: "/hub/fca-rl", label: "FCA + RL", Icon: Network, color: "text-yellow-400" },
                   ].map((item) => (
                     <button
                       key={item.href + item.label}

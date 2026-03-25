@@ -1,7 +1,7 @@
-import { BookOpen, Box, Brain, FolderGit2, Sigma } from "lucide-react";
+import { BookOpen, Box, Brain, FolderGit2, Network, Sigma } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-export type HubId = "pytorch" | "unity-ml-agents" | "deep-rl" | "project" | "math-rl";
+export type HubId = "pytorch" | "unity-ml-agents" | "deep-rl" | "project" | "math-rl" | "fca-rl";
 
 export interface SupportHub {
   id: HubId;
@@ -52,5 +52,13 @@ export const SUPPORT_HUBS: Record<HubId, SupportHub> = {
     shortDescription: "Вероятности, MDP, уравнения Беллмана, градиенты политик.",
     icon: Sigma,
     colorAccent: "text-amber-400",
+  },
+  "fca-rl": {
+    id: "fca-rl",
+    label: "FCA + RL для NPC",
+    slug: "fca-rl",
+    shortDescription: "Применение Формального Анализа Понятий (FCA) для структурирования пространства состояний RL-агентов в Unity.",
+    icon: Network,
+    colorAccent: "text-yellow-400",
   },
 };

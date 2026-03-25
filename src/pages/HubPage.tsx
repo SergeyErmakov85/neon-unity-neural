@@ -13,6 +13,7 @@ const HUB_CONTENT: Record<HubId, React.LazyExoticComponent<React.ComponentType>>
   "deep-rl": lazy(() => import("@/pages/DeepRLModule")),
   project: lazy(() => import("@/pages/DemoProject")),
   "math-rl": lazy(() => import("@/pages/MathRL")),
+  "fca-rl": lazy(() => import("@/pages/FcaRLModule")),
 };
 
 interface BackLink {
