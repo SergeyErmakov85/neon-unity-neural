@@ -1,9 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, ArrowRight, Gamepad2, CircleDot, Grid3X3, Car, Users } from "lucide-react";
+import { ArrowLeft, ArrowRight, Gamepad2, CircleDot, Grid3X3, Car, Users, Apple } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const projects = [
+  {
+    id: "food-collector",
+    name: "FoodCollector: REINFORCE",
+    description: "Полный пайплайн: кастомный REINFORCE на PyTorch, гибридные действия, GridSensor, экспорт ONNX для Sentis.",
+    difficulty: "Продвинутый",
+    actions: "Гибридные",
+    algorithm: "REINFORCE",
+    observations: "GridSensor 4D (CNN)",
+    link: "/unity-projects/food-collector",
+    icon: Apple,
+    ready: true,
+    flagship: true,
+  },
   {
     id: "ball-balance",
     name: "3D Ball Balance",
@@ -85,15 +98,20 @@ const UnityProjectsHub = () => {
                       <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                         <Icon className="w-6 h-6 text-primary" />
                       </div>
-                      <div>
+                    <div>
                         <h3 className="text-xl font-bold text-foreground">{project.name}</h3>
-                        <span className={`text-xs px-2 py-0.5 rounded-full ${
-                          project.difficulty === "Начальный" ? "bg-green-500/10 text-green-400" :
-                          project.difficulty === "Средний" ? "bg-yellow-500/10 text-yellow-400" :
-                          "bg-red-500/10 text-red-400"
-                        }`}>
-                          {project.difficulty}
-                        </span>
+                        <div className="flex items-center gap-2 mt-0.5">
+                          {(project as any).flagship && (
+                            <span className="text-xs px-2 py-0.5 rounded-full bg-accent/10 text-accent font-medium">★ Флагманский проект</span>
+                          )}
+                          <span className={`text-xs px-2 py-0.5 rounded-full ${
+                            project.difficulty === "Начальный" ? "bg-green-500/10 text-green-400" :
+                            project.difficulty === "Средний" ? "bg-yellow-500/10 text-yellow-400" :
+                            "bg-red-500/10 text-red-400"
+                          }`}>
+                            {project.difficulty}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
