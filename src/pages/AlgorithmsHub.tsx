@@ -2,6 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Brain, Zap, Shield, GitBranch, ArrowRight, CheckCircle, AlertTriangle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const algorithms = [
   {
@@ -191,6 +197,72 @@ const AlgorithmsHub = () => {
                 </tbody>
               </table>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Decision Tree */}
+        <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
+          <CardContent className="p-6">
+            <h2 className="text-2xl font-bold text-foreground mb-6">Какой алгоритм выбрать?</h2>
+            <Accordion type="single" collapsible className="space-y-2">
+              {[
+                {
+                  trigger: "Дискретные действия (прыжок, выстрел, поворот)",
+                  content: "Для дискретных пространств действий лучше всего подходят DQN (для простых сред) или PPO (для более сложных). DQN эффективнее по данным благодаря replay buffer, но PPO стабильнее при масштабировании.",
+                  algo: "DQN или PPO",
+                  links: [{ label: "DQN", path: "/algorithms/dqn" }, { label: "PPO", path: "/algorithms/ppo" }],
+                },
+                {
+                  trigger: "Непрерывные действия (скорость, угол руля)",
+                  content: "Для непрерывных действий выбирайте PPO (стабильнее, проще в настройке) или SAC (эффективнее по данным, лучше исследует). SAC — off-policy, что позволяет переиспользовать данные.",
+                  algo: "PPO или SAC",
+                  links: [{ label: "PPO", path: "/algorithms/ppo" }, { label: "SAC", path: "/algorithms/sac" }],
+                },
+                {
+                  trigger: "Мультиагентная кооперация",
+                  content: "MA-POCA (Multi-Agent POsthumous Credit Assignment) — специализированный алгоритм Unity ML-Agents для кооперативных задач. Поддерживает групповые награды и динамическое число агентов.",
+                  algo: "MA-POCA",
+                  links: [{ label: "Подробнее о MA-POCA", path: "/courses/3-2" }],
+                },
+                {
+                  trigger: "Имитация поведения эксперта",
+                  content: "GAIL (Generative Adversarial Imitation Learning) в связке с PPO позволяет агенту обучаться на демонстрациях эксперта без явной функции награды. Отлично подходит для сложного поведения NPC.",
+                  algo: "GAIL + PPO",
+                  links: [{ label: "Имитационное обучение", path: "/courses/3-4" }],
+                },
+                {
+                  trigger: "Максимальная sample-efficiency",
+                  content: "SAC — off-policy алгоритм с автоматической настройкой энтропии. Переиспользует данные из replay buffer, что делает его самым эффективным по числу взаимодействий со средой.",
+                  algo: "SAC (off-policy)",
+                  links: [{ label: "SAC", path: "/algorithms/sac" }],
+                },
+                {
+                  trigger: "Максимальная стабильность",
+                  content: "PPO с clipped surrogate objective обеспечивает монотонное улучшение политики. Это стандарт в Unity ML-Agents и наиболее надёжный выбор для большинства задач.",
+                  algo: "PPO (on-policy)",
+                  links: [{ label: "PPO", path: "/algorithms/ppo" }],
+                },
+              ].map((item, i) => (
+                <AccordionItem key={i} value={`decision-${i}`} className="border border-border/30 rounded-lg px-4">
+                  <AccordionTrigger className="text-sm font-medium text-foreground hover:text-primary">
+                    {item.trigger}
+                  </AccordionTrigger>
+                  <AccordionContent className="space-y-3 pb-4">
+                    <p className="text-sm text-muted-foreground">{item.content}</p>
+                    <div className="flex items-center gap-2 text-xs text-primary font-semibold">
+                      Рекомендация: {item.algo}
+                    </div>
+                    <div className="flex gap-2 flex-wrap">
+                      {item.links.map((link) => (
+                        <Button key={link.path} variant="outline" size="sm" onClick={() => navigate(link.path)} className="text-xs">
+                          {link.label} <ArrowRight className="w-3 h-3 ml-1" />
+                        </Button>
+                      ))}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </CardContent>
         </Card>
 
