@@ -1,10 +1,40 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/landing/Navbar";
 import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { Award, Lock, Crown, QrCode, Download } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
+import { Award, Lock, Crown, QrCode, Download, CheckCircle } from "lucide-react";
+import { getProgress, getLevelCompletionPercent } from "@/lib/gamification";
 
 const CertificatePreview = () => {
+  const [userName, setUserName] = useState("Ваше имя");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const progress = getProgress();
+  const allComplete = [0, 1, 2].every((i) => getLevelCompletionPercent(i) === 100);
+  const overallPercent = Math.round(
+    ([0, 1, 2].reduce((sum, i) => sum + getLevelCompletionPercent(i), 0)) / 3
+  );
+
+  useEffect(() => {
+    const load = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+      setIsLoggedIn(true);
+      const { data } = await supabase.from("profiles").select("name").eq("id", user.id).single();
+      if (data?.name) setUserName(data.name);
+    };
+    load();
+  }, []);
+
+  const todayFormatted = new Date().toLocaleDateString("ru-RU", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
@@ -25,8 +55,46 @@ const CertificatePreview = () => {
           </p>
         </div>
 
+        {/* Progress to certificate */}
+        {!allComplete && (
+          <div className="mb-8 p-5 rounded-xl border border-primary/20 bg-card/60 backdrop-blur-sm space-y-3">
+            <div className="flex justify-between text-sm">
+              <span className="text-muted-foreground">Прогресс до сертификата</span>
+              <span className="text-primary font-semibold">{overallPercent}%</span>
+            </div>
+            <Progress value={overallPercent} className="h-3" />
+            <div className="grid grid-cols-3 gap-3 pt-1">
+              {[
+                { label: "Уровень 1", index: 0 },
+                { label: "Уровень 2", index: 1 },
+                { label: "Уровень 3", index: 2 },
+              ].map(({ label, index }) => {
+                const pct = getLevelCompletionPercent(index);
+                const done = pct === 100;
+                return (
+                  <div
+                    key={index}
+                    className={`flex items-center gap-2 text-xs p-2 rounded-lg border ${
+                      done
+                        ? "border-primary/30 bg-primary/5 text-primary"
+                        : "border-border/50 text-muted-foreground"
+                    }`}
+                  >
+                    {done ? (
+                      <CheckCircle className="w-3.5 h-3.5 shrink-0" />
+                    ) : (
+                      <Lock className="w-3.5 h-3.5 shrink-0" />
+                    )}
+                    {label}: {pct}%
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
         {/* Certificate Card */}
-        <div className="relative p-1 rounded-2xl bg-gradient-to-br from-primary via-secondary to-accent">
+        <div className={`relative p-1 rounded-2xl bg-gradient-to-br from-primary via-secondary to-accent ${!allComplete ? "opacity-60" : ""}`}>
           <div className="bg-card rounded-xl p-8 md:p-12 space-y-8">
             {/* Header */}
             <div className="text-center space-y-2">
@@ -44,7 +112,7 @@ const CertificatePreview = () => {
             <div className="text-center space-y-4">
               <p className="text-sm text-muted-foreground">Настоящим подтверждается, что</p>
               <p className="text-2xl font-bold text-foreground border-b border-dashed border-muted-foreground/30 pb-2 inline-block px-8">
-                Иван Петров
+                {userName}
               </p>
               <p className="text-sm text-muted-foreground max-w-md mx-auto">
                 успешно завершил(а) полный курс по обучению с подкреплением, включающий
@@ -56,11 +124,11 @@ const CertificatePreview = () => {
             <div className="grid grid-cols-3 gap-4 text-center">
               <div className="space-y-1">
                 <p className="text-xs text-muted-foreground">Дата</p>
-                <p className="text-sm font-semibold text-foreground">08.03.2026</p>
+                <p className="text-sm font-semibold text-foreground">{allComplete ? todayFormatted : "—"}</p>
               </div>
               <div className="space-y-1">
-                <p className="text-xs text-muted-foreground">Номер</p>
-                <p className="text-sm font-semibold text-foreground font-mono">RL-2026-00042</p>
+                <p className="text-xs text-muted-foreground">XP</p>
+                <p className="text-sm font-semibold text-primary font-mono">{progress.xp}</p>
               </div>
               <div className="space-y-1">
                 <p className="text-xs text-muted-foreground">Верификация</p>
@@ -83,21 +151,37 @@ const CertificatePreview = () => {
 
         {/* CTA */}
         <div className="mt-10 text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/30 text-sm text-secondary">
-            <Lock className="w-4 h-4" />
-            Доступно после завершения всех уровней на тарифе PRO
-          </div>
+          {allComplete ? (
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 text-sm text-primary">
+              <CheckCircle className="w-4 h-4" />
+              Сертификат доступен для скачивания
+            </div>
+          ) : (
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/30 text-sm text-secondary">
+              <Lock className="w-4 h-4" />
+              Завершите все 3 уровня, чтобы получить сертификат
+            </div>
+          )}
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button asChild className="bg-gradient-neon gap-2">
-              <Link to="/pricing">
-                <Crown className="w-4 h-4" />
-                Получить PRO-доступ
-              </Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link to="/courses">Начать обучение</Link>
-            </Button>
+            {allComplete ? (
+              <Button className="bg-gradient-neon gap-2" disabled>
+                <Download className="w-4 h-4" />
+                Скачать PDF (скоро)
+              </Button>
+            ) : (
+              <Button asChild className="bg-gradient-neon gap-2">
+                <Link to="/courses">
+                  <Crown className="w-4 h-4" />
+                  Продолжить обучение
+                </Link>
+              </Button>
+            )}
+            {!isLoggedIn && (
+              <Button variant="outline" asChild>
+                <Link to="/login">Войти в аккаунт</Link>
+              </Button>
+            )}
           </div>
         </div>
       </main>
