@@ -84,16 +84,19 @@ const FeaturesSection = () => {
               accent: "text-accent shadow-glow-pink border-accent/30 hover:border-accent/60",
             };
             
+            const cardClass = feature.customColor || colorClasses[feature.color as keyof typeof colorClasses];
+            const iconClass = feature.customColor ? feature.customColor.split(' ')[0] : colorClasses[feature.color as keyof typeof colorClasses].split(' ')[0];
+
             return (
               <Card
                 key={index}
-                className={`group bg-card/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 ${colorClasses[feature.color as keyof typeof colorClasses]}`}
+                className={`group bg-card/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 ${cardClass}`}
               >
                 <CardHeader className="pb-4">
                   <div
                     className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
                   >
-                    <Icon className={`w-7 h-7 ${colorClasses[feature.color as keyof typeof colorClasses].split(' ')[0]}`} />
+                    <Icon className={`w-7 h-7 ${iconClass}`} />
                   </div>
                   <CardTitle className="text-xl">{feature.title}</CardTitle>
                 </CardHeader>
