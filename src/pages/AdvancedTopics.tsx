@@ -29,7 +29,7 @@ const AdvancedTopics = () => {
         </p>
 
         <Tabs defaultValue="curriculum" className="space-y-6">
-          <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full">
+          <TabsList className="grid grid-cols-2 md:grid-cols-5 w-full">
             <TabsTrigger value="curriculum"><GraduationCap className="w-4 h-4 mr-1" /> Curriculum</TabsTrigger>
             <TabsTrigger value="multiagent"><Users className="w-4 h-4 mr-1" /> Multi-Agent</TabsTrigger>
             <TabsTrigger value="imitation"><Eye className="w-4 h-4 mr-1" /> Imitation</TabsTrigger>
