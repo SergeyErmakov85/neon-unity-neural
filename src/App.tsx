@@ -27,6 +27,7 @@ const SACModule = lazy(() => import("./pages/SACModule"));
 const DQNModule = lazy(() => import("./pages/DQNModule"));
 const A3CModule = lazy(() => import("./pages/A3CModule"));
 const UnityProjectsHub = lazy(() => import("./pages/UnityProjectsHub"));
+const FoodCollectorProject = lazy(() => import("./pages/FoodCollectorProject"));
 const BallBalanceProject = lazy(() => import("./pages/BallBalanceProject"));
 const GridWorldProject = lazy(() => import("./pages/GridWorldProject"));
 const RacingCarProject = lazy(() => import("./pages/RacingCarProject"));
@@ -111,6 +112,7 @@ const App = () => (
             <Route path="/algorithms/dqn" element={<DQNModule />} />
             <Route path="/algorithms/a3c" element={<A3CModule />} />
             <Route path="/unity-projects" element={<UnityProjectsHub />} />
+            <Route path="/unity-projects/food-collector" element={<FoodCollectorProject />} />
             <Route path="/unity-projects/ball-balance" element={<BallBalanceProject />} />
             <Route path="/unity-projects/gridworld" element={<GridWorldProject />} />
             <Route path="/unity-projects/racing" element={<RacingCarProject />} />
