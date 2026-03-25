@@ -2,31 +2,40 @@ import { Link } from "react-router-dom";
 import { Github, Mail, MessageCircle, Twitter, Youtube, ExternalLink } from "lucide-react";
 
 const footerLinks = {
-  learn: {
-    title: "Обучение",
+  platform: {
+    title: "Платформа",
     links: [
-      { label: "Все курсы", href: "/courses" },
+      { label: "Курсы", href: "/courses" },
       { label: "Примеры кода", href: "/code-examples" },
-      { label: "Математика RL", href: "/math-rl" },
-      { label: "Алгоритмы", href: "/algorithms" },
-      { label: "Unity проекты", href: "/unity-projects" },
+      { label: "Лаборатории", href: "/labs" },
+      { label: "Визуализации", href: "/visualizations" },
+    ],
+  },
+  algorithms: {
+    title: "Алгоритмы",
+    links: [
+      { label: "DQN", href: "/algorithms/dqn" },
+      { label: "PPO", href: "/algorithms/ppo" },
+      { label: "SAC", href: "/algorithms/sac" },
+      { label: "A3C", href: "/algorithms/a3c" },
     ],
   },
   resources: {
     title: "Ресурсы",
     links: [
       { label: "Блог", href: "/blog" },
+      { label: "Математика RL", href: "/math-rl" },
       { label: "FAQ", href: "/faq" },
-      { label: "Визуализации", href: "/visualizations" },
-      { label: "PyTorch", href: "/pytorch" },
-      { label: "Onboarding-тест", href: "/onboarding" },
+      { label: "PyTorch", href: "/hub/pytorch" },
     ],
   },
-  community: {
-    title: "Сообщество",
+  account: {
+    title: "Аккаунт",
     links: [
-      { label: "Сообщество", href: "/community" },
       { label: "Тарифы", href: "/pricing" },
+      { label: "Сообщество", href: "/community" },
+      { label: "Войти", href: "/login" },
+      { label: "Регистрация", href: "/register" },
     ],
   },
 };
@@ -43,7 +52,7 @@ const FooterSection = () => {
   return (
     <footer className="border-t border-border bg-card/30 backdrop-blur-sm py-16 px-4">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
@@ -118,16 +127,11 @@ const FooterSection = () => {
         <div className="pt-6 border-t border-border/50">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-xs text-muted-foreground">
-              © {new Date().getFullYear()} RL Learning Platform. Все права защищены.
+              © 2026 RL Platform. Все материалы на русском языке.
             </div>
-            <div className="flex gap-6">
-              <span className="text-xs text-muted-foreground">
-                Политика конфиденциальности
-              </span>
-              <span className="text-xs text-muted-foreground">
-                Условия использования
-              </span>
-            </div>
+            <span className="text-xs px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-muted-foreground">
+              Unity ML-Agents + PyTorch + Deep RL
+            </span>
           </div>
         </div>
       </div>
