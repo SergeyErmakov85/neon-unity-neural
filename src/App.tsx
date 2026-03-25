@@ -68,6 +68,9 @@ const BlogTop5Mistakes = lazy(() => import("./pages/BlogTop5Mistakes"));
 const BlogParallelEnvs = lazy(() => import("./pages/BlogParallelEnvs"));
 const BlogMapoca = lazy(() => import("./pages/BlogMapoca"));
 const BlogJupyterToUnity = lazy(() => import("./pages/BlogJupyterToUnity"));
+const BlogGridSensor = lazy(() => import("./pages/BlogGridSensor"));
+const BlogReinforceVsPpo = lazy(() => import("./pages/BlogReinforceVsPpo"));
+const BlogOnnxSentis = lazy(() => import("./pages/BlogOnnxSentis"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const Community = lazy(() => import("./pages/Community"));
@@ -155,6 +158,9 @@ const App = () => (
             <Route path="/blog/parallel-envs" element={<BlogParallelEnvs />} />
             <Route path="/blog/mapoca-guide" element={<BlogMapoca />} />
             <Route path="/blog/jupyter-to-unity" element={<BlogJupyterToUnity />} />
+            <Route path="/blog/gridsensor-guide" element={<BlogGridSensor />} />
+            <Route path="/blog/reinforce-vs-ppo" element={<BlogReinforceVsPpo />} />
+            <Route path="/blog/onnx-sentis-pipeline" element={<BlogOnnxSentis />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/community" element={<Community />} />

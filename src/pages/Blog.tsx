@@ -67,6 +67,36 @@ export const blogPosts: BlogPost[] = [
     tags: ["Деплой", "ONNX", "Unity", "PyTorch"],
     gradient: "from-primary/30 via-green-500/20 to-primary/10",
   },
+  {
+    slug: "gridsensor-guide",
+    title: "GridSensor в Unity ML-Agents: полный разбор",
+    description: "Как работает GridSensor: каналы, порядок данных, типичная ошибка с 4D тензором (B,C,H,W) и патч для PyTorch. Практический гайд с кодом.",
+    author: "RL Platform",
+    date: "2026-03-10",
+    readTime: "7 мин",
+    tags: ["GridSensor", "Unity", "ML-Agents", "PyTorch"],
+    gradient: "from-emerald-500/30 via-primary/20 to-emerald-500/10",
+  },
+  {
+    slug: "reinforce-vs-ppo",
+    title: "REINFORCE vs PPO: когда достаточно простого алгоритма?",
+    description: "Детальное сравнение REINFORCE и PPO по sample efficiency, стабильности и простоте реализации. Когда PPO избыточен и REINFORCE справляется лучше.",
+    author: "RL Platform",
+    date: "2026-03-15",
+    readTime: "9 мин",
+    tags: ["REINFORCE", "PPO", "Сравнение", "Policy Gradient"],
+    gradient: "from-secondary/40 via-primary/20 to-secondary/10",
+  },
+  {
+    slug: "onnx-sentis-pipeline",
+    title: "PyTorch → ONNX → Unity Sentis: пайплайн за 30 минут",
+    description: "Пошаговый гайд по экспорту обученной модели из PyTorch в ONNX с UnityONNXWrapper, импорту через Unity Sentis и инференсу в C#. Решение типичных ошибок opset.",
+    author: "RL Platform",
+    date: "2026-03-20",
+    readTime: "8 мин",
+    tags: ["ONNX", "Sentis", "Деплой", "PyTorch", "C#"],
+    gradient: "from-primary/40 via-accent/20 to-primary/10",
+  },
 ];
 
 const ALL_TAGS = [...new Set(blogPosts.flatMap((p) => p.tags))];
