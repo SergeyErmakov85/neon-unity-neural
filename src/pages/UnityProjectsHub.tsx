@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArrowLeft, ArrowRight, Gamepad2, CircleDot, Grid3X3, Car, Users, Apple, Taxi } from "lucide-react";
+import { ArrowLeft, ArrowRight, Gamepad2, CircleDot, Grid3X3, Car, Users, Apple, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const projects = [
@@ -13,7 +13,7 @@ const projects = [
     algorithm: "Q-Learning / REINFORCE",
     observations: "500 дискретных состояний",
     link: "/unity-projects/taxi-v3",
-    icon: Taxi,
+    icon: MapPin,
     ready: true,
   },
   {
