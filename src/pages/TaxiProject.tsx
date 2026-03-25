@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight, Download, Brain, Code, BarChart3, Map } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
+import SEOHead from "@/components/SEOHead";
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 import { useMemo } from "react";
 
@@ -21,6 +22,11 @@ const TaxiProject = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Taxi-v3: Q-Learning и REINFORCE | Gymnasium Tutorial"
+        description="Q-Learning агент для среды Taxi-v3: пошаговая реализация, визуализация Q-таблицы, кривая обучения."
+        path="/unity-projects/taxi-v3"
+      />
       {/* 1. Шапка */}
       <div className="border-b border-border/50 bg-card/30 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4">

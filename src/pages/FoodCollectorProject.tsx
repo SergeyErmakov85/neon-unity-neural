@@ -4,12 +4,18 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, Download, Brain, Code, FlaskConical, BarChart3 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
+import SEOHead from "@/components/SEOHead";
 
 const FoodCollectorProject = () => {
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="FoodCollector REINFORCE | Unity ML-Agents PyTorch Проект"
+        description="Полный пайплайн обучения агента REINFORCE в среде FoodCollector: гибридные действия, GridSensor, ONNX для Unity Sentis."
+        path="/unity-projects/food-collector"
+      />
       {/* 1. Заголовок */}
       <div className="border-b border-border/50 bg-card/30 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4">
