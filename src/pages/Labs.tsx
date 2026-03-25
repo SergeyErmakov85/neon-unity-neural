@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Slider } from "@/components/ui/slider";
-import { ArrowLeft, FlaskConical } from "lucide-react";
+import { ArrowLeft, FlaskConical, ArrowUp, ArrowDown } from "lucide-react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from "recharts";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 // Lab 1: Discounting interactive
 const DiscountLab = () => {
@@ -192,6 +193,228 @@ class PrioritizedReplayBuffer:
   </div>
 );
 
+// Lab 4: Epsilon-Greedy
+const EpsilonLab = () => {
+  const [epsilon, setEpsilon] = useState(1.0);
+  const [decayRate, setDecayRate] = useState(0.95);
+
+  const steps = useMemo(() => {
+    const rows = [];
+    let eps = epsilon;
+    for (let i = 0; i < 20; i++) {
+      const isRandom = Math.random() < eps;
+      rows.push({ step: i + 1, epsilon: eps, action: isRandom ? "Случайное" : "Жадное" });
+      eps = Math.max(0.01, eps * decayRate);
+    }
+    return rows;
+  }, [epsilon, decayRate]);
+
+  return (
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold text-primary mb-2">Цель</h3>
+        <p className="text-muted-foreground">Изучить ε-greedy стратегию и влияние decay на баланс exploration/exploitation.</p>
+      </div>
+
+      <CyberCodeBlock language="python" filename="epsilon_greedy.py">{`def epsilon_greedy(Q, state, epsilon):
+    if np.random.random() < epsilon:
+        return env.action_space.sample()  # exploration
+    return np.argmax(Q[state])            # exploitation
+
+# Экспоненциальный decay
+epsilon = max(epsilon_min, epsilon * decay_rate)`}</CyberCodeBlock>
+
+      <Card className="border-primary/30">
+        <CardHeader><CardTitle className="text-sm">Интерактивный эксперимент</CardTitle></CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <div className="flex justify-between text-sm mb-2">
+              <span>ε (epsilon)</span><span className="text-primary font-mono">{epsilon.toFixed(2)}</span>
+            </div>
+            <Slider value={[epsilon]} onValueChange={([v]) => setEpsilon(v)} min={0} max={1} step={0.01} />
+          </div>
+          <div>
+            <div className="flex justify-between text-sm mb-2">
+              <span>decay_rate</span><span className="text-primary font-mono">{decayRate.toFixed(3)}</span>
+            </div>
+            <Slider value={[decayRate]} onValueChange={([v]) => setDecayRate(v)} min={0.9} max={0.999} step={0.001} />
+          </div>
+
+          <div className="overflow-x-auto max-h-64 overflow-y-auto">
+            <table className="w-full text-sm">
+              <thead className="sticky top-0 bg-card">
+                <tr className="border-b border-primary/20">
+                  <th className="text-left p-2 text-muted-foreground">Шаг</th>
+                  <th className="text-left p-2 text-muted-foreground">ε</th>
+                  <th className="text-left p-2 text-muted-foreground">Действие</th>
+                </tr>
+              </thead>
+              <tbody>
+                {steps.map(s => (
+                  <tr key={s.step} className="border-b border-border/30">
+                    <td className="p-2 font-mono">{s.step}</td>
+                    <td className="p-2 font-mono text-primary">{s.epsilon.toFixed(4)}</td>
+                    <td className={`p-2 font-mono ${s.action === "Случайное" ? "text-accent" : "text-secondary"}`}>{s.action}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="border-accent/30">
+        <CardHeader><CardTitle className="text-sm">🧠 Задание</CardTitle></CardHeader>
+        <CardContent className="text-sm text-muted-foreground">
+          <p>При epsilon=1.0 агент всегда действует случайно. При epsilon=0.0 — всегда жадно. Найди баланс для среды Taxi-v3.</p>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
+// Lab 5: Advantage Function
+const AdvantageLab = () => {
+  const [baseline, setBaseline] = useState(0);
+  const qValues = [3.2, 1.5, -0.8, 2.1];
+  const actionNames = ["↑ Вверх", "→ Вправо", "↓ Вниз", "← Влево"];
+
+  const chartData = useMemo(() =>
+    qValues.map((q, i) => ({
+      action: actionNames[i],
+      advantage: +(q - baseline).toFixed(2),
+    })), [baseline]);
+
+  return (
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold text-primary mb-2">Цель</h3>
+        <p className="text-muted-foreground">Понять, как baseline V(s) снижает дисперсию градиента и стабилизирует обучение.</p>
+      </div>
+
+      <CyberCodeBlock language="python" filename="advantage.py">{`def compute_advantage(rewards, values, gamma=0.99):
+    """GAE-lambda advantage estimation."""
+    returns = compute_returns(rewards, gamma)
+    advantages = returns - values
+    # Нормализация для стабильности
+    advantages = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
+    return advantages`}</CyberCodeBlock>
+
+      <Card className="border-primary/30">
+        <CardHeader><CardTitle className="text-sm">A(s,a) = Q(s,a) − V(s)</CardTitle></CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <div className="flex justify-between text-sm mb-2">
+              <span>V(s) baseline</span><span className="text-primary font-mono">{baseline.toFixed(1)}</span>
+            </div>
+            <Slider value={[baseline]} onValueChange={([v]) => setBaseline(v)} min={-5} max={5} step={0.1} />
+          </div>
+
+          <div className="text-xs text-muted-foreground mb-2">
+            Q-значения: [{qValues.join(", ")}]
+          </div>
+
+          <div className="h-48">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={chartData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                <XAxis dataKey="action" tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }} />
+                <YAxis tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }} />
+                <Tooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--primary) / 0.3)" }} />
+                <Bar dataKey="advantage" radius={[4, 4, 0, 0]}>
+                  {chartData.map((entry, i) => (
+                    <Cell key={i} fill={entry.advantage >= 0 ? "hsl(var(--primary))" : "hsl(var(--destructive))"} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="border-accent/30">
+        <CardHeader><CardTitle className="text-sm">🧠 Вопросы</CardTitle></CardHeader>
+        <CardContent className="space-y-2 text-sm text-muted-foreground">
+          <p>1. Что происходит с advantage, когда V(s) равно среднему Q?</p>
+          <p>2. Почему нормализация advantage важна для стабильности?</p>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
+// Lab 6: Policy Gradient Step
+const PolicyGradientLab = () => {
+  const [advantage, setAdvantage] = useState(2.0);
+  const logProb = -1.2;
+  const gradientUpdate = logProb * advantage;
+
+  return (
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold text-primary mb-2">Цель</h3>
+        <p className="text-muted-foreground">Визуализировать, как log_prob × advantage определяет направление обновления параметров θ.</p>
+      </div>
+
+      <CyberCodeBlock language="python" filename="reinforce_step.py">{`# Шаг REINFORCE
+log_probs = []
+for action, prob in zip(actions, probs):
+    log_probs.append(torch.log(prob[action]))
+
+loss = -torch.stack(log_probs) * advantages
+loss = loss.mean()  # + entropy_bonus
+
+optimizer.zero_grad()
+loss.backward()
+torch.nn.utils.clip_grad_norm_(policy.parameters(), 0.5)
+optimizer.step()`}</CyberCodeBlock>
+
+      <Card className="border-primary/30">
+        <CardHeader><CardTitle className="text-sm">Направление обновления θ</CardTitle></CardHeader>
+        <CardContent className="space-y-4">
+          <div>
+            <div className="flex justify-between text-sm mb-2">
+              <span>Advantage A(s,a)</span><span className="text-primary font-mono">{advantage.toFixed(1)}</span>
+            </div>
+            <Slider value={[advantage]} onValueChange={([v]) => setAdvantage(v)} min={-5} max={5} step={0.1} />
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 text-sm">
+            <div className="p-3 rounded-lg border border-border/50 bg-card/50">
+              <div className="text-xs text-muted-foreground">log π(a|s)</div>
+              <div className="font-mono font-bold text-primary">{logProb.toFixed(2)}</div>
+            </div>
+            <div className="p-3 rounded-lg border border-border/50 bg-card/50">
+              <div className="text-xs text-muted-foreground">−log_prob × A</div>
+              <div className="font-mono font-bold">{(-gradientUpdate).toFixed(2)}</div>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center gap-2 py-4">
+            <div className="text-sm text-muted-foreground">Вероятность действия</div>
+            <div className={`flex items-center gap-2 text-lg font-bold transition-colors ${advantage > 0 ? "text-primary" : advantage < 0 ? "text-destructive" : "text-muted-foreground"}`}>
+              {advantage > 0 ? (
+                <><ArrowUp className="w-6 h-6" /> Увеличивается</>
+              ) : advantage < 0 ? (
+                <><ArrowDown className="w-6 h-6" /> Уменьшается</>
+              ) : (
+                "Без изменений"
+              )}
+            </div>
+            <p className="text-xs text-muted-foreground text-center max-w-sm">
+              {advantage > 0
+                ? "Advantage > 0: действие было лучше ожидаемого → увеличиваем его вероятность."
+                : advantage < 0
+                  ? "Advantage < 0: действие было хуже ожидаемого → уменьшаем его вероятность."
+                  : "Advantage = 0: действие ровно на уровне ожидания → нет обновления."}
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
 const Labs = () => {
   const navigate = useNavigate();
 
@@ -210,15 +433,21 @@ const Labs = () => {
         </p>
 
         <Tabs defaultValue="discount" className="space-y-6">
-          <TabsList className="grid grid-cols-3 w-full">
-            <TabsTrigger value="discount">Lab 1: Дисконтирование</TabsTrigger>
+          <TabsList className="grid grid-cols-3 md:grid-cols-6 w-full">
+            <TabsTrigger value="discount">Lab 1: Дисконт</TabsTrigger>
             <TabsTrigger value="explore">Lab 2: Exploration</TabsTrigger>
-            <TabsTrigger value="replay">Lab 3: Replay Buffer</TabsTrigger>
+            <TabsTrigger value="replay">Lab 3: Replay</TabsTrigger>
+            <TabsTrigger value="epsilon">Lab 4: ε-Greedy</TabsTrigger>
+            <TabsTrigger value="advantage">Lab 5: Advantage</TabsTrigger>
+            <TabsTrigger value="pg">Lab 6: Policy Grad</TabsTrigger>
           </TabsList>
 
           <TabsContent value="discount"><DiscountLab /></TabsContent>
           <TabsContent value="explore"><ExplorationLab /></TabsContent>
           <TabsContent value="replay"><ReplayLab /></TabsContent>
+          <TabsContent value="epsilon"><EpsilonLab /></TabsContent>
+          <TabsContent value="advantage"><AdvantageLab /></TabsContent>
+          <TabsContent value="pg"><PolicyGradientLab /></TabsContent>
         </Tabs>
       </div>
     </div>
