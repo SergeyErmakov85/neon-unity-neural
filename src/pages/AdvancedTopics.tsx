@@ -2,7 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, GraduationCap, Users, Eye, Swords } from "lucide-react";
+import { ArrowLeft, GraduationCap, Users, Eye, Swords, FileOutput } from "lucide-react";
+import { useNavigate as useNav } from "react-router-dom";
 
 const codeBlock = (code: string, lang = "yaml") => (
   <pre className="bg-card/80 border border-primary/20 rounded-lg p-4 overflow-x-auto text-xs md:text-sm font-mono leading-relaxed">
@@ -33,6 +34,7 @@ const AdvancedTopics = () => {
             <TabsTrigger value="multiagent"><Users className="w-4 h-4 mr-1" /> Multi-Agent</TabsTrigger>
             <TabsTrigger value="imitation"><Eye className="w-4 h-4 mr-1" /> Imitation</TabsTrigger>
             <TabsTrigger value="selfplay"><Swords className="w-4 h-4 mr-1" /> Self-Play</TabsTrigger>
+            <TabsTrigger value="onnx" onClick={() => navigate("/advanced/onnx-sentis")}><FileOutput className="w-4 h-4 mr-1" /> ONNX/Sentis</TabsTrigger>
           </TabsList>
 
           {/* Curriculum Learning */}

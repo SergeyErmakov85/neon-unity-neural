@@ -36,6 +36,7 @@ const SoccerProject = lazy(() => import("./pages/SoccerProject"));
 const QLearningViz = lazy(() => import("./pages/QLearningViz"));
 const Visualizations = lazy(() => import("./pages/Visualizations"));
 const AdvancedTopics = lazy(() => import("./pages/AdvancedTopics"));
+const OnnxSentisGuide = lazy(() => import("./pages/OnnxSentisGuide"));
 const Labs = lazy(() => import("./pages/Labs"));
 const DemoProject = lazy(() => import("./pages/DemoProject"));
 const DeepRLModule = lazy(() => import("./pages/DeepRLModule"));
@@ -122,6 +123,7 @@ const App = () => (
             <Route path="/visualizations" element={<Visualizations />} />
             <Route path="/visualizations/q-learning" element={<QLearningViz />} />
             <Route path="/advanced" element={<AdvancedTopics />} />
+            <Route path="/advanced/onnx-sentis" element={<OnnxSentisGuide />} />
             <Route path="/labs" element={<Labs />} />
             <Route path="/demo-project" element={<DemoProject />} />
             <Route path="/deep-rl" element={<DeepRLModule />} />
