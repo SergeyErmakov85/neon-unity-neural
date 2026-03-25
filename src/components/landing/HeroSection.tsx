@@ -78,7 +78,7 @@ const HeroSection = () => {
           {/* Trust Indicators */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 max-w-3xl mx-auto">
             <div className="space-y-2 p-4 rounded-lg bg-card/30 backdrop-blur-sm border border-border/50">
-              <div className="text-2xl md:text-3xl font-bold text-primary">20+</div>
+              <div className="text-2xl md:text-3xl font-bold text-primary">25+</div>
               <div className="text-xs md:text-sm text-muted-foreground">Практических проектов</div>
             </div>
             <div className="space-y-2 p-4 rounded-lg bg-card/30 backdrop-blur-sm border border-border/50">
@@ -86,13 +86,25 @@ const HeroSection = () => {
               <div className="text-xs md:text-sm text-muted-foreground">Воспроизводимый код</div>
             </div>
             <div className="space-y-2 p-4 rounded-lg bg-card/30 backdrop-blur-sm border border-border/50">
-              <div className="text-2xl md:text-3xl font-bold text-accent">5+</div>
+              <div className="text-2xl md:text-3xl font-bold text-accent">7+</div>
               <div className="text-xs md:text-sm text-muted-foreground">Игровых сред Unity</div>
             </div>
             <div className="space-y-2 p-4 rounded-lg bg-card/30 backdrop-blur-sm border border-border/50">
               <div className="text-2xl md:text-3xl font-bold text-primary">24/7</div>
               <div className="text-xs md:text-sm text-muted-foreground">Доступ к материалам</div>
             </div>
+          </div>
+
+          {/* Tech Pills */}
+          <div className="flex flex-wrap justify-center gap-3 pt-6">
+            {["PyTorch", "Unity ML-Agents", "ONNX", "Sentis", "Jupyter"].map((tech) => (
+              <span
+                key={tech}
+                className="bg-card/50 border border-primary/20 text-xs px-3 py-1 rounded-full text-muted-foreground"
+              >
+                {tech}
+              </span>
+            ))}
           </div>
         </div>
       </div>
