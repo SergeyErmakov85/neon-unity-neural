@@ -51,7 +51,9 @@ export function getProgress(): UserProgress {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) return { ...defaultProgress, ...JSON.parse(raw) };
-  } catch {}
+  } catch (_e) {
+    // localStorage недоступен или данные повреждены — возвращаем дефолт
+  }
   return { ...defaultProgress };
 }
 
