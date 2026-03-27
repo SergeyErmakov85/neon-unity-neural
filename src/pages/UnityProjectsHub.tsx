@@ -3,7 +3,21 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight, Gamepad2, CircleDot, Grid3X3, Car, Users, Apple, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-const projects = [
+interface Project {
+  id: string;
+  name: string;
+  description: string;
+  difficulty: string;
+  actions: string;
+  algorithm: string;
+  observations: string;
+  link: string;
+  icon: React.ComponentType<{ className?: string }>;
+  ready: boolean;
+  flagship?: boolean;
+}
+
+const projects: Project[] = [
   {
     id: "taxi-v3",
     name: "Taxi-v3: Q-Learning",
@@ -113,7 +127,7 @@ const UnityProjectsHub = () => {
                     <div>
                         <h3 className="text-xl font-bold text-foreground">{project.name}</h3>
                         <div className="flex items-center gap-2 mt-0.5">
-                          {(project as any).flagship && (
+                          {project.flagship && (
                             <span className="text-xs px-2 py-0.5 rounded-full bg-accent/10 text-accent font-medium">★ Флагманский проект</span>
                           )}
                           <span className={`text-xs px-2 py-0.5 rounded-full ${
