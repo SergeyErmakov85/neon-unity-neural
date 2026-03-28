@@ -175,7 +175,6 @@ const Courses = () => {
           <p className="text-muted-foreground text-lg">
             3 уровня · 20 уроков · 4 проекта · ~20 недель
           </p>
-          </p>
         </div>
 
         {/* Progress Bar */}
