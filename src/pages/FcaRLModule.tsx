@@ -175,8 +175,19 @@ for concept in lattice:
             </p>
           </CardContent>
         </Card>
+
+        {/* Navigation */}
+        <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+          <Button variant="outline" onClick={() => navigate("/hub/math-rl")}>
+            <ArrowLeft className="w-4 h-4 mr-2" /> Математика RL
+          </Button>
+          <Button onClick={() => navigate("/courses")}>
+            Перейти к курсам <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
+        </div>
       </div>
     </div>
+    </>
   );
 };
 
