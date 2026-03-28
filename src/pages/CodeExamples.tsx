@@ -13,6 +13,7 @@ import {
   ExternalLink,
   ChevronDown,
   Filter,
+  Download,
   SlidersHorizontal,
   Code2,
   X,
@@ -998,14 +999,22 @@ const CodeExamples = () => {
                         </Button>
                       )}
                       {snippet.colabUrl && (() => {
+                        const isLocal = snippet.colabUrl.startsWith("/");
                         const isSoon = snippet.colabUrl === "https://colab.research.google.com/";
-                        return isSoon ? (
+                        return isLocal ? (
+                          <Button variant="outline" size="sm" asChild className="gap-1.5 border-green-500/40 text-green-400 hover:bg-green-500/10 hover:border-green-500/60">
+                            <a href={snippet.colabUrl} download>
+                              <Download className="w-3.5 h-3.5" />
+                              Скачать .ipynb
+                            </a>
+                          </Button>
+                        ) : isSoon ? (
                           <Button variant="outline" size="sm" disabled className="gap-1.5 opacity-50">
                             <ExternalLink className="w-3.5 h-3.5" />
                             Colab (soon)
                           </Button>
                         ) : (
-                          <Button variant="outline" size="sm" asChild className="gap-1.5 border-green-500/40 text-green-400 hover:bg-green-500/10 hover:border-green-500/60">
+                          <Button variant="outline" size="sm" asChild className="gap-1.5 border-orange-500/40 text-orange-400 hover:bg-orange-500/10 hover:border-orange-500/60">
                             <a href={snippet.colabUrl} target="_blank" rel="noopener noreferrer">
                               <ExternalLink className="w-3.5 h-3.5" />
                               Открыть в Colab
