@@ -273,15 +273,15 @@ epsilon = max(epsilon_min, epsilon * decay_rate)`}</CyberCodeBlock>
   );
 };
 
-// Lab 5: Advantage Function
+const Q_VALUES = [3.2, 1.5, -0.8, 2.1];
+const ACTION_NAMES = ["↑ Вверх", "→ Вправо", "↓ Вниз", "← Влево"];
+
 const AdvantageLab = () => {
   const [baseline, setBaseline] = useState(0);
-  const qValues = [3.2, 1.5, -0.8, 2.1];
-  const actionNames = ["↑ Вверх", "→ Вправо", "↓ Вниз", "← Влево"];
 
   const chartData = useMemo(() =>
-    qValues.map((q, i) => ({
-      action: actionNames[i],
+    Q_VALUES.map((q, i) => ({
+      action: ACTION_NAMES[i],
       advantage: +(q - baseline).toFixed(2),
     })), [baseline]);
 
