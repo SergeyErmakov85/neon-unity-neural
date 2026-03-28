@@ -7,13 +7,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft } from "lucide-react";
 import Math from "@/components/Math";
 
+const RAW_LOGITS = [2.0, 1.0, 0.5, 0.3];
+const ACTIONS = ["Вверх", "Вниз", "Влево", "Вправо"];
+
 const PolicyGradientViz = () => {
   const [temperature, setTemperature] = useState(1.0);
-  const actions = ["Вверх", "Вниз", "Влево", "Вправо"];
-  const rawLogits = [2.0, 1.0, 0.5, 0.3];
 
   const probs = useMemo(() => {
-    const exps = rawLogits.map(l => window.Math.exp(l / temperature));
+    const exps = RAW_LOGITS.map(l => window.Math.exp(l / temperature));
     const sum = exps.reduce((a, b) => a + b, 0);
     return exps.map(e => e / sum);
   }, [temperature]);
@@ -42,7 +43,7 @@ const PolicyGradientViz = () => {
       </div>
 
       <div className="space-y-3">
-        {actions.map((action, i) => (
+        {ACTIONS.map((action, i) => (
           <div key={action} className="flex items-center gap-3">
             <span className="w-16 text-sm text-muted-foreground">{action}</span>
             <div className="flex-1 h-8 bg-muted/30 rounded-md overflow-hidden relative">
