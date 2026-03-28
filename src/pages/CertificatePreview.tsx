@@ -182,6 +182,10 @@ const CertificatePreview = () => {
                 <Link to="/login">Войти в аккаунт</Link>
               </Button>
             )}
+            <Button variant="outline" onClick={() => window.print()} className="flex items-center gap-2">
+              <Download className="w-4 h-4" />
+              Распечатать / Сохранить как PDF
+            </Button>
           </div>
         </div>
       </main>
