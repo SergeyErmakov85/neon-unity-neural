@@ -124,11 +124,18 @@ const Navbar = () => {
               navigate("/");
             }}
           >
-            <img
-              src={logoImage}
-              alt="RL Platform"
-              className="h-12 md:h-14 lg:h-16 w-auto transition-all duration-300 group-hover:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]"
-            />
+            <picture>
+              <source srcSet={logoImage} type="image/png" />
+              <img
+                src={logoImage}
+                alt="RL Platform"
+                className="h-12 md:h-14 lg:h-16 w-auto transition-all duration-300 group-hover:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]"
+                loading="eager"
+                decoding="async"
+                width="200"
+                height="64"
+              />
+            </picture>
           </a>
 
           {/* Desktop Navigation - Tech Stack Badges */}
@@ -187,7 +194,10 @@ const Navbar = () => {
               <div className="flex flex-col h-full pt-8">
                 {/* Mobile Logo */}
                 <div className="flex items-center gap-2 mb-8 px-2">
-                  <img src={logoImage} alt="RL Platform" className="h-10 w-auto" />
+                  <picture>
+                    <source srcSet={logoImage} type="image/png" />
+                    <img src={logoImage} alt="RL Platform" className="h-10 w-auto" loading="eager" decoding="async" width="200" height="64" />
+                  </picture>
                 </div>
 
                 {/* Mobile Navigation Links */}
