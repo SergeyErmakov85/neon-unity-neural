@@ -142,7 +142,19 @@ const LessonLayout = ({
   const isPro = level >= 2;
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [lessonCompleted, setLessonCompleted] = useState(false);
+  const [copied, setCopied] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    if (navigator.share) {
+      await navigator.share({ title: lessonTitle, url });
+    } else {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
 
   const progressColor = level === 1 ? "bg-green-500" : level === 2 ? "bg-secondary" : "bg-orange-500";
   const diff = difficultyConfig[difficulty];
@@ -244,6 +256,18 @@ const LessonLayout = ({
                   {tag}
                 </span>
               ))}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleShare}
+                className="ml-auto text-muted-foreground hover:text-primary"
+              >
+                {copied ? (
+                  <><Check className="w-4 h-4 mr-1 text-green-400" /> Скопировано</>
+                ) : (
+                  <><Share2 className="w-4 h-4 mr-1" /> Поделиться</>
+                )}
+              </Button>
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-foreground">
               <span className="text-muted-foreground font-normal text-2xl md:text-3xl">
