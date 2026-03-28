@@ -84,7 +84,7 @@ const LearningPathSection = () => {
                     </div>
 
                     <Card className={`bg-card/60 backdrop-blur-sm ${colors.border} ${colors.shadow} transition-all duration-300 h-full flex flex-col`}>
-                      <CardContent className="p-6 space-y-4 flex flex-col flex-1">
+                      <CardContent className="p-6 space-y-4 flex flex-col flex-1 min-h-0">
                         <div>
                           <div className={`text-sm ${colors.text} font-medium mb-1`}>
                             Этап {index + 1}
