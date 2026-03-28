@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   ArrowLeft, ArrowRight, BookOpen, FolderKanban, Circle, CheckCircle2,
-  Lock, Crown, Menu, ExternalLink, Lightbulb, BarChart3
+  Lock, Crown, Menu, ExternalLink, Lightbulb, BarChart3, Share2, Check
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
