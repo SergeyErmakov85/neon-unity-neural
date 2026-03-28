@@ -19,9 +19,15 @@ const BlogLayout = ({ post, toc, children }: BlogLayoutProps) => (
     />
     <header className="border-b border-border/50 bg-card/50 backdrop-blur-sm sticky top-0 z-30">
       <div className="container mx-auto px-4 py-3 flex items-center gap-2 text-sm">
-        <Link to="/blog" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5">
-          <ArrowLeft className="w-4 h-4" /> Блог
+        <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
+          Главная
         </Link>
+        <ChevronRight className="w-3 h-3 text-muted-foreground" />
+        <Link to="/blog" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5">
+          Блог
+        </Link>
+        <ChevronRight className="w-3 h-3 text-muted-foreground" />
+        <span className="text-foreground truncate max-w-[200px]">{post.title}</span>
       </div>
     </header>
 
