@@ -100,6 +100,7 @@ export const blogPosts: BlogPost[] = [
 ];
 
 const ALL_TAGS = [...new Set(blogPosts.flatMap((p) => p.tags))];
+const FEATURED_SLUGS = ["jupyter-to-unity", "onnx-sentis-pipeline", "gridsensor-guide"];
 
 const Blog = () => {
   const [query, setQuery] = useState("");
@@ -199,6 +200,11 @@ const Blog = () => {
                         {tag}
                       </span>
                     ))}
+                    {FEATURED_SLUGS.includes(post.slug) && (
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 font-medium">
+                        ★ Рекомендуем
+                      </span>
+                    )}
                   </div>
                 </div>
                 <div className="p-5 space-y-3">
