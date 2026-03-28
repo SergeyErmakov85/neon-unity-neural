@@ -311,7 +311,7 @@ const AdvantageLab = () => {
           </div>
 
           <div className="text-xs text-muted-foreground mb-2">
-            Q-значения: [{qValues.join(", ")}]
+            Q-значения: [{Q_VALUES.join(", ")}]
           </div>
 
           <div className="h-48">

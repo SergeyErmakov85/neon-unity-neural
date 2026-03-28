@@ -43,7 +43,7 @@ const PolicyGradientViz = () => {
       </div>
 
       <div className="space-y-3">
-        {actions.map((action, i) => (
+        {ACTIONS.map((action, i) => (
           <div key={action} className="flex items-center gap-3">
             <span className="w-16 text-sm text-muted-foreground">{action}</span>
             <div className="flex-1 h-8 bg-muted/30 rounded-md overflow-hidden relative">
