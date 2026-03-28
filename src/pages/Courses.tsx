@@ -24,8 +24,8 @@ const levels = [
     tag: "FREE",
     tagColor: "bg-green-500/20 text-green-400 border-green-500/30",
     accentColor: "green",
-    weeks: 4,
-    lessonsCount: 4,
+    weeks: 6,
+    lessonsCount: 7,
     projectsCount: 1,
     status: "in_progress" as const,
     locked: false,
@@ -34,6 +34,9 @@ const levels = [
       { title: "Установка окружения: PyTorch + Unity ML-Agents", type: "lesson", path: "/courses/1-2" },
       { title: "CartPole — твой первый RL-агент", type: "lesson", path: "/courses/1-3" },
       { title: "DQN с нуля на PyTorch", type: "lesson", path: "/courses/1-4" },
+      { title: "Марковские процессы принятия решений (MDP)", type: "lesson", path: "/courses/1-5" },
+      { title: "Q-Learning: табличный метод", type: "lesson", path: "/courses/1-6" },
+      { title: "Exploration vs Exploitation", type: "lesson", path: "/courses/1-7" },
       { title: "Проект: Балансировка шеста", type: "project", path: "/courses/project-1" },
     ],
   },
@@ -122,7 +125,7 @@ const Courses = () => {
   }, []);
 
   const userProgress = getProgress();
-  const totalLessons = 17;
+  const totalLessons = 20;
   const completedTotal = userProgress.completedLessons.length;
   const progress = Math.round((completedTotal / totalLessons) * 100);
 
@@ -170,7 +173,7 @@ const Courses = () => {
             <span className="bg-gradient-neon bg-clip-text text-transparent">Карта обучения</span>
           </h1>
           <p className="text-muted-foreground text-lg">
-            3 уровня · 17 уроков · 4 проекта · ~18 недель
+            3 уровня · 20 уроков · 4 проекта · ~20 недель
           </p>
         </div>
 
