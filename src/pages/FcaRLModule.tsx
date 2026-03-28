@@ -21,7 +21,12 @@ const FcaRLModule = () => {
         description="Формальный Анализ Понятий (FCA) для структурирования пространства состояний RL-агентов в Unity."
       />
 
-      <div className="container mx-auto px-4 py-16 max-w-4xl space-y-12">
+      <div className="container mx-auto px-4 max-w-4xl space-y-12">
+        {/* Back button */}
+        <Button variant="ghost" onClick={() => navigate("/")} className="text-muted-foreground hover:text-foreground mb-6 -ml-2">
+          <ArrowLeft className="mr-2 h-4 w-4" /> На главную
+        </Button>
+
         {/* Header */}
         <div className="space-y-4">
           <div className="flex items-center gap-3">
