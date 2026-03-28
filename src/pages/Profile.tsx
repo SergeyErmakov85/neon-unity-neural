@@ -10,7 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
 import { getProgress, ALL_BADGES, getLevel, getLevelProgress, getLevelCompletionPercent } from "@/lib/gamification";
-import { User, Camera, BookOpen, Trophy, Settings, Lock, Trash2, Save, ArrowRight } from "lucide-react";
+import { User, Camera, BookOpen, Trophy, Settings, Lock, Trash2, Save, ArrowRight, Download } from "lucide-react";
 import Navbar from "@/components/landing/Navbar";
 
 const allLessonPaths = [
@@ -308,6 +308,50 @@ const Profile = () => {
                   </div>
                 );
               })}
+            </CardContent>
+          </Card>
+
+          {/* Block 4b — Jupyter Notebooks */}
+          <Card className="border-primary/20 bg-card/80 backdrop-blur-xl">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-foreground">
+                <BookOpen className="w-5 h-5 text-primary" />
+                Jupyter-ноутбуки
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-sm text-muted-foreground">
+                Рабочие ноутбуки из курса — скачай и запусти в Google Colab или локально.
+              </p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {[
+                  {
+                    name: "FoodCollector_REINFORCE_v3.ipynb",
+                    desc: "REINFORCE + GridSensor + ONNX",
+                    href: "/FoodCollector_REINFORCE_v3.ipynb",
+                    color: "border-primary/30 hover:border-primary/60",
+                  },
+                  {
+                    name: "Taxi-v3.ipynb",
+                    desc: "Q-Learning + epsilon-greedy",
+                    href: "/Taxi-v3.ipynb",
+                    color: "border-secondary/30 hover:border-secondary/60",
+                  },
+                ].map((nb) => (
+                  <a
+                    key={nb.name}
+                    href={nb.href}
+                    download
+                    className={`flex items-start gap-3 p-4 rounded-lg border bg-card/60 transition-colors ${nb.color}`}
+                  >
+                    <Download className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">{nb.name}</p>
+                      <p className="text-xs text-muted-foreground">{nb.desc}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
             </CardContent>
           </Card>
 
