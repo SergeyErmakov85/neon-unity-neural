@@ -28,9 +28,9 @@ export const LEARNING_MAP: Stage[] = [
     id: "stage-1",
     slug: "stage-1",
     title: "Новичок",
-    description: "Фундамент: теория, окружение, первый агент и базовый алгоритм.",
+    description: "Фундамент: теория, окружение, первый агент, базовые алгоритмы и стратегии исследования.",
     tag: "FREE",
-    weeks: 4,
+    weeks: 6,
     lessons: [
       { id: "1-1", slug: "basics-rl", title: "Что такое обучение с подкреплением?", type: "lesson", path: "/courses/1-1", contextLinks: linksFor("basics-rl") },
       { id: "1-2", slug: "setup-pytorch-unity", title: "Установка окружения: PyTorch + Unity ML-Agents", type: "lesson", path: "/courses/1-2", contextLinks: linksFor("setup-pytorch-unity") },

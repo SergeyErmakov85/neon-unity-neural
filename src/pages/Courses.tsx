@@ -125,7 +125,7 @@ const Courses = () => {
   }, []);
 
   const userProgress = getProgress();
-  const totalLessons = 17;
+  const totalLessons = 20;
   const completedTotal = userProgress.completedLessons.length;
   const progress = Math.round((completedTotal / totalLessons) * 100);
 
@@ -173,7 +173,8 @@ const Courses = () => {
             <span className="bg-gradient-neon bg-clip-text text-transparent">Карта обучения</span>
           </h1>
           <p className="text-muted-foreground text-lg">
-            3 уровня · 17 уроков · 4 проекта · ~18 недель
+            3 уровня · 20 уроков · 4 проекта · ~20 недель
+          </p>
           </p>
         </div>
 
