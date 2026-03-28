@@ -153,7 +153,7 @@ const LearningPathSection = () => {
           </div>
 
           {/* Legend */}
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground relative z-20">
+          <div className="mt-20 flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground relative z-20">
             <span className="flex items-center gap-1.5"><Info className="w-3.5 h-3.5" /> Цветные точки — хабы поддержки:</span>
             {(Object.keys(SUPPORT_HUBS) as HubId[]).map((hId) => {
               const hub = SUPPORT_HUBS[hId];
