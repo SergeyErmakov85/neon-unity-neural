@@ -1,18 +1,32 @@
-import { Network, BookOpen, Code2, GraduationCap } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Network, BookOpen, Code2, GraduationCap, ArrowLeft, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import Math from "@/components/Math";
 import SEOHead from "@/components/SEOHead";
+import Navbar from "@/components/landing/Navbar";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
 
 const FcaRLModule = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <Navbar />
+      <ScrollProgressBar />
+    <div className="min-h-screen bg-background pt-28 pb-16">
       <SEOHead
         title="FCA + RL для NPC | Neon Unity Neural"
         description="Формальный Анализ Понятий (FCA) для структурирования пространства состояний RL-агентов в Unity."
       />
 
-      <div className="container mx-auto px-4 py-16 max-w-4xl space-y-12">
+      <div className="container mx-auto px-4 max-w-4xl space-y-12">
+        {/* Back button */}
+        <Button variant="ghost" onClick={() => navigate("/")} className="text-muted-foreground hover:text-foreground mb-6 -ml-2">
+          <ArrowLeft className="mr-2 h-4 w-4" /> На главную
+        </Button>
+
         {/* Header */}
         <div className="space-y-4">
           <div className="flex items-center gap-3">
@@ -161,8 +175,19 @@ for concept in lattice:
             </p>
           </CardContent>
         </Card>
+
+        {/* Navigation */}
+        <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+          <Button variant="outline" onClick={() => navigate("/hub/math-rl")}>
+            <ArrowLeft className="w-4 h-4 mr-2" /> Математика RL
+          </Button>
+          <Button onClick={() => navigate("/courses")}>
+            Перейти к курсам <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
+        </div>
       </div>
     </div>
+    </>
   );
 };
 
