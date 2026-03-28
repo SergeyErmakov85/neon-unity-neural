@@ -433,14 +433,16 @@ const Labs = () => {
         </p>
 
         <Tabs defaultValue="discount" className="space-y-6">
-          <TabsList className="grid grid-cols-3 md:grid-cols-6 w-full">
-            <TabsTrigger value="discount">Lab 1: Дисконт</TabsTrigger>
-            <TabsTrigger value="explore">Lab 2: Exploration</TabsTrigger>
-            <TabsTrigger value="replay">Lab 3: Replay</TabsTrigger>
-            <TabsTrigger value="epsilon">Lab 4: ε-Greedy</TabsTrigger>
-            <TabsTrigger value="advantage">Lab 5: Advantage</TabsTrigger>
-            <TabsTrigger value="pg">Lab 6: Policy Grad</TabsTrigger>
-          </TabsList>
+          <div className="overflow-x-auto pb-1">
+            <TabsList className="flex w-max md:grid md:grid-cols-6 md:w-full min-w-full gap-1">
+              <TabsTrigger value="discount" className="whitespace-nowrap text-xs md:text-sm">Lab 1: Дисконт</TabsTrigger>
+              <TabsTrigger value="explore" className="whitespace-nowrap text-xs md:text-sm">Lab 2: Exploration</TabsTrigger>
+              <TabsTrigger value="replay" className="whitespace-nowrap text-xs md:text-sm">Lab 3: Replay</TabsTrigger>
+              <TabsTrigger value="epsilon" className="whitespace-nowrap text-xs md:text-sm">Lab 4: ε-Greedy</TabsTrigger>
+              <TabsTrigger value="advantage" className="whitespace-nowrap text-xs md:text-sm">Lab 5: Advantage</TabsTrigger>
+              <TabsTrigger value="pg" className="whitespace-nowrap text-xs md:text-sm">Lab 6: Policy Grad</TabsTrigger>
+            </TabsList>
+          </div>
 
           <TabsContent value="discount"><DiscountLab /></TabsContent>
           <TabsContent value="explore"><ExplorationLab /></TabsContent>
