@@ -2,8 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, GraduationCap, Users, Eye, Swords, FileOutput } from "lucide-react";
-import { useNavigate as useNav } from "react-router-dom";
+import { ArrowLeft, GraduationCap, Users, Eye, Swords, Cpu } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const codeBlock = (code: string, lang = "yaml") => (
   <pre className="bg-card/80 border border-primary/20 rounded-lg p-4 overflow-x-auto text-xs md:text-sm font-mono leading-relaxed">
@@ -34,7 +34,7 @@ const AdvancedTopics = () => {
             <TabsTrigger value="multiagent"><Users className="w-4 h-4 mr-1" /> Multi-Agent</TabsTrigger>
             <TabsTrigger value="imitation"><Eye className="w-4 h-4 mr-1" /> Imitation</TabsTrigger>
             <TabsTrigger value="selfplay"><Swords className="w-4 h-4 mr-1" /> Self-Play</TabsTrigger>
-            <TabsTrigger value="onnx" onClick={() => navigate("/advanced/onnx-sentis")}><FileOutput className="w-4 h-4 mr-1" /> ONNX/Sentis</TabsTrigger>
+            <TabsTrigger value="onnx"><Cpu className="w-4 h-4 mr-1" /> ONNX/Sentis</TabsTrigger>
           </TabsList>
 
           {/* Curriculum Learning */}
@@ -203,6 +203,22 @@ mlagents-learn config/gail.yaml --run-id=gail_run`, "bash")}
                     <li>Стратегии в реальном времени</li>
                   </ul>
                 </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="onnx">
+            <Card className="border-primary/30">
+              <CardHeader>
+                <CardTitle className="text-2xl">Деплой через ONNX → Unity Sentis</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-muted-foreground">
+                  Экспорт обученной PyTorch-модели в ONNX и запуск инференса прямо в Unity через Sentis (бывший Barracuda).
+                </p>
+                <Button variant="cyber" asChild>
+                  <Link to="/advanced/onnx-sentis">Открыть полный мастер-класс →</Link>
+                </Button>
               </CardContent>
             </Card>
           </TabsContent>
