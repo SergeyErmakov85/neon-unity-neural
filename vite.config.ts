@@ -15,4 +15,27 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "vendor-react": ["react", "react-dom", "react-router-dom"],
+          "vendor-ui": [
+            "@radix-ui/react-accordion",
+            "@radix-ui/react-collapsible",
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-dropdown-menu",
+            "@radix-ui/react-tabs",
+            "@radix-ui/react-tooltip",
+            "@radix-ui/react-select",
+            "@radix-ui/react-slider",
+          ],
+          "vendor-supabase": ["@supabase/supabase-js"],
+          "vendor-charts": ["recharts"],
+          "vendor-katex": ["katex"],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 600,
+  },
 }));
