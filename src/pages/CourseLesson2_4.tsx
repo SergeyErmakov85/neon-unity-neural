@@ -4,6 +4,8 @@ import CyberCodeBlock from "@/components/CyberCodeBlock";
 import Quiz from "@/components/Quiz";
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertTriangle, Lightbulb, Target } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const quizQuestions = [
   {
@@ -207,6 +209,21 @@ if (reachedGoal) AddReward(1.0f);`}
 }`}
           </CyberCodeBlock>
         </section>
+
+        <Card className="border-accent/20 bg-accent/5 mt-8">
+          <CardContent className="p-5 flex items-start gap-3">
+            <Lightbulb className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+            <div>
+              <p className="font-semibold text-foreground mb-1">Практика: FoodCollector с REINFORCE</p>
+              <p className="text-sm text-muted-foreground mb-3">
+                Полный пайплайн обучения агента: кастомный REINFORCE на PyTorch, GridSensor, ONNX.
+              </p>
+              <Button variant="outline" size="sm" asChild>
+                <Link to="/unity-projects/food-collector">Открыть проект →</Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
 
         <Quiz title="Проверь себя: Reward Shaping" questions={quizQuestions} />
       </ProGate>

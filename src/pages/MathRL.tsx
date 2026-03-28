@@ -46,6 +46,14 @@ const modules = [
     available: true,
     color: "accent" as const,
   },
+  {
+    id: 7,
+    title: "FCA + RL для NPC",
+    description: "Применение Формального Анализа Понятий для структурирования пространства состояний RL-агентов. Понятийные решётки, контексты, curriculum learning через FCA.",
+    available: true,
+    color: "primary" as const,
+    link: "/hub/fca-rl",
+  },
 ];
 
 const colorMap = {
@@ -96,7 +104,7 @@ const MathRL = () => {
               <Card
                 key={mod.id}
                 className={`bg-card/60 backdrop-blur-sm ${colors.border} ${mod.available ? `${colors.shadow} cursor-pointer` : "opacity-60 cursor-not-allowed"} transition-all duration-300 flex flex-col w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]`}
-                onClick={() => mod.available && navigate(`/math-rl/module-${mod.id}`)}
+                onClick={() => mod.available && navigate((mod as any).link || `/math-rl/module-${mod.id}`)}
               >
                 <CardContent className="p-6 flex flex-col flex-1">
                   <div className="flex items-center justify-between mb-4">

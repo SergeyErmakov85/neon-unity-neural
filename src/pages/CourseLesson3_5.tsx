@@ -3,7 +3,9 @@ import ProGate from "@/components/ProGate";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import Quiz from "@/components/Quiz";
 import { Card, CardContent } from "@/components/ui/card";
-import { Package, Smartphone, Cpu } from "lucide-react";
+import { Package, Smartphone, Cpu, Lightbulb } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const quizQuestions = [
   {
@@ -252,6 +254,21 @@ print(f"Compression: {(1 - quant/orig)*100:.1f}%")`}
             </Card>
           </div>
         </section>
+
+        <Card className="border-primary/20 bg-primary/5 mt-8">
+          <CardContent className="p-5 flex items-start gap-3">
+            <Lightbulb className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+            <div>
+              <p className="font-semibold text-foreground mb-1">Полный мастер-класс по ONNX → Sentis</p>
+              <p className="text-sm text-muted-foreground mb-3">
+                Подробный гайд с UnityONNXWrapper, C#-кодом инференса и разбором типичных ошибок.
+              </p>
+              <Button variant="outline" size="sm" asChild>
+                <Link to="/advanced/onnx-sentis">Открыть мастер-класс →</Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
 
         <Quiz title="Тест: Деплой модели" questions={quizQuestions} />
       </ProGate>
