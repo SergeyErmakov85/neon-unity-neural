@@ -1,12 +1,21 @@
-import { Network, BookOpen, Code2, GraduationCap } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Network, BookOpen, Code2, GraduationCap, ArrowLeft, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import Math from "@/components/Math";
 import SEOHead from "@/components/SEOHead";
+import Navbar from "@/components/landing/Navbar";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
 
 const FcaRLModule = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <Navbar />
+      <ScrollProgressBar />
+    <div className="min-h-screen bg-background pt-28 pb-16">
       <SEOHead
         title="FCA + RL для NPC | Neon Unity Neural"
         description="Формальный Анализ Понятий (FCA) для структурирования пространства состояний RL-агентов в Unity."
