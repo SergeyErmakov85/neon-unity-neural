@@ -93,7 +93,7 @@ const LearningPathSection = () => {
                           <p className="text-xs text-muted-foreground mt-1">{stage.description}</p>
                         </div>
 
-                        <div className="space-y-1 pt-2 flex-1 overflow-y-auto max-h-[340px]">
+                        <div className="space-y-1 pt-2 flex-1 min-h-0 overflow-y-auto">
                           {stage.lessons.map((lesson) => {
                             const status = getStatus(lesson.slug);
                             const hubIds = [...new Set(lesson.contextLinks.map((cl) => cl.hubId))];
