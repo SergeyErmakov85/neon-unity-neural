@@ -131,7 +131,7 @@ const LearningPathSection = () => {
                                     return (
                                       <span
                                         key={hId}
-                                        className={`inline-block w-2 h-2 rounded-full ${isLocked ? "bg-muted-foreground/20" : hub.colorAccent.replace("text-", "bg-")}`}
+                                        className={`inline-block w-2 h-2 rounded-full ${hub.colorAccent.replace("text-", "bg-")}`}
                                         title={hub.label}
                                       />
                                     );
