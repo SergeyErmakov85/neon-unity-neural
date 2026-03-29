@@ -95,7 +95,7 @@ const FeaturesSection = () => {
         </div>
 
         {/* Desktop: Flower layout */}
-        <div className="hidden md:flex justify-center">
+        <div className="hidden sm:flex justify-center">
           <div className="relative" style={{ width: 640, height: 600 }}>
             {features.map((feature, index) => {
               const Icon = feature.icon;
@@ -241,7 +241,7 @@ const FeaturesSection = () => {
         </div>
 
         {/* Mobile: Grid */}
-        <div className="md:hidden grid grid-cols-2 gap-4">
+        <div className="sm:hidden grid grid-cols-2 gap-4">
           {[...features, { ...centerFeature, title: centerFeature.title }].map((feature, index) => {
             const Icon = feature.icon;
             const hsl = feature.hsl;
