@@ -103,7 +103,7 @@ const DemoSection = () => {
 
         <div className="text-center mt-12">
           <Link to="/demo-project">
-            <Button size="lg" variant="outline" className="group">
+            <Button size="lg" variant="outline" className="group transition-all duration-500 hover:bg-secondary hover:text-secondary-foreground hover:border-secondary">
               <Play className="w-4 h-4 mr-2" />
               Перейти к проекту
             </Button>
