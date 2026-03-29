@@ -7,19 +7,22 @@ import ScrollProgressBar from "@/components/ScrollProgressBar";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const Part1 = lazy(() => import("@/components/math-rl/parts/Part1Limits"));
+const Part1b = lazy(() => import("@/components/math-rl/parts/Part1bCalculus"));
 const Part2 = lazy(() => import("@/components/math-rl/parts/Part2LinearAlgebra"));
 const Part3 = lazy(() => import("@/components/math-rl/parts/Part3Probability"));
 const Part4 = lazy(() => import("@/components/math-rl/parts/Part4Optimization"));
 const Part5 = lazy(() => import("@/components/math-rl/parts/Part5FundamentalRL"));
 const Part6 = lazy(() => import("@/components/math-rl/parts/Part6DeepRL"));
+const GDPlayground = lazy(() => import("@/components/math-rl/GradientDescentPlayground"));
 
 const parts = [
   { id: "part-1", num: "I", title: "Пределы, последовательности и ряды", color: "primary" as const },
-  { id: "part-2", num: "II", title: "Линейная алгебра для RL", color: "secondary" as const },
-  { id: "part-3", num: "III", title: "От вероятности к алгоритмам RL", color: "accent" as const },
-  { id: "part-4", num: "IV", title: "Методы оптимизации", color: "primary" as const },
-  { id: "part-5", num: "V", title: "Фундаментальная математика RL", color: "secondary" as const },
-  { id: "part-6", num: "VI", title: "Глубокое обучение с подкреплением", color: "accent" as const },
+  { id: "part-1b", num: "II", title: "Производные, градиент и оптимизация", color: "secondary" as const },
+  { id: "part-2", num: "III", title: "Линейная алгебра для RL", color: "accent" as const },
+  { id: "part-3", num: "IV", title: "От вероятности к алгоритмам RL", color: "primary" as const },
+  { id: "part-4", num: "V", title: "Методы оптимизации политик", color: "secondary" as const },
+  { id: "part-5", num: "VI", title: "Фундаментальная математика RL", color: "accent" as const },
+  { id: "part-6", num: "VII", title: "Глубокое обучение с подкреплением", color: "primary" as const },
 ];
 
 const colorClasses = {
