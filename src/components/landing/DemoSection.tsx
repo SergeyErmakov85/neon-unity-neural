@@ -27,8 +27,8 @@ const DemoSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Demo Video Placeholder */}
           <Card className="bg-card/60 backdrop-blur-sm border-primary/30 overflow-hidden">
-            <CardContent className="p-0">
-              <div className="aspect-video relative overflow-hidden rounded-xl">
+            <CardContent className="p-0 h-full">
+              <div className="relative h-full min-h-[320px] overflow-hidden">
                 <video
                   className="absolute inset-0 w-full h-full object-cover"
                   autoPlay
