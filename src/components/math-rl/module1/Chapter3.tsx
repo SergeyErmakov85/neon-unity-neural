@@ -39,7 +39,7 @@ const Chapter3 = () => (
       </table>
     </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Марковское свойство</h3>
+    <h3 id="марковское-свойство" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Марковское свойство</h3>
     <p>
       Центральное свойство MDP: будущее зависит <em>исключительно</em> от текущего состояния и действия, а не от всей истории:
     </p>

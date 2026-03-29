@@ -8,10 +8,10 @@ const Chapter5 = () => (
       Весь математический аппарат RL опирается на принцип <strong className="text-foreground">динамического программирования</strong>, заложенный Ричардом Беллманом в 1950-х. Гениальность подхода — обнаружение рекурсивной структуры: возврат <Math display={false}>{"G_t"}</Math> раскладывается на немедленную награду и дисконтированный возврат следующего шага.
     </p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Рекурсивное разложение возврата</h3>
+    <h3 id="рекурсивное-разложение-возврата" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Рекурсивное разложение возврата</h3>
     <Math>{"G_t = R_{t+1} + \\gamma\\big(R_{t+2} + \\gamma R_{t+3} + \\dots\\big) = R_{t+1} + \\gamma\\, G_{t+1}"}</Math>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Уравнение ожиданий Беллмана</h3>
+    <h3 id="уравнение-ожиданий-беллмана" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Уравнение ожиданий Беллмана</h3>
     <p>Подставив рекурсию в определение <Math display={false}>{"V_\\pi(s)"}</Math>, получаем:</p>
     <Math>{"V_\\pi(s) = \\sum_{a} \\pi(a|s) \\sum_{s', r} p(s', r \\mid s, a) \\left[ r + \\gamma\\, V_\\pi(s') \\right]"}</Math>
 
@@ -33,7 +33,7 @@ const Chapter5 = () => (
       </p>
     </InfoBox>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Уравнение оптимальности Беллмана</h3>
+    <h3 id="уравнение-оптимальности-беллмана" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Уравнение оптимальности Беллмана</h3>
     <p>
       Оптимальная политика <Math display={false}>{"\\pi^*"}</Math> порождает <Math display={false}>{"V^*(s) = \\max_\\pi V_\\pi(s)"}</Math>. В оптимальном поведении усреднение по действиям заменяется оператором <Math display={false}>{"\\max"}</Math>:
     </p>
