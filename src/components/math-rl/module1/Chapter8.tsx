@@ -11,12 +11,12 @@ const Chapter8 = () => (
       Для сетки <Math display={false}>{"10 \\times 10"}</Math> это работает (100 состояний, 4 действия). Но если состояние — экран <Math display={false}>{"84 \\times 84"}</Math> пикселей в 3 каналах, число комбинаций превышает число атомов во Вселенной. Это <strong className="text-primary">Проклятие размерности</strong> (Curse of Dimensionality).
     </p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Нейросети как аппроксиматоры</h3>
+    <h3 id="нейросети-как-аппроксиматоры" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Нейросети как аппроксиматоры</h3>
     <p>
       Вместо таблицы — нейронная сеть с весами <Math display={false}>{"w"}</Math>, принимающая на вход состояние <Math display={false}>{"s"}</Math> и предсказывающая <Math display={false}>{"\\hat{Q}(s, a, w)"}</Math>. Ключевое свойство — <strong className="text-foreground">генерализация</strong>: увидев опасность при координатах <Math display={false}>{"(10.1, 5.0)"}</Math>, сеть автоматически распознает <Math display={false}>{"(10.2, 5.0)"}</Math> как опасные.
     </p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">DQN: Deep Q-Network</h3>
+    <h3 id="dqn-deep-q-network" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">DQN: Deep Q-Network</h3>
     <p>
       DQN решает задачу регрессии, минимизируя MSE между предсказанием сети и «целью» Беллмана:
     </p>

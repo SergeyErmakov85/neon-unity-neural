@@ -12,7 +12,7 @@ const Chapter6 = () => (
       Тогда на сцену выходят <strong className="text-primary">методы обучения без модели</strong> (Model-Free RL) — агент познаёт мир через метод проб и ошибок.
     </p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Монте-Карло vs Temporal Difference</h3>
+    <h3 id="монте-карло-vs-temporal-difference" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Монте-Карло vs Temporal Difference</h3>
     <div className="my-4 overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
@@ -39,7 +39,7 @@ const Chapter6 = () => (
       </table>
     </div>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">TD-обучение: величайший прорыв</h3>
+    <h3 id="td-обучение-величайший-прорыв" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">TD-обучение: величайший прорыв</h3>
     <p>
       Мы делаем один шаг, получаем <Math display={false}>{"R_{t+1}"}</Math>, смотрим на оценку нового состояния <Math display={false}>{"V(S_{t+1})"}</Math> и используем сумму как «цель» (Target):
     </p>
@@ -52,7 +52,7 @@ const Chapter6 = () => (
       Коэффициент <Math display={false}>{"\\alpha"}</Math> (Learning Rate) определяет, насколько сильно мы готовы изменить старую оценку. Обновление оценок на основе других оценок называется <strong className="text-foreground">бутстраппингом</strong>.
     </p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">SARSA vs Q-learning</h3>
+    <h3 id="sarsa-vs-q-learning" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">SARSA vs Q-learning</h3>
 
     <InfoBox>
       <p className="font-semibold text-foreground mb-2">SARSA (On-policy)</p>

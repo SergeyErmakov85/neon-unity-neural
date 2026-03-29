@@ -8,7 +8,7 @@ const Chapter10 = () => (
       Unity ML-Agents позволяет создавать 3D-симуляции на C#, выступающие в роли Среды, в то время как алгоритмы RL (PPO на Python/PyTorch) работают в отдельном процессе через TCP.
     </p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Связь MDP → Unity Event-функции</h3>
+    <h3 id="связь-mdp-unity-event-функции" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Связь MDP → Unity Event-функции</h3>
 
     <InfoBox>
       <div className="space-y-4 text-sm">
@@ -27,7 +27,7 @@ const Chapter10 = () => (
       </div>
     </InfoBox>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Гиперпараметры .yaml и их математический смысл</h3>
+    <h3 id="гиперпараметры-yaml-и-их-математический-смысл" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Гиперпараметры .yaml и их математический смысл</h3>
     <div className="my-4 overflow-x-auto">
       <table className="w-full text-sm">
         <thead>

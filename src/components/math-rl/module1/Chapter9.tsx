@@ -8,7 +8,7 @@ const Chapter9 = () => (
       Value-based методы (DQN) не работают с <strong className="text-foreground">непрерывным пространством действий</strong> (нельзя вычислить <Math display={false}>{"\\max_a"}</Math> для бесконечного числа вариантов) и не могут выучить истинно стохастические политики (в «Камень-ножницы-бумага» оптимальная стратегия — играть случайно).
     </p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Параметризация политики</h3>
+    <h3 id="параметризация-политики" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Параметризация политики</h3>
     <p>
       Политика напрямую параметризуется нейронной сетью с весами <Math display={false}>{"\\theta"}</Math>: <Math display={false}>{"\\pi_\\theta(a|s)"}</Math>. Целевая функция — ожидаемый суммарный возврат:
     </p>
@@ -16,19 +16,19 @@ const Chapter9 = () => (
     <p>Обновление весов методом градиентного подъёма:</p>
     <Math>{"\\theta_{t+1} = \\theta_t + \\alpha\\, \\nabla_\\theta J(\\theta_t)"}</Math>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Теорема о градиенте политики</h3>
+    <h3 id="теорема-о-градиенте-политики" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Теорема о градиенте политики</h3>
     <Math>{"\\nabla_\\theta J(\\theta) \\propto \\sum_{s} d^{\\pi}(s) \\sum_{a} Q^\\pi(s,a)\\, \\nabla_\\theta \\pi_\\theta(a|s)"}</Math>
     <p>
       Здесь <Math display={false}>{"d^\\pi(s)"}</Math> — стационарное распределение состояний.
     </p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Логарифмический трюк (Log-derivative trick)</h3>
+    <h3 id="логарифмический-трюк-log-derivative-trick" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Логарифмический трюк (Log-derivative trick)</h3>
     <p>
       Из матанализа: <Math display={false}>{"\\nabla f(x) = f(x)\\, \\nabla \\ln f(x)"}</Math>. Применяя к <Math display={false}>{"\\pi_\\theta"}</Math>, преобразуем градиент в форму математического ожидания:
     </p>
     <Math>{"\\nabla_\\theta J(\\theta) = \\mathbb{E}_{\\pi_\\theta}\\!\\left[ G_t\\, \\nabla_\\theta \\ln \\pi_\\theta(A_t | S_t) \\right]"}</Math>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Алгоритм REINFORCE</h3>
+    <h3 id="алгоритм-reinforce" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Алгоритм REINFORCE</h3>
     <Math>{"\\theta_{t+1} = \\theta_t + \\alpha\\, G_t\\, \\nabla_\\theta \\ln \\pi_\\theta(A_t | S_t)"}</Math>
 
     <InfoBox variant="secondary">
@@ -40,7 +40,7 @@ const Chapter9 = () => (
       </ul>
     </InfoBox>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Архитектура Актор-Критик (Actor-Critic)</h3>
+    <h3 id="архитектура-актор-критик-actor-critic" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Архитектура Актор-Критик (Actor-Critic)</h3>
     <p>
       REINFORCE имеет колоссальную <strong className="text-foreground">дисперсию</strong>. Гибридная архитектура решает эту проблему, объединяя две сети:
     </p>

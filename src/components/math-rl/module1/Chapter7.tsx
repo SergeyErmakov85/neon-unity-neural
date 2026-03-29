@@ -15,7 +15,7 @@ const Chapter7 = () => (
       </p>
     </InfoBox>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Механизм кратковременной памяти</h3>
+    <h3 id="механизм-кратковременной-памяти" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Механизм кратковременной памяти</h3>
     <p>
       Для каждого состояния <Math display={false}>{"s"}</Math> заводится переменная <Math display={false}>{"e_t(s)"}</Math> — след пригодности. При посещении состояния его след резко возрастает, затем экспоненциально затухает с коэффициентом <Math display={false}>{"\\gamma\\lambda"}</Math>:
     </p>
@@ -24,7 +24,7 @@ const Chapter7 = () => (
       Параметр <Math display={false}>{"\\lambda \\in [0, 1]"}</Math> контролирует скорость затухания. При <Math display={false}>{"\\lambda = 0"}</Math> получаем TD(0), при <Math display={false}>{"\\lambda = 1"}</Math> — аналог Монте-Карло.
     </p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Backward View: мгновенное распространение</h3>
+    <h3 id="backward-view-мгновенное-распространение" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Backward View: мгновенное распространение</h3>
     <p>
       В алгоритме <Math display={false}>{"\\text{TD}(\\lambda)"}</Math> ошибка <Math display={false}>{"\\delta_t"}</Math> немедленно транслируется назад во времени и используется для обновления <strong className="text-foreground">всех состояний</strong> пропорционально их следу:
     </p>

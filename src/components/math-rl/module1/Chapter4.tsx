@@ -4,7 +4,7 @@ import { Section, InfoBox } from "./Section";
 
 const Chapter4 = () => (
   <Section icon={<TrendingUp className="w-5 h-5 text-secondary" />} title="Глава 4. Возврат, политики и функции ценности">
-    <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">Возврат (Return)</h3>
+    <h3 id="возврат-return" className="scroll-mt-28 text-xl font-semibold text-foreground mt-6 mb-3">Возврат (Return)</h3>
     <p>
       Агент стремится максимизировать совокупную награду — <strong className="text-foreground">возврат</strong> <Math display={false}>{"G_t"}</Math>.
     </p>
@@ -25,12 +25,12 @@ const Chapter4 = () => (
       </p>
     </InfoBox>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Политика (Policy)</h3>
+    <h3 id="политика-policy" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Политика (Policy)</h3>
     <p>
       Поведение агента формализуется <strong className="text-foreground">политикой</strong> <Math display={false}>{"\\pi"}</Math> — функцией, сопоставляющей состояниям вероятности выбора действий. Запись <Math display={false}>{"\\pi(a|s)"}</Math> означает: вероятность выбрать действие <Math display={false}>{"a"}</Math> в состоянии <Math display={false}>{"s"}</Math>.
     </p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Функции ценности (Value Functions)</h3>
+    <h3 id="функции-ценности-value-functions" className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3">Функции ценности (Value Functions)</h3>
     <p>
       <strong className="text-foreground">Функция ценности состояния</strong> <Math display={false}>{"V_\\pi(s)"}</Math> — «насколько выгодно находиться в состоянии <Math display={false}>{"s"}</Math>, следуя политике <Math display={false}>{"\\pi"}</Math>?»:
     </p>
