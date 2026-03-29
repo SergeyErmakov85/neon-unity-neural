@@ -10,14 +10,14 @@ const Part3Probability = () => (
         Теория вероятности — краеугольный камень для понимания неопределённости в задачах RL. Агент взаимодействует со стохастической средой, и вероятность предоставляет аппарат для моделирования такой неопределённости.
       </p>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Основные понятия</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="основные-понятия">Основные понятия</h3>
       <ul className="list-disc list-inside space-y-2">
         <li><strong className="text-foreground">Пространство элементарных исходов</strong> <Math display={false}>{`\\Omega`}</Math> — множество всех возможных результатов эксперимента</li>
         <li><strong className="text-foreground">Событие</strong> <Math display={false}>{`A \\subseteq \\Omega`}</Math> — подмножество пространства исходов</li>
         <li><strong className="text-foreground">Вероятность</strong> <Math display={false}>{`P(A) \\in [0, 1]`}</Math>, <Math display={false}>{`\\sum P(\\omega_i) = 1`}</Math></li>
       </ul>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Случайные величины и распределения</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="случайные-величины-и-распределения">Случайные величины и распределения</h3>
       <p>
         <strong className="text-foreground">Случайная величина</strong> <Math display={false}>{`X: \\Omega \\to \\mathbb{R}`}</Math> — функция, сопоставляющая каждому исходу числовое значение.
       </p>
@@ -27,7 +27,7 @@ const Part3Probability = () => (
         <li><strong className="text-foreground">CDF:</strong> <Math display={false}>{`F(x) = P(X \\leq x)`}</Math></li>
       </ul>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Ожидаемое значение и дисперсия</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="ожидаемое-значение-и-дисперсия">Ожидаемое значение и дисперсия</h3>
       <p>Дискретная случайная величина:</p>
       <Math>{`E[X] = \\sum_x x \\cdot P(X = x)`}</Math>
       <p>Непрерывная случайная величина:</p>
@@ -39,7 +39,7 @@ const Part3Probability = () => (
         <p className="text-sm">Ожидаемое значение вознаграждения — ключевое понятие для оценки политик. Цель агента — максимизировать <Math display={false}>{`E\\left[\\sum_{t=0}^{\\infty} \\gamma^t R_t\\right]`}</Math>.</p>
       </InfoBox>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Условная вероятность и правило Байеса</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="условная-вероятность-и-правило-байеса">Условная вероятность и правило Байеса</h3>
       <Math>{`P(A|B) = \\frac{P(A \\cap B)}{P(B)}, \\quad P(B) > 0`}</Math>
       <p className="mt-3"><strong className="text-foreground">Независимость:</strong> <Math display={false}>{`P(A \\cap B) = P(A) \\cdot P(B)`}</Math></p>
       <p className="mt-3"><strong className="text-foreground">Правило Байеса:</strong></p>
@@ -57,7 +57,7 @@ const Part3Probability = () => (
 
     {/* Section 2: Statistics */}
     <Section icon={<BarChart3 className="w-5 h-5 text-secondary" />} title="2. Статистика">
-      <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">Описательная статистика</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-6 mb-3" id="описательная-статистика">Описательная статистика</h3>
       <ul className="list-disc list-inside space-y-2">
         <li><strong className="text-foreground">Среднее:</strong> <Math display={false}>{`\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i`}</Math></li>
         <li><strong className="text-foreground">Дисперсия:</strong> <Math display={false}>{`\\text{Var}(X) = E[(X - E[X])^2]`}</Math></li>
@@ -65,13 +65,13 @@ const Part3Probability = () => (
         <li><strong className="text-foreground">Медиана, мода, квартили, IQR</strong></li>
       </ul>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Оценка параметров</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="оценка-параметров">Оценка параметров</h3>
       <ul className="list-disc list-inside space-y-2">
         <li><strong className="text-foreground">Точечная оценка</strong> — например, выборочное среднее <Math display={false}>{`\\hat{\\mu} = \\bar{x}`}</Math></li>
         <li><strong className="text-foreground">Доверительные интервалы</strong> — диапазон, в котором с заданной вероятностью находится параметр</li>
       </ul>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Проверка гипотез</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="проверка-гипотез">Проверка гипотез</h3>
       <ul className="list-disc list-inside space-y-2">
         <li><Math display={false}>{`H_0`}</Math> — нулевая гипотеза (нет различия)</li>
         <li><Math display={false}>{`H_1`}</Math> — альтернативная гипотеза</li>
@@ -90,11 +90,11 @@ const Part3Probability = () => (
 
     {/* Section 3: Markov Processes */}
     <Section icon={<GitBranch className="w-5 h-5 text-accent" />} title="3. Марковские процессы">
-      <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">Цепи Маркова</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-6 mb-3" id="цепи-маркова">Цепи Маркова</h3>
       <p><strong className="text-foreground">Свойство Маркова</strong> — будущее зависит только от текущего состояния:</p>
       <Math>{`P(S_{t+1} = s' \\mid S_t = s_t, S_{t-1} = s_{t-1}, \\ldots, S_0 = s_0) = P(S_{t+1} = s' \\mid S_t = s_t)`}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">MDP — Марковский процесс принятия решений</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="mdp-марковский-процесс-принятия-решений">MDP — Марковский процесс принятия решений</h3>
       <p>MDP определяется кортежем:</p>
       <Math>{`(\\mathcal{S},\\; \\mathcal{A},\\; P,\\; R,\\; \\gamma)`}</Math>
       <ul className="list-disc list-inside mt-3 space-y-2">
@@ -119,17 +119,17 @@ const Part3Probability = () => (
         <strong className="text-foreground">Политика</strong> <Math display={false}>{`\\pi(a|s)`}</Math> — распределение вероятностей над действиями для состояния <Math display={false}>{`s`}</Math>.
       </p>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Функция ценности состояния</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="функция-ценности-состояния">Функция ценности состояния</h3>
       <Math>{`V^\\pi(s) = E_\\pi\\left[\\sum_{t=0}^{\\infty} \\gamma^t R_t \\;\\middle|\\; S_0 = s\\right]`}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Функция ценности действия</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="функция-ценности-действия">Функция ценности действия</h3>
       <Math>{`Q^\\pi(s, a) = E_\\pi\\left[\\sum_{t=0}^{\\infty} \\gamma^t R_t \\;\\middle|\\; S_0 = s, A_0 = a\\right]`}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Уравнения Беллмана</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="уравнения-беллмана">Уравнения Беллмана</h3>
       <Math>{`V^\\pi(s) = \\sum_a \\pi(a|s) \\sum_{s'} P(s'|s, a) \\bigl[R(s, a, s') + \\gamma\\, V^\\pi(s')\\bigr]`}</Math>
       <Math>{`Q^\\pi(s, a) = \\sum_{s'} P(s'|s, a) \\left[R(s, a, s') + \\gamma \\sum_{a'} \\pi(a'|s')\\, Q^\\pi(s', a')\\right]`}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Уравнения оптимальности Беллмана</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="уравнения-оптимальности-беллмана">Уравнения оптимальности Беллмана</h3>
       <Math>{`V^*(s) = \\max_a \\sum_{s'} P(s'|s, a) \\bigl[R(s, a, s') + \\gamma\\, V^*(s')\\bigr]`}</Math>
       <Math>{`Q^*(s, a) = \\sum_{s'} P(s'|s, a) \\left[R(s, a, s') + \\gamma \\max_{a'} Q^*(s', a')\\right]`}</Math>
 
@@ -142,18 +142,18 @@ const Part3Probability = () => (
 
     {/* Section 5: RL Algorithms */}
     <Section icon={<Lightbulb className="w-5 h-5 text-secondary" />} title="5. Алгоритмы RL">
-      <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">Методы, основанные на ценности</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-6 mb-3" id="методы-основанные-на-ценности">Методы, основанные на ценности</h3>
       <p><strong className="text-foreground">Q-learning</strong> (off-policy):</p>
       <Math>{`Q(s, a) \\leftarrow Q(s, a) + \\alpha \\bigl[R + \\gamma \\max_{a'} Q(s', a') - Q(s, a)\\bigr]`}</Math>
       <p className="mt-3"><strong className="text-foreground">SARSA</strong> (on-policy):</p>
       <Math>{`Q(s, a) \\leftarrow Q(s, a) + \\alpha \\bigl[R + \\gamma\\, Q(s', a') - Q(s, a)\\bigr]`}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Методы, основанные на политике</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="методы-основанные-на-политике">Методы, основанные на политике</h3>
       <p><strong className="text-foreground">REINFORCE</strong> — метод Монте-Карло для оценки градиента:</p>
       <Math>{`\\nabla_\\theta J(\\theta) = E_\\pi\\left[\\sum_{t=0}^{T} \\nabla_\\theta \\log \\pi_\\theta(a_t|s_t) \\cdot G_t\\right]`}</Math>
       <p className="mt-3"><strong className="text-foreground">Actor-Critic:</strong> критик оценивает <Math display={false}>{`V(s)`}</Math>, актёр обновляет <Math display={false}>{`\\pi_\\theta`}</Math> на основе оценки критика.</p>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Методы, основанные на модели</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="методы-основанные-на-модели">Методы, основанные на модели</h3>
       <p>
         Сначала изучается модель среды (<Math display={false}>{`\\hat{P}`}</Math> и <Math display={false}>{`\\hat{R}`}</Math>), затем используется для планирования или генерации синтетического опыта.
       </p>
@@ -169,7 +169,7 @@ const Part3Probability = () => (
 
     {/* Section 6: Python Examples */}
     <Section icon={<Code2 className="w-5 h-5 text-accent" />} title="6. Практические примеры (Python)">
-      <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">Пример 1: Симуляция бросков монеты</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-6 mb-3" id="пример-1-симуляция-бросков-монеты">Пример 1: Симуляция бросков монеты</h3>
       <CodeBlock>{`import numpy as np
 import matplotlib.pyplot as plt
 
@@ -181,7 +181,7 @@ tails = np.sum(results == 1)
 print(f"Доля орлов: {heads/num_flips:.2f}")
 print(f"Доля решек: {tails/num_flips:.2f}")`}</CodeBlock>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Пример 2: Анализ вознаграждений</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="пример-2-анализ-вознаграждений">Пример 2: Анализ вознаграждений</h3>
       <CodeBlock>{`np.random.seed(42)
 rewards = np.random.normal(loc=10, scale=3, size=100)
 
@@ -193,7 +193,7 @@ plt.hist(rewards, bins=10, edgecolor='black', alpha=0.7)
 plt.title('Распределение вознаграждений агента RL')
 plt.show()`}</CodeBlock>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Пример 3: Оценка политики в MDP</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="пример-3-оценка-политики-в-mdp">Пример 3: Оценка политики в MDP</h3>
       <p className="text-sm mb-3">
         Среда: 2 состояния (S0, S1), 2 действия (A0, A1), <Math display={false}>{`\\gamma = 0.9`}</Math>.
       </p>
@@ -225,7 +225,7 @@ for _ in range(100):
 
 print(f"V(S0) = {V[0]:.2f}, V(S1) = {V[1]:.2f}")`}</CodeBlock>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Упражнения для самопроверки</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="упражнения-для-самопроверки">Упражнения для самопроверки</h3>
       <ol className="list-decimal list-inside space-y-2 text-sm">
         <li>Измените Пример 1 для двух игральных костей — постройте гистограмму сумм.</li>
         <li>В Примере 2 добавьте медиану и IQR. Сравните со средним и σ.</li>

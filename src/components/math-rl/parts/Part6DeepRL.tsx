@@ -15,7 +15,7 @@ const Part6DeepRL = () => (
           <strong className="text-foreground">Глубокое обучение с подкреплением (Deep RL)</strong> объединяет методы обучения с подкреплением с возможностями глубоких нейронных сетей.
         </p>
 
-        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Ключевые компоненты</h3>
+        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="ключевые-компоненты">Ключевые компоненты</h3>
         <ul className="list-disc list-inside space-y-3">
           <li><strong className="text-foreground">Агент (Agent)</strong> — сущность, которая принимает решения и выполняет действия.</li>
           <li><strong className="text-foreground">Среда (Environment)</strong> — внешний мир, с которым взаимодействует агент.</li>
@@ -25,7 +25,7 @@ const Part6DeepRL = () => (
           <li><strong className="text-foreground">Политика (Policy)</strong> — стратегия выбора действий.</li>
         </ul>
 
-        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Особенности Deep RL</h3>
+        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="особенности-deep-rl">Особенности Deep RL</h3>
         <p>Глубокие нейронные сети используются для аппроксимации:</p>
         <ol className="list-decimal list-inside space-y-2 mt-3">
           <li><strong className="text-foreground">Функции ценности</strong> — оценка ожидаемой будущей награды</li>
@@ -35,7 +35,7 @@ const Part6DeepRL = () => (
       </Section>
 
       <Section icon={<Lightbulb className="w-5 h-5 text-accent" />} title="1.2 Обзор алгоритмов RL">
-        <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">Deep Q-Network (DQN)</h3>
+        <h3 className="text-xl font-semibold text-foreground mt-6 mb-3" id="deep-qnetwork-dqn">Deep Q-Network (DQN)</h3>
         <p>DQN (DeepMind, 2013–2015) заменяет Q-таблицу глубокой нейронной сетью <Math display={false}>{`Q(s,a;\\theta)`}</Math>.</p>
         <ol className="list-decimal list-inside space-y-2 mt-3">
           <li><strong className="text-foreground">Аппроксимация нейронной сетью:</strong> <Math display={false}>{`Q(s,a;\\theta)`}</Math></li>
@@ -47,7 +47,7 @@ const Part6DeepRL = () => (
         <p>где целевое значение:</p>
         <Math>{`y_j = r_j + \\gamma \\max_{a'} Q(s'_j, a'; \\theta^-)`}</Math>
 
-        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Улучшения DQN</h3>
+        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="улучшения-dqn">Улучшения DQN</h3>
         <ul className="list-disc list-inside space-y-2">
           <li><strong className="text-foreground">Double DQN</strong> — разделяет выбор и оценку действия</li>
           <li><strong className="text-foreground">Dueling DQN</strong> — разделяет <Math display={false}>{`Q = V(s) + A(s,a)`}</Math></li>
@@ -55,7 +55,7 @@ const Part6DeepRL = () => (
           <li><strong className="text-foreground">Rainbow</strong> — объединение всех улучшений</li>
         </ul>
 
-        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Современные алгоритмы</h3>
+        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="современные-алгоритмы">Современные алгоритмы</h3>
         <ul className="list-disc list-inside space-y-2">
           <li><strong className="text-foreground">SAC (Soft Actor-Critic)</strong> — энтропийная регуляризация</li>
           <li><strong className="text-foreground">TD3</strong> — двойные Q-сети, задержка обновления политики</li>
@@ -80,7 +80,7 @@ const Part6DeepRL = () => (
       </h2>
 
       <Section icon={<TrendingUp className="w-5 h-5 text-primary" />} title="2.1 Математический анализ">
-        <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">Производные и правила дифференцирования</h3>
+        <h3 className="text-xl font-semibold text-foreground mt-6 mb-3" id="производные-и-правила-дифференцирования">Производные и правила дифференцирования</h3>
         <p>Производная функции <Math display={false}>{`f(x)`}</Math>:</p>
         <Math>{`f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}`}</Math>
 
@@ -93,7 +93,7 @@ const Part6DeepRL = () => (
           <li><strong className="text-foreground">Логарифм:</strong> <Math display={false}>{`(\\ln x)' = \\frac{1}{x}`}</Math></li>
         </ul>
 
-        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Частные производные и градиент</h3>
+        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="частные-производные-и-градиент">Частные производные и градиент</h3>
         <Math>{`\\nabla f = \\left(\\frac{\\partial f}{\\partial x_1},\\; \\frac{\\partial f}{\\partial x_2},\\; \\ldots,\\; \\frac{\\partial f}{\\partial x_n}\\right)`}</Math>
 
         <InfoBox color="primary" title="Применение в RL">
@@ -104,7 +104,7 @@ const Part6DeepRL = () => (
           </ul>
         </InfoBox>
 
-        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Экстремумы функций</h3>
+        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="экстремумы-функций">Экстремумы функций</h3>
         <ul className="list-disc list-inside space-y-2">
           <li><Math display={false}>{`f''(a) > 0`}</Math> → локальный минимум</li>
           <li><Math display={false}>{`f''(a) < 0`}</Math> → локальный максимум</li>
@@ -120,22 +120,22 @@ const Part6DeepRL = () => (
       </Section>
 
       <Section icon={<BarChart3 className="w-5 h-5 text-accent" />} title="2.2 Теория вероятностей и статистика">
-        <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">Нормальное распределение</h3>
+        <h3 className="text-xl font-semibold text-foreground mt-6 mb-3" id="нормальное-распределение">Нормальное распределение</h3>
         <Math>{`f(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}} \\exp\\left(-\\frac{(x - \\mu)^2}{2\\sigma^2}\\right)`}</Math>
 
-        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Оценка максимального правдоподобия (MLE)</h3>
+        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="оценка-максимального-правдоподобия-mle">Оценка максимального правдоподобия (MLE)</h3>
         <Math>{`\\hat{\\theta}_{\\text{MLE}} = \\arg\\max_\\theta \\sum_{i=1}^n \\log f(X_i|\\theta)`}</Math>
 
-        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Оценка MAP</h3>
+        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="оценка-map">Оценка MAP</h3>
         <Math>{`\\hat{\\theta}_{\\text{MAP}} = \\arg\\max_\\theta \\bigl[\\log P(X|\\theta) + \\log P(\\theta)\\bigr]`}</Math>
       </Section>
 
       <Section icon={<GitBranch className="w-5 h-5 text-primary" />} title="2.3 Дифференциальные уравнения">
-        <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">ОДУ с разделяющимися переменными</h3>
+        <h3 className="text-xl font-semibold text-foreground mt-6 mb-3" id="оду-с-разделяющимися-переменными">ОДУ с разделяющимися переменными</h3>
         <p>Уравнение <Math display={false}>{`y' = ky`}</Math>:</p>
         <Math>{`\\frac{dy}{y} = k\\,dx \\quad \\Rightarrow \\quad y = C_1 e^{kx}`}</Math>
 
-        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">ОДУ второго порядка</h3>
+        <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="оду-второго-порядка">ОДУ второго порядка</h3>
         <p>Характеристическое уравнение <Math display={false}>{`ar^2 + br + c = 0`}</Math>:</p>
         <ul className="list-disc list-inside space-y-2 mt-3">
           <li>Различные действительные корни: <Math display={false}>{`y = C_1 e^{r_1 x} + C_2 e^{r_2 x}`}</Math></li>

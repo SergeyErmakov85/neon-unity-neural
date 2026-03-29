@@ -10,7 +10,7 @@ const Part4Optimization = () => (
         Обучение с подкреплением заключается в том, что <strong className="text-foreground">агент</strong> взаимодействует с <strong className="text-foreground">окружением</strong> в дискретные моменты времени. На каждом шаге агент наблюдает состояние <Math display={false}>{`S_t`}</Math>, выбирает действие <Math display={false}>{`A_t`}</Math> по своей политике и получает вознаграждение <Math display={false}>{`R_{t+1}`}</Math> вместе с новым состоянием <Math display={false}>{`S_{t+1}`}</Math>.
       </p>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Целевая функция политики</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="целевая-функция-политики">Целевая функция политики</h3>
       <p>Если политика параметризована вектором <Math display={false}>{`\\theta`}</Math>, её полезность определяется как:</p>
       <Math>{`J(\\theta) = \\mathbb{E}_{\\pi_\\theta}\\left[\\sum_{t=0}^{T} \\gamma^t R_t\\right]`}</Math>
       <p>
@@ -31,25 +31,25 @@ const Part4Optimization = () => (
       </p>
       <Math>{`J(\\theta) = \\int P(\\tau|\\theta)\\;R(\\tau)\\,d\\tau`}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Шаг 1: Дифференцирование под знаком интеграла</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="шаг-1-дифференцирование-под-знаком-интеграла">Шаг 1: Дифференцирование под знаком интеграла</h3>
       <Math>{`\\nabla_{\\theta} J(\\theta) = \\int \\nabla_{\\theta} P(\\tau|\\theta)\\;R(\\tau)\\,d\\tau`}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Шаг 2: Трюк с логарифмом</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="шаг-2-трюк-с-логарифмом">Шаг 2: Трюк с логарифмом</h3>
       <p>Используем <Math display={false}>{`\\nabla_{\\theta}P = P\\,\\nabla_{\\theta}\\log P`}</Math>:</p>
       <Math>{`\\nabla_{\\theta} J(\\theta) = \\mathbb{E}_{\\tau\\sim \\pi_\\theta}\\!\\big[\\nabla_{\\theta}\\log P(\\tau|\\theta)\\;R(\\tau)\\big]`}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Шаг 3: Упрощение</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="шаг-3-упрощение">Шаг 3: Упрощение</h3>
       <p>Переходы среды не зависят от <Math display={false}>{`\\theta`}</Math>:</p>
       <Math>{`\\nabla_{\\theta}\\log P(\\tau|\\theta) = \\sum_{t=0}^T \\nabla_{\\theta}\\log \\pi_\\theta(a_t|s_t)`}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Шаг 4: Формула REINFORCE</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="шаг-4-формула-reinforce">Шаг 4: Формула REINFORCE</h3>
       <Math>{`\\nabla_{\\theta} J(\\theta) = \\mathbb{E}_{\\tau\\sim \\pi_\\theta}\\Big[\\sum_{t=0}^T \\nabla_{\\theta}\\log \\pi_\\theta(a_t|s_t)\\;R(\\tau)\\Big]`}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Шаг 5: Reward-to-go</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="шаг-5-rewardtogo">Шаг 5: Reward-to-go</h3>
       <p>Вместо <Math display={false}>{`R(\\tau)`}</Math> используем <Math display={false}>{`G_t = \\sum_{k=t}^T \\gamma^{k-t} R_k`}</Math>:</p>
       <Math>{`\\nabla_{\\theta} J(\\theta) = \\mathbb{E}_{\\pi_\\theta}\\Big[\\sum_{t=0}^T \\nabla_{\\theta}\\log \\pi_\\theta(a_t|s_t)\\;G_t\\Big]`}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Шаг 6: Базис и Advantage</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="шаг-6-базис-и-advantage">Шаг 6: Базис и Advantage</h3>
       <p>
         Вычитание функции <Math display={false}>{`b(s_t)`}</Math> снижает дисперсию без смещения. Оптимальный базис — оценка <Math display={false}>{`V^\\pi(s)`}</Math>, что даёт <strong className="text-foreground">advantage</strong>:
       </p>
@@ -69,13 +69,13 @@ const Part4Optimization = () => (
       <p>После оценки <Math display={false}>{`\\nabla_{\\theta}J(\\theta)`}</Math> параметры обновляются по правилу:</p>
       <Math>{`\\theta_{\\text{new}} = \\theta_{\\text{old}} + \\alpha\\,\\nabla_{\\theta}J(\\theta_{\\text{old}})`}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">1. Momentum</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="1-momentum">1. Momentum</h3>
       <Math>{`v_t = \\beta_1\\,v_{t-1} + (1-\\beta_1)\\,\\nabla J(\\theta_{t-1}), \\quad \\theta_t = \\theta_{t-1} + \\alpha\\,v_t`}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">2. RMSProp</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="2-rmsprop">2. RMSProp</h3>
       <Math>{`s_t = \\beta_2\\,s_{t-1} + (1-\\beta_2)\\,(\\nabla J(\\theta_{t-1}))^2, \\quad \\theta_t = \\theta_{t-1} + \\alpha\\,\\frac{\\nabla J(\\theta_{t-1})}{\\sqrt{s_t} + \\varepsilon}`}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">3. Adam (Adaptive Moment Estimation)</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="3-adam-adaptive-moment-estimation">3. Adam (Adaptive Moment Estimation)</h3>
       <p>
         Комбинирует моменты первого и второго порядка. Параметры по умолчанию: <Math display={false}>{`\\beta_1 = 0.9`}</Math>, <Math display={false}>{`\\beta_2 = 0.999`}</Math>, <Math display={false}>{`\\varepsilon = 10^{-8}`}</Math>.
       </p>
@@ -93,7 +93,7 @@ const Part4Optimization = () => (
         <strong className="text-foreground">PPO</strong> — современный алгоритм оптимизации политик, стандарт в Unity ML-Agents. Он предназначен для того, чтобы <strong className="text-foreground">не допустить слишком больших обновлений политики</strong>.
       </p>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Клиповый суррогат-объектив</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="клиповый-суррогатобъектив">Клиповый суррогат-объектив</h3>
       <p>Определим отношение вероятностей:</p>
       <Math>{`r(\\theta) = \\frac{\\pi_{\\theta}(a|s)}{\\pi_{\\theta_{\\text{old}}}(a|s)}`}</Math>
       <p>Целевая функция PPO-Clip:</p>
@@ -102,7 +102,7 @@ const Part4Optimization = () => (
         где <Math display={false}>{`A`}</Math> — Advantage, а <Math display={false}>{`\\epsilon \\approx 0.1 \\ldots 0.2`}</Math>.
       </p>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Гиперпараметры PPO</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="гиперпараметры-ppo">Гиперпараметры PPO</h3>
       <div className="my-4 overflow-x-auto">
         <table className="w-full text-sm border border-border/30 rounded-lg overflow-hidden">
           <thead>

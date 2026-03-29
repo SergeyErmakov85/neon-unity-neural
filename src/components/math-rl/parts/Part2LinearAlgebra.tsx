@@ -6,7 +6,7 @@ const Part2LinearAlgebra = () => (
   <>
     {/* Section 1: Vectors */}
     <Section icon={<BookOpen className="w-5 h-5 text-primary" />} title="1. Векторы">
-      <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">1.4. Линейная комбинация векторов</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-6 mb-3" id="14-линейная-комбинация-векторов">1.4. Линейная комбинация векторов</h3>
       <p>
         Линейная комбинация векторов <Math display={false}>{"\\vec{v}_1, \\vec{v}_2, \\ldots, \\vec{v}_m"}</Math> с коэффициентами <Math display={false}>{"c_1, c_2, \\ldots, c_m"}</Math>:
       </p>
@@ -14,7 +14,7 @@ const Part2LinearAlgebra = () => (
       <p>В RL функция ценности часто аппроксимируется как линейная комбинация базисных функций:</p>
       <Math>{"V(s) \\approx \\sum_{i=1}^{k} w_i\\,\\varphi_i(s) = \\mathbf{w}^\\top \\boldsymbol{\\varphi}(s)"}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">1.5. Линейная зависимость и независимость</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="15-линейная-зависимость-и-независимость">1.5. Линейная зависимость и независимость</h3>
       <p>
         Система векторов <strong className="text-foreground">линейно зависима</strong>, если существуют не все нулевые коэффициенты:
       </p>
@@ -23,7 +23,7 @@ const Part2LinearAlgebra = () => (
         <strong className="text-foreground">Линейно независимые</strong> векторы указывают на «разные» направления — ни один не выражается через остальные. Это важно при выборе признаков: линейно зависимые признаки ведут к мультиколлинеарности.
       </p>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">1.6. Базис и размерность</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="16-базис-и-размерность">1.6. Базис и размерность</h3>
       <p>
         <strong className="text-foreground">Базис</strong> — набор линейно независимых векторов <Math display={false}>{"\\{\\vec{e}_1, \\ldots, \\vec{e}_n\\}"}</Math>, через которые единственным образом выражается любой вектор пространства:
       </p>
@@ -35,7 +35,7 @@ const Part2LinearAlgebra = () => (
 
     {/* Section 2: Matrices */}
     <Section icon={<Layers className="w-5 h-5 text-secondary" />} title="2. Матрицы">
-      <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">2.1. Определение и типы матриц</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-6 mb-3" id="21-определение-и-типы-матриц">2.1. Определение и типы матриц</h3>
       <p>Матрица <Math display={false}>{"A"}</Math> размера <Math display={false}>{"n \\times m"}</Math>:</p>
       <Math>{"A = \\begin{pmatrix} a_{11} & a_{12} & \\cdots & a_{1m} \\\\ a_{21} & a_{22} & \\cdots & a_{2m} \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ a_{n1} & a_{n2} & \\cdots & a_{nm} \\end{pmatrix}"}</Math>
       <ul className="list-disc list-inside mt-2 space-y-1">
@@ -50,23 +50,23 @@ const Part2LinearAlgebra = () => (
         </ul>
       </InfoBox>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">2.2. Операции над матрицами</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="22-операции-над-матрицами">2.2. Операции над матрицами</h3>
       <p><strong className="text-foreground">Произведение матриц</strong> <Math display={false}>{"A_{n \\times s} \\cdot B_{s \\times m} = C_{n \\times m}"}</Math>:</p>
       <Math>{"c_{ij} = \\sum_{k=1}^{s} a_{ik}\\, b_{kj}"}</Math>
       <p className="text-sm">⚠️ В общем случае <Math display={false}>{"AB \\neq BA"}</Math> (некоммутативность).</p>
       <p className="mt-2"><strong className="text-foreground">Транспонирование:</strong> <Math display={false}>{"(AB)^\\top = B^\\top A^\\top"}</Math></p>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">2.3. Определитель матрицы</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="23-определитель-матрицы">2.3. Определитель матрицы</h3>
       <p><Math display={false}>{"\\det(A)"}</Math> — если <Math display={false}>{"\\det(A) = 0"}</Math>, матрица вырождена (необратима).</p>
       <Math>{"\\det(AB) = \\det(A) \\cdot \\det(B),\\quad \\det(A^\\top) = \\det(A),\\quad \\det(A^{-1}) = \\frac{1}{\\det(A)}"}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">2.4. Ранг матрицы</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="24-ранг-матрицы">2.4. Ранг матрицы</h3>
       <p><Math display={false}>{"\\operatorname{rank}(A)"}</Math> — максимальное число линейно независимых строк (или столбцов). <Math display={false}>{"\\operatorname{rank}(A) \\leq \\min(n, m)"}</Math>.</p>
       <InfoBox color="secondary" title="Теорема Кронекера-Капелли">
         <Math>{"Ax = b \\text{ совместна} \\;\\Longleftrightarrow\\; \\operatorname{rank}(A) = \\operatorname{rank}(A|b)"}</Math>
       </InfoBox>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">2.5. Обратная матрица</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="25-обратная-матрица">2.5. Обратная матрица</h3>
       <Math>{"AA^{-1} = A^{-1}A = I_n, \\quad \\text{существует} \\;\\Leftrightarrow\\; \\det(A) \\neq 0"}</Math>
       <p className="mt-2">Решение уравнений Беллмана:</p>
       <Math>{"\\mathbf{V}^\\pi = (I - \\gamma P^\\pi)^{-1}\\, \\mathbf{R}^\\pi"}</Math>
@@ -100,7 +100,7 @@ const Part2LinearAlgebra = () => (
       </p>
       <Math>{"\\det(A - \\lambda I) = 0"}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Спектральное разложение</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="спектральное-разложение">Спектральное разложение</h3>
       <p>Если <Math display={false}>{"A"}</Math> диагонализуема:</p>
       <Math>{"A = PDP^{-1}, \\quad D = \\operatorname{diag}(\\lambda_1, \\ldots, \\lambda_n) \\;\\Rightarrow\\; A^k = PD^kP^{-1}"}</Math>
 
@@ -122,11 +122,11 @@ const Part2LinearAlgebra = () => (
         <li><Math display={false}>{"V"}</Math> (<Math display={false}>{"n \\times n"}</Math>) — ортогональная, столбцы = правые сингулярные векторы</li>
       </ul>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Связь с собственными значениями</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="связь-с-собственными-значениями">Связь с собственными значениями</h3>
       <Math>{"A^\\top A = V(\\Sigma^\\top\\Sigma)V^\\top, \\quad AA^\\top = U(\\Sigma\\Sigma^\\top)U^\\top"}</Math>
       <p>Сингулярные числа: <Math display={false}>{"\\sigma_i = \\sqrt{\\lambda_i(A^\\top A)}"}</Math></p>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Теорема Эккарта-Янга</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="теорема-эккартаянга">Теорема Эккарта-Янга</h3>
       <p>Лучшая аппроксимация ранга <Math display={false}>{"k"}</Math>:</p>
       <Math>{"A_k = U\\Sigma_k V^\\top, \\quad \\|A - A_k\\|_F = \\sqrt{\\sigma_{k+1}^2 + \\cdots + \\sigma_r^2}"}</Math>
 
@@ -142,21 +142,21 @@ const Part2LinearAlgebra = () => (
 
     {/* Section 6: Additional Topics */}
     <Section icon={<GraduationCap className="w-5 h-5 text-accent" />} title="6. Дополнительные темы">
-      <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">6.1. Квадратичные формы</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-6 mb-3" id="61-квадратичные-формы">6.1. Квадратичные формы</h3>
       <Math>{"Q(\\mathbf{x}) = \\mathbf{x}^\\top A\\, \\mathbf{x}, \\quad A = A^\\top"}</Math>
       <p>
         Классификация: <strong className="text-primary">положительно определённая</strong> (все <Math display={false}>{"\\lambda_i > 0"}</Math>), <strong className="text-secondary">отрицательно определённая</strong> (все <Math display={false}>{"\\lambda_i < 0"}</Math>), <strong className="text-accent">знакопеременная</strong>.
       </p>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">6.2. Ортогональная проекция</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="62-ортогональная-проекция">6.2. Ортогональная проекция</h3>
       <Math>{"\\text{proj}_{\\mathcal{C}(A)}\\, \\mathbf{b} = A(A^\\top A)^{-1}A^\\top \\mathbf{b}"}</Math>
       <p className="mt-2 text-sm">Основа метода наименьших квадратов и аппроксимации <Math display={false}>{"V(s) \\approx \\Phi\\mathbf{w}"}</Math>.</p>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">6.3. Изменение базиса</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="63-изменение-базиса">6.3. Изменение базиса</h3>
       <Math>{"[\\vec{v}]_B = P_{B\\to B'}\\,[\\vec{v}]_{B'}, \\quad M_{B'} = P^{-1} M_B\\, P"}</Math>
       <p className="mt-2 text-sm">PCA — переход к базису из собственных векторов ковариационной матрицы.</p>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">6.4. Разложения LU и QR</h3>
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="64-разложения-lu-и-qr">6.4. Разложения LU и QR</h3>
       <Math>{"A = LU \\quad \\text{(LU)}, \\qquad A = QR \\quad \\text{(QR)}"}</Math>
       <p className="mt-2">
         <strong className="text-foreground">LU:</strong> <Math display={false}>{"L"}</Math> — нижнетреугольная, <Math display={false}>{"U"}</Math> — верхнетреугольная.
