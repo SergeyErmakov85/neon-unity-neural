@@ -1,6 +1,6 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/landing/Navbar";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
@@ -39,7 +39,59 @@ const PartSkeleton = () => (
     <Skeleton className="h-32 w-full" />
   </div>
 );
+const PartComponents = [Part1, Part1b, Part2, Part3, Part4, Part5, Part6];
 
+const CollapsibleParts = () => {
+  const [openParts, setOpenParts] = useState<Set<string>>(new Set());
+
+  const toggle = (id: string) => {
+    setOpenParts((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  return (
+    <>
+      {parts.map((part, i) => {
+        const c = colorClasses[part.color];
+        const isOpen = openParts.has(part.id);
+        const PartComponent = PartComponents[i];
+        return (
+          <div key={part.id} id={part.id} className="scroll-mt-24">
+            <button
+              onClick={() => toggle(part.id)}
+              className={`w-full text-left ${i === 0 ? "mt-0" : "mt-6"} p-6 rounded-xl border ${c.border} ${c.bg} transition-all duration-200 hover:brightness-110 cursor-pointer group`}
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className={`text-xs font-bold ${c.text} uppercase tracking-wider`}>Часть {part.num}</span>
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mt-1">{part.title}</h2>
+                </div>
+                <ChevronDown className={`w-6 h-6 text-muted-foreground transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+              </div>
+            </button>
+
+            {isOpen && (
+              <div className="mt-8 mb-4">
+                <Suspense fallback={<PartSkeleton />}>
+                  <PartComponent />
+                </Suspense>
+                {part.id === "part-1b" && (
+                  <Suspense fallback={<PartSkeleton />}>
+                    <GDPlayground />
+                  </Suspense>
+                )}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </>
+  );
+};
 const MathRL = () => {
   const navigate = useNavigate();
 
@@ -98,32 +150,7 @@ const MathRL = () => {
 
         {/* Content */}
         <article className="flex-1 max-w-4xl">
-          <Suspense fallback={<PartSkeleton />}>
-            {parts.map((part, i) => {
-              const c = colorClasses[part.color];
-              const PartComponent = [Part1, Part1b, Part2, Part3, Part4, Part5, Part6][i];
-              return (
-                <div key={part.id} id={part.id} className="scroll-mt-24">
-                  {/* Part Header */}
-                  <div className={`mt-${i === 0 ? "0" : "20"} mb-8 p-6 rounded-xl border ${c.border} ${c.bg}`}>
-                    <span className={`text-xs font-bold ${c.text} uppercase tracking-wider`}>Часть {part.num}</span>
-                    <h2 className="text-2xl md:text-3xl font-bold text-foreground mt-1">{part.title}</h2>
-                  </div>
-
-                  <Suspense fallback={<PartSkeleton />}>
-                    <PartComponent />
-                  </Suspense>
-
-                  {/* GD Playground after Part II (calculus) */}
-                  {part.id === "part-1b" && (
-                    <Suspense fallback={<PartSkeleton />}>
-                      <GDPlayground />
-                    </Suspense>
-                  )}
-                </div>
-              );
-            })}
-          </Suspense>
+          <CollapsibleParts />
 
           {/* Literature */}
           <section className="mt-20 p-6 rounded-lg bg-card/40 border border-border/30">
