@@ -176,6 +176,82 @@ const CollapsibleParts = () => {
     </>
   );
 };
+const SidebarTOC = () => {
+  const [expandedPart, setExpandedPart] = useState<string | null>(null);
+
+  const toggle = (id: string) => setExpandedPart((prev) => (prev === id ? null : id));
+
+  return (
+    <>
+      {parts.map((part) => {
+        const c = colorClasses[part.color];
+        const subtopics = partSubtopics[part.id] || [];
+        const isExpanded = expandedPart === part.id;
+        return (
+          <div key={part.id}>
+            <button
+              onClick={() => toggle(part.id)}
+              className={`flex items-center justify-between w-full text-left text-xs py-2 px-3 rounded text-muted-foreground hover:text-foreground hover:${c.bg} transition-colors`}
+            >
+              <span>
+                <span className={`font-bold ${c.text} mr-1.5`}>{part.num}.</span>
+                {part.title}
+              </span>
+              <ChevronDown className={`w-3 h-3 flex-shrink-0 opacity-50 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
+            </button>
+
+            {isExpanded && (
+              <div className="animate-fade-in ml-1 my-1 rounded-lg border border-primary/20 bg-[hsl(var(--cyber-darker))] overflow-hidden">
+                {/* Neon top accent line */}
+                <div className={`h-[2px] w-full bg-gradient-to-r ${
+                  part.color === "primary" ? "from-primary/80 via-primary/40 to-transparent"
+                    : part.color === "secondary" ? "from-secondary/80 via-secondary/40 to-transparent"
+                    : "from-accent/80 via-accent/40 to-transparent"
+                }`} />
+
+                <div className="p-2.5 space-y-0.5">
+                  {/* Scroll-to-part link */}
+                  <button
+                    onClick={() => document.getElementById(part.id)?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                    className={`w-full text-left text-[11px] font-semibold ${c.text} hover:underline px-2 py-1 mb-1`}
+                  >
+                    ▸ Перейти к части {part.num}
+                  </button>
+
+                  {subtopics.map((topic, i) => {
+                    const isIndented = topic.startsWith("  ");
+                    const label = topic.trim();
+                    return (
+                      <div
+                        key={i}
+                        className={`text-[11px] py-0.5 px-2 rounded transition-colors ${
+                          isIndented
+                            ? "pl-5 text-muted-foreground/70 border-l border-primary/10 ml-2"
+                            : "font-medium text-muted-foreground hover:text-foreground"
+                        }`}
+                      >
+                        {!isIndented && <span className={`${c.text} mr-1 opacity-60`}>›</span>}
+                        {label}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Neon bottom accent line */}
+                <div className={`h-[1px] w-full bg-gradient-to-r ${
+                  part.color === "primary" ? "from-transparent via-primary/30 to-transparent"
+                    : part.color === "secondary" ? "from-transparent via-secondary/30 to-transparent"
+                    : "from-transparent via-accent/30 to-transparent"
+                }`} />
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </>
+  );
+};
+
 const MathRL = () => {
   const navigate = useNavigate();
 
