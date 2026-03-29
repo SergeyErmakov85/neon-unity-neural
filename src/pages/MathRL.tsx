@@ -264,13 +264,20 @@ const CollapsibleParts = ({ openParts, toggle }: { openParts: Set<string>; toggl
 );
 const SidebarTOC = ({ openParts, ensureOpen }: { openParts: Set<string>; ensureOpen: (partId: string) => void }) => {
   const [expandedPart, setExpandedPart] = useState<string | null>(null);
+  const [expandedChapter, setExpandedChapter] = useState<string | null>(null);
 
-  const toggle = (id: string) => setExpandedPart((prev) => (prev === id ? null : id));
+  const toggle = (id: string) => {
+    setExpandedPart((prev) => (prev === id ? null : id));
+    setExpandedChapter(null);
+  };
+
+  const toggleChapter = (label: string) => {
+    setExpandedChapter((prev) => (prev === label ? null : label));
+  };
 
   const scrollToSubtopic = (partId: string, topicLabel: string) => {
     ensureOpen(partId);
     const targetId = slugify(topicLabel);
-    // Small delay to allow part to render
     setTimeout(() => {
       const el = document.getElementById(targetId);
       if (el) {
@@ -279,12 +286,27 @@ const SidebarTOC = ({ openParts, ensureOpen }: { openParts: Set<string>; ensureO
     }, 100);
   };
 
+  const groupSubtopics = (subtopics: string[]) => {
+    const groups: { label: string; children: string[] }[] = [];
+    for (const topic of subtopics) {
+      if (topic.startsWith("  ")) {
+        if (groups.length > 0) {
+          groups[groups.length - 1].children.push(topic.trim());
+        }
+      } else {
+        groups.push({ label: topic, children: [] });
+      }
+    }
+    return groups;
+  };
+
   return (
     <>
       {parts.map((part) => {
         const c = colorClasses[part.color];
         const subtopics = partSubtopics[part.id] || [];
         const isExpanded = expandedPart === part.id;
+        const isPart5 = part.id === "part-5";
         return (
           <div key={part.id}>
             <button
@@ -314,24 +336,69 @@ const SidebarTOC = ({ openParts, ensureOpen }: { openParts: Set<string>; ensureO
                     ▸ Перейти к части {part.num}
                   </button>
 
-                  {subtopics.map((topic, i) => {
-                    const isIndented = topic.startsWith("  ");
-                    const label = topic.trim();
-                    return (
-                      <button
-                        key={i}
-                        onClick={() => scrollToSubtopic(part.id, label)}
-                        className={`block w-full text-left text-[11px] py-0.5 px-2 rounded transition-colors cursor-pointer hover:bg-primary/10 ${
-                          isIndented
-                            ? "pl-5 text-muted-foreground/70 border-l border-primary/10 ml-2"
-                            : "font-medium text-muted-foreground hover:text-foreground"
-                        }`}
-                      >
-                        {!isIndented && <span className={`${c.text} mr-1 opacity-60`}>›</span>}
-                        {label}
-                      </button>
-                    );
-                  })}
+                  {isPart5 ? (
+                    groupSubtopics(subtopics).map((group) => (
+                      <div key={group.label}>
+                        <button
+                          onClick={() => {
+                            if (group.children.length > 0) {
+                              toggleChapter(group.label);
+                            } else {
+                              scrollToSubtopic(part.id, group.label);
+                            }
+                          }}
+                          className="flex items-center justify-between w-full text-left text-[11px] py-1 px-2 rounded font-medium text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-colors cursor-pointer"
+                        >
+                          <span>
+                            <span className={`${c.text} mr-1 opacity-60`}>›</span>
+                            {group.label}
+                          </span>
+                          {group.children.length > 0 && (
+                            <ChevronDown className={`w-2.5 h-2.5 opacity-40 transition-transform duration-200 ${expandedChapter === group.label ? "rotate-180" : ""}`} />
+                          )}
+                        </button>
+
+                        {expandedChapter === group.label && group.children.length > 0 && (
+                          <div className="animate-fade-in ml-3 my-0.5 pl-2 border-l border-accent/20 space-y-0.5">
+                            <button
+                              onClick={() => scrollToSubtopic(part.id, group.label)}
+                              className={`block w-full text-left text-[10px] py-0.5 px-2 rounded ${c.text} opacity-70 hover:opacity-100 hover:bg-primary/10 transition-colors cursor-pointer`}
+                            >
+                              ▸ К началу главы
+                            </button>
+                            {group.children.map((child, ci) => (
+                              <button
+                                key={ci}
+                                onClick={() => scrollToSubtopic(part.id, child)}
+                                className="block w-full text-left text-[10px] py-0.5 px-2 rounded text-muted-foreground/70 hover:text-foreground hover:bg-primary/10 transition-colors cursor-pointer"
+                              >
+                                {child}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))
+                  ) : (
+                    subtopics.map((topic, i) => {
+                      const isIndented = topic.startsWith("  ");
+                      const label = topic.trim();
+                      return (
+                        <button
+                          key={i}
+                          onClick={() => scrollToSubtopic(part.id, label)}
+                          className={`block w-full text-left text-[11px] py-0.5 px-2 rounded transition-colors cursor-pointer hover:bg-primary/10 ${
+                            isIndented
+                              ? "pl-5 text-muted-foreground/70 border-l border-primary/10 ml-2"
+                              : "font-medium text-muted-foreground hover:text-foreground"
+                          }`}
+                        >
+                          {!isIndented && <span className={`${c.text} mr-1 opacity-60`}>›</span>}
+                          {label}
+                        </button>
+                      );
+                    })
+                  )}
                 </div>
 
                 <div className={`h-[1px] w-full bg-gradient-to-r ${
