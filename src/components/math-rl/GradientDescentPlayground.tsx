@@ -166,13 +166,13 @@ const GradientDescentPlayground = () => {
 
           {/* Warnings */}
           {alpha > 1.0 && (
-            <p className="text-sm text-yellow-400">⚠️ Слишком большой learning rate — возможна расходимость!</p>
+            <p className="text-sm text-destructive">⚠️ Слишком большой learning rate — возможна расходимость!</p>
           )}
           {diverged && (
-            <p className="text-sm text-red-400">❌ Расходимость! Уменьши α и нажми Сброс.</p>
+            <p className="text-sm text-destructive">❌ Расходимость! Уменьши α и нажми Сброс.</p>
           )}
           {converged && !diverged && (
-            <p className="text-sm text-green-400">✅ Сошёлся к минимуму x* = 2! 🎉</p>
+            <p className="text-sm text-primary">✅ Сошёлся к минимуму x* = 2! 🎉</p>
           )}
 
           {/* Last 5 steps */}
