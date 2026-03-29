@@ -17,7 +17,7 @@ const Part1Limits = () => (
 
     {/* ── 1. Предел последовательности ── */}
     <Section icon={<TrendingUp className="w-5 h-5 text-primary" />} title="1. Теоретические основы: предел последовательности">
-      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-4 mb-3" id="11-предел-последовательности">1.1 Предел последовательности</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-4 mb-3" id="1-1-предел-последовательности">1.1 Предел последовательности</h3>
       <p>
         <strong className="text-foreground">Интуиция:</strong> Последовательность — это набор элементов (чисел) <Math display={false}>{`x_1, x_2, x_3, \\ldots`}</Math>, определённых некоторым правилом. Последовательность имеет <em>предел</em> (или <em>сходится</em> к значению <Math display={false}>{`a`}</Math>), если её члены постепенно приближаются к <Math display={false}>{`a`}</Math>.
       </p>
@@ -219,7 +219,7 @@ for i in range(1, 21):
 
     {/* ── 7. Примеры и задачи ── */}
     <Section icon={<BookOpen className="w-5 h-5 text-primary" />} title="7. Примеры, аналогии и задачи">
-      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-4 mb-3" id="71-предел-последовательности-рекурсия">7.1 Предел последовательности: рекурсия</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-4 mb-3" id="7-1-предел-последовательности-рекурсия">7.1 Предел последовательности: рекурсия</h3>
       <p>
         <strong className="text-foreground">Задача:</strong> <Math display={false}>{`a_1 = 1`}</Math>, <Math display={false}>{`a_{n+1} = \\frac{1}{2}(a_n + 6)`}</Math>. Найти <Math display={false}>{`\\lim_{n \\to \\infty} a_n`}</Math>.
       </p>
@@ -232,7 +232,7 @@ for i in range(1, 21):
         </p>
       </InfoBox>
 
-      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="72-сумма-геометрического-ряда">7.2 Сумма геометрического ряда</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="7-2-сумма-геометрического-ряда">7.2 Сумма геометрического ряда</h3>
       <p>
         <strong className="text-foreground">Задача:</strong> Вычислить <Math display={false}>{`0.8 + 0.8^2 + 0.8^3 + \\cdots`}</Math>
       </p>
@@ -249,13 +249,13 @@ print(f"Сумма 50 членов: {s:.8f}")
 # Вывод: 3.99999998 (≈ 4)`}
       </CyberCodeBlock>
 
-      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="73-дисконтированные-награды-в-rl">7.3 Дисконтированные награды в RL</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="7-3-дисконтированные-награды-в-rl">7.3 Дисконтированные награды в RL</h3>
       <p>
         <strong className="text-foreground">Задача:</strong> Агент получает <Math display={false}>{`R = 1`}</Math> на каждом шаге бесконечного эпизода. Как зависит <Math display={false}>{`G_0`}</Math> от <Math display={false}>{`\\gamma`}</Math>?
       </p>
       <Math>{`G_0 = \\sum_{k=0}^{\\infty} \\gamma^k = \\frac{1}{1 - \\gamma}`}</Math>
 
-      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="74-конвергенция-qобучения">7.4 Конвергенция Q-обучения</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="7-4-конвергенция-q-обучения">7.4 Конвергенция Q-обучения</h3>
       <p>
         Обновление Q-learning <Math display={false}>{`Q_{k+1}(s,a) = (1-\\alpha)Q_k(s,a) + \\alpha[R + \\gamma \\max_{a'} Q_k(s',a')]`}</Math> — стохастический аппроксимационный процесс, сходящийся к <Math display={false}>{`Q^*(s,a)`}</Math> при убывающем <Math display={false}>{`\\alpha`}</Math>. В основе — тот же контракционный оператор.
       </p>
@@ -263,7 +263,7 @@ print(f"Сумма 50 членов: {s:.8f}")
 
     {/* ── 8. Jupyter-демонстрации ── */}
     <Section icon={<Code2 className="w-5 h-5 text-secondary" />} title="8. Интерактивные визуализации сходимости">
-      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-4 mb-3" id="81-сходимость-геометрического-ряда">8.1 Сходимость геометрического ряда</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-4 mb-3" id="8-1-сходимость-геометрического-ряда">8.1 Сходимость геометрического ряда</h3>
       <p>
         Частичная сумма <Math display={false}>{`S_N = \\sum_{t=0}^{N} \\gamma^t`}</Math> для разных <Math display={false}>{`\\gamma`}</Math>. Перемещайте слайдеры, чтобы наблюдать зависимость скорости сходимости от <Math display={false}>{`\\gamma`}</Math>:
       </p>
@@ -274,7 +274,7 @@ print(f"Сумма 50 членов: {s:.8f}")
         При <Math display={false}>{`\\gamma = 0.5`}</Math> ряд сходится за ~6 членов. При <Math display={false}>{`\\gamma = 0.9`}</Math> — значительно медленнее, к N=30 приближаясь к ~9.58 (предел 10). Это аналог «длинного хвоста» учёта будущего в RL.
       </p>
 
-      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="82-визуализация-итерации-ценности">8.2 Визуализация итерации ценности</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="8-2-визуализация-итерации-ценности">8.2 Визуализация итерации ценности</h3>
       <p>
         Наблюдайте, как значения <Math display={false}>{`V(S_1)`}</Math> и <Math display={false}>{`V(S_2)`}</Math> сходятся к оптимуму в MDP с двумя состояниями. Измените <Math display={false}>{`\\gamma`}</Math>, чтобы увидеть влияние на скорость и характер сходимости:
       </p>
@@ -358,7 +358,7 @@ print(f"Сумма 50 членов: {s:.8f}")
         <p className="text-sm">Если <Math display={false}>{`a_n \\le b_n \\le c_n`}</Math> и <Math display={false}>{`\\lim a_n = \\lim c_n = L`}</Math>, то <Math display={false}>{`\\lim b_n = L`}</Math>. Используется в доказательстве сходимости TD-методов.</p>
       </InfoBox>
 
-      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="-связь-с-rl-условия-роббинсамонро">🔗 Связь с RL: условия Роббинса-Монро</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="связь-с-rl-условия-роббинса-монро">🔗 Связь с RL: условия Роббинса-Монро</h3>
       <p>
         Сходимость последовательностей — фундамент теорем о сходимости RL. При выполнении условий <strong className="text-foreground">Роббинса-Монро</strong> (<Math display={false}>{`\\sum \\alpha_t = \\infty`}</Math>, <Math display={false}>{`\\sum \\alpha_t^2 < \\infty`}</Math>) TD-ошибка <Math display={false}>{`\\delta_t`}</Math> образует <strong className="text-primary">сходящуюся последовательность</strong>: <Math display={false}>{`\\delta_t \\to 0`}</Math>.
       </p>

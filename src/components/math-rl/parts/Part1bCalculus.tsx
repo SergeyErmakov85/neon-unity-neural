@@ -59,7 +59,7 @@ const Part1bCalculus = () => (
       </div>
 
       {/* ── Задачи по производным ── */}
-      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-10 mb-3" id="-практические-задачи">✏️ Практические задачи</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-10 mb-3" id="практические-задачи">✏️ Практические задачи</h3>
 
       <PracticeTask level="⭐" num="2.1" label="Базовая" color="primary">
         <p><strong className="text-foreground">Найти</strong> <Math display={false}>{`f'(x)`}</Math> для <Math display={false}>{`f(x) = 3x^4 - 5x^2 + 2x - 7`}</Math></p>
@@ -446,7 +446,7 @@ for alpha in [0.01, 0.1, 0.5, 1.05]:
         <p className="text-lg italic text-foreground">📖 <strong>Смысл:</strong> Увеличиваем вероятность хороших действий, уменьшаем — плохих.</p>
       </div>
 
-      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="tdошибка-как-стохастический-градиент">TD-ошибка как стохастический градиент</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="td-ошибка-как-стохастический-градиент">TD-ошибка как стохастический градиент</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
         <div className="p-4 rounded-lg bg-card/60 border border-primary/20">
           <p className="text-sm font-semibold text-primary mb-1">TD-обновление:</p>
@@ -554,7 +554,7 @@ print(f'V истинное:  {np.round(V_true, 4)}')`}
       </RLBox>
 
       <div className="my-8 p-6 rounded-xl border-2 border-green-500/30 bg-green-500/5">
-        <h3 className="scroll-mt-28 text-lg font-bold text-foreground mb-4" id="-что-вы-изучили-в-этом-разделе">✅ Что вы изучили в этом разделе</h3>
+        <h3 className="scroll-mt-28 text-lg font-bold text-foreground mb-4" id="что-вы-изучили-в-этом-разделе">✅ Что вы изучили в этом разделе</h3>
         <ul className="list-disc list-inside space-y-2 text-sm">
           <li>Вычислять пределы последовательностей и понимать их связь со сходимостью RL</li>
           <li>Находить производные функций и применять правило цепочки (Chain Rule)</li>
