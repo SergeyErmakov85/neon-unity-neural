@@ -149,8 +149,10 @@ const Part6DeepRL = () => (
 
 /* ─── Local helpers ─── */
 
+const slugify = (t: string) => t.toLowerCase().replace(/[^\wа-яё]+/gi, "-").replace(/^-|-$/g, "").slice(0, 60);
+
 const Section = ({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) => (
-  <section className="mt-12 first:mt-0">
+  <section className="mt-12 first:mt-0 scroll-mt-28" id={slugify(title)}>
     <div className="flex items-center gap-3 mb-6">
       {icon}
       <h2 className="text-2xl font-bold text-foreground">{title}</h2>
