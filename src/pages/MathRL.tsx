@@ -1,143 +1,145 @@
+import { lazy, Suspense } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, Lock } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "@/components/landing/Navbar";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
+import { Skeleton } from "@/components/ui/skeleton";
 
-interface Module {
-  id: number;
-  title: string;
-  description: string;
-  available: boolean;
-  color: "primary" | "secondary" | "accent";
-  link?: string;
-}
+const Part1 = lazy(() => import("@/components/math-rl/parts/Part1Limits"));
+const Part2 = lazy(() => import("@/components/math-rl/parts/Part2LinearAlgebra"));
+const Part3 = lazy(() => import("@/components/math-rl/parts/Part3Probability"));
+const Part4 = lazy(() => import("@/components/math-rl/parts/Part4Optimization"));
+const Part5 = lazy(() => import("@/components/math-rl/parts/Part5FundamentalRL"));
+const Part6 = lazy(() => import("@/components/math-rl/parts/Part6DeepRL"));
 
-const modules: Module[] = [
-  {
-    id: 1,
-    title: "Пределы, последовательности и ряды",
-    description: "Фундаментальные понятия предела, сходимости рядов и их связь с алгоритмами RL: дисконтирование, уравнения Беллмана, итерация ценности.",
-    available: true,
-    color: "primary" as const,
-  },
-  {
-    id: 2,
-    title: "Линейная алгебра для RL",
-    description: "Векторы, матрицы, собственные значения, SVD, квадратичные формы и разложения в контексте RL.",
-    available: true,
-    color: "secondary" as const,
-  },
-  {
-    id: 3,
-    title: "От вероятности к алгоритмам RL",
-    description: "Теория вероятностей, условная вероятность, правило Байеса, MDP, уравнения Беллмана, алгоритмы RL и практические примеры на Python.",
-    available: true,
-    color: "accent" as const,
-  },
-  {
-    id: 4,
-    title: "Методы оптимизации в обучении с подкреплением",
-    description: "Градиент политики, REINFORCE, SGD/Adam, Proximal Policy Optimization (PPO) и реализация в Unity ML-Agents.",
-    available: true,
-    color: "primary" as const,
-  },
-  {
-    id: 5,
-    title: "Фундаментальная математика обучения с подкреплением",
-    description: "От теории вероятностей и MDP через уравнения Беллмана и TD-обучение до градиентов политики, Actor-Critic и практики в Unity ML-Agents.",
-    available: true,
-    color: "secondary" as const,
-  },
-  {
-    id: 6,
-    title: "Учебное пособие по математике и глубокому обучению с подкреплением",
-    description: "Комплексное пособие, интегрирующее все модули: Deep RL, MDP, Беллман, DQN, Policy Gradient, распределения, MLE/MAP, ОДУ.",
-    available: true,
-    color: "accent" as const,
-  },
-  {
-    id: 7,
-    title: "FCA + RL для NPC",
-    description: "Применение Формального Анализа Понятий для структурирования пространства состояний RL-агентов. Понятийные решётки, контексты, curriculum learning через FCA.",
-    available: true,
-    color: "primary" as const,
-    link: "/hub/fca-rl",
-  },
+const parts = [
+  { id: "part-1", num: "I", title: "Пределы, последовательности и ряды", color: "primary" as const },
+  { id: "part-2", num: "II", title: "Линейная алгебра для RL", color: "secondary" as const },
+  { id: "part-3", num: "III", title: "От вероятности к алгоритмам RL", color: "accent" as const },
+  { id: "part-4", num: "IV", title: "Методы оптимизации", color: "primary" as const },
+  { id: "part-5", num: "V", title: "Фундаментальная математика RL", color: "secondary" as const },
+  { id: "part-6", num: "VI", title: "Глубокое обучение с подкреплением", color: "accent" as const },
 ];
 
-const colorMap = {
-  primary: {
-    border: "border-primary/30 hover:border-primary/60",
-    shadow: "hover:shadow-glow-cyan",
-    icon: "text-primary",
-    badge: "bg-primary/10 text-primary",
-  },
-  secondary: {
-    border: "border-secondary/30 hover:border-secondary/60",
-    shadow: "hover:shadow-glow-purple",
-    icon: "text-secondary",
-    badge: "bg-secondary/10 text-secondary",
-  },
-  accent: {
-    border: "border-accent/30 hover:border-accent/60",
-    shadow: "hover:shadow-glow-pink",
-    icon: "text-accent",
-    badge: "bg-accent/10 text-accent",
-  },
+const colorClasses = {
+  primary: { border: "border-primary/40", text: "text-primary", bg: "bg-primary/5" },
+  secondary: { border: "border-secondary/40", text: "text-secondary", bg: "bg-secondary/5" },
+  accent: { border: "border-accent/40", text: "text-accent", bg: "bg-accent/5" },
 };
+
+const PartSkeleton = () => (
+  <div className="space-y-4 py-8">
+    <Skeleton className="h-8 w-3/4" />
+    <Skeleton className="h-4 w-full" />
+    <Skeleton className="h-4 w-5/6" />
+    <Skeleton className="h-32 w-full" />
+  </div>
+);
 
 const MathRL = () => {
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-background">
+      <Navbar />
+      <ScrollProgressBar />
+
+      {/* Header */}
       <div className="border-b border-border/50 bg-card/30 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4">
-          <h1 className="text-3xl md:text-5xl font-bold">
+        <div className="container mx-auto px-4 pt-24 pb-8">
+          <Button variant="ghost" onClick={() => navigate("/")} className="text-muted-foreground hover:text-foreground mb-4 -ml-2">
+            <ArrowLeft className="w-4 h-4 mr-2" /> На главную
+          </Button>
+          <h1 className="text-3xl md:text-5xl font-bold mb-3">
             <span className="bg-gradient-neon bg-clip-text text-transparent">
-              Математика RL
+              Математика и глубокого обучения с подкреплением
             </span>
           </h1>
-          <p className="text-muted-foreground mt-2 max-w-2xl">
-            Шесть учебных модулей по математическим основам обучения с подкреплением.
+          <p className="text-muted-foreground max-w-3xl text-lg">
+            Единый учебный модуль: от пределов и линейной алгебры до PPO и глубокого обучения с подкреплением. Шесть частей, объединяющих все математические основы RL.
           </p>
         </div>
       </div>
 
-      {/* Modules Grid */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
-          {modules.map((mod) => {
-            const colors = colorMap[mod.color];
-            return (
-              <Card
-                key={mod.id}
-                className={`bg-card/60 backdrop-blur-sm ${colors.border} ${mod.available ? `${colors.shadow} cursor-pointer` : "opacity-60 cursor-not-allowed"} transition-all duration-300 flex flex-col w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]`}
-                onClick={() => mod.available && navigate(mod.link || `/math-rl/module-${mod.id}`)}
+      <div className="container mx-auto px-4 py-12 max-w-7xl flex gap-8">
+        {/* Sidebar TOC */}
+        <aside className="hidden lg:block w-72 flex-shrink-0">
+          <nav className="sticky top-24 space-y-1">
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Содержание</p>
+            {parts.map((part) => {
+              const c = colorClasses[part.color];
+              return (
+                <button
+                  key={part.id}
+                  onClick={() => document.getElementById(part.id)?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  className={`block w-full text-left text-xs py-2 px-3 rounded text-muted-foreground hover:text-foreground hover:${c.bg} transition-colors`}
+                >
+                  <span className={`font-bold ${c.text} mr-1.5`}>{part.num}.</span>
+                  {part.title}
+                </button>
+              );
+            })}
+
+            <div className="border-t border-border/30 mt-4 pt-4">
+              <button
+                onClick={() => navigate("/hub/fca-rl")}
+                className="block w-full text-left text-xs py-2 px-3 rounded text-muted-foreground hover:text-foreground hover:bg-primary/5 transition-colors"
               >
-                <CardContent className="p-6 flex flex-col flex-1">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`text-xs font-medium px-3 py-1 rounded-full ${colors.badge}`}>
-                      Модуль {mod.id}
-                    </span>
-                    {mod.available ? (
-                      <BookOpen className={`w-5 h-5 ${colors.icon}`} />
-                    ) : (
-                      <Lock className="w-5 h-5 text-muted-foreground" />
-                    )}
+                <span className="font-bold text-primary mr-1.5">+</span>
+                FCA + RL для NPC
+              </button>
+            </div>
+          </nav>
+        </aside>
+
+        {/* Content */}
+        <article className="flex-1 max-w-4xl">
+          <Suspense fallback={<PartSkeleton />}>
+            {parts.map((part, i) => {
+              const c = colorClasses[part.color];
+              const PartComponent = [Part1, Part2, Part3, Part4, Part5, Part6][i];
+              return (
+                <div key={part.id} id={part.id} className="scroll-mt-24">
+                  {/* Part Header */}
+                  <div className={`mt-${i === 0 ? "0" : "20"} mb-8 p-6 rounded-xl border ${c.border} ${c.bg}`}>
+                    <span className={`text-xs font-bold ${c.text} uppercase tracking-wider`}>Часть {part.num}</span>
+                    <h2 className="text-2xl md:text-3xl font-bold text-foreground mt-1">{part.title}</h2>
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{mod.title}</h3>
-                  <p className="text-sm text-muted-foreground flex-1">{mod.description}</p>
-                  {mod.available && (
-                    <Button variant="outline" size="sm" className={`${colors.border} ${colors.icon} w-full mt-4`}>
-                      Открыть модуль
-                    </Button>
-                  )}
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
+
+                  <Suspense fallback={<PartSkeleton />}>
+                    <PartComponent />
+                  </Suspense>
+                </div>
+              );
+            })}
+          </Suspense>
+
+          {/* Literature */}
+          <section className="mt-20 p-6 rounded-lg bg-card/40 border border-border/30">
+            <h3 className="text-lg font-semibold text-foreground mb-3">📚 Литература</h3>
+            <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
+              <li>Sutton, R. S., & Barto, A. G. (2018). <em>Reinforcement Learning: An Introduction.</em> MIT Press.</li>
+              <li>Mnih, V., et al. (2015). Human-level control through deep RL. <em>Nature</em>, 518, 529–533.</li>
+              <li>Schulman, J., et al. (2017). Proximal Policy Optimization Algorithms. <em>arXiv:1707.06347</em>.</li>
+              <li>Goodfellow, I., et al. (2016). <em>Deep Learning.</em> MIT Press.</li>
+              <li>Bertsekas, D. P. (2017). <em>Dynamic Programming and Optimal Control.</em> Athena Scientific.</li>
+            </ol>
+          </section>
+
+          {/* Footer Navigation */}
+          <div className="mt-16 flex flex-wrap justify-center gap-4">
+            <Button variant="outline" onClick={() => navigate("/")} className="border-primary/50 text-primary">
+              <ArrowLeft className="w-4 h-4 mr-2" /> На главную
+            </Button>
+            <Button variant="outline" onClick={() => navigate("/courses")} className="border-secondary/50 text-secondary">
+              Перейти к курсам
+            </Button>
+            <Button variant="outline" onClick={() => navigate("/hub/fca-rl")} className="border-accent/50 text-accent">
+              FCA + RL для NPC →
+            </Button>
+          </div>
+        </article>
       </div>
     </div>
   );

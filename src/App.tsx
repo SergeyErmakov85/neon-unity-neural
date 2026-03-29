@@ -12,12 +12,6 @@ import Index from "./pages/Index";
 const BeginnerCourse = lazy(() => import("./pages/BeginnerCourse"));
 const CodeExamples = lazy(() => import("./pages/CodeExamples"));
 const MathRL = lazy(() => import("./pages/MathRL"));
-const MathRLModule1 = lazy(() => import("./pages/MathRLModule1"));
-const MathRLModule2 = lazy(() => import("./pages/MathRLModule2"));
-const MathRLModule3 = lazy(() => import("./pages/MathRLModule3"));
-const MathRLModule4 = lazy(() => import("./pages/MathRLModule4"));
-const MathRLModule5 = lazy(() => import("./pages/MathRLModule5"));
-const MathRLModule6 = lazy(() => import("./pages/MathRLModule6"));
 const PyTorchModule = lazy(() => import("./pages/PyTorchModule"));
 const PyTorchCheatSheet = lazy(() => import("./pages/PyTorchCheatSheet"));
 const UnityMLAgentsModule = lazy(() => import("./pages/UnityMLAgentsModule"));
@@ -102,12 +96,12 @@ const App = () => (
             <Route path="/beginner-course" element={<BeginnerCourse />} />
             <Route path="/code-examples" element={<CodeExamples />} />
             <Route path="/math-rl" element={<MathRL />} />
-            <Route path="/math-rl/module-1" element={<MathRLModule1 />} />
-            <Route path="/math-rl/module-2" element={<MathRLModule2 />} />
-            <Route path="/math-rl/module-3" element={<MathRLModule3 />} />
-            <Route path="/math-rl/module-4" element={<MathRLModule4 />} />
-            <Route path="/math-rl/module-5" element={<MathRLModule5 />} />
-            <Route path="/math-rl/module-6" element={<MathRLModule6 />} />
+            <Route path="/math-rl/module-1" element={<MathRL />} />
+            <Route path="/math-rl/module-2" element={<MathRL />} />
+            <Route path="/math-rl/module-3" element={<MathRL />} />
+            <Route path="/math-rl/module-4" element={<MathRL />} />
+            <Route path="/math-rl/module-5" element={<MathRL />} />
+            <Route path="/math-rl/module-6" element={<MathRL />} />
             <Route path="/pytorch" element={<PyTorchModule />} />
             <Route path="/pytorch/cheatsheet" element={<PyTorchCheatSheet />} />
             <Route path="/unity-ml-agents" element={<UnityMLAgentsModule />} />
