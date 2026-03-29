@@ -105,7 +105,7 @@ const DemoSection = () => {
           <Link to="/demo-project">
             <Button size="lg" variant="outline" className="group">
               <Play className="w-4 h-4 mr-2" />
-              Смотреть полное демо
+              Перейти к проекту
             </Button>
           </Link>
         </div>
