@@ -96,10 +96,6 @@ const SolutionSection = () => {
               </CardContent>
             </Card>
           </div>
-
-
-          {/* Interactive Learning Rate Chart */}
-          <LearningRateChart />
         </div>
       </div>
     </section>
