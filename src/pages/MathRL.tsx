@@ -39,8 +39,61 @@ const PartSkeleton = () => (
     <Skeleton className="h-32 w-full" />
   </div>
 );
+const PartComponents = [Part1, Part1b, Part2, Part3, Part4, Part5, Part6];
 
-const MathRL = () => {
+const CollapsibleParts = () => {
+  const [openParts, setOpenParts] = useState<Set<string>>(new Set());
+
+  const toggle = (id: string) => {
+    setOpenParts((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  return (
+    <>
+      {parts.map((part, i) => {
+        const c = colorClasses[part.color];
+        const isOpen = openParts.has(part.id);
+        const PartComponent = PartComponents[i];
+        return (
+          <div key={part.id} id={part.id} className="scroll-mt-24">
+            <button
+              onClick={() => toggle(part.id)}
+              className={`w-full text-left ${i === 0 ? "mt-0" : "mt-6"} p-6 rounded-xl border ${c.border} ${c.bg} transition-all duration-200 hover:brightness-110 cursor-pointer group`}
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className={`text-xs font-bold ${c.text} uppercase tracking-wider`}>Часть {part.num}</span>
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mt-1">{part.title}</h2>
+                </div>
+                <ChevronDown className={`w-6 h-6 text-muted-foreground transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+              </div>
+            </button>
+
+            {isOpen && (
+              <div className="mt-8 mb-4">
+                <Suspense fallback={<PartSkeleton />}>
+                  <PartComponent />
+                </Suspense>
+                {part.id === "part-1b" && (
+                  <Suspense fallback={<PartSkeleton />}>
+                    <GDPlayground />
+                  </Suspense>
+                )}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </>
+  );
+};
+
+
   const navigate = useNavigate();
 
   return (
