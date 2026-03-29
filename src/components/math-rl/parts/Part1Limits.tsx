@@ -286,6 +286,113 @@ print(f"Сумма 50 членов: {s:.8f}")
       </p>
     </Section>
 
+    {/* ── 8b. Практические задачи по пределам ── */}
+    <Section icon={<GraduationCap className="w-5 h-5 text-accent" />} title="8b. Практические задачи: пределы и сходимость">
+      <p>Проверьте своё понимание пределов на задачах с нарастающей сложностью. Задачи со значком 🤖 напрямую связаны с RL.</p>
+
+      <div className="my-6 p-5 rounded-lg bg-card/60 border border-primary/20 space-y-4">
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-bold text-primary px-2 py-0.5 rounded bg-primary/10">⭐ Задача 1.1</span>
+          <span className="text-xs text-muted-foreground">Базовая</span>
+        </div>
+        <p><strong className="text-foreground">Найти:</strong> <Math display={false}>{`\\lim_{n \\to \\infty} \\dfrac{3n^2 + 5n}{n^2 - 1}`}</Math></p>
+        <details className="text-sm">
+          <summary className="text-primary cursor-pointer hover:text-primary/80">💡 Подсказка</summary>
+          <p className="mt-2 text-muted-foreground">Разделите числитель и знаменатель на <Math display={false}>{`n^2`}</Math> (наибольшую степень в знаменателе).</p>
+        </details>
+        <details className="text-sm">
+          <summary className="text-primary cursor-pointer hover:text-primary/80">📝 Решение</summary>
+          <div className="mt-2 space-y-2">
+            <p className="text-muted-foreground">Делим на <Math display={false}>{`n^2`}</Math>:</p>
+            <Math>{`\\lim_{n \\to \\infty} \\frac{3 + \\frac{5}{n}}{1 - \\frac{1}{n^2}}`}</Math>
+            <p className="text-muted-foreground">При <Math display={false}>{`n \\to \\infty`}</Math>: <Math display={false}>{`5/n \\to 0`}</Math>, <Math display={false}>{`1/n^2 \\to 0`}</Math>.</p>
+            <p><span className="inline-block px-2 py-0.5 rounded bg-green-500/20 text-green-400 text-sm font-bold">Ответ: 3</span></p>
+          </div>
+        </details>
+      </div>
+
+      <div className="my-6 p-5 rounded-lg bg-card/60 border border-secondary/20 space-y-4">
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-bold text-secondary px-2 py-0.5 rounded bg-secondary/10">⭐⭐ Задача 1.2</span>
+          <span className="text-xs text-muted-foreground">Средняя</span>
+        </div>
+        <p><strong className="text-foreground">Найти:</strong> <Math display={false}>{`\\lim_{n \\to \\infty} \\dfrac{2^n + 3^n}{3^n}`}</Math></p>
+        <details className="text-sm">
+          <summary className="text-secondary cursor-pointer hover:text-secondary/80">💡 Подсказка</summary>
+          <p className="mt-2 text-muted-foreground">Разделите на <Math display={false}>{`3^n`}</Math>. Вспомните: если <Math display={false}>{`|q| < 1`}</Math>, то <Math display={false}>{`q^n \\to 0`}</Math>.</p>
+        </details>
+        <details className="text-sm">
+          <summary className="text-secondary cursor-pointer hover:text-secondary/80">📝 Решение</summary>
+          <div className="mt-2 space-y-2">
+            <Math>{`\\lim_{n \\to \\infty} \\left(\\frac{2}{3}\\right)^n + 1`}</Math>
+            <p className="text-muted-foreground">Поскольку <Math display={false}>{`|2/3| < 1`}</Math>, имеем <Math display={false}>{`(2/3)^n \\to 0`}</Math>.</p>
+            <p><span className="inline-block px-2 py-0.5 rounded bg-green-500/20 text-green-400 text-sm font-bold">Ответ: 1</span></p>
+          </div>
+        </details>
+      </div>
+
+      <div className="my-6 p-5 rounded-lg bg-card/60 border border-accent/20 space-y-4">
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-bold text-accent px-2 py-0.5 rounded bg-accent/10">🤖 Задача 1.3</span>
+          <span className="text-xs text-muted-foreground">Применение в RL</span>
+        </div>
+        <p><strong className="text-foreground">Условие.</strong> В процессе Q-learning ошибка агента на <Math display={false}>{`n`}</Math>-м шаге:</p>
+        <Math>{`\\varepsilon_n = 0{,}5^n + \\frac{1}{n+1}`}</Math>
+        <p>К какому значению стремится ошибка при <Math display={false}>{`n \\to \\infty`}</Math>?</p>
+        <details className="text-sm">
+          <summary className="text-accent cursor-pointer hover:text-accent/80">💡 Подсказка</summary>
+          <p className="mt-2 text-muted-foreground">Используйте: если <Math display={false}>{`|q| < 1`}</Math>, то <Math display={false}>{`q^n \\to 0`}</Math>; и <Math display={false}>{`1/n \\to 0`}</Math>.</p>
+        </details>
+        <details className="text-sm">
+          <summary className="text-accent cursor-pointer hover:text-accent/80">📝 Решение</summary>
+          <div className="mt-2 space-y-2">
+            <Math>{`\\lim_{n \\to \\infty} \\varepsilon_n = \\lim_{n \\to \\infty} 0{,}5^n + \\lim_{n \\to \\infty} \\frac{1}{n+1} = 0 + 0 = 0`}</Math>
+            <p><span className="inline-block px-2 py-0.5 rounded bg-green-500/20 text-green-400 text-sm font-bold">Ответ: 0</span></p>
+            <p className="text-muted-foreground">Ошибка агента стремится к нулю — это математическое основание <strong className="text-foreground">сходимости Q-learning</strong>.</p>
+          </div>
+        </details>
+      </div>
+
+      <InfoBox variant="accent">
+        <p className="text-sm font-semibold text-accent mb-2">Теорема о сэндвиче (Squeeze Theorem)</p>
+        <p className="text-sm">Если <Math display={false}>{`a_n \\le b_n \\le c_n`}</Math> и <Math display={false}>{`\\lim a_n = \\lim c_n = L`}</Math>, то <Math display={false}>{`\\lim b_n = L`}</Math>. Используется в доказательстве сходимости TD-методов.</p>
+      </InfoBox>
+
+      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">🔗 Связь с RL: условия Роббинса-Монро</h3>
+      <p>
+        Сходимость последовательностей — фундамент теорем о сходимости RL. При выполнении условий <strong className="text-foreground">Роббинса-Монро</strong> (<Math display={false}>{`\\sum \\alpha_t = \\infty`}</Math>, <Math display={false}>{`\\sum \\alpha_t^2 < \\infty`}</Math>) TD-ошибка <Math display={false}>{`\\delta_t`}</Math> образует <strong className="text-primary">сходящуюся последовательность</strong>: <Math display={false}>{`\\delta_t \\to 0`}</Math>.
+      </p>
+      <p>Это математическое доказательство того, что Q-learning находит оптимум.</p>
+
+      <CyberCodeBlock language="python" filename="sequences_convergence.py">
+{`import numpy as np
+
+# ── Численная проверка пределов ──
+def numeric_limit(name, f, n_max=100_000):
+    vals = [f(n) for n in [100, 1000, 10000, n_max]]
+    print(f'\\n{name}')
+    for n, v in zip([100, 1000, 10000, n_max], vals):
+        print(f'  n={n:>7}: {v:.8f}')
+    print(f'  Оценка предела ≈ {vals[-1]:.6f}')
+
+numeric_limit('Задача 1.1', lambda n: (3*n**2 + 5*n) / (n**2 - 1))
+numeric_limit('Задача 1.2', lambda n: (2**n + 3**n) / 3**n)
+numeric_limit('Задача 1.3 (RL)', lambda n: 0.5**n + 1/(n+1))
+
+# ── TD-ошибка как сходящаяся последовательность ──
+def simulate_q_convergence(n_steps=300, alpha=0.1):
+    q_true, q_est, td_errors = 10.0, 0.0, []
+    for _ in range(n_steps):
+        td_error = q_true - q_est
+        q_est += alpha * td_error
+        td_errors.append(abs(td_error))
+    return td_errors
+
+td_err = simulate_q_convergence()
+print(f"\\nTD-ошибка через 300 шагов: {td_err[-1]:.8f} → 0")`}
+      </CyberCodeBlock>
+    </Section>
+
     {/* ── 9. Источники ── */}
     <Section icon={<BookOpen className="w-5 h-5 text-accent" />} title="9. Источники">
       <ul className="list-disc list-inside space-y-3 text-sm">
