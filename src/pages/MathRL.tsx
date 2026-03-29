@@ -300,7 +300,7 @@ const MathRL = () => {
         <aside className="hidden lg:block w-72 flex-shrink-0">
           <nav className="sticky top-24 space-y-1">
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Содержание</p>
-            <SidebarTOC />
+            <SidebarTOC openParts={openParts} ensureOpen={ensureOpen} />
 
             <div className="border-t border-border/30 mt-4 pt-4">
               <button
@@ -316,7 +316,7 @@ const MathRL = () => {
 
         {/* Content */}
         <article className="flex-1 max-w-4xl">
-          <CollapsibleParts />
+          <CollapsibleParts openParts={openParts} toggle={togglePart} />
 
           {/* Literature */}
           <section className="mt-20 p-6 rounded-lg bg-card/40 border border-border/30">
