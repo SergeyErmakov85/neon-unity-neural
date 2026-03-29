@@ -2,12 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Brain, Zap, Shield, GitBranch, ArrowRight, CheckCircle, AlertTriangle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 const algorithms = [
   {
