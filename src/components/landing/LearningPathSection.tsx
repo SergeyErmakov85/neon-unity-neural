@@ -125,20 +125,26 @@ const LearningPathSection = () => {
                                   <span className="truncate">{lesson.title}</span>
                                 </div>
 
-                                <div className="flex items-center gap-1 shrink-0">
-                                  {hubIds.map((hId) => {
+                                <div className="flex items-center gap-1.5 shrink-0">
+                                  {hubIds.slice(0, 3).map((hId) => {
                                     const hub = SUPPORT_HUBS[hId];
+                                    const colorMap: Record<string, string> = {
+                                      "text-orange-400": "hsl(25, 95%, 53%)",
+                                      "text-emerald-400": "hsl(160, 84%, 39%)",
+                                      "text-sky-400": "hsl(198, 93%, 60%)",
+                                      "text-violet-400": "hsl(263, 70%, 50%)",
+                                      "text-amber-400": "hsl(38, 92%, 50%)",
+                                      "text-yellow-400": "hsl(48, 96%, 53%)",
+                                    };
                                     return (
                                       <span
                                         key={hId}
-                                        className={`inline-block w-2 h-2 rounded-full ${hub.colorAccent.replace("text-", "bg-")}`}
+                                        className="inline-block w-2.5 h-2.5 rounded-full"
+                                        style={{ backgroundColor: colorMap[hub.colorAccent] ?? "hsl(var(--primary))" }}
                                         title={hub.label}
                                       />
                                     );
                                   })}
-                                  {!isLocked && (
-                                    <ArrowRight className="w-3.5 h-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
-                                  )}
                                 </div>
                               </button>
                             );
