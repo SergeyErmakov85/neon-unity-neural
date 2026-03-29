@@ -1,7 +1,7 @@
 import React from "react";
 
-export const Section = ({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) => (
-  <section className="mt-12 first:mt-0">
+export const Section = ({ icon, title, id, children }: { icon: React.ReactNode; title: string; id?: string; children: React.ReactNode }) => (
+  <section className="mt-12 first:mt-0 scroll-mt-28" id={id}>
     <div className="flex items-center gap-3 mb-6">
       {icon}
       <h2 className="text-2xl font-bold text-foreground">{title}</h2>
