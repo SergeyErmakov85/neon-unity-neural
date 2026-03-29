@@ -1,6 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Lightbulb, Code2, Gamepad2, CheckCircle2, Trophy } from "lucide-react";
-import LearningRateChart from "./LearningRateChart";
 
 const SolutionSection = () => {
   return (
