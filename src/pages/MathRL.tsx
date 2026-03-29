@@ -1,9 +1,10 @@
 import { lazy, Suspense, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ChevronDown } from "lucide-react";
+import { ArrowLeft, ChevronDown, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/landing/Navbar";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const Part1 = lazy(() => import("@/components/math-rl/parts/Part1Limits"));
@@ -24,6 +25,90 @@ const parts = [
   { id: "part-5", num: "VI", title: "Фундаментальная математика RL", color: "accent" as const },
   { id: "part-6", num: "VII", title: "Глубокое обучение с подкреплением", color: "primary" as const },
 ];
+
+const partSubtopics: Record<string, string[]> = {
+  "part-1": [
+    "Введение",
+    "1. Предел последовательности",
+    "2. Бесконечные ряды и их сходимость",
+    "  Геометрический ряд",
+    "  Необходимое условие сходимости",
+    "  Абсолютная сходимость",
+    "3. Пределы и ряды в контексте RL",
+    "4. Уравнения Беллмана и дисконтирование",
+    "  Функция ценности состояния",
+    "  Уравнение оптимальности Беллмана",
+    "5. Итерация ценности: сходимость",
+    "6. Дисконтирование в RL",
+    "7. Примеры, аналогии и задачи",
+    "8. Интерактивные визуализации",
+    "9. Источники",
+  ],
+  "part-1b": [
+    "§ 1. Производные и дифференцирование",
+    "  Chain Rule = Backpropagation",
+    "  Таблица основных производных",
+    "§ 2. Частные производные и градиент",
+    "  Направление роста и антиградиент",
+    "  Градиент в Deep RL",
+    "§ 3. Градиентный спуск и оптимизация",
+    "  Варианты: SGD, Momentum, Adam",
+    "§ 4. Policy Gradient в RL",
+    "  Теорема о градиенте политики",
+    "§ 5. Весь раздел в одной картине",
+    "  Практические задачи",
+  ],
+  "part-2": [
+    "1. Векторы",
+    "  Линейная комбинация и базис",
+    "2. Матрицы",
+    "  Операции, определитель, ранг",
+    "  Обратная матрица",
+    "3. Скалярное произведение",
+    "4. Собственные значения и векторы",
+    "5. Сингулярное разложение (SVD)",
+    "6. Квадратичные формы, проекции, LU/QR",
+  ],
+  "part-3": [
+    "1. Теория вероятностей",
+    "  Случайные величины и распределения",
+    "  Условная вероятность и Байес",
+    "2. Статистика",
+    "  Оценка параметров и гипотезы",
+    "3. Марковские процессы",
+    "  Цепи Маркова и MDP",
+    "4. Функции ценности и уравнения Беллмана",
+    "5. Алгоритмы RL",
+    "6. Практические примеры (Python)",
+  ],
+  "part-4": [
+    "Лекция 1. Основы RL и оптимизация политики",
+    "  Целевая функция политики",
+    "Лекция 2. Вывод градиента политики",
+    "  Трюк с логарифмом",
+    "  Формула REINFORCE",
+    "  Reward-to-go и Advantage",
+    "Лекция 3. Градиентный спуск",
+    "  Momentum, RMSProp, Adam",
+    "Лекция 4. PPO",
+    "  Клиповый суррогат-объектив",
+    "  Гиперпараметры PPO",
+  ],
+  "part-5": [
+    "Фундаментальная математика RL",
+  ],
+  "part-6": [
+    "1.1 Основные понятия",
+    "1.2 Обзор алгоритмов RL",
+    "2.1 Математический анализ",
+    "  Производные и градиент",
+    "2.2 Теория вероятностей",
+    "  MLE и MAP",
+    "2.3 Дифференциальные уравнения",
+    "Deep Q-Network (DQN)",
+    "Современные алгоритмы",
+  ],
+};
 
 const colorClasses = {
   primary: { border: "border-primary/40", text: "text-primary", bg: "bg-primary/5" },
@@ -124,15 +209,45 @@ const MathRL = () => {
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Содержание</p>
             {parts.map((part) => {
               const c = colorClasses[part.color];
+              const subtopics = partSubtopics[part.id] || [];
               return (
-                <button
-                  key={part.id}
-                  onClick={() => document.getElementById(part.id)?.scrollIntoView({ behavior: "smooth", block: "start" })}
-                  className={`block w-full text-left text-xs py-2 px-3 rounded text-muted-foreground hover:text-foreground hover:${c.bg} transition-colors`}
-                >
-                  <span className={`font-bold ${c.text} mr-1.5`}>{part.num}.</span>
-                  {part.title}
-                </button>
+                <Popover key={part.id}>
+                  <PopoverTrigger asChild>
+                    <button
+                      className={`flex items-center justify-between w-full text-left text-xs py-2 px-3 rounded text-muted-foreground hover:text-foreground hover:${c.bg} transition-colors`}
+                    >
+                      <span>
+                        <span className={`font-bold ${c.text} mr-1.5`}>{part.num}.</span>
+                        {part.title}
+                      </span>
+                      <ChevronRight className="w-3 h-3 flex-shrink-0 opacity-50" />
+                    </button>
+                  </PopoverTrigger>
+                  <PopoverContent side="right" align="start" className="w-72 p-0 bg-card border-border/50 backdrop-blur-sm">
+                    <div className="p-3 border-b border-border/30">
+                      <button
+                        onClick={() => document.getElementById(part.id)?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                        className={`text-sm font-semibold ${c.text} hover:underline cursor-pointer`}
+                      >
+                        Часть {part.num}. {part.title}
+                      </button>
+                    </div>
+                    <div className="p-2 max-h-64 overflow-y-auto space-y-0.5">
+                      {subtopics.map((topic, i) => {
+                        const isIndented = topic.startsWith("  ");
+                        const label = topic.trim();
+                        return (
+                          <div
+                            key={i}
+                            className={`text-xs py-1 px-2 rounded text-muted-foreground ${isIndented ? "pl-5" : "font-medium text-foreground"}`}
+                          >
+                            {label}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </PopoverContent>
+                </Popover>
               );
             })}
 
