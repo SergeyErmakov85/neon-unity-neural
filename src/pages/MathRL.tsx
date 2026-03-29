@@ -123,63 +123,65 @@ const PartSkeleton = () => (
     <Skeleton className="h-32 w-full" />
   </div>
 );
+export const slugify = (text: string) =>
+  text.toLowerCase().replace(/[^\wа-яё]+/gi, "-").replace(/^-|-$/g, "").slice(0, 60);
+
 const PartComponents = [Part1, Part1b, Part2, Part3, Part4, Part5, Part6];
 
-const CollapsibleParts = () => {
-  const [openParts, setOpenParts] = useState<Set<string>>(new Set());
-
-  const toggle = (id: string) => {
-    setOpenParts((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
-  };
-
-  return (
-    <>
-      {parts.map((part, i) => {
-        const c = colorClasses[part.color];
-        const isOpen = openParts.has(part.id);
-        const PartComponent = PartComponents[i];
-        return (
-          <div key={part.id} id={part.id} className="scroll-mt-24">
-            <button
-              onClick={() => toggle(part.id)}
-              className={`w-full text-left ${i === 0 ? "mt-0" : "mt-6"} p-6 rounded-xl border ${c.border} ${c.bg} transition-all duration-200 hover:brightness-110 cursor-pointer group`}
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className={`text-xs font-bold ${c.text} uppercase tracking-wider`}>Часть {part.num}</span>
-                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mt-1">{part.title}</h2>
-                </div>
-                <ChevronDown className={`w-6 h-6 text-muted-foreground transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+const CollapsibleParts = ({ openParts, toggle }: { openParts: Set<string>; toggle: (id: string) => void }) => (
+  <>
+    {parts.map((part, i) => {
+      const c = colorClasses[part.color];
+      const isOpen = openParts.has(part.id);
+      const PartComponent = PartComponents[i];
+      return (
+        <div key={part.id} id={part.id} className="scroll-mt-24">
+          <button
+            onClick={() => toggle(part.id)}
+            className={`w-full text-left ${i === 0 ? "mt-0" : "mt-6"} p-6 rounded-xl border ${c.border} ${c.bg} transition-all duration-200 hover:brightness-110 cursor-pointer group`}
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <span className={`text-xs font-bold ${c.text} uppercase tracking-wider`}>Часть {part.num}</span>
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mt-1">{part.title}</h2>
               </div>
-            </button>
+              <ChevronDown className={`w-6 h-6 text-muted-foreground transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
+            </div>
+          </button>
 
-            {isOpen && (
-              <div className="mt-8 mb-4">
+          {isOpen && (
+            <div className="mt-8 mb-4">
+              <Suspense fallback={<PartSkeleton />}>
+                <PartComponent />
+              </Suspense>
+              {part.id === "part-1b" && (
                 <Suspense fallback={<PartSkeleton />}>
-                  <PartComponent />
+                  <GDPlayground />
                 </Suspense>
-                {part.id === "part-1b" && (
-                  <Suspense fallback={<PartSkeleton />}>
-                    <GDPlayground />
-                  </Suspense>
-                )}
-              </div>
-            )}
-          </div>
-        );
-      })}
-    </>
-  );
-};
-const SidebarTOC = () => {
+              )}
+            </div>
+          )}
+        </div>
+      );
+    })}
+  </>
+);
+const SidebarTOC = ({ openParts, ensureOpen }: { openParts: Set<string>; ensureOpen: (partId: string) => void }) => {
   const [expandedPart, setExpandedPart] = useState<string | null>(null);
 
   const toggle = (id: string) => setExpandedPart((prev) => (prev === id ? null : id));
+
+  const scrollToSubtopic = (partId: string, topicLabel: string) => {
+    ensureOpen(partId);
+    const targetId = slugify(topicLabel);
+    // Small delay to allow part to render
+    setTimeout(() => {
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
+  };
 
   return (
     <>
@@ -202,7 +204,6 @@ const SidebarTOC = () => {
 
             {isExpanded && (
               <div className="animate-fade-in ml-1 my-1 rounded-lg border border-primary/20 bg-[hsl(var(--cyber-darker))] overflow-hidden">
-                {/* Neon top accent line */}
                 <div className={`h-[2px] w-full bg-gradient-to-r ${
                   part.color === "primary" ? "from-primary/80 via-primary/40 to-transparent"
                     : part.color === "secondary" ? "from-secondary/80 via-secondary/40 to-transparent"
@@ -210,9 +211,8 @@ const SidebarTOC = () => {
                 }`} />
 
                 <div className="p-2.5 space-y-0.5">
-                  {/* Scroll-to-part link */}
                   <button
-                    onClick={() => document.getElementById(part.id)?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                    onClick={() => { ensureOpen(part.id); document.getElementById(part.id)?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
                     className={`w-full text-left text-[11px] font-semibold ${c.text} hover:underline px-2 py-1 mb-1`}
                   >
                     ▸ Перейти к части {part.num}
@@ -222,9 +222,10 @@ const SidebarTOC = () => {
                     const isIndented = topic.startsWith("  ");
                     const label = topic.trim();
                     return (
-                      <div
+                      <button
                         key={i}
-                        className={`text-[11px] py-0.5 px-2 rounded transition-colors ${
+                        onClick={() => scrollToSubtopic(part.id, label)}
+                        className={`block w-full text-left text-[11px] py-0.5 px-2 rounded transition-colors cursor-pointer hover:bg-primary/10 ${
                           isIndented
                             ? "pl-5 text-muted-foreground/70 border-l border-primary/10 ml-2"
                             : "font-medium text-muted-foreground hover:text-foreground"
@@ -232,12 +233,11 @@ const SidebarTOC = () => {
                       >
                         {!isIndented && <span className={`${c.text} mr-1 opacity-60`}>›</span>}
                         {label}
-                      </div>
+                      </button>
                     );
                   })}
                 </div>
 
-                {/* Neon bottom accent line */}
                 <div className={`h-[1px] w-full bg-gradient-to-r ${
                   part.color === "primary" ? "from-transparent via-primary/30 to-transparent"
                     : part.color === "secondary" ? "from-transparent via-secondary/30 to-transparent"
@@ -254,7 +254,25 @@ const SidebarTOC = () => {
 
 const MathRL = () => {
   const navigate = useNavigate();
+  const [openParts, setOpenParts] = useState<Set<string>>(new Set());
 
+  const togglePart = (id: string) => {
+    setOpenParts((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const ensureOpen = (id: string) => {
+    setOpenParts((prev) => {
+      if (prev.has(id)) return prev;
+      const next = new Set(prev);
+      next.add(id);
+      return next;
+    });
+  };
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -282,7 +300,7 @@ const MathRL = () => {
         <aside className="hidden lg:block w-72 flex-shrink-0">
           <nav className="sticky top-24 space-y-1">
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Содержание</p>
-            <SidebarTOC />
+            <SidebarTOC openParts={openParts} ensureOpen={ensureOpen} />
 
             <div className="border-t border-border/30 mt-4 pt-4">
               <button
@@ -298,7 +316,7 @@ const MathRL = () => {
 
         {/* Content */}
         <article className="flex-1 max-w-4xl">
-          <CollapsibleParts />
+          <CollapsibleParts openParts={openParts} toggle={togglePart} />
 
           {/* Literature */}
           <section className="mt-20 p-6 rounded-lg bg-card/40 border border-border/30">

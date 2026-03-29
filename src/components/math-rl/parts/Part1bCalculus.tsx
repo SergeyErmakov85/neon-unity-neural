@@ -7,20 +7,20 @@ const Part1bCalculus = () => (
   <>
     {/* ═══ СЕКЦИЯ 1: Производные ═══ */}
     <Section icon={<BookOpen className="w-5 h-5 text-primary" />} title="§ 1. Производные и дифференцирование">
-      <h3 className="text-xl font-semibold text-foreground mt-4 mb-3">Определение производной</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-4 mb-3" id="определение-производной">Определение производной</h3>
       <DefinitionBox>
         <p><strong className="text-foreground">Производная</strong> <Math display={false}>{`f'(x)`}</Math> — это предел отношения приращения функции к приращению аргумента:</p>
         <Math>{`f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}`}</Math>
       </DefinitionBox>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Три интуиции</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="три-интуиции">Три интуиции</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
         <MiniCard icon="📐" title="Геометрически" text="Угловой коэффициент касательной к графику" />
         <MiniCard icon="🚗" title="Физически" text="Скорость (если f(t) — положение, то f'(t) — скорость)" />
         <MiniCard icon="🏔️" title="Оптимизация" text="В точке минимума или максимума f'(x) = 0" />
       </div>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Таблица основных производных</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="таблица-основных-производных">Таблица основных производных</h3>
       <div className="my-4 overflow-x-auto">
         <table className="w-full text-sm border border-border/30 rounded-lg overflow-hidden">
           <thead>
@@ -42,7 +42,7 @@ const Part1bCalculus = () => (
         </table>
       </div>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Правила дифференцирования</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="правила-дифференцирования">Правила дифференцирования</h3>
       <ul className="list-disc list-inside space-y-2">
         <li><strong className="text-foreground">Линейность:</strong> <Math display={false}>{`(f + g)' = f' + g'`}</Math>, <Math display={false}>{`(c \\cdot f)' = c \\cdot f'`}</Math></li>
         <li><strong className="text-foreground">Произведение:</strong> <Math display={false}>{`(f \\cdot g)' = f'g + fg'`}</Math></li>
@@ -59,7 +59,7 @@ const Part1bCalculus = () => (
       </div>
 
       {/* ── Задачи по производным ── */}
-      <h3 className="text-xl font-semibold text-foreground mt-10 mb-3">✏️ Практические задачи</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-10 mb-3" id="-практические-задачи">✏️ Практические задачи</h3>
 
       <PracticeTask level="⭐" num="2.1" label="Базовая" color="primary">
         <p><strong className="text-foreground">Найти</strong> <Math display={false}>{`f'(x)`}</Math> для <Math display={false}>{`f(x) = 3x^4 - 5x^2 + 2x - 7`}</Math></p>
@@ -174,14 +174,14 @@ print(f'dL/dw (числен.) = {dL_dw_numeric:.6f}')`}
 
     {/* ═══ СЕКЦИЯ 2: Частные производные и градиент ═══ */}
     <Section icon={<TrendingUp className="w-5 h-5 text-secondary" />} title="§ 2. Частные производные и градиент">
-      <h3 className="text-xl font-semibold text-foreground mt-4 mb-3">Функции многих переменных</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-4 mb-3" id="функции-многих-переменных">Функции многих переменных</h3>
       <p>В RL функции почти всегда зависят от многих переменных:</p>
       <ul className="list-disc list-inside space-y-1">
         <li><Math display={false}>{`Q(s, a)`}</Math> — от состояния и действия</li>
         <li><Math display={false}>{`Q_\\theta(s, a)`}</Math> — от тысяч весов <Math display={false}>{`\\theta = (\\theta_1, \\theta_2, \\ldots, \\theta_n)`}</Math> нейросети</li>
       </ul>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Частная производная</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="частная-производная">Частная производная</h3>
       <DefinitionBox>
         <p><strong className="text-foreground">Частная производная</strong> <Math display={false}>{`\\partial f / \\partial x_i`}</Math> — скорость изменения <Math display={false}>{`f`}</Math> по переменной <Math display={false}>{`x_i`}</Math> при фиксированных остальных.</p>
         <p className="text-sm mt-2"><strong className="text-primary">Правило:</strong> Фиксируй все переменные кроме <Math display={false}>{`x_i`}</Math> и дифференцируй как обычно.</p>
@@ -196,7 +196,7 @@ print(f'dL/dw (числен.) = {dL_dw_numeric:.6f}')`}
         </ul>
       </div>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Градиент</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="градиент">Градиент</h3>
       <DefinitionBox>
         <p><strong className="text-foreground">Градиент</strong> <Math display={false}>{`\\nabla f(x)`}</Math> — вектор всех частных производных:</p>
         <Math>{`\\nabla f = \\left(\\frac{\\partial f}{\\partial x_1},\\ \\frac{\\partial f}{\\partial x_2},\\ \\ldots,\\ \\frac{\\partial f}{\\partial x_n}\\right)`}</Math>
@@ -295,7 +295,7 @@ except ImportError:
         </div>
       </DefinitionBox>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Варианты градиентного спуска</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="варианты-градиентного-спуска">Варианты градиентного спуска</h3>
       <div className="my-4 overflow-x-auto">
         <table className="w-full text-sm border border-border/30 rounded-lg overflow-hidden">
           <thead>
@@ -328,7 +328,7 @@ except ImportError:
         </div>
       </details>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Проблемы и решения</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="проблемы-и-решения">Проблемы и решения</h3>
       <div className="my-4 overflow-x-auto">
         <table className="w-full text-sm border border-border/30 rounded-lg overflow-hidden">
           <thead>
@@ -426,13 +426,13 @@ for alpha in [0.01, 0.1, 0.5, 1.05]:
 
     {/* ═══ СЕКЦИЯ 4: Policy Gradient ═══ */}
     <Section icon={<BarChart3 className="w-5 h-5 text-primary" />} title="§ 4. Применение в RL: Policy Gradient">
-      <h3 className="text-xl font-semibold text-foreground mt-4 mb-3">Задача оптимизации политики</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-4 mb-3" id="задача-оптимизации-политики">Задача оптимизации политики</h3>
       <p>В RL цель — максимизировать суммарное вознаграждение:</p>
       <Math>{`J(\\theta) = \\mathbb{E}_{\\pi_\\theta}\\!\\left[\\sum_{t=0}^{\\infty} \\gamma^t r_t\\right]`}</Math>
       <p>Мы применяем <strong className="text-primary">градиентный подъём</strong> (знак «+», а не «−»!):</p>
       <Math>{`\\theta \\leftarrow \\theta + \\alpha \\cdot \\nabla J(\\theta)`}</Math>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Теорема о градиенте политики</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="теорема-о-градиенте-политики">Теорема о градиенте политики</h3>
       <div className="my-4 p-5 rounded-lg border-2 border-secondary/40 bg-secondary/5">
         <Math>{`\\nabla J(\\theta) = \\mathbb{E}_{\\pi_\\theta}\\!\\left[\\nabla \\log \\pi_\\theta(a|s) \\cdot Q^{\\pi}(s,a)\\right]`}</Math>
         <ul className="list-disc list-inside mt-4 space-y-1 text-sm">
@@ -446,7 +446,7 @@ for alpha in [0.01, 0.1, 0.5, 1.05]:
         <p className="text-lg italic text-foreground">📖 <strong>Смысл:</strong> Увеличиваем вероятность хороших действий, уменьшаем — плохих.</p>
       </div>
 
-      <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">TD-ошибка как стохастический градиент</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="tdошибка-как-стохастический-градиент">TD-ошибка как стохастический градиент</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
         <div className="p-4 rounded-lg bg-card/60 border border-primary/20">
           <p className="text-sm font-semibold text-primary mb-1">TD-обновление:</p>
@@ -554,7 +554,7 @@ print(f'V истинное:  {np.round(V_true, 4)}')`}
       </RLBox>
 
       <div className="my-8 p-6 rounded-xl border-2 border-green-500/30 bg-green-500/5">
-        <h3 className="text-lg font-bold text-foreground mb-4">✅ Что вы изучили в этом разделе</h3>
+        <h3 className="scroll-mt-28 text-lg font-bold text-foreground mb-4" id="-что-вы-изучили-в-этом-разделе">✅ Что вы изучили в этом разделе</h3>
         <ul className="list-disc list-inside space-y-2 text-sm">
           <li>Вычислять пределы последовательностей и понимать их связь со сходимостью RL</li>
           <li>Находить производные функций и применять правило цепочки (Chain Rule)</li>
@@ -569,8 +569,10 @@ print(f'V истинное:  {np.round(V_true, 4)}')`}
 
 /* ─── Local helpers ─── */
 
+const slugify = (t: string) => t.toLowerCase().replace(/[^\wа-яё]+/gi, "-").replace(/^-|-$/g, "").slice(0, 60);
+
 const Section = ({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) => (
-  <section className="mt-12 first:mt-0">
+  <section className="mt-12 first:mt-0 scroll-mt-28" id={slugify(title)}>
     <div className="flex items-center gap-3 mb-6">
       {icon}
       <h2 className="text-2xl font-bold text-foreground">{title}</h2>
