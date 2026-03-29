@@ -92,8 +92,7 @@ const CollapsibleParts = () => {
     </>
   );
 };
-
-
+const MathRL = () => {
   const navigate = useNavigate();
 
   return (
