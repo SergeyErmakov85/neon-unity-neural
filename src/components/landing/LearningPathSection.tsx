@@ -108,11 +108,11 @@ const LearningPathSection = () => {
                                 disabled={isLocked}
                                 className={`w-full flex items-center justify-between gap-2 rounded-lg px-3 py-2.5 text-left text-sm transition-colors group ${
                                   isCompleted
-                                    ? "text-muted-foreground"
+                                    ? "text-foreground/80"
                                     : isCurrent
                                       ? "text-foreground bg-primary/5 border border-primary/30"
-                                      : "text-muted-foreground/50 cursor-not-allowed"
-                                } ${!isLocked ? "hover:bg-primary/5" : ""}`}
+                                      : "text-foreground/70"
+                                } ${!isLocked ? "hover:bg-primary/5 cursor-pointer" : "cursor-default"}`}
                               >
                                 <div className="flex items-center gap-2 truncate">
                                   {isCompleted ? (
@@ -131,7 +131,7 @@ const LearningPathSection = () => {
                                     return (
                                       <span
                                         key={hId}
-                                        className={`inline-block w-2 h-2 rounded-full ${isLocked ? "bg-muted-foreground/20" : hub.colorAccent.replace("text-", "bg-")}`}
+                                        className={`inline-block w-2 h-2 rounded-full ${hub.colorAccent.replace("text-", "bg-")}`}
                                         title={hub.label}
                                       />
                                     );
