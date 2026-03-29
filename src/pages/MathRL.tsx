@@ -1,6 +1,6 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/landing/Navbar";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
@@ -98,32 +98,7 @@ const MathRL = () => {
 
         {/* Content */}
         <article className="flex-1 max-w-4xl">
-          <Suspense fallback={<PartSkeleton />}>
-            {parts.map((part, i) => {
-              const c = colorClasses[part.color];
-              const PartComponent = [Part1, Part1b, Part2, Part3, Part4, Part5, Part6][i];
-              return (
-                <div key={part.id} id={part.id} className="scroll-mt-24">
-                  {/* Part Header */}
-                  <div className={`mt-${i === 0 ? "0" : "20"} mb-8 p-6 rounded-xl border ${c.border} ${c.bg}`}>
-                    <span className={`text-xs font-bold ${c.text} uppercase tracking-wider`}>Часть {part.num}</span>
-                    <h2 className="text-2xl md:text-3xl font-bold text-foreground mt-1">{part.title}</h2>
-                  </div>
-
-                  <Suspense fallback={<PartSkeleton />}>
-                    <PartComponent />
-                  </Suspense>
-
-                  {/* GD Playground after Part II (calculus) */}
-                  {part.id === "part-1b" && (
-                    <Suspense fallback={<PartSkeleton />}>
-                      <GDPlayground />
-                    </Suspense>
-                  )}
-                </div>
-              );
-            })}
-          </Suspense>
+          <CollapsibleParts />
 
           {/* Literature */}
           <section className="mt-20 p-6 rounded-lg bg-card/40 border border-border/30">
