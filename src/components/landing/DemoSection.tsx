@@ -28,16 +28,15 @@ const DemoSection = () => {
           {/* Demo Video Placeholder */}
           <Card className="bg-card/60 backdrop-blur-sm border-primary/30 overflow-hidden">
             <CardContent className="p-0">
-              <div className="aspect-video bg-gradient-to-br from-cyber-dark to-cyber-darker relative overflow-hidden">
+              <div className="aspect-video relative overflow-hidden rounded-xl">
                 <video
-                  className="w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover"
                   autoPlay
                   loop
                   muted
                   playsInline
                   src="/videos/demo-unity-agent.mp4"
                 />
-                {/* Label */}
                 <div className="absolute bottom-4 left-4 px-3 py-1.5 rounded-full bg-card/80 backdrop-blur-sm border border-border/50">
                   <span className="text-sm text-foreground">Демо: Обучение агента в Unity</span>
                 </div>
