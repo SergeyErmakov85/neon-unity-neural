@@ -254,7 +254,25 @@ const SidebarTOC = ({ openParts, ensureOpen }: { openParts: Set<string>; ensureO
 
 const MathRL = () => {
   const navigate = useNavigate();
+  const [openParts, setOpenParts] = useState<Set<string>>(new Set());
 
+  const togglePart = (id: string) => {
+    setOpenParts((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const ensureOpen = (id: string) => {
+    setOpenParts((prev) => {
+      if (prev.has(id)) return prev;
+      const next = new Set(prev);
+      next.add(id);
+      return next;
+    });
+  };
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
