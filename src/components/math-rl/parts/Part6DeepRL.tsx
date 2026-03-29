@@ -35,7 +35,7 @@ const Part6DeepRL = () => (
       </Section>
 
       <Section icon={<Lightbulb className="w-5 h-5 text-accent" />} title="1.2 Обзор алгоритмов RL">
-        <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-6 mb-3" id="deep-qnetwork-dqn">Deep Q-Network (DQN)</h3>
+        <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-6 mb-3" id="deep-q-network-dqn">Deep Q-Network (DQN)</h3>
         <p>DQN (DeepMind, 2013–2015) заменяет Q-таблицу глубокой нейронной сетью <Math display={false}>{`Q(s,a;\\theta)`}</Math>.</p>
         <ol className="list-decimal list-inside space-y-2 mt-3">
           <li><strong className="text-foreground">Аппроксимация нейронной сетью:</strong> <Math display={false}>{`Q(s,a;\\theta)`}</Math></li>

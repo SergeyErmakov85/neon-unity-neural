@@ -45,7 +45,7 @@ const Part4Optimization = () => (
       <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="шаг-4-формула-reinforce">Шаг 4: Формула REINFORCE</h3>
       <Math>{`\\nabla_{\\theta} J(\\theta) = \\mathbb{E}_{\\tau\\sim \\pi_\\theta}\\Big[\\sum_{t=0}^T \\nabla_{\\theta}\\log \\pi_\\theta(a_t|s_t)\\;R(\\tau)\\Big]`}</Math>
 
-      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="шаг-5-rewardtogo">Шаг 5: Reward-to-go</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="шаг-5-reward-to-go">Шаг 5: Reward-to-go</h3>
       <p>Вместо <Math display={false}>{`R(\\tau)`}</Math> используем <Math display={false}>{`G_t = \\sum_{k=t}^T \\gamma^{k-t} R_k`}</Math>:</p>
       <Math>{`\\nabla_{\\theta} J(\\theta) = \\mathbb{E}_{\\pi_\\theta}\\Big[\\sum_{t=0}^T \\nabla_{\\theta}\\log \\pi_\\theta(a_t|s_t)\\;G_t\\Big]`}</Math>
 
@@ -93,7 +93,7 @@ const Part4Optimization = () => (
         <strong className="text-foreground">PPO</strong> — современный алгоритм оптимизации политик, стандарт в Unity ML-Agents. Он предназначен для того, чтобы <strong className="text-foreground">не допустить слишком больших обновлений политики</strong>.
       </p>
 
-      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="клиповый-суррогатобъектив">Клиповый суррогат-объектив</h3>
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="клиповый-суррогат-объектив">Клиповый суррогат-объектив</h3>
       <p>Определим отношение вероятностей:</p>
       <Math>{`r(\\theta) = \\frac{\\pi_{\\theta}(a|s)}{\\pi_{\\theta_{\\text{old}}}(a|s)}`}</Math>
       <p>Целевая функция PPO-Clip:</p>
