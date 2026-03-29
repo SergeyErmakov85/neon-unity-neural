@@ -101,7 +101,7 @@ const MathRL = () => {
           <Suspense fallback={<PartSkeleton />}>
             {parts.map((part, i) => {
               const c = colorClasses[part.color];
-              const PartComponent = [Part1, Part2, Part3, Part4, Part5, Part6][i];
+              const PartComponent = [Part1, Part1b, Part2, Part3, Part4, Part5, Part6][i];
               return (
                 <div key={part.id} id={part.id} className="scroll-mt-24">
                   {/* Part Header */}
@@ -113,6 +113,13 @@ const MathRL = () => {
                   <Suspense fallback={<PartSkeleton />}>
                     <PartComponent />
                   </Suspense>
+
+                  {/* GD Playground after Part II (calculus) */}
+                  {part.id === "part-1b" && (
+                    <Suspense fallback={<PartSkeleton />}>
+                      <GDPlayground />
+                    </Suspense>
+                  )}
                 </div>
               );
             })}
