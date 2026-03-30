@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { LEARNING_MAP } from "@/content/learningMap";
 import { SUPPORT_HUBS, type HubId } from "@/content/hubs";
 import { useLearningProgress } from "@/hooks/useLearningProgress";
+import { useUserRole } from "@/hooks/useUserRole";
 import AlgorithmTable from "./AlgorithmTable";
 
 const stageColors = [
@@ -32,7 +33,8 @@ const stageColors = [
 
 const LearningPathSection = () => {
   const navigate = useNavigate();
-  const { getStatus } = useLearningProgress();
+  const { isAdmin } = useUserRole();
+  const { getStatus } = useLearningProgress(isAdmin);
 
   return (
     <section id="learning-path" className="py-20 px-4 relative overflow-hidden">

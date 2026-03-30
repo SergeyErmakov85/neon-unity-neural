@@ -4,6 +4,7 @@ import { LEARNING_MAP } from "@/content/learningMap";
 import type { ContextLink } from "@/content/lessonContextLinks";
 import type { HubId } from "@/content/hubs";
 import { useLearningProgress } from "@/hooks/useLearningProgress";
+import { useUserRole } from "@/hooks/useUserRole";
 import ContextBridgeCard from "@/components/ContextBridgeCard";
 import HubQuickViewDrawer from "@/components/HubQuickViewDrawer";
 import { Button } from "@/components/ui/button";
@@ -45,7 +46,8 @@ const DUMMY_SECTIONS: { placement: Placement; heading: string; body: string }[] 
 const LessonPage = () => {
   const { stageSlug, lessonSlug } = useParams<{ stageSlug: string; lessonSlug: string }>();
   const navigate = useNavigate();
-  const { getStatus, completeLesson, getNextSlug } = useLearningProgress();
+  const { isAdmin } = useUserRole();
+  const { getStatus, completeLesson, getNextSlug } = useLearningProgress(isAdmin);
 
   const [drawerHub, setDrawerHub] = useState<HubId | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
