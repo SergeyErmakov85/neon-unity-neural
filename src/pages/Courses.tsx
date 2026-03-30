@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import SEOHead from "@/components/SEOHead";
+import { useUserRole } from "@/hooks/useUserRole";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -115,6 +116,7 @@ const statusLabels: Record<string, { label: string; icon: React.ReactNode }> = {
 };
 
 const Courses = () => {
+  const { isAdmin } = useUserRole();
   const [openLevel, setOpenLevel] = useState<number | null>(null);
   const [, setTick] = useState(0);
 
@@ -193,8 +195,9 @@ const Courses = () => {
 
           <div className="space-y-8">
             {levels.map((level, index) => {
+              const isLocked = isAdmin ? false : level.locked;
               const styles = accentStyles[level.accentColor];
-              const status = statusLabels[level.status];
+              const status = isAdmin && level.locked ? statusLabels["in_progress"] : statusLabels[level.status];
               const isOpen = openLevel === index;
 
               return (
@@ -259,7 +262,7 @@ const Courses = () => {
                             </div>
 
                             <div className="flex items-center gap-2 pt-1">
-                              {level.locked && <Lock className="w-5 h-5 text-muted-foreground/50" />}
+                              {isLocked && <Lock className="w-5 h-5 text-muted-foreground/50" />}
                               <ChevronDown
                                 className={`w-5 h-5 text-muted-foreground transition-transform duration-200 ${
                                   isOpen ? "rotate-180" : ""
@@ -274,16 +277,16 @@ const Courses = () => {
                     <CollapsibleContent>
                       <div className="mt-2 ml-2 border-l-2 border-border pl-4 space-y-1.5 py-2">
                         {level.lessons.map((lesson, li) => {
-                          const hasLink = !level.locked && lesson.path;
+                          const hasLink = !isLocked && lesson.path;
                           const inner = (
                             <div
                               className={`flex items-center gap-3 py-1.5 px-3 rounded-md text-sm transition-colors ${
-                                level.locked
+                                isLocked
                                   ? "text-muted-foreground/50"
                                   : "text-muted-foreground hover:text-foreground hover:bg-muted/30 cursor-pointer"
                               }`}
                             >
-                              {level.locked ? (
+                              {isLocked ? (
                                 <Lock className="w-3.5 h-3.5 flex-shrink-0" />
                               ) : (
                                 <Circle className="w-3.5 h-3.5 flex-shrink-0" />
