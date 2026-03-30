@@ -179,33 +179,32 @@ const Navbar = () => {
               >
                 Тарифы
               </button>
-              <Button
-                size="sm"
-                className="bg-gradient-neon hover:shadow-glow-cyan text-sm px-4"
-                onClick={() => navigate("/courses")}
-              >
-                Начать бесплатно
-              </Button>
+              {!authLoading && authUser ? (
+                <button
+                  onClick={() => navigate("/profile")}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-card/60 backdrop-blur-sm hover:bg-primary/10 transition-all duration-300 cursor-pointer"
+                >
+                  <Avatar className="w-8 h-8 border border-primary/30">
+                    <AvatarImage src={avatarUrl || undefined} />
+                    <AvatarFallback className="bg-primary/10 text-primary text-xs">
+                      {userName ? userName[0].toUpperCase() : "U"}
+                    </AvatarFallback>
+                  </Avatar>
+                  <span className="text-sm font-medium text-foreground max-w-[120px] truncate">
+                    {displayName}
+                  </span>
+                </button>
+              ) : (
+                <Button
+                  size="sm"
+                  className="bg-gradient-neon hover:shadow-glow-cyan text-sm px-4"
+                  onClick={() => navigate("/courses")}
+                >
+                  Начать бесплатно
+                </Button>
+              )}
             </div>
           </div>
-
-          {/* User avatar + name (desktop) */}
-          {!authLoading && authUser && (
-            <button
-              onClick={() => navigate("/profile")}
-              className="hidden lg:flex items-center gap-2 ml-3 px-3 py-1.5 rounded-full border border-primary/20 bg-card/60 backdrop-blur-sm hover:bg-primary/10 transition-all duration-300 cursor-pointer"
-            >
-              <Avatar className="w-8 h-8 border border-primary/30">
-                <AvatarImage src={avatarUrl || undefined} />
-                <AvatarFallback className="bg-primary/10 text-primary text-xs">
-                  {userName ? userName[0].toUpperCase() : "U"}
-                </AvatarFallback>
-              </Avatar>
-              <span className="text-sm font-medium text-foreground max-w-[120px] truncate">
-                {displayName}
-              </span>
-            </button>
-          )}
 
           {/* Hamburger menu - inline after badges */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -286,12 +285,14 @@ const Navbar = () => {
                     <CreditCard className="w-4 h-4 mr-3" />
                     Тарифы
                   </button>
-                  <Button
-                    className="w-full bg-gradient-neon hover:shadow-glow-cyan"
-                    onClick={() => { setIsOpen(false); navigate("/courses"); }}
-                  >
-                    Начать бесплатно
-                  </Button>
+                  {!authUser && (
+                    <Button
+                      className="w-full bg-gradient-neon hover:shadow-glow-cyan"
+                      onClick={() => { setIsOpen(false); navigate("/courses"); }}
+                    >
+                      Начать бесплатно
+                    </Button>
+                  )}
                 </div>
 
                 {/* Mobile CTA */}
