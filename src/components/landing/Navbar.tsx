@@ -26,6 +26,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [authUser, setAuthUser] = useState<User | null>(null);
   const [userName, setUserName] = useState<string | null>(null);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
@@ -34,13 +35,15 @@ const Navbar = () => {
     const metadataName = typeof user.user_metadata?.name === "string" ? user.user_metadata.name : null;
     const fallbackName = metadataName || user.email || "User";
 
-    const { data } = await supabase
-      .from("profiles")
-      .select("name")
+    const { data } = await (supabase
+      .from("profiles" as any)
+      .select("name, avatar_url")
       .eq("id", user.id)
-      .maybeSingle();
+      .maybeSingle() as any);
 
-    setUserName(data?.name?.trim() || fallbackName);
+    if (data?.name?.trim()) setUserName(data.name.trim());
+    else setUserName(fallbackName);
+    if (data?.avatar_url) setAvatarUrl(data.avatar_url);
   }, []);
 
   useEffect(() => {

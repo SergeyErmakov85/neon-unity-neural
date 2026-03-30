@@ -18,10 +18,10 @@ export function useUserRole() {
         return;
       }
 
-      const { data, error } = await supabase
+      const { data, error } = await (supabase
         .from("user_roles" as any)
         .select("role")
-        .eq("user_id", user.id);
+        .eq("user_id", user.id) as any);
 
       if (!error && data && !cancelled) {
         setRoles((data as any[]).map((r: any) => r.role as AppRole));
