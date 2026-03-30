@@ -18,13 +18,13 @@ export function useUserRole() {
         return;
       }
 
-      const { data, error } = await (supabase
-        .from("user_roles" as any)
+      const { data, error } = await supabase
+        .from("user_roles")
         .select("role")
-        .eq("user_id", user.id) as any);
+        .eq("user_id", user.id);
 
       if (!error && data && !cancelled) {
-        setRoles((data as any[]).map((r: any) => r.role as AppRole));
+        setRoles(data.map((r) => r.role as AppRole));
       }
       if (!cancelled) setLoading(false);
     };

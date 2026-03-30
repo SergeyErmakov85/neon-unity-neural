@@ -48,7 +48,7 @@ function stableSnapshot(): string[] {
 
 export type LessonStatus = "completed" | "current" | "locked";
 
-export function useLearningProgress() {
+export function useLearningProgress(isAdmin = false) {
   const completed = useSyncExternalStore(subscribe, stableSnapshot, () => []);
 
   const completeLesson = useCallback((slug: string) => {
@@ -65,15 +65,15 @@ export function useLearningProgress() {
   /** Determine status of any lesson slug */
   const getStatus = useCallback(
     (slug: string): LessonStatus => {
+      if (isAdmin) return completed.includes(slug) ? "completed" : "current";
       if (completed.includes(slug)) return "completed";
       const idx = ALL_SLUGS.indexOf(slug);
-      if (idx === 0) return "current"; // first lesson always available
-      // available if previous lesson is completed
+      if (idx === 0) return "current";
       const prev = ALL_SLUGS[idx - 1];
       if (prev && completed.includes(prev)) return "current";
       return "locked";
     },
-    [completed],
+    [completed, isAdmin],
   );
 
   /** Get next lesson slug after completing `slug`, or null if last */
