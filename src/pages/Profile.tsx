@@ -68,7 +68,7 @@ const Profile = () => {
       setUserId(user.id);
       setEmail(user.email || "");
 
-      const { data } = await supabase.from("profiles").select("name, avatar_url, created_at").eq("id", user.id).single();
+      const { data } = await (supabase.from("profiles" as any).select("name, avatar_url, created_at").eq("id", user.id).single() as any);
       if (data) {
         setName(data.name || "");
         setAvatarUrl(data.avatar_url);
@@ -82,7 +82,7 @@ const Profile = () => {
   const handleSaveProfile = async () => {
     if (!userId) return;
     setSaving(true);
-    const { error } = await supabase.from("profiles").update({ name }).eq("id", userId);
+    const { error } = await (supabase.from("profiles" as any).update({ name } as any).eq("id", userId) as any);
     setSaving(false);
     if (error) {
       toast({ title: "Ошибка", description: error.message, variant: "destructive" });
@@ -106,7 +106,7 @@ const Profile = () => {
 
     const { data: { publicUrl } } = supabase.storage.from("avatars").getPublicUrl(filePath);
     const url = `${publicUrl}?t=${Date.now()}`;
-    await supabase.from("profiles").update({ avatar_url: url }).eq("id", userId);
+    await (supabase.from("profiles" as any).update({ avatar_url: url } as any).eq("id", userId) as any);
     setAvatarUrl(url);
     toast({ title: "Аватар обновлён!" });
   };

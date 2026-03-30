@@ -2,7 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search, LogOut, Brain, Gamepad2, Sparkles, Rocket, Network } from "lucide-react";
+import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search, LogOut, Brain, Gamepad2, Sparkles, Rocket, Network, User as UserIcon } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 import logoImage from "@/assets/Logo_RL_platform.png";
 import GlobalSearch from "@/components/GlobalSearch";
@@ -26,6 +27,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [authUser, setAuthUser] = useState<User | null>(null);
   const [userName, setUserName] = useState<string | null>(null);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
@@ -34,13 +36,15 @@ const Navbar = () => {
     const metadataName = typeof user.user_metadata?.name === "string" ? user.user_metadata.name : null;
     const fallbackName = metadataName || user.email || "User";
 
-    const { data } = await supabase
-      .from("profiles")
-      .select("name")
+    const { data } = await (supabase
+      .from("profiles" as any)
+      .select("name, avatar_url")
       .eq("id", user.id)
-      .maybeSingle();
+      .maybeSingle() as any);
 
-    setUserName(data?.name?.trim() || fallbackName);
+    if (data?.name?.trim()) setUserName(data.name.trim());
+    else setUserName(fallbackName);
+    if (data?.avatar_url) setAvatarUrl(data.avatar_url);
   }, []);
 
   useEffect(() => {
@@ -65,6 +69,7 @@ const Navbar = () => {
 
       if (!user) {
         setAuthUser(null);
+        setAvatarUrl(null);
         setUserName(null);
         setAuthLoading(false);
         return;
@@ -81,6 +86,7 @@ const Navbar = () => {
 
       if (!nextUser) {
         setUserName(null);
+        setAvatarUrl(null);
         setAuthLoading(false);
         return;
       }
@@ -183,10 +189,28 @@ const Navbar = () => {
             </div>
           </div>
 
+          {/* User avatar + name (desktop) */}
+          {!authLoading && authUser && (
+            <button
+              onClick={() => navigate("/profile")}
+              className="hidden lg:flex items-center gap-2 ml-3 px-3 py-1.5 rounded-full border border-primary/20 bg-card/60 backdrop-blur-sm hover:bg-primary/10 transition-all duration-300 cursor-pointer"
+            >
+              <Avatar className="w-8 h-8 border border-primary/30">
+                <AvatarImage src={avatarUrl || undefined} />
+                <AvatarFallback className="bg-primary/10 text-primary text-xs">
+                  {userName ? userName[0].toUpperCase() : "U"}
+                </AvatarFallback>
+              </Avatar>
+              <span className="text-sm font-medium text-foreground max-w-[120px] truncate">
+                {displayName}
+              </span>
+            </button>
+          )}
+
           {/* Hamburger menu - inline after badges */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="ml-2 text-[hsl(185,100%,65%)] hover:text-[hsl(185,100%,80%)] hover:bg-[hsl(185,100%,65%)]/10 hover:shadow-[0_0_12px_hsl(185,100%,65%/0.4)] transition-all duration-300">
+              <Button variant="ghost" size="icon" className="ml-2 text-primary hover:text-primary hover:bg-primary/10 hover:shadow-glow-cyan transition-all duration-300">
                 <Menu className="w-6 h-6" />
               </Button>
             </SheetTrigger>

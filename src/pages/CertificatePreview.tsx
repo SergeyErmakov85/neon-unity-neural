@@ -23,7 +23,7 @@ const CertificatePreview = () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
       setIsLoggedIn(true);
-      const { data } = await supabase.from("profiles").select("name").eq("id", user.id).single();
+      const { data } = await (supabase.from("profiles" as any).select("name").eq("id", user.id).single() as any);
       if (data?.name) setUserName(data.name);
     };
     load();
