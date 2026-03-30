@@ -285,12 +285,14 @@ const Navbar = () => {
                     <CreditCard className="w-4 h-4 mr-3" />
                     Тарифы
                   </button>
-                  <Button
-                    className="w-full bg-gradient-neon hover:shadow-glow-cyan"
-                    onClick={() => { setIsOpen(false); navigate("/courses"); }}
-                  >
-                    Начать бесплатно
-                  </Button>
+                  {!authUser && (
+                    <Button
+                      className="w-full bg-gradient-neon hover:shadow-glow-cyan"
+                      onClick={() => { setIsOpen(false); navigate("/courses"); }}
+                    >
+                      Начать бесплатно
+                    </Button>
+                  )}
                 </div>
 
                 {/* Mobile CTA */}
