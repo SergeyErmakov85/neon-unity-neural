@@ -189,10 +189,28 @@ const Navbar = () => {
             </div>
           </div>
 
+          {/* User avatar + name (desktop) */}
+          {!authLoading && authUser && (
+            <button
+              onClick={() => navigate("/profile")}
+              className="hidden lg:flex items-center gap-2 ml-3 px-3 py-1.5 rounded-full border border-primary/20 bg-card/60 backdrop-blur-sm hover:bg-primary/10 transition-all duration-300 cursor-pointer"
+            >
+              <Avatar className="w-8 h-8 border border-primary/30">
+                <AvatarImage src={avatarUrl || undefined} />
+                <AvatarFallback className="bg-primary/10 text-primary text-xs">
+                  {userName ? userName[0].toUpperCase() : "U"}
+                </AvatarFallback>
+              </Avatar>
+              <span className="text-sm font-medium text-foreground max-w-[120px] truncate">
+                {displayName}
+              </span>
+            </button>
+          )}
+
           {/* Hamburger menu - inline after badges */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="ml-2 text-[hsl(185,100%,65%)] hover:text-[hsl(185,100%,80%)] hover:bg-[hsl(185,100%,65%)]/10 hover:shadow-[0_0_12px_hsl(185,100%,65%/0.4)] transition-all duration-300">
+              <Button variant="ghost" size="icon" className="ml-2 text-primary hover:text-primary hover:bg-primary/10 hover:shadow-glow-cyan transition-all duration-300">
                 <Menu className="w-6 h-6" />
               </Button>
             </SheetTrigger>
