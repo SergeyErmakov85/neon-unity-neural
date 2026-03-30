@@ -204,6 +204,7 @@ const Navbar = () => {
                 </Button>
               )}
             </div>
+          </div>
 
           {/* Hamburger menu - inline after badges */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
