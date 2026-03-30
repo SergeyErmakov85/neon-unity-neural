@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import SEOHead from "@/components/SEOHead";
+import { useUserRole } from "@/hooks/useUserRole";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -115,6 +116,7 @@ const statusLabels: Record<string, { label: string; icon: React.ReactNode }> = {
 };
 
 const Courses = () => {
+  const { isAdmin } = useUserRole();
   const [openLevel, setOpenLevel] = useState<number | null>(null);
   const [, setTick] = useState(0);
 
