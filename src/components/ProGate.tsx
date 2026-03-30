@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Lock, Crown } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useUserRole } from "@/hooks/useUserRole";
 
 interface ProGateProps {
   /** Content visible to everyone (preview) */
@@ -12,12 +13,15 @@ interface ProGateProps {
 }
 
 /**
- * PRO paywall gate. Currently shows preview + CTA for all users
- * (no auth system yet). When auth is added, check user subscription here.
+ * PRO paywall gate. Shows full content for admin/pro users,
+ * preview + CTA for everyone else.
  */
 const ProGate = ({ preview, children }: ProGateProps) => {
-  // TODO: Replace with real auth/subscription check
-  const isPro = false;
+  const { isPro, loading } = useUserRole();
+
+  if (loading) {
+    return <>{preview}</>;
+  }
 
   if (isPro) {
     return <>{children}</>;
