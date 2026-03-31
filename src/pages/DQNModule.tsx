@@ -46,6 +46,7 @@ const DQNModule = () => {
 
           {/* Theory */}
           <TabsContent id="dqn-overview" value="theory" className="space-y-6">
+            <HubLessonBadges hubPath="/algorithms/dqn" />
             <Card className="border-primary/30">
               <CardContent className="p-6 space-y-6">
                 <h2 className="text-2xl font-bold text-primary">Основы DQN</h2>

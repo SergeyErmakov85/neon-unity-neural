@@ -346,6 +346,8 @@ const DeepRLModule = () => {
             <Code2 className="w-6 h-6 text-primary" />
             3. Практическое применение
           </h2>
+          <HubLessonBadges hubPath="/deep-rl" hubAnchor="practice" />
+          </h2>
 
           <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
             <CardContent className="p-6 space-y-4">

@@ -52,6 +52,7 @@ const PPOModule = () => {
         {/* Введение */}
         <section id="ppo-overview" className="space-y-4">
           <h2 className="text-2xl font-bold text-foreground">Введение</h2>
+          <HubLessonBadges hubPath="/algorithms/ppo" />
           <p className="text-muted-foreground leading-relaxed">
             <strong className="text-foreground">PPO (Proximal Policy Optimization)</strong> — один из самых популярных
             алгоритмов обучения с подкреплением, разработанный OpenAI в 2017 году. PPO является стандартным алгоритмом

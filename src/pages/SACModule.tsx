@@ -48,6 +48,7 @@ const SACModule = () => {
         {/* Введение */}
         <section id="sac-overview" className="space-y-4">
           <h2 className="text-2xl font-bold text-foreground">Введение</h2>
+          <HubLessonBadges hubPath="/algorithms/sac" />
           <p className="text-muted-foreground leading-relaxed">
             <strong className="text-foreground">SAC (Soft Actor-Critic)</strong> — off-policy алгоритм, основанный на
             принципе максимизации энтропии. Разработан в 2018 году в UC Berkeley. SAC автоматически балансирует
