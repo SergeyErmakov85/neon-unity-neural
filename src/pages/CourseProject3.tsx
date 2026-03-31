@@ -18,7 +18,7 @@ const CourseProject3 = () => {
           не вылетая за пределы дороги.
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">
-          Проект использует Ray Perception Sensors для «зрения» агента, checkpoint-систему наград
+          Проект использует <CrossLinkToHub hubPath="/unity-ml-agents" hubAnchor="neural-networks" hubTitle="Unity ML-Agents — Нейросети">Ray Perception Sensors</CrossLinkToHub> для «зрения» агента, checkpoint-систему наград
           и SAC/PPO для обучения непрерывному управлению.
         </p>
       </section>
