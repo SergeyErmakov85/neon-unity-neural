@@ -6,6 +6,7 @@ import { ArrowLeft, Brain, ArrowRight } from "lucide-react";
 import Math from "@/components/Math";
 import Quiz from "@/components/Quiz";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 
 const codeBlock = (code: string) => (
   <pre className="bg-card/80 border border-primary/20 rounded-lg p-4 overflow-x-auto text-xs md:text-sm font-mono leading-relaxed">
