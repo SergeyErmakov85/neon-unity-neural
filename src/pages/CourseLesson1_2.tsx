@@ -99,7 +99,7 @@ python --version
       <section>
         <h2 className="text-2xl font-bold text-foreground mb-4">Шаг 2. Установка PyTorch</h2>
         <p className="text-muted-foreground leading-relaxed mb-4">
-          PyTorch — фреймворк для глубокого обучения, который используется ML-Agents «под капотом».
+          PyTorch — фреймворк для глубокого обучения, где основная структура данных — <CrossLinkToHub hubPath="/pytorch/cheatsheet" hubAnchor="tensors" hubTitle="PyTorch — Тензоры">тензоры</CrossLinkToHub>. Он используется ML-Agents «под капотом».
         </p>
 
         <CyberCodeBlock language="python" filename="terminal">
