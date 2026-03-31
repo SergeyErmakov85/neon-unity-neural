@@ -533,7 +533,7 @@ const MathRL = () => {
             <Button variant="outline" onClick={() => navigate("/courses")} className="border-secondary/50 text-secondary">
               Перейти к курсам
             </Button>
-            <Button variant="outline" onClick={() => navigate("/fca-rl")} className="border-accent/50 text-accent">
+            <Button variant="outline" onClick={() => navigate("/hub/fca-rl")} className="border-accent/50 text-accent">
               FCA + RL для NPC →
             </Button>
           </div>
