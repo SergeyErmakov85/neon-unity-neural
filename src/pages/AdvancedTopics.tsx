@@ -97,7 +97,7 @@ const AdvancedTopics = () => {
             <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
-                <CardTitle className="text-2xl">Multi-Agent RL (MAPOCA)</CardTitle>
+                <CardTitle className="text-2xl">Multi-Agent RL (MAPOCA) (<CrossLinkToLesson lessonId="3-2" lessonPath="/courses/3-2" lessonTitle="Multi-Agent RL и Self-Play" lessonLevel={3} />)</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div>
