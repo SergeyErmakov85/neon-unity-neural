@@ -307,7 +307,7 @@ const Section5 = () => (
     <Math>{`Q(s, a) \\leftarrow Q(s, a) + \\alpha \\bigl[R + \\gamma\\, Q(s', a') - Q(s, a)\\bigr]`}</Math>
 
     <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Методы, основанные на политике</h3>
-    <p><strong className="text-foreground">REINFORCE</strong> — метод Монте-Карло для оценки градиента:</p>
+    <p><strong className="text-foreground">REINFORCE</strong> — метод Монте-Карло для оценки градиента (Policy Gradient — <CrossLinkToLesson lessonId="2-1" lessonPath="/courses/2-1" lessonTitle="REINFORCE — Policy Gradient" lessonLevel={2} />):</p>
     <Math>{`\\nabla_\\theta J(\\theta) = E_\\pi\\left[\\sum_{t=0}^{T} \\nabla_\\theta \\log \\pi_\\theta(a_t|s_t) \\cdot G_t\\right]`}</Math>
     <p className="mt-3"><strong className="text-foreground">Actor-Critic:</strong> критик оценивает <Math display={false}>{`V(s)`}</Math>, актёр обновляет <Math display={false}>{`\\pi_\\theta`}</Math> на основе оценки критика.</p>
 
