@@ -1,9 +1,12 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   ArrowLeft, ArrowRight, BookOpen, FolderKanban, Circle, CheckCircle2,
   Lock, Crown, Menu, ExternalLink, Lightbulb, BarChart3, Share2, Check
 } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
+import { getLinksForLesson, type CrossLink } from "@/config/crosslinks";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
