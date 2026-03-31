@@ -139,6 +139,7 @@ public class TeamAgent : Agent {
 
           {/* Imitation Learning */}
           <TabsContent id="tab-imitation" value="imitation">
+            <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Imitation Learning (BC + GAIL)</CardTitle>
