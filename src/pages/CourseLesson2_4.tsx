@@ -63,7 +63,7 @@ const CourseLesson2_4 = () => {
           даёт обратную связь на каждом шаге, но его легко спроектировать неправильно.
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">
-          В этом уроке мы разберём теоретические основы reward shaping и практические приёмы,
+          В этом уроке мы разберём теоретические основы <CrossLinkToHub hubPath="/deep-rl" hubAnchor="practice" hubTitle="Deep RL — Практика">reward shaping</CrossLinkToHub> и практические приёмы,
           которые помогут вашим агентам обучаться быстрее и стабильнее.
         </p>
       </section>
