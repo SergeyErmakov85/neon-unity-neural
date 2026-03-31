@@ -92,7 +92,7 @@ const CourseLesson2_5 = () => {
 
         {/* Unity ML-Agents config */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">Настройка в Unity ML-Agents</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4">Настройка <CrossLinkToHub hubPath="/unity-ml-agents" hubAnchor="training" hubTitle="Unity ML-Agents — Обучение">параллельных сред</CrossLinkToHub> в Unity ML-Agents</h2>
 
           <CyberCodeBlock language="python" filename="terminal">
 {`# Запуск с 8 параллельными средами
