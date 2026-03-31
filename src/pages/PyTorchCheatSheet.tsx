@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Package, Box, Zap, Brain, Database, RotateCw, Eye, Save, Wrench } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
+import HubLessonBadges from "@/components/HubLessonBadges";
 
 const PyTorchCheatSheet = () => {
   const navigate = useNavigate();
