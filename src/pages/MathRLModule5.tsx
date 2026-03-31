@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import HubLessonBadges from "@/components/HubLessonBadges";
 import { useNavigate } from "react-router-dom";
 
 import Introduction from "@/components/math-rl/module1/Introduction";
