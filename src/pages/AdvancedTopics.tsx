@@ -38,7 +38,7 @@ const AdvancedTopics = () => {
           </TabsList>
 
           {/* Curriculum Learning */}
-          <TabsContent value="curriculum">
+          <TabsContent id="tab-curriculum" value="curriculum">
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Curriculum Learning</CardTitle>
@@ -90,7 +90,7 @@ const AdvancedTopics = () => {
           </TabsContent>
 
           {/* Multi-Agent */}
-          <TabsContent value="multiagent">
+          <TabsContent id="tab-multiagent" value="multiagent">
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Multi-Agent RL (MAPOCA)</CardTitle>
@@ -135,7 +135,7 @@ public class TeamAgent : Agent {
           </TabsContent>
 
           {/* Imitation Learning */}
-          <TabsContent value="imitation">
+          <TabsContent id="tab-imitation" value="imitation">
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Imitation Learning (BC + GAIL)</CardTitle>
@@ -169,7 +169,7 @@ mlagents-learn config/gail.yaml --run-id=gail_run`, "bash")}
           </TabsContent>
 
           {/* Self-Play */}
-          <TabsContent value="selfplay">
+          <TabsContent id="tab-selfplay" value="selfplay">
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Self-Play</CardTitle>

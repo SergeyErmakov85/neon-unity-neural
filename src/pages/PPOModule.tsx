@@ -49,7 +49,7 @@ const PPOModule = () => {
         </Card>
 
         {/* Введение */}
-        <section className="space-y-4">
+        <section id="ppo-overview" className="space-y-4">
           <h2 className="text-2xl font-bold text-foreground">Введение</h2>
           <p className="text-muted-foreground leading-relaxed">
             <strong className="text-foreground">PPO (Proximal Policy Optimization)</strong> — один из самых популярных

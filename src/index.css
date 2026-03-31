@@ -4,6 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html { scroll-behavior: smooth; }
+[id] { scroll-margin-top: 80px; }
+
 /* ===== Design System ===== */
 /* All colors MUST be HSL. */
 
