@@ -3,6 +3,7 @@ import { ArrowLeft, Package, Box, Zap, Brain, Database, RotateCw, Eye, Save, Wre
 import { useNavigate } from "react-router-dom";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 
 const PyTorchCheatSheet = () => {
   const navigate = useNavigate();
