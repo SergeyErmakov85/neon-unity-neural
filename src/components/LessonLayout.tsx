@@ -155,9 +155,10 @@ const LessonLayout = ({
     const links = getLinksForLesson(lessonId);
     const grouped = new Map<string, CrossLink[]>();
     for (const link of links) {
-      const arr = grouped.get(link.hubTitle) ?? [];
+      const key = link.hubLabel.split(" → ")[0] || link.hubLabel;
+      const arr = grouped.get(key) ?? [];
       arr.push(link);
-      grouped.set(link.hubTitle, arr);
+      grouped.set(key, arr);
     }
     return Array.from(grouped.entries()).map(([hubTitle, links]) => ({ hubTitle, links }));
   }, [lessonId]);
@@ -349,8 +350,8 @@ const LessonLayout = ({
                         <div key={i} className="flex items-start gap-2 py-1">
                           <ArrowRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                           <div>
-                            <CrossLinkToHub hubPath={link.hubPath} hubAnchor={link.hubAnchor} hubTitle={link.hubTitle}>
-                              {link.sectionTitle}
+                            <CrossLinkToHub hubPath={link.hubPath} hubAnchor={link.hubAnchor} hubTitle={link.hubLabel}>
+                              {link.hubLabel}
                             </CrossLinkToHub>
                             <p className="text-xs text-muted-foreground">{link.contextInLesson}</p>
                           </div>
