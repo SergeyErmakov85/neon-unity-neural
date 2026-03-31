@@ -133,6 +133,7 @@ const DeepRLModule = () => {
             <Brain className="w-6 h-6 text-accent" />
             1. Основы Deep Reinforcement Learning
           </h2>
+          <HubLessonBadges hubPath="/deep-rl" hubAnchor="foundations" />
 
           <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
             <CardContent className="p-6 space-y-4">
