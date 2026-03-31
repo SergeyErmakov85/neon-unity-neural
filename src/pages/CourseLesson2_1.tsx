@@ -117,7 +117,7 @@ const CourseLesson2_1 = () => {
 
         {/* REINFORCE derivation */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">REINFORCE: вывод градиента</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/deep-rl" hubAnchor="algorithms" hubTitle="Deep RL — Алгоритмы">REINFORCE</CrossLinkToHub>: вывод градиента</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Цель — максимизировать ожидаемую суммарную награду J(θ):
           </p>
