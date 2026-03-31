@@ -273,7 +273,7 @@ for concept in lattice:
               <Card className="border-yellow-500/20 bg-card/60 backdrop-blur-sm">
                 <CardContent className="p-6 space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    При выборе архитектуры нейросети для RL-задачи мы можем построить формальный контекст,
+                    При выборе архитектуры нейросети для RL-задачи (<CrossLinkToLesson lessonId="3-7" lessonPath="/courses/3-7" lessonTitle="Архитектуры нейросетей через FCA" lessonLevel={3} />) мы можем построить формальный контекст,
                     где объекты — архитектуры (MLP, CNN, LSTM, Transformer), а признаки — свойства задач,
                     в которых эта архитектура показала лучшие результаты.
                   </p>
