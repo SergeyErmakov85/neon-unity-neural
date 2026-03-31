@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import HubLessonBadges from "@/components/HubLessonBadges";
 import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, Brain, Zap, Target, Code2, TrendingUp, Layers } from "lucide-react";
+import { BookOpen, Brain, Zap, Target, Code2, TrendingUp, Layers, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 
@@ -13,6 +13,9 @@ const DeepRLModule = () => {
     <div className="min-h-screen bg-background">
       <div className="border-b border-border/50 bg-card/80 backdrop-blur-md">
         <div className="container mx-auto px-4 py-4">
+          <Button variant="ghost" onClick={() => navigate("/")} className="text-muted-foreground hover:text-foreground mb-4">
+            <ArrowLeft className="w-4 h-4 mr-2" /> На главную
+          </Button>
           <div className="flex items-center gap-3 mb-2">
             <span className="text-xs font-medium px-3 py-1 rounded-full bg-accent/10 text-accent">
               Deep RL
