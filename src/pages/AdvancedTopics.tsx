@@ -169,7 +169,7 @@ mlagents-learn config/gail.yaml --run-id=gail_run`, "bash")}
           </TabsContent>
 
           {/* Self-Play */}
-          <TabsContent value="selfplay">
+          <TabsContent id="tab-selfplay" value="selfplay">
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Self-Play</CardTitle>
