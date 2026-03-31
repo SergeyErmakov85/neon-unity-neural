@@ -499,7 +499,7 @@ const MathRL = () => {
 
             <div className="border-t border-border/30 mt-4 pt-4">
               <button
-                onClick={() => navigate("/hub/fca-rl")}
+                onClick={() => navigate("/fca-rl")}
                 className="block w-full text-left text-xs py-2 px-3 rounded text-muted-foreground hover:text-foreground hover:bg-primary/5 transition-colors"
               >
                 <span className="font-bold text-primary mr-1.5">+</span>
