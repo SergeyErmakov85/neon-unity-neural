@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight, BookOpen, Settings, Code, Rocket, Target, Grid3X3 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import HubLessonBadges from "@/components/HubLessonBadges";
 
 const GridWorldProject = () => {
   const navigate = useNavigate();
