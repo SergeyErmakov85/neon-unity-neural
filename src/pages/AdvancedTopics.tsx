@@ -143,7 +143,7 @@ public class TeamAgent : Agent {
             <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
-                <CardTitle className="text-2xl">Imitation Learning (BC + GAIL)</CardTitle>
+                <CardTitle className="text-2xl">Imitation Learning (BC + GAIL) (<CrossLinkToLesson lessonId="3-4" lessonPath="/courses/3-4" lessonTitle="Imitation Learning: BC и GAIL" lessonLevel={3} />)</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
