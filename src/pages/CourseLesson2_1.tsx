@@ -137,7 +137,7 @@ const CourseLesson2_1 = () => {
 
         {/* Variance problem */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">Проблема дисперсии и baseline</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4">Проблема дисперсии и <CrossLinkToHub hubPath="/math-rl/module-5" hubTitle="Математика RL — Q-Learning">baseline</CrossLinkToHub></h2>
 
           <Card className="bg-card/40 border-primary/20 mb-4">
             <CardContent className="p-4 flex gap-3 items-start">
