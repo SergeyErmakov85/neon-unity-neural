@@ -143,7 +143,7 @@ print(f"Средний reward за 100 эпизодов: {avg_reward:.1f}")
             <div>
               <p className="font-semibold text-sm text-foreground">Решение: нейросетевая аппроксимация</p>
               <p className="text-xs text-muted-foreground mt-1">
-                Вместо таблицы используем нейронную сеть, которая принимает состояние
+                Вместо таблицы используем нейронную сеть (<CrossLinkToHub hubPath="/pytorch/cheatsheet" hubAnchor="nn" hubTitle="PyTorch — Нейронные сети">nn.Module</CrossLinkToHub>), которая принимает состояние
                 и предсказывает Q-значения для каждого действия. Это основа Deep Q-Network (DQN).
               </p>
             </div>
