@@ -1,5 +1,6 @@
 import { useState } from "react";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, BookOpen, Brain, BarChart3, GitBranch, Code2, Lightbulb } from "lucide-react";
