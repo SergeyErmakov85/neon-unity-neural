@@ -370,6 +370,7 @@ random_tensor = torch.rand(4, 3)  # Тензор размера 4x3`}
             <Layers className="w-6 h-6 text-accent" />
             3. Создание нейронных сетей для ML-Agents
           </h2>
+          <HubLessonBadges hubPath="/unity-ml-agents" hubAnchor="neural-networks" />
 
           <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
             <CardContent className="p-6 space-y-4">
