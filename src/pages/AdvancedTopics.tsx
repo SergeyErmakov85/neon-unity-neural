@@ -38,7 +38,7 @@ const AdvancedTopics = () => {
           </TabsList>
 
           {/* Curriculum Learning */}
-          <TabsContent value="curriculum">
+          <TabsContent id="tab-curriculum" value="curriculum">
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Curriculum Learning</CardTitle>

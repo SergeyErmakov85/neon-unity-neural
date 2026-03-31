@@ -45,7 +45,7 @@ const SACModule = () => {
         </Card>
 
         {/* Введение */}
-        <section className="space-y-4">
+        <section id="sac-overview" className="space-y-4">
           <h2 className="text-2xl font-bold text-foreground">Введение</h2>
           <p className="text-muted-foreground leading-relaxed">
             <strong className="text-foreground">SAC (Soft Actor-Critic)</strong> — off-policy алгоритм, основанный на
