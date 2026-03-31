@@ -29,6 +29,7 @@ const MathRLModule4 = () => {
         <p className="text-muted-foreground mb-8 text-lg">
           Градиент политики, REINFORCE, методы оптимизации (SGD, Adam) и PPO — от математических основ до реализации в Unity ML-Agents
         </p>
+        <HubLessonBadges hubPath="/math-rl/module-4" />
 
         {/* Lecture 1 */}
         <Section icon={<BookOpen className="w-5 h-5 text-primary" />} title="Лекция 1. Основы RL и оптимизация политики">

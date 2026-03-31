@@ -29,6 +29,7 @@ const MathRLModule2 = () => {
         <p className="text-muted-foreground mb-8 text-lg">
           Векторы, матрицы, собственные значения и разложения в контексте обучения с подкреплением
         </p>
+        <HubLessonBadges hubPath="/math-rl/module-2" />
 
         {/* Section 1: Vectors */}
         <Section icon={<BookOpen className="w-5 h-5 text-primary" />} title="1. Векторы">
