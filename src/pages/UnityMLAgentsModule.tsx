@@ -458,6 +458,7 @@ loss = F.mse_loss(predictions, targets)`}
             <Rocket className="w-6 h-6 text-primary" />
             4. Особенности PyTorch в ML-Agents
           </h2>
+          <HubLessonBadges hubPath="/unity-ml-agents" hubAnchor="training" />
 
           <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
             <CardContent className="p-6 space-y-4">
