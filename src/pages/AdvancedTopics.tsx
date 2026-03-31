@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, GraduationCap, Users, Eye, Swords, Cpu } from "lucide-react";
 import { Link } from "react-router-dom";
+import HubLessonBadges from "@/components/HubLessonBadges";
 
 const codeBlock = (code: string, lang = "yaml") => (
   <pre className="bg-card/80 border border-primary/20 rounded-lg p-4 overflow-x-auto text-xs md:text-sm font-mono leading-relaxed">
