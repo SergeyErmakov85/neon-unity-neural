@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -15,6 +15,10 @@ const codeBlock = (code: string, lang = "yaml") => (
 
 const AdvancedTopics = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const hash = location.hash.replace("#", "");
+  const validTabs = ["curriculum", "multiagent", "imitation", "selfplay", "onnx"];
+  const defaultTab = validTabs.includes(hash) ? hash : "curriculum";
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -30,7 +34,7 @@ const AdvancedTopics = () => {
           Curriculum Learning, Multi-Agent RL, Imitation Learning и Self-Play
         </p>
 
-        <Tabs defaultValue="curriculum" className="space-y-6">
+        <Tabs defaultValue={defaultTab} className="space-y-6">
           <TabsList className="grid grid-cols-2 md:grid-cols-5 w-full">
             <TabsTrigger value="curriculum"><GraduationCap className="w-4 h-4 mr-1" /> Curriculum</TabsTrigger>
             <TabsTrigger value="multiagent"><Users className="w-4 h-4 mr-1" /> Multi-Agent</TabsTrigger>
@@ -40,7 +44,7 @@ const AdvancedTopics = () => {
           </TabsList>
 
           {/* Curriculum Learning */}
-          <TabsContent id="tab-curriculum" value="curriculum">
+          <TabsContent id="curriculum" value="curriculum">
             <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
@@ -93,7 +97,7 @@ const AdvancedTopics = () => {
           </TabsContent>
 
           {/* Multi-Agent */}
-          <TabsContent id="tab-multiagent" value="multiagent">
+          <TabsContent id="multiagent" value="multiagent">
             <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
@@ -139,7 +143,7 @@ public class TeamAgent : Agent {
           </TabsContent>
 
           {/* Imitation Learning */}
-          <TabsContent id="tab-imitation" value="imitation">
+          <TabsContent id="imitation" value="imitation">
             <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
@@ -174,7 +178,7 @@ mlagents-learn config/gail.yaml --run-id=gail_run`, "bash")}
           </TabsContent>
 
           {/* Self-Play */}
-          <TabsContent id="tab-selfplay" value="selfplay">
+          <TabsContent id="selfplay" value="selfplay">
             <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
