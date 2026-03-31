@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, Brain, ArrowRight } from "lucide-react";
+import { ArrowLeft, Brain, ArrowRight, BookOpen, Layers, Copy, Zap } from "lucide-react";
 import Math from "@/components/Math";
 import Quiz from "@/components/Quiz";
 import HubLessonBadges from "@/components/HubLessonBadges";
@@ -37,20 +36,31 @@ const DQNModule = () => {
       </div>
 
       <div className="container mx-auto px-4 py-8 max-w-5xl">
-        <Tabs defaultValue="theory" className="space-y-6">
-          <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full">
-            <TabsTrigger value="theory">Теория DQN</TabsTrigger>
-            <TabsTrigger value="double">Double DQN</TabsTrigger>
-            <TabsTrigger value="dueling">Dueling DQN</TabsTrigger>
-            <TabsTrigger value="per">Prioritized ER</TabsTrigger>
-          </TabsList>
+        {/* Table of Contents */}
+        <Card className="mb-10 border-primary/20 bg-card/60 backdrop-blur-sm">
+          <CardContent className="p-5">
+            <h2 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2">
+              <BookOpen className="w-5 h-5 text-primary" /> Содержание
+            </h2>
+            <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground">
+              <li><a href="#dqn-basics" className="text-primary hover:underline">Основы DQN</a></li>
+              <li><a href="#double-dqn" className="text-primary hover:underline">Double DQN</a></li>
+              <li><a href="#dueling-dqn" className="text-primary hover:underline">Dueling DQN</a></li>
+              <li><a href="#per" className="text-primary hover:underline">Prioritized Experience Replay</a></li>
+            </ol>
+          </CardContent>
+        </Card>
 
-          {/* Theory */}
-          <TabsContent id="dqn-overview" value="theory" className="space-y-6">
+        <div className="space-y-16">
+          {/* Section 1: Основы DQN */}
+          <section id="dqn-basics" className="scroll-mt-28 space-y-6">
+            <div className="flex items-center gap-3">
+              <Brain className="h-7 w-7 text-primary" />
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">1. Основы DQN</h2>
+            </div>
             <HubLessonBadges hubPath="/algorithms/dqn" />
             <Card className="border-primary/30">
               <CardContent className="p-6 space-y-6">
-                <h2 className="text-2xl font-bold text-primary">Основы DQN</h2>
                 <p className="text-muted-foreground">
                   DQN аппроксимирует Q-функцию нейросетью, заменяя табличное представление (CartPole — <CrossLinkToLesson lessonId="1-3" lessonPath="/courses/1-3" lessonTitle="CartPole — твой первый RL-агент" lessonLevel={1} />, DQN с нуля — <CrossLinkToLesson lessonId="1-4" lessonPath="/courses/1-4" lessonTitle="DQN с нуля на PyTorch" lessonLevel={1} />). Два ключевых нововведения обеспечивают стабильность обучения.
                 </p>
@@ -147,13 +157,16 @@ class DQNAgent:
         self.epsilon = max(self.epsilon_min, self.epsilon * self.epsilon_decay)`)}
               </CardContent>
             </Card>
-          </TabsContent>
+          </section>
 
-          {/* Double DQN */}
-          <TabsContent value="double" className="space-y-6">
+          {/* Section 2: Double DQN */}
+          <section id="double-dqn" className="scroll-mt-28 space-y-6">
+            <div className="flex items-center gap-3">
+              <Copy className="h-7 w-7 text-primary" />
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">2. Double DQN</h2>
+            </div>
             <Card className="border-primary/30">
               <CardContent className="p-6 space-y-6">
-                <h2 className="text-2xl font-bold text-primary">Double DQN</h2>
                 <p className="text-muted-foreground">
                   Решает проблему overestimation bias, разделяя выбор действия и его оценку между двумя сетями.
                 </p>
@@ -184,13 +197,16 @@ with torch.no_grad():
     target_q = rewards + self.gamma * next_q * (1 - dones)`)}
               </CardContent>
             </Card>
-          </TabsContent>
+          </section>
 
-          {/* Dueling DQN */}
-          <TabsContent value="dueling" className="space-y-6">
+          {/* Section 3: Dueling DQN */}
+          <section id="dueling-dqn" className="scroll-mt-28 space-y-6">
+            <div className="flex items-center gap-3">
+              <Layers className="h-7 w-7 text-accent" />
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">3. Dueling DQN</h2>
+            </div>
             <Card className="border-primary/30">
               <CardContent className="p-6 space-y-6">
-                <h2 className="text-2xl font-bold text-accent">Dueling DQN</h2>
                 <p className="text-muted-foreground">
                   Разделяет Q-функцию на Value и Advantage потоки для более эффективного обучения.
                 </p>
@@ -230,13 +246,16 @@ with torch.no_grad():
         return q`)}
               </CardContent>
             </Card>
-          </TabsContent>
+          </section>
 
-          {/* Prioritized Experience Replay */}
-          <TabsContent value="per" className="space-y-6">
+          {/* Section 4: Prioritized Experience Replay */}
+          <section id="per" className="scroll-mt-28 space-y-6">
+            <div className="flex items-center gap-3">
+              <Zap className="h-7 w-7 text-secondary" />
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">4. Prioritized Experience Replay</h2>
+            </div>
             <Card className="border-primary/30">
               <CardContent className="p-6 space-y-6">
-                <h2 className="text-2xl font-bold text-secondary">Prioritized Experience Replay</h2>
                 <p className="text-muted-foreground">
                   Более информативные переходы (с большим TD-error) сэмплируются чаще.
                 </p>
@@ -256,8 +275,8 @@ with torch.no_grad():
                 </div>
               </CardContent>
             </Card>
-          </TabsContent>
-        </Tabs>
+          </section>
+        </div>
 
         <Quiz
           title="Проверьте понимание DQN"
