@@ -164,7 +164,7 @@ const CourseLesson2_2 = () => {
 
         {/* GAE */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">GAE (Generalized Advantage Estimation)</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/math-rl/module-5" hubTitle="Математика RL — Advantage">GAE (Generalized Advantage Estimation)</CrossLinkToHub></h2>
           <Math>{"\\hat{A}_t^{GAE(\\gamma, \\lambda)} = \\sum_{l=0}^{\\infty} (\\gamma \\lambda)^l \\delta_{t+l}"}</Math>
           <p className="text-sm text-muted-foreground mt-2">
             где <Math display={false}>{"\\delta_t = r_t + \\gamma V(s_{t+1}) - V(s_t)"}</Math> — TD-ошибка.
