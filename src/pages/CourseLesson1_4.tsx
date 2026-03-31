@@ -99,7 +99,7 @@ const CourseLesson1_4 = () => {
             },
             {
               icon: Database,
-              title: "Experience Replay",
+              title: <><CrossLinkToHub hubPath="/algorithms/dqn" hubTitle="DQN — Replay Buffer">Experience Replay</CrossLinkToHub></>,
               desc: "Буфер переходов (s, a, r, s', done). Разрушает корреляцию между последовательными шагами, делая обучение эффективнее.",
               color: "text-secondary",
             },
