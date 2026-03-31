@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, Brain, ArrowRight } from "lucide-react";
 import Math from "@/components/Math";
 import Quiz from "@/components/Quiz";
+import HubLessonBadges from "@/components/HubLessonBadges";
 
 const codeBlock = (code: string) => (
   <pre className="bg-card/80 border border-primary/20 rounded-lg p-4 overflow-x-auto text-xs md:text-sm font-mono leading-relaxed">
@@ -45,6 +46,7 @@ const DQNModule = () => {
 
           {/* Theory */}
           <TabsContent id="dqn-overview" value="theory" className="space-y-6">
+            <HubLessonBadges hubPath="/algorithms/dqn" />
             <Card className="border-primary/30">
               <CardContent className="p-6 space-y-6">
                 <h2 className="text-2xl font-bold text-primary">Основы DQN</h2>

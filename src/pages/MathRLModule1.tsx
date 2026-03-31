@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import HubLessonBadges from "@/components/HubLessonBadges";
 import { ArrowLeft, BookOpen, TrendingUp, Layers, BarChart3, Code2, GraduationCap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
@@ -69,7 +70,7 @@ const MathRLModule1 = () => {
             Фундаментальные математические понятия предела и их связь с алгоритмами RL: сходимость, дисконтирование, уравнения Беллмана.
           </p>
 
-          {/* ── Введение ── */}
+          <HubLessonBadges hubPath="/math-rl/module-1" />
           <Section icon={<BookOpen className="w-5 h-5 text-primary" />} title="Введение">
             <p>
               В этом учебном модуле рассматриваются фундаментальные математические понятия <strong className="text-foreground">предела</strong>, <strong className="text-foreground">последовательности</strong> и <strong className="text-foreground">ряда</strong> и их связь с алгоритмами обучения с подкреплением (Reinforcement Learning, RL). Несмотря на абстрактность, эти понятия играют ключевую роль в понимании сходимости алгоритмов RL и расчёте бесконечных сумм вознаграждений.

@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import HubLessonBadges from "@/components/HubLessonBadges";
 import { BookOpen, Cpu, Layers, Settings, Code, Wrench, Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -112,6 +113,8 @@ const UnityMLAgentsModule = () => {
             <Settings className="w-6 h-6 text-primary" />
             1. Установка и настройка
           </h2>
+          <HubLessonBadges hubPath="/unity-ml-agents" hubAnchor="installation" />
+
 
           <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
             <CardContent className="p-6 space-y-4">
@@ -367,6 +370,7 @@ random_tensor = torch.rand(4, 3)  # Тензор размера 4x3`}
             <Layers className="w-6 h-6 text-accent" />
             3. Создание нейронных сетей для ML-Agents
           </h2>
+          <HubLessonBadges hubPath="/unity-ml-agents" hubAnchor="neural-networks" />
 
           <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
             <CardContent className="p-6 space-y-4">
@@ -454,6 +458,7 @@ loss = F.mse_loss(predictions, targets)`}
             <Rocket className="w-6 h-6 text-primary" />
             4. Особенности PyTorch в ML-Agents
           </h2>
+          <HubLessonBadges hubPath="/unity-ml-agents" hubAnchor="training" />
 
           <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
             <CardContent className="p-6 space-y-4">

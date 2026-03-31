@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import HubLessonBadges from "@/components/HubLessonBadges";
 import { Card, CardContent } from "@/components/ui/card";
 import { BookOpen, Brain, Zap, Target, Code2, TrendingUp, Layers } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -132,6 +133,7 @@ const DeepRLModule = () => {
             <Brain className="w-6 h-6 text-accent" />
             1. Основы Deep Reinforcement Learning
           </h2>
+          <HubLessonBadges hubPath="/deep-rl" hubAnchor="foundations" />
 
           <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
             <CardContent className="p-6 space-y-4">
@@ -230,6 +232,8 @@ const DeepRLModule = () => {
             <Layers className="w-6 h-6 text-secondary" />
             2. Ключевые алгоритмы Deep RL
           </h2>
+          <HubLessonBadges hubPath="/deep-rl" hubAnchor="algorithms" />
+
 
           <Card className="bg-card/60 backdrop-blur-sm border-secondary/20">
             <CardContent className="p-6 space-y-4">
@@ -342,6 +346,8 @@ const DeepRLModule = () => {
             <Code2 className="w-6 h-6 text-primary" />
             3. Практическое применение
           </h2>
+          <HubLessonBadges hubPath="/deep-rl" hubAnchor="practice" />
+
 
           <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
             <CardContent className="p-6 space-y-4">

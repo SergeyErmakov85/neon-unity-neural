@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import HubLessonBadges from "@/components/HubLessonBadges";
 import { ArrowLeft, BookOpen, Brain, BarChart3, GitBranch, Code2, Lightbulb, TrendingUp, Layers } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
@@ -35,6 +36,7 @@ const MathRLModule6 = () => {
           <span className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary">Модуль 4: Оптимизация</span>
           <span className="text-xs px-3 py-1 rounded-full bg-secondary/10 text-secondary">Модуль 5: Фундаментальная математика RL</span>
         </div>
+        <HubLessonBadges hubPath="/math-rl/module-6" />
 
         {/* ============================================================ */}
         {/* CHAPTER 1: Introduction to Deep RL */}

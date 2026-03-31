@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import HubLessonBadges from "@/components/HubLessonBadges";
 import { ArrowLeft, BookOpen, Brain, Code2, Lightbulb, GraduationCap, Layers } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
@@ -28,6 +29,7 @@ const MathRLModule2 = () => {
         <p className="text-muted-foreground mb-8 text-lg">
           Векторы, матрицы, собственные значения и разложения в контексте обучения с подкреплением
         </p>
+        <HubLessonBadges hubPath="/math-rl/module-2" />
 
         {/* Section 1: Vectors */}
         <Section icon={<BookOpen className="w-5 h-5 text-primary" />} title="1. Векторы">

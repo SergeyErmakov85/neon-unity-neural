@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import HubLessonBadges from "@/components/HubLessonBadges";
 import { useNavigate } from "react-router-dom";
 
 import Introduction from "@/components/math-rl/module1/Introduction";
@@ -79,6 +80,7 @@ const MathRLModule5 = () => {
           <p className="text-muted-foreground mb-8 text-lg">
             Исчерпывающий модуль: от теории вероятностей до Actor-Critic
           </p>
+          <HubLessonBadges hubPath="/math-rl/module-5" />
 
           <Introduction />
           <Chapter1 />

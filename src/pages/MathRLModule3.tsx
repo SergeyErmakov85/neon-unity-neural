@@ -1,4 +1,5 @@
 import { useState } from "react";
+import HubLessonBadges from "@/components/HubLessonBadges";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, BookOpen, Brain, BarChart3, GitBranch, Code2, Lightbulb } from "lucide-react";
@@ -70,7 +71,7 @@ const MathRLModule3 = () => {
           <p className="text-muted-foreground mb-12 text-lg text-center max-w-2xl mx-auto">
             Фундаментальные концепции теории вероятности, статистики и MDP в контексте обучения с подкреплением
           </p>
-
+          <HubLessonBadges hubPath="/math-rl/module-3" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {sections.map((sec) => {
               const colors = colorMap[sec.color];

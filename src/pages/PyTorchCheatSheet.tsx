@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Package, Box, Zap, Brain, Database, RotateCw, Eye, Save, Wrench } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
+import HubLessonBadges from "@/components/HubLessonBadges";
 
 const PyTorchCheatSheet = () => {
   const navigate = useNavigate();
@@ -47,6 +48,7 @@ const PyTorchCheatSheet = () => {
 
         {/* Section 1: Setup */}
         <Section id="setup" icon={<Package className="w-5 h-5 text-primary" />} title="1. Импорт и Настройка (Setup)">
+          <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="setup" />
           <p>Стандартные импорты, необходимые для начала работы с PyTorch.</p>
           <CyberCodeBlock language="python" filename="setup.py">{`import torch
 import torch.nn as nn                   # Слои нейросетей, функции потерь
@@ -71,6 +73,7 @@ print(f"Using device: {device}")`}</CyberCodeBlock>
 
         {/* Section 2: Tensors */}
         <Section id="tensors" icon={<Box className="w-5 h-5 text-secondary" />} title="2. Тензоры (Tensors): Основы">
+          <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="tensors" />
           <p>Тензоры — это многомерные матрицы, аналог <code className="text-foreground">ndarray</code> из NumPy, но с поддержкой GPU.</p>
 
           <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Создание</h3>
@@ -117,6 +120,7 @@ arr = x.numpy()     # Конвертация в NumPy (нужен .cpu() и .det
 
         {/* Section 3: Autograd */}
         <Section id="autograd" icon={<Zap className="w-5 h-5 text-accent" />} title="3. Autograd (Автоматическое дифференцирование)">
+          <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="autograd" />
           <p>
             Ключевой механизм PyTorch для обратного распространения ошибки (Backpropagation). 
             При каждой операции с тензором, у которого <code className="text-foreground">requires_grad=True</code>, 
@@ -144,6 +148,7 @@ with torch.no_grad():
 
         {/* Section 4: Neural Networks */}
         <Section id="nn" icon={<Brain className="w-5 h-5 text-primary" />} title="4. Нейронные сети (torch.nn)">
+          <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="nn" />
           <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">Создание модели</h3>
           <p>Все модели наследуются от <code className="text-foreground">nn.Module</code>. Необходимо определить слои в <code className="text-foreground">__init__</code> и прямой проход в <code className="text-foreground">forward</code>.</p>
           <CyberCodeBlock language="python" filename="model.py">{`class MyClassifier(nn.Module):
@@ -261,6 +266,7 @@ dataset = CustomDataset(train_x, train_y)`}</CyberCodeBlock>
 
         {/* Section 6: Training Loop */}
         <Section id="training" icon={<RotateCw className="w-5 h-5 text-accent" />} title="6. Цикл обучения (Training Loop) — Шаблон">
+          <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="training" />
           <p>Стандартный шаблон обучения (boilerplate), который используется в большинстве проектов на PyTorch.</p>
           <CyberCodeBlock language="python" filename="train.py">{`# Гиперпараметры
 epochs = 10
@@ -337,6 +343,7 @@ print(f'Accuracy: {accuracy:.2f}%')`}</CyberCodeBlock>
 
         {/* Section 8: Saving & Loading */}
         <Section id="saving" icon={<Save className="w-5 h-5 text-secondary" />} title="8. Сохранение и Загрузка (Saving & Loading)">
+          <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="saving" />
           <p>Рекомендуемый способ — сохранять только веса (<code className="text-foreground">state_dict</code>), а не модель целиком.</p>
 
           <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Сохранение</h3>

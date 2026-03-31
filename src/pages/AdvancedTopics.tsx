@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, GraduationCap, Users, Eye, Swords, Cpu } from "lucide-react";
 import { Link } from "react-router-dom";
+import HubLessonBadges from "@/components/HubLessonBadges";
 
 const codeBlock = (code: string, lang = "yaml") => (
   <pre className="bg-card/80 border border-primary/20 rounded-lg p-4 overflow-x-auto text-xs md:text-sm font-mono leading-relaxed">
@@ -39,6 +40,7 @@ const AdvancedTopics = () => {
 
           {/* Curriculum Learning */}
           <TabsContent id="tab-curriculum" value="curriculum">
+            <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Curriculum Learning</CardTitle>
@@ -91,6 +93,7 @@ const AdvancedTopics = () => {
 
           {/* Multi-Agent */}
           <TabsContent id="tab-multiagent" value="multiagent">
+            <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Multi-Agent RL (MAPOCA)</CardTitle>
@@ -136,6 +139,7 @@ public class TeamAgent : Agent {
 
           {/* Imitation Learning */}
           <TabsContent id="tab-imitation" value="imitation">
+            <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Imitation Learning (BC + GAIL)</CardTitle>
@@ -170,6 +174,7 @@ mlagents-learn config/gail.yaml --run-id=gail_run`, "bash")}
 
           {/* Self-Play */}
           <TabsContent id="tab-selfplay" value="selfplay">
+            <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Self-Play</CardTitle>
