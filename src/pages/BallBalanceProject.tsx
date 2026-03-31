@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight, BookOpen, Settings, Code, Rocket, Target } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 import Math from "@/components/Math";
 
 const BallBalanceProject = () => {
@@ -51,7 +52,7 @@ const BallBalanceProject = () => {
           <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
             <CardContent className="p-6 space-y-4">
               <p className="text-muted-foreground leading-relaxed">
-                Агент управляет 3D платформой и должен удерживать шар на ней как можно дольше. Платформа вращается по осям X и Z, а шар подчиняется физике Unity.
+                Агент управляет 3D платформой и должен удерживать шар на ней как можно дольше (аналогичная задача — <CrossLinkToLesson lessonId="project-1" lessonPath="/courses/project-1" lessonTitle="Проект 1: Балансировка CartPole" lessonLevel={1} />). Платформа вращается по осям X и Z, а шар подчиняется физике Unity.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                 <div className="bg-background/60 rounded-lg p-4 space-y-2">

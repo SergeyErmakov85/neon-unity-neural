@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 import { ArrowLeft, BookOpen, Brain, TrendingUp, Settings2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
@@ -118,7 +119,7 @@ const MathRLModule4 = () => {
 
           <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">3. Adam (Adaptive Moment Estimation)</h3>
           <p>
-            Комбинирует моменты первого и второго порядка (Momentum + RMSProp). Параметры по умолчанию: <Math display={false}>{`\\beta_1 = 0.9`}</Math>, <Math display={false}>{`\\beta_2 = 0.999`}</Math>, <Math display={false}>{`\\varepsilon = 10^{-8}`}</Math>.
+            Комбинирует моменты первого и второго порядка (Momentum + RMSProp) (Adam в DQN — <CrossLinkToLesson lessonId="1-4" lessonPath="/courses/1-4" lessonTitle="DQN с нуля на PyTorch" lessonLevel={1} />). Параметры по умолчанию: <Math display={false}>{`\\beta_1 = 0.9`}</Math>, <Math display={false}>{`\\beta_2 = 0.999`}</Math>, <Math display={false}>{`\\varepsilon = 10^{-8}`}</Math>.
           </p>
 
           <InfoBox color="accent" title="Unity ML-Agents">
@@ -208,7 +209,7 @@ const MathRLModule4 = () => {
         <section className="mt-12 p-6 rounded-lg bg-card/40 border border-border/30">
           <h3 className="text-lg font-semibold text-foreground mb-3">📌 Заключение</h3>
           <p className="text-sm text-muted-foreground">
-            Этот модуль из четырёх лекций даёт глубокое понимание того, как математические основы policy gradient (Лекция 2) сочетаются с методами оптимизации (Лекция 3) и приводят к современным алгоритмам, таким как PPO (Лекция 4), реализованным в Unity ML-Agents. С этими знаниями вы сможете настраивать и экспериментировать с оптимизацией обучения агентов, понимая, как изменение гиперпараметров влияет на стабильность, скорость и качество обучения.
+            Этот модуль из четырёх лекций даёт глубокое понимание того, как математические основы policy gradient (Лекция 2) сочетаются с методами оптимизации (Лекция 3) и приводят к современным алгоритмам, таким как PPO (Лекция 4), реализованным в Unity ML-Agents. Оптимизатор Adam используется и в дискриминаторе GAIL (<CrossLinkToLesson lessonId="3-4" lessonPath="/courses/3-4" lessonTitle="Imitation Learning: BC и GAIL" lessonLevel={3} />), а автоматический подбор гиперпараметров возможен через Optuna (<CrossLinkToLesson lessonId="3-6" lessonPath="/courses/3-6" lessonTitle="Оптимизация гиперпараметров" lessonLevel={3} />).
           </p>
         </section>
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, BookOpen, Brain, BarChart3, GitBranch, Code2, Lightbulb } from "lucide-react";
@@ -141,7 +142,7 @@ const Section1 = () => (
   <div className="text-muted-foreground leading-relaxed space-y-3">
     <SectionHeader icon={<BookOpen className="w-7 h-7 text-primary" />} title="1. Теория вероятностей" />
     <p>
-      Теория вероятности — краеугольный камень для понимания неопределённости в задачах RL. Агент взаимодействует со стохастической средой, и вероятность предоставляет аппарат для моделирования такой неопределённости.
+      Теория вероятности — краеугольный камень для понимания неопределённости в задачах RL (введение — <CrossLinkToLesson lessonId="1-1" lessonPath="/courses/1-1" lessonTitle="Что такое обучение с подкреплением?" lessonLevel={1} />). Агент взаимодействует со стохастической средой, и вероятность предоставляет аппарат для моделирования такой неопределённости.
     </p>
 
     <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Основные понятия</h3>
@@ -306,7 +307,7 @@ const Section5 = () => (
     <Math>{`Q(s, a) \\leftarrow Q(s, a) + \\alpha \\bigl[R + \\gamma\\, Q(s', a') - Q(s, a)\\bigr]`}</Math>
 
     <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Методы, основанные на политике</h3>
-    <p><strong className="text-foreground">REINFORCE</strong> — метод Монте-Карло для оценки градиента:</p>
+    <p><strong className="text-foreground">REINFORCE</strong> — метод Монте-Карло для оценки градиента (Policy Gradient — <CrossLinkToLesson lessonId="2-1" lessonPath="/courses/2-1" lessonTitle="REINFORCE — Policy Gradient" lessonLevel={2} />):</p>
     <Math>{`\\nabla_\\theta J(\\theta) = E_\\pi\\left[\\sum_{t=0}^{T} \\nabla_\\theta \\log \\pi_\\theta(a_t|s_t) \\cdot G_t\\right]`}</Math>
     <p className="mt-3"><strong className="text-foreground">Actor-Critic:</strong> критик оценивает <Math display={false}>{`V(s)`}</Math>, актёр обновляет <Math display={false}>{`\\pi_\\theta`}</Math> на основе оценки критика.</p>
 

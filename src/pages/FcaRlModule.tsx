@@ -4,6 +4,7 @@ import { BookOpen, Shapes, Grid3X3, GitBranch, Brain, Wrench, ArrowLeft } from "
 import { useNavigate } from "react-router-dom";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 import Math from "@/components/Math";
 import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/landing/Navbar";
@@ -113,7 +114,7 @@ const FcaRlModule = () => {
 
                   <p>
                     <strong className="text-foreground">Формальное понятие</strong> — пара (A, B), где A' = B и B' = A.
-                    Множество A называется <em>объёмом</em>, B — <em>содержанием</em> понятия.
+                    Множество A называется <em>объёмом</em>, B — <em>содержанием</em> понятия (<CrossLinkToLesson lessonId="3-7" lessonPath="/courses/3-7" lessonTitle="Архитектуры нейросетей через FCA" lessonLevel={3} />).
                     Если объект не подтверждает правило, он является <strong className="text-foreground">контрпримером</strong>.
                   </p>
 
@@ -254,7 +255,7 @@ for concept in lattice:
 
                   <p>
                     Решётка покажет, какие конфигурации разделяют свойства «быстрая сходимость + стабильность»,
-                    а какие — «высокий reward, но нестабильно». Это позволяет принимать
+                    а какие — «высокий reward, но нестабильно» (<CrossLinkToLesson lessonId="3-6" lessonPath="/courses/3-6" lessonTitle="Оптимизация гиперпараметров" lessonLevel={3} />). Это позволяет принимать
                     обоснованные решения при выборе финальных гиперпараметров.
                   </p>
                 </CardContent>
@@ -272,7 +273,7 @@ for concept in lattice:
               <Card className="border-yellow-500/20 bg-card/60 backdrop-blur-sm">
                 <CardContent className="p-6 space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    При выборе архитектуры нейросети для RL-задачи мы можем построить формальный контекст,
+                    При выборе архитектуры нейросети для RL-задачи (<CrossLinkToLesson lessonId="3-7" lessonPath="/courses/3-7" lessonTitle="Архитектуры нейросетей через FCA" lessonLevel={3} />) мы можем построить формальный контекст,
                     где объекты — архитектуры (MLP, CNN, LSTM, Transformer), а признаки — свойства задач,
                     в которых эта архитектура показала лучшие результаты.
                   </p>
@@ -336,7 +337,7 @@ for concept in lattice:
                 <CardContent className="p-6 space-y-4 text-muted-foreground leading-relaxed">
                   <p>
                     Разберём пошагово, как применить FCA для анализа обученного PPO-агента
-                    в среде FoodCollector.
+                    в среде FoodCollector (Финальный проект — <CrossLinkToLesson lessonId="final-project" lessonPath="/courses/final-project" lessonTitle="Финальный проект" lessonLevel={3} />).
                   </p>
 
                   <h3 className="text-lg font-semibold text-foreground">Шаг 1. Сбор данных экспериментов</h3>
