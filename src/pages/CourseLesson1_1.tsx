@@ -3,6 +3,7 @@ import CyberCodeBlock from "@/components/CyberCodeBlock";
 import Quiz from "@/components/Quiz";
 import { Card, CardContent } from "@/components/ui/card";
 import { Lightbulb, Brain, Target, Eye, Gift, Gamepad2 } from "lucide-react";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const rlCycleSteps = [
   { label: "Агент", sub: "принимает решение", icon: Brain, color: "text-primary" },
