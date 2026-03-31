@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 import { ArrowLeft, BookOpen, Brain, TrendingUp, Settings2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
