@@ -3,6 +3,7 @@ import CyberCodeBlock from "@/components/CyberCodeBlock";
 import Quiz from "@/components/Quiz";
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertTriangle, CheckCircle2, Monitor } from "lucide-react";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const quizQuestions = [
   {
