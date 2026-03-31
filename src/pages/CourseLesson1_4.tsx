@@ -94,7 +94,7 @@ const CourseLesson1_4 = () => {
             {
               icon: Shield,
               title: <><CrossLinkToHub hubPath="/algorithms/dqn" hubTitle="DQN — Target Network">Target Network</CrossLinkToHub></>,
-              desc: "Копия Q-сети, обновляемая каждые N шагов. Стабилизирует target-значения, предотвращая «гонку за собственным хвостом».",
+              desc: <span>Копия Q-сети, обновляемая каждые N шагов. Стабилизирует target-значения по <CrossLinkToHub hubPath="/math-rl/module-5" hubTitle="MDP и уравнение Беллмана">уравнению Беллмана</CrossLinkToHub>, предотвращая «гонку за собственным хвостом».</span>,
               color: "text-primary",
             },
             {
@@ -124,7 +124,7 @@ const CourseLesson1_4 = () => {
               { label: "Sample batch", icon: Shuffle, color: "text-primary" },
               { label: "Compute Q(s,a)", icon: RefreshCw, color: "text-secondary" },
               { label: "Compute target", icon: Shield, color: "text-accent" },
-              { label: "MSE Loss", icon: RefreshCw, color: "text-green-400" },
+              { label: <><CrossLinkToHub hubPath="/pytorch/cheatsheet" hubAnchor="nn" hubTitle="PyTorch — Функции потерь">MSE Loss</CrossLinkToHub></>, icon: RefreshCw, color: "text-green-400" },
               { label: "Gradient step", icon: RefreshCw, color: "text-primary" },
               { label: "Update target net", icon: Database, color: "text-secondary" },
             ].map((step, i) => (
