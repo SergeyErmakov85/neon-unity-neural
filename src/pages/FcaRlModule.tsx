@@ -195,6 +195,10 @@ const FcaRlModule = () => {
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground">3. FCA для анализа гиперпараметров RL</h2>
               </div>
               <HubLessonBadges hubPath="/fca-rl" hubAnchor="fca-hyperparams" />
+
+              <Card className="border-yellow-500/20 bg-card/60 backdrop-blur-sm">
+                <CardContent className="p-6 space-y-4 text-muted-foreground leading-relaxed">
+                  <p>
                     При подборе гиперпараметров PPO мы проводим множество экспериментов.
                     FCA позволяет извлечь структуру из таблицы результатов, не прибегая к ручному анализу.
                   </p>
