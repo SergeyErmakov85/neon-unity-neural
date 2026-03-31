@@ -135,7 +135,7 @@ public class TeamAgent : Agent {
           </TabsContent>
 
           {/* Imitation Learning */}
-          <TabsContent value="imitation">
+          <TabsContent id="tab-imitation" value="imitation">
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Imitation Learning (BC + GAIL)</CardTitle>
