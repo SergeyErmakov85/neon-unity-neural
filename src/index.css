@@ -230,9 +230,10 @@ html { scroll-behavior: smooth; }
 
 /* Highlight flash for cross-link navigation */
 @keyframes highlightFlash {
-  0% { background-color: rgba(255, 255, 0, 0.3); }
+  0% { background-color: rgba(0, 212, 255, 0.15); }
   100% { background-color: transparent; }
 }
 .highlight-flash {
   animation: highlightFlash 1.5s ease-out;
+  border-radius: 4px;
 }
