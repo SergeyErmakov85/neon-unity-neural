@@ -61,8 +61,8 @@ const CourseLesson3_7 = () => {
           <strong className="text-secondary">LSTM</strong> — когда нужна память.
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">
-          В этом уроке мы разберём все основные архитектуры, новые подходы с Attention-механизмами,
-          и составим таблицу рекомендаций: какую архитектуру выбрать под конкретную задачу.
+          В этом уроке мы разберём все основные архитектуры, используя знания <CrossLinkToHub hubPath="/math-rl/module-2" hubTitle="Линейная алгебра для RL">линейной алгебры</CrossLinkToHub>,
+          новые подходы с Attention-механизмами, и составим таблицу рекомендаций с учётом <CrossLinkToHub hubPath="/fca-rl" hubAnchor="fca-basics" hubTitle="FCA — Основы">формального анализа</CrossLinkToHub>: какую архитектуру выбрать под конкретную задачу.
         </p>
       </section>
     </>

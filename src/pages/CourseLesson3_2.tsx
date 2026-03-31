@@ -97,7 +97,7 @@ const CourseLesson3_2 = () => {
             {[
               { icon: Users, title: "Cooperative", desc: "Агенты работают вместе к общей цели. Пример: перенос тяжёлого объекта.", color: "text-primary" },
               { icon: Swords, title: "Competitive", desc: "Агенты соревнуются друг с другом. Пример: шахматы, футбол 1v1.", color: "text-destructive" },
-              { icon: Users, title: "Mixed", desc: "Команды кооперируют внутри, конкурируют между собой. Пример: Soccer 2v2.", color: "text-secondary" },
+              { icon: Users, title: "Mixed", desc: "Команды кооперируют внутри, конкурируют между собой. Пример: Soccer 2v2.", color: "text-secondary", link: "/unity-projects/soccer" },
             ].map((item, i) => (
               <Card key={i} className="bg-card/50 border-border/40">
                 <CardContent className="p-5 space-y-2">

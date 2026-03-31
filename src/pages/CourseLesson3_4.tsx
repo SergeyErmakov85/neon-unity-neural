@@ -156,7 +156,7 @@ const CourseLesson3_4 = () => {
             Запись демонстраций в Unity
           </h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            Unity ML-Agents предоставляет компонент <code className="text-primary">DemonstrationRecorder</code>,
+            Unity ML-Agents предоставляет компонент <code className="text-primary"><CrossLinkToHub hubPath="/unity-ml-agents" hubAnchor="training" hubTitle="Unity ML-Agents — Обучение">DemonstrationRecorder</CrossLinkToHub></code>,
             который записывает действия игрока в <code>.demo</code> файл:
           </p>
           <CyberCodeBlock language="csharp" filename="DemonstrationRecorder Setup">

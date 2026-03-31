@@ -84,7 +84,7 @@ const CourseLesson3_3 = () => {
 
         {/* Curriculum */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">Curriculum Learning в ML-Agents</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4">Curriculum Learning в ML-Agents: <CrossLinkToHub hubPath="/unity-ml-agents" hubAnchor="training" hubTitle="Unity ML-Agents — Обучение">environment_parameters</CrossLinkToHub></h2>
           <div className="flex items-center gap-2 mb-4">
             <TrendingUp className="w-5 h-5 text-primary" />
             <p className="text-sm text-muted-foreground">
