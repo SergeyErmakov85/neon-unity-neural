@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
 import Quiz from "@/components/Quiz";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 
 const SACModule = () => {
   const navigate = useNavigate();
