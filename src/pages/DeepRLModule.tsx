@@ -354,9 +354,9 @@ const DeepRLModule = () => {
             <CardContent className="p-6 space-y-4">
               <h3 className="text-lg font-semibold text-foreground">Игровые среды и симуляции</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Deep RL активно используется для обучения агентов в игровых средах. Это идеальная площадка
+                Deep RL активно используется для обучения агентов в игровых средах (reward — <CrossLinkToLesson lessonId="2-4" lessonPath="/courses/2-4" lessonTitle="Reward Shaping и Curriculum" lessonLevel={2} />). Это идеальная площадка
                 для экспериментов, поскольку игры предоставляют чёткие правила, измеримые награды и
-                контролируемую сложность.
+                контролируемую сложность (деплой — <CrossLinkToLesson lessonId="3-5" lessonPath="/courses/3-5" lessonTitle="ONNX-экспорт и деплой в Unity" lessonLevel={3} />).
               </p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                 <li><strong className="text-foreground">Atari Games:</strong> Классический бенчмарк для DQN —

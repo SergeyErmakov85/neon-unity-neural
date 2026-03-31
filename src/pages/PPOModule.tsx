@@ -57,7 +57,7 @@ const PPOModule = () => {
           <p className="text-muted-foreground leading-relaxed">
             <strong className="text-foreground">PPO (Proximal Policy Optimization)</strong> — один из самых популярных
             алгоритмов обучения с подкреплением, разработанный OpenAI в 2017 году. PPO является стандартным алгоритмом
-            в Unity ML-Agents благодаря своей стабильности и простоте настройки.
+            в Unity ML-Agents благодаря своей стабильности и простоте настройки (реализация с нуля — <CrossLinkToLesson lessonId="2-2" lessonPath="/courses/2-2" lessonTitle="PPO — Proximal Policy Optimization" lessonLevel={2} />, гоночный агент — <CrossLinkToLesson lessonId="project-3" lessonPath="/courses/project-3" lessonTitle="Гоночный агент с непрерывным управлением" lessonLevel={2} />).
           </p>
         </section>
 

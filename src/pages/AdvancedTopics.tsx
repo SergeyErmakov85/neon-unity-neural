@@ -184,7 +184,7 @@ mlagents-learn config/gail.yaml --run-id=gail_run`, "bash")}
                 <div>
                   <h3 className="text-lg font-semibold text-primary mb-2">Концепция</h3>
                   <p className="text-muted-foreground">
-                    Агент играет против копий самого себя. Применяется для настольных игр, файтингов и стратегий.
+                    Агент играет против копий самого себя. Применяется для настольных игр, файтингов и стратегий (<CrossLinkToLesson lessonId="3-2" lessonPath="/courses/3-2" lessonTitle="Multi-Agent RL и Self-Play" lessonLevel={3} />).
                   </p>
                 </div>
 
