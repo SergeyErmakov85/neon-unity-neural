@@ -155,9 +155,10 @@ const LessonLayout = ({
     const links = getLinksForLesson(lessonId);
     const grouped = new Map<string, CrossLink[]>();
     for (const link of links) {
-      const arr = grouped.get(link.hubTitle) ?? [];
+      const key = link.hubLabel.split(" → ")[0] || link.hubLabel;
+      const arr = grouped.get(key) ?? [];
       arr.push(link);
-      grouped.set(link.hubTitle, arr);
+      grouped.set(key, arr);
     }
     return Array.from(grouped.entries()).map(([hubTitle, links]) => ({ hubTitle, links }));
   }, [lessonId]);
