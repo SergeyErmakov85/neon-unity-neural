@@ -35,6 +35,7 @@ interface LessonLayoutProps {
   keyConcepts?: string[];
   prevLesson?: { path: string; title: string };
   nextLesson?: { path: string; title: string };
+  lessonId?: string;
 }
 
 const level1Lessons: LessonMeta[] = [
