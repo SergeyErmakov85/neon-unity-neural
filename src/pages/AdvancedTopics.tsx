@@ -15,6 +15,10 @@ const codeBlock = (code: string, lang = "yaml") => (
 
 const AdvancedTopics = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const hash = location.hash.replace("#", "");
+  const validTabs = ["curriculum", "multiagent", "imitation", "selfplay", "onnx"];
+  const defaultTab = validTabs.includes(hash) ? hash : "curriculum";
 
   return (
     <div className="min-h-screen bg-background text-foreground">
