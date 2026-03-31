@@ -150,6 +150,18 @@ const LessonLayout = ({
   const [copied, setCopied] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
+  const crossLinkGroups = useMemo(() => {
+    if (!lessonId) return [];
+    const links = getLinksForLesson(lessonId);
+    const grouped = new Map<string, CrossLink[]>();
+    for (const link of links) {
+      const arr = grouped.get(link.hubTitle) ?? [];
+      arr.push(link);
+      grouped.set(link.hubTitle, arr);
+    }
+    return Array.from(grouped.entries()).map(([hubTitle, links]) => ({ hubTitle, links }));
+  }, [lessonId]);
+
   const handleShare = async () => {
     const url = window.location.href;
     if (navigator.share) {
