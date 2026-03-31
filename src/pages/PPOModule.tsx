@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
 import Quiz from "@/components/Quiz";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
+import HubLessonBadges from "@/components/HubLessonBadges";
 
 const PPOModule = () => {
   const navigate = useNavigate();
