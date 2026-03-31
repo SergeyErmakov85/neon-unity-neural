@@ -6,6 +6,7 @@ import Math from "@/components/Math";
 import Quiz from "@/components/Quiz";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 
 const PPOModule = () => {
   const navigate = useNavigate();
