@@ -44,7 +44,7 @@ const AdvancedTopics = () => {
           </TabsList>
 
           {/* Curriculum Learning */}
-          <TabsContent id="tab-curriculum" value="curriculum">
+          <TabsContent id="curriculum" value="curriculum">
             <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
