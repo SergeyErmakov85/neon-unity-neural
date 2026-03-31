@@ -5,6 +5,7 @@ import Quiz from "@/components/Quiz";
 import Math from "@/components/Math";
 import { Card, CardContent } from "@/components/ui/card";
 import { Settings, BarChart3, Zap } from "lucide-react";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const quizQuestions = [
   {
