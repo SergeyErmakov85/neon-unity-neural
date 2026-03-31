@@ -209,7 +209,7 @@ const MathRLModule4 = () => {
         <section className="mt-12 p-6 rounded-lg bg-card/40 border border-border/30">
           <h3 className="text-lg font-semibold text-foreground mb-3">📌 Заключение</h3>
           <p className="text-sm text-muted-foreground">
-            Этот модуль из четырёх лекций даёт глубокое понимание того, как математические основы policy gradient (Лекция 2) сочетаются с методами оптимизации (Лекция 3) и приводят к современным алгоритмам, таким как PPO (Лекция 4), реализованным в Unity ML-Agents. С этими знаниями вы сможете настраивать и экспериментировать с оптимизацией обучения агентов, понимая, как изменение гиперпараметров влияет на стабильность, скорость и качество обучения.
+            Этот модуль из четырёх лекций даёт глубокое понимание того, как математические основы policy gradient (Лекция 2) сочетаются с методами оптимизации (Лекция 3) и приводят к современным алгоритмам, таким как PPO (Лекция 4), реализованным в Unity ML-Agents. Оптимизатор Adam используется и в дискриминаторе GAIL (<CrossLinkToLesson lessonId="3-4" lessonPath="/courses/3-4" lessonTitle="Imitation Learning: BC и GAIL" lessonLevel={3} />), а автоматический подбор гиперпараметров возможен через Optuna (<CrossLinkToLesson lessonId="3-6" lessonPath="/courses/3-6" lessonTitle="Оптимизация гиперпараметров" lessonLevel={3} />).
           </p>
         </section>
 
