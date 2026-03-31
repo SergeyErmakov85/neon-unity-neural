@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Package, Smartphone, Cpu, Lightbulb } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const quizQuestions = [
   {
@@ -47,8 +48,8 @@ const CourseLesson3_5 = () => {
         <h2 className="text-2xl font-bold text-foreground mb-4">От обучения к продукту</h2>
         <p className="text-muted-foreground leading-relaxed">
           Обучение агента — это только половина пути. Чтобы RL-модель работала в реальной игре,
-          её нужно <strong className="text-primary">экспортировать</strong> в формат ONNX,
-          подключить к Unity через <strong className="text-foreground">Sentis</strong> (ранее Barracuda)
+          её нужно <strong className="text-primary">экспортировать</strong> в формат <CrossLinkToHub hubPath="/pytorch/cheatsheet" hubAnchor="saving" hubTitle="PyTorch — Сохранение и загрузка">ONNX</CrossLinkToHub>,
+          подключить к Unity через <strong className="text-foreground"><CrossLinkToHub hubPath="/unity-ml-agents" hubAnchor="installation" hubTitle="Unity ML-Agents">Sentis</CrossLinkToHub></strong> (ранее Barracuda)
           и оптимизировать для целевой платформы.
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">

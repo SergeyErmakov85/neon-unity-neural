@@ -5,6 +5,7 @@ import Quiz from "@/components/Quiz";
 import Math from "@/components/Math";
 import { Card, CardContent } from "@/components/ui/card";
 import { Settings, BarChart3, Zap } from "lucide-react";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const quizQuestions = [
   {
@@ -58,10 +59,10 @@ const CourseLesson3_6 = () => {
           В RL гиперпараметры критически важны: один и тот же алгоритм может дать отличный или
           ужасный результат в зависимости от <code className="text-primary">learning_rate</code>,
           <code className="text-primary">batch_size</code>, <code className="text-primary">clip_epsilon</code>
-          и десятка других параметров.
+          и десятка других параметров. Структурировать результаты экспериментов поможет <CrossLinkToHub hubPath="/fca-rl" hubAnchor="fca-hyperparams" hubTitle="FCA для анализа гиперпараметров">FCA-анализ</CrossLinkToHub>.
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">
-          <strong className="text-foreground">Optuna</strong> — фреймворк для байесовской оптимизации,
+          <strong className="text-foreground"><CrossLinkToHub hubPath="/math-rl/module-4" hubTitle="Методы оптимизации">Optuna</CrossLinkToHub></strong> — фреймворк для байесовской оптимизации,
           который интеллектуально исследует пространство параметров. В связке с{" "}
           <strong className="text-secondary">Weights & Biases Sweeps</strong> вы получаете
           полный пайплайн автоподбора с визуализацией.
@@ -88,7 +89,7 @@ const CourseLesson3_6 = () => {
         <section>
           <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
             <Settings className="w-6 h-6 text-primary" />
-            Пространство гиперпараметров RL
+            Пространство <CrossLinkToHub hubPath="/algorithms/ppo" hubTitle="PPO — Proximal Policy Optimization">гиперпараметров PPO</CrossLinkToHub>
           </h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border border-border/50 rounded-lg overflow-hidden">

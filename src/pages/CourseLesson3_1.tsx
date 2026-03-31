@@ -6,6 +6,7 @@ import Quiz from "@/components/Quiz";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Lightbulb, Shield } from "lucide-react";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const quizQuestions = [
   {
@@ -64,9 +65,9 @@ const CourseLesson3_1 = () => {
   const preview = (
     <>
       <section>
-        <h2 className="text-2xl font-bold text-foreground mb-4">Принцип максимальной энтропии</h2>
+        <h2 className="text-2xl font-bold text-foreground mb-4">Принцип <CrossLinkToHub hubPath="/math-rl/module-5" hubTitle="Фундаментальная математика RL">максимальной энтропии</CrossLinkToHub></h2>
         <p className="text-muted-foreground leading-relaxed">
-          <strong className="text-foreground">Soft Actor-Critic (SAC)</strong> — state-of-the-art off-policy
+          <strong className="text-foreground"><CrossLinkToHub hubPath="/algorithms/sac" hubTitle="Soft Actor-Critic">Soft Actor-Critic (SAC)</CrossLinkToHub></strong> — state-of-the-art off-policy
           алгоритм для задач с непрерывными действиями. В отличие от PPO, SAC максимизирует не только
           reward, но и <strong className="text-primary">энтропию политики</strong> — агент стремится быть
           максимально стохастичным при достижении высокой награды.
@@ -130,7 +131,7 @@ const CourseLesson3_1 = () => {
 
         {/* Twin critics */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">Twin Critics</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/pytorch/cheatsheet" hubAnchor="nn" hubTitle="PyTorch — Нейронные сети">Twin Critics</CrossLinkToHub></h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Card className="bg-card/50 border-border/40">
               <CardContent className="p-5 space-y-2">

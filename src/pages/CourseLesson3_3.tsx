@@ -4,6 +4,7 @@ import CyberCodeBlock from "@/components/CyberCodeBlock";
 import Quiz from "@/components/Quiz";
 import { Card, CardContent } from "@/components/ui/card";
 import { Lightbulb, TrendingUp, Shuffle } from "lucide-react";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const quizQuestions = [
   {
@@ -56,7 +57,7 @@ const CourseLesson3_3 = () => {
         <p className="text-muted-foreground leading-relaxed">
           Представьте, что ребёнка сразу посадили за руль болида Формулы-1 — он ничему не научится.
           Но если начать с велосипеда, потом картинг, потом обычная машина — он освоит вождение.
-          <strong className="text-foreground"> Curriculum Learning</strong> применяет тот же принцип к RL-агентам.
+          <strong className="text-foreground"> <CrossLinkToHub hubPath="/advanced" hubTitle="Продвинутые темы — Curriculum Learning">Curriculum Learning</CrossLinkToHub></strong> применяет тот же принцип к RL-агентам.
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">
           А <strong className="text-primary">Environment Randomization</strong> — это способ сделать агента
@@ -83,7 +84,7 @@ const CourseLesson3_3 = () => {
 
         {/* Curriculum */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">Curriculum Learning в ML-Agents</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4">Curriculum Learning в ML-Agents: <CrossLinkToHub hubPath="/unity-ml-agents" hubAnchor="training" hubTitle="Unity ML-Agents — Обучение">environment_parameters</CrossLinkToHub></h2>
           <div className="flex items-center gap-2 mb-4">
             <TrendingUp className="w-5 h-5 text-primary" />
             <p className="text-sm text-muted-foreground">

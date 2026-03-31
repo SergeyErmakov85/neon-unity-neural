@@ -3,6 +3,7 @@ import ProGate from "@/components/ProGate";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import { Card, CardContent } from "@/components/ui/card";
 import { Trophy, CheckCircle2, Gamepad2, Brain, Settings, Package, Star } from "lucide-react";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const CourseFinalProject = () => {
   const preview = (
@@ -43,7 +44,7 @@ const CourseFinalProject = () => {
           </h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Создайте Unity-игру, в которой игрок сражается или соревнуется с NPC, обученным
-            через PPO или SAC. Жанр и механики — на ваш выбор. Примеры:
+            через <CrossLinkToHub hubPath="/algorithms/ppo" hubTitle="PPO — Proximal Policy Optimization">PPO или SAC</CrossLinkToHub>. Жанр и механики — на ваш выбор. Примеры:
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             <Card className="border-primary/20 bg-card/50">
@@ -90,7 +91,7 @@ const CourseFinalProject = () => {
               { icon: <Star className="w-5 h-5" />, title: "Этап 2: Функция награды", desc: "Спроектируйте reward: dense rewards для ускорения, штрафы за ошибки, бонусы за цели.", time: "2–3 часа" },
               { icon: <Brain className="w-5 h-5" />, title: "Этап 3: Обучение", desc: "Настройте YAML-конфиг (PPO/SAC), запустите mlagents-learn с параллельными средами.", time: "2–4 часа" },
               { icon: <Settings className="w-5 h-5" />, title: "Этап 4: Оптимизация", desc: "Используйте Optuna или ручной подбор для финальной настройки гиперпараметров.", time: "2–4 часа" },
-              { icon: <Package className="w-5 h-5" />, title: "Этап 5: Деплой", desc: "Экспортируйте в ONNX, подключите к BehaviorParameters, оптимизируйте модель.", time: "1–2 часа" },
+              { icon: <Package className="w-5 h-5" />, title: "Этап 5: Деплой", desc: "Выполните ONNX-экспорт, подключите к BehaviorParameters, оптимизируйте модель.", time: "1–2 часа" },
               { icon: <Gamepad2 className="w-5 h-5" />, title: "Этап 6: Геймплей", desc: "Добавьте UI, управление игроком, камеру. Соберите билд под целевую платформу.", time: "2–4 часа" },
             ].map((stage, i) => (
               <Card key={i} className="border-border/30 bg-card/50">

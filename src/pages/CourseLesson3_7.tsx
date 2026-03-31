@@ -4,6 +4,7 @@ import CyberCodeBlock from "@/components/CyberCodeBlock";
 import Quiz from "@/components/Quiz";
 import { Card, CardContent } from "@/components/ui/card";
 import { Network, Eye, Brain, Table } from "lucide-react";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const quizQuestions = [
   {
@@ -55,13 +56,13 @@ const CourseLesson3_7 = () => {
         <h2 className="text-2xl font-bold text-foreground mb-4">Правильная архитектура — половина успеха</h2>
         <p className="text-muted-foreground leading-relaxed">
           Выбор архитектуры нейросети для RL-агента критически влияет на качество обучения.
-          <strong className="text-foreground"> MLP</strong> подходит для простых задач,{" "}
+          <strong className="text-foreground"> <CrossLinkToHub hubPath="/pytorch/cheatsheet" hubAnchor="nn" hubTitle="PyTorch — Нейронные сети">MLP</CrossLinkToHub></strong> подходит для простых задач,{" "}
           <strong className="text-primary">CNN</strong> — для визуальных наблюдений,{" "}
           <strong className="text-secondary">LSTM</strong> — когда нужна память.
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">
-          В этом уроке мы разберём все основные архитектуры, новые подходы с Attention-механизмами,
-          и составим таблицу рекомендаций: какую архитектуру выбрать под конкретную задачу.
+          В этом уроке мы разберём все основные архитектуры, используя знания <CrossLinkToHub hubPath="/math-rl/module-2" hubTitle="Линейная алгебра для RL">линейной алгебры</CrossLinkToHub>,
+          новые подходы с Attention-механизмами, и составим таблицу рекомендаций с учётом <CrossLinkToHub hubPath="/fca-rl" hubAnchor="fca-basics" hubTitle="FCA — Основы">формального анализа</CrossLinkToHub>: какую архитектуру выбрать под конкретную задачу.
         </p>
       </section>
     </>

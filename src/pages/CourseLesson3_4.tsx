@@ -5,6 +5,7 @@ import Quiz from "@/components/Quiz";
 import Math from "@/components/Math";
 import { Card, CardContent } from "@/components/ui/card";
 import { Brain, Copy, Layers } from "lucide-react";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const quizQuestions = [
   {
@@ -60,9 +61,9 @@ const CourseLesson3_4 = () => {
           семейство методов, в которых агент учится, наблюдая за демонстрациями эксперта (человека или другого агента).
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">
-          Два ключевых подхода — <strong className="text-foreground">Behavioral Cloning</strong> (BC), который
+          Два ключевых подхода — <strong className="text-foreground"><CrossLinkToHub hubPath="/advanced" hubTitle="Продвинутые темы — Imitation Learning">Behavioral Cloning</CrossLinkToHub></strong> (BC), который
           напрямую копирует действия эксперта через supervised learning, и{" "}
-          <strong className="text-secondary">GAIL</strong> (Generative Adversarial Imitation Learning),
+          <strong className="text-secondary"><CrossLinkToHub hubPath="/advanced" hubTitle="Продвинутые темы — GAIL">GAIL</CrossLinkToHub></strong> (Generative Adversarial Imitation Learning),
           использующий состязательную архитектуру для глубокого понимания стратегии эксперта.
         </p>
       </section>
@@ -155,7 +156,7 @@ const CourseLesson3_4 = () => {
             Запись демонстраций в Unity
           </h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            Unity ML-Agents предоставляет компонент <code className="text-primary">DemonstrationRecorder</code>,
+            Unity ML-Agents предоставляет компонент <code className="text-primary"><CrossLinkToHub hubPath="/unity-ml-agents" hubAnchor="training" hubTitle="Unity ML-Agents — Обучение">DemonstrationRecorder</CrossLinkToHub></code>,
             который записывает действия игрока в <code>.demo</code> файл:
           </p>
           <CyberCodeBlock language="csharp" filename="DemonstrationRecorder Setup">
