@@ -77,6 +77,7 @@ const Profile = lazy(() => import("./pages/Profile"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const LessonPage = lazy(() => import("./pages/LessonPage"));
 const HubPage = lazy(() => import("./pages/HubPage"));
+const FcaRlModule = lazy(() => import("./pages/FcaRlModule"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
