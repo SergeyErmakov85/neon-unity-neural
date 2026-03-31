@@ -158,7 +158,7 @@ const CourseLesson2_2 = () => {
           </p>
           <Math>{"L = L^{CLIP} - c_1 L^{VF} + c_2 H[\\pi_\\theta](s)"}</Math>
           <p className="text-sm text-muted-foreground mt-2">
-            где c₂ ≈ 0.01 — коэффициент entropy bonus, H — энтропия распределения действий.
+            где c₂ ≈ 0.01 — коэффициент <CrossLinkToHub hubPath="/math-rl/module-5" hubTitle="Математика RL — Q-Learning">entropy bonus</CrossLinkToHub>, H — энтропия распределения действий.
           </p>
         </section>
 
