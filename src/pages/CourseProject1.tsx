@@ -3,6 +3,7 @@ import CyberCodeBlock from "@/components/CyberCodeBlock";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download, ExternalLink, Target, Trophy, CheckCircle2 } from "lucide-react";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const CourseProject1 = () => {
   return (
