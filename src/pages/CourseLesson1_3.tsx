@@ -4,6 +4,7 @@ import Quiz from "@/components/Quiz";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Lightbulb, BarChart3 } from "lucide-react";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const quizQuestions = [
   {
