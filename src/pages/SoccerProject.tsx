@@ -28,6 +28,7 @@ const SoccerProject = () => {
       </div>
 
       <div className="container mx-auto px-4 py-12 max-w-4xl space-y-12">
+        <HubLessonBadges hubPath="/unity-projects/soccer" />
         {/* Содержание */}
         <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
           <CardContent className="p-6">
