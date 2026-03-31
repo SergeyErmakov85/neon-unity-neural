@@ -143,7 +143,7 @@ public class TeamAgent : Agent {
           </TabsContent>
 
           {/* Imitation Learning */}
-          <TabsContent id="tab-imitation" value="imitation">
+          <TabsContent id="imitation" value="imitation">
             <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
