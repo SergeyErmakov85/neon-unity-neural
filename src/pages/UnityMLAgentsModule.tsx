@@ -462,6 +462,11 @@ loss = F.mse_loss(predictions, targets)`}
             4. Особенности PyTorch в ML-Agents
           </h2>
           <HubLessonBadges hubPath="/unity-ml-agents" hubAnchor="training" />
+          <p className="text-sm text-muted-foreground">
+            (PPO — <CrossLinkToLesson lessonId="2-2" lessonPath="/courses/2-2" lessonTitle="PPO — Proximal Policy Optimization" lessonLevel={2} />)
+            (параллелизация — <CrossLinkToLesson lessonId="2-5" lessonPath="/courses/2-5" lessonTitle="Параллельные среды и масштабирование" lessonLevel={2} />)
+            (curriculum — <CrossLinkToLesson lessonId="3-3" lessonPath="/courses/3-3" lessonTitle="Curriculum Learning" lessonLevel={3} />)
+          </p>
 
           <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
             <CardContent className="p-6 space-y-4">

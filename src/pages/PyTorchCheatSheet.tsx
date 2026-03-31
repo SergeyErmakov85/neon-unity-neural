@@ -346,7 +346,7 @@ print(f'Accuracy: {accuracy:.2f}%')`}</CyberCodeBlock>
         {/* Section 8: Saving & Loading */}
         <Section id="saving" icon={<Save className="w-5 h-5 text-secondary" />} title="8. Сохранение и Загрузка (Saving & Loading)">
           <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="saving" />
-          <p>Рекомендуемый способ — сохранять только веса (<code className="text-foreground">state_dict</code>), а не модель целиком.</p>
+          <p>Рекомендуемый способ — сохранять только веса (<code className="text-foreground">state_dict</code>), а не модель целиком (ONNX деплой — <CrossLinkToLesson lessonId="3-5" lessonPath="/courses/3-5" lessonTitle="ONNX-экспорт и деплой в Unity" lessonLevel={3} />).</p>
 
           <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Сохранение</h3>
           <CyberCodeBlock language="python" filename="save.py">{`# Сохранить только веса (рекомендуется)
