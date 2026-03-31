@@ -129,7 +129,7 @@ print(f"Средний reward за 100 эпизодов: {avg_reward:.1f}")
 
       {/* Q-table limitations */}
       <section>
-        <h2 className="text-2xl font-bold text-foreground mb-4">Q-таблица и её ограничения</h2>
+        <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/algorithms/dqn" hubTitle="DQN — Deep Q-Network">Q-learning</CrossLinkToHub> и его ограничения</h2>
         <p className="text-muted-foreground leading-relaxed mb-4">
           В простых средах (как GridWorld) можно использовать Q-таблицу — матрицу,
           где для каждой пары (состояние, действие) хранится ожидаемая награда.
