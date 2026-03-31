@@ -44,7 +44,7 @@ const CourseFinalProject = () => {
           </h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Создайте Unity-игру, в которой игрок сражается или соревнуется с NPC, обученным
-            через PPO или SAC. Жанр и механики — на ваш выбор. Примеры:
+            через <CrossLinkToHub hubPath="/algorithms/ppo" hubTitle="PPO — Proximal Policy Optimization">PPO или SAC</CrossLinkToHub>. Жанр и механики — на ваш выбор. Примеры:
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             <Card className="border-primary/20 bg-card/50">
