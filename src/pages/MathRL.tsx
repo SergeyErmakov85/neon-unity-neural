@@ -415,9 +415,41 @@ const SidebarTOC = ({ openParts, ensureOpen }: { openParts: Set<string>; ensureO
   );
 };
 
+const moduleToPartMap: Record<string, string> = {
+  "/math-rl/module-1": "part-1",
+  "/math-rl/module-2": "part-2",
+  "/math-rl/module-3": "part-3",
+  "/math-rl/module-4": "part-4",
+  "/math-rl/module-5": "part-5",
+  "/math-rl/module-6": "part-6",
+};
+
 const MathRL = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [openParts, setOpenParts] = useState<Set<string>>(new Set());
+
+  // Auto-open the correct accordion part based on URL
+  useEffect(() => {
+    const partId = moduleToPartMap[location.pathname];
+    if (partId) {
+      setOpenParts((prev) => {
+        if (prev.has(partId)) return prev;
+        const next = new Set(prev);
+        next.add(partId);
+        return next;
+      });
+      // Scroll to the part after a short delay
+      setTimeout(() => {
+        const el = document.getElementById(partId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          el.classList.add("highlight-flash");
+          setTimeout(() => el.classList.remove("highlight-flash"), 1500);
+        }
+      }, 300);
+    }
+  }, [location.pathname]);
 
   const togglePart = (id: string) => {
     setOpenParts((prev) => {
