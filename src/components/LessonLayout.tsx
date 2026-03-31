@@ -321,6 +321,36 @@ const LessonLayout = ({
           {/* Lesson body */}
           <article className="prose-cyber space-y-6">{children}</article>
 
+          {/* Crosslinks section */}
+          {crossLinkGroups.length > 0 && (
+            <section className="mt-12 pt-8 border-t border-border/30">
+              <h2 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
+                <BookOpen className="w-5 h-5 text-primary" />
+                🔗 Углубись в тему
+              </h2>
+              <div className="grid gap-3">
+                {crossLinkGroups.map((group) => (
+                  <Card key={group.hubTitle} className="bg-card/40 border-border/20">
+                    <CardContent className="p-4">
+                      <h3 className="text-sm font-semibold text-foreground mb-2">{group.hubTitle}</h3>
+                      {group.links.map((link, i) => (
+                        <div key={i} className="flex items-start gap-2 py-1">
+                          <ArrowRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                          <div>
+                            <CrossLinkToHub hubPath={link.hubPath} hubAnchor={link.hubAnchor} hubTitle={link.hubTitle}>
+                              {link.sectionTitle}
+                            </CrossLinkToHub>
+                            <p className="text-xs text-muted-foreground">{link.contextInLesson}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* Scroll completion marker */}
           <div ref={bottomRef} className="h-1" />
 
