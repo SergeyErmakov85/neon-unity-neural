@@ -90,7 +90,7 @@ const AdvancedTopics = () => {
           </TabsContent>
 
           {/* Multi-Agent */}
-          <TabsContent value="multiagent">
+          <TabsContent id="tab-multiagent" value="multiagent">
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Multi-Agent RL (MAPOCA)</CardTitle>
