@@ -313,7 +313,7 @@ const DeepRLModule = () => {
               </h3>
               <p className="text-muted-foreground leading-relaxed">
                 <strong className="text-foreground">SAC</strong> — off-policy алгоритм от UC Berkeley (2018),
-                который максимизирует не только суммарную награду, но и энтропию политики. Это поощряет
+                который максимизирует не только суммарную награду, но и энтропию политики (<CrossLinkToLesson lessonId="3-1" lessonPath="/courses/3-1" lessonTitle="SAC — Soft Actor-Critic" lessonLevel={3} />). Это поощряет
                 исследование среды и делает обучение более устойчивым.
               </p>
               <p className="text-muted-foreground leading-relaxed">
