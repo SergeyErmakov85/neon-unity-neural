@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Package, Smartphone, Cpu, Lightbulb } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const quizQuestions = [
   {
