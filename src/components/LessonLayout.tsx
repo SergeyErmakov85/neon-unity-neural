@@ -140,6 +140,7 @@ const LessonLayout = ({
   keyConcepts,
   prevLesson,
   nextLesson,
+  lessonId,
 }: LessonLayoutProps) => {
   const location = useLocation();
   const navigate = useNavigate();
