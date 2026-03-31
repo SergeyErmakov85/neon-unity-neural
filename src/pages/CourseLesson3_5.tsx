@@ -61,6 +61,7 @@ const CourseLesson3_5 = () => {
 
   return (
     <LessonLayout
+      lessonId="3-5"
       lessonTitle="Деплой модели: ONNX-экспорт и интеграция в Unity-сборку"
       lessonNumber="3.5"
       duration="30 мин"

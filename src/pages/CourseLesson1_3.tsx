@@ -41,6 +41,7 @@ const quizQuestions = [
 const CourseLesson1_3 = () => {
   return (
     <LessonLayout
+      lessonId="1-3"
       lessonTitle="CartPole — твой первый RL-агент"
       lessonNumber="1.3"
       duration="35 мин"

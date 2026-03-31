@@ -57,6 +57,7 @@ const quizQuestions = [
 const CourseLesson1_1 = () => {
   return (
     <LessonLayout
+      lessonId="1-1"
       lessonTitle="Что такое обучение с подкреплением?"
       lessonNumber="1.1"
       duration="25 мин"

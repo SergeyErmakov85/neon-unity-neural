@@ -69,6 +69,7 @@ const CourseLesson3_7 = () => {
 
   return (
     <LessonLayout
+      lessonId="3-7"
       lessonTitle="Архитектуры нейросетей для RL-агентов"
       lessonNumber="3.7"
       duration="40 мин"

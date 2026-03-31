@@ -62,6 +62,7 @@ const quizQuestions = [
 const CourseLesson1_4 = () => {
   return (
     <LessonLayout
+      lessonId="1-4"
       lessonTitle="DQN с нуля на PyTorch"
       lessonNumber="1.4"
       duration="45 мин"

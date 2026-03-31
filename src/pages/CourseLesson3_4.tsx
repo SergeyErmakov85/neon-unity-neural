@@ -71,6 +71,7 @@ const CourseLesson3_4 = () => {
 
   return (
     <LessonLayout
+      lessonId="3-4"
       lessonTitle="Imitation Learning: GAIL и Behavioral Cloning"
       lessonNumber="3.4"
       duration="40 мин"

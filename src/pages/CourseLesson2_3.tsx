@@ -69,6 +69,7 @@ const CourseLesson2_3 = () => {
 
   return (
     <LessonLayout
+      lessonId="2-3"
       lessonTitle="Непрерывные действия и Actor-Critic в Unity"
       lessonNumber="2.3"
       duration="40 мин"

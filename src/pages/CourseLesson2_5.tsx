@@ -58,6 +58,7 @@ const CourseLesson2_5 = () => {
 
   return (
     <LessonLayout
+      lessonId="2-5"
       lessonTitle="Параллельные среды для ускорения обучения"
       lessonNumber="2.5"
       duration="25 мин"

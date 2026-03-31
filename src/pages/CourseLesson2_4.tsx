@@ -71,6 +71,7 @@ const CourseLesson2_4 = () => {
 
   return (
     <LessonLayout
+      lessonId="2-4"
       lessonTitle="Reward Shaping: искусство проектирования наград"
       lessonNumber="2.4"
       duration="30 мин"

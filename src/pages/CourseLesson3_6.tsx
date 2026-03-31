@@ -72,6 +72,7 @@ const CourseLesson3_6 = () => {
 
   return (
     <LessonLayout
+      lessonId="3-6"
       lessonTitle="Оптимизация гиперпараметров: Optuna + W&B"
       lessonNumber="3.6"
       duration="35 мин"

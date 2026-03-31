@@ -70,6 +70,7 @@ const CourseLesson2_1 = () => {
 
   return (
     <LessonLayout
+      lessonId="2-1"
       lessonTitle="Policy Gradient и теорема градиента политики"
       lessonNumber="2.1"
       duration="35 мин"

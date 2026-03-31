@@ -25,6 +25,7 @@ const CourseProject2 = () => {
 
   return (
     <LessonLayout
+      lessonId="project-2"
       lessonTitle="3D-агент-охотник в Unity"
       lessonNumber="П2"
       duration="90–120 мин"
