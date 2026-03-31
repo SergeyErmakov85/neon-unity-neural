@@ -23,7 +23,7 @@ const CourseProject1 = () => {
             <Target className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
             <div className="space-y-2">
               <p className="text-foreground font-semibold">
-                Обучите DQN-агента, который стабильно достигает среднего reward &gt; 475
+                Обучите <CrossLinkToHub hubPath="/algorithms/dqn" hubTitle="DQN — Deep Q-Network">DQN</CrossLinkToHub>-агента, который стабильно достигает среднего reward &gt; 475
                 за последние 100 из 500 эпизодов в среде CartPole-v1.
               </p>
               <p className="text-sm text-muted-foreground">
