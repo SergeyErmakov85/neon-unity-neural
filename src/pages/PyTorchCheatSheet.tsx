@@ -265,6 +265,7 @@ dataset = CustomDataset(train_x, train_y)`}</CyberCodeBlock>
 
         {/* Section 6: Training Loop */}
         <Section id="training" icon={<RotateCw className="w-5 h-5 text-accent" />} title="6. Цикл обучения (Training Loop) — Шаблон">
+          <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="training" />
           <p>Стандартный шаблон обучения (boilerplate), который используется в большинстве проектов на PyTorch.</p>
           <CyberCodeBlock language="python" filename="train.py">{`# Гиперпараметры
 epochs = 10
