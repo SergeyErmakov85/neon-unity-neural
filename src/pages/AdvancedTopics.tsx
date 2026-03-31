@@ -97,7 +97,7 @@ const AdvancedTopics = () => {
           </TabsContent>
 
           {/* Multi-Agent */}
-          <TabsContent id="tab-multiagent" value="multiagent">
+          <TabsContent id="multiagent" value="multiagent">
             <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
