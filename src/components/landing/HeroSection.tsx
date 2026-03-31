@@ -106,6 +106,13 @@ const HeroSection = () => {
                 {tech}
               </span>
             ))}
+            <button
+              onClick={() => navigate("/fca-rl")}
+              className="bg-card/50 border border-primary/30 text-xs px-3 py-1 rounded-full text-muted-foreground hover:text-foreground hover:border-primary/60 transition-colors flex items-center gap-1.5 cursor-pointer"
+            >
+              <Shapes className="w-3 h-3" />
+              FCA + RL
+            </button>
           </div>
         </div>
       </div>
