@@ -155,7 +155,7 @@ print(f"Средний reward за 100 эпизодов: {avg_reward:.1f}")
       <section>
         <h2 className="text-2xl font-bold text-foreground mb-4">Агент на PyTorch</h2>
         <p className="text-muted-foreground leading-relaxed mb-4">
-          Реализуем простой нейросетевой Q-learning агент. Сеть принимает 4 наблюдения
+          Реализуем простой нейросетевой Q-learning агент. Ниже представлен полный <CrossLinkToHub hubPath="/pytorch/cheatsheet" hubAnchor="training" hubTitle="PyTorch — Цикл обучения">цикл обучения</CrossLinkToHub>: сеть принимает 4 наблюдения
           и выдаёт Q-значения для 2 действий.
         </p>
 

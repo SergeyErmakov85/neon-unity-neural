@@ -142,7 +142,7 @@ const CourseLesson1_4 = () => {
 
       {/* Replay Buffer */}
       <section>
-        <h2 className="text-2xl font-bold text-foreground mb-4">Replay Buffer</h2>
+        <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/algorithms/dqn" hubTitle="DQN — Replay Buffer">Replay Buffer</CrossLinkToHub></h2>
 
         <CyberCodeBlock language="python" filename="replay_buffer.py">
 {`import random

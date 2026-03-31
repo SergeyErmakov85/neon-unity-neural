@@ -28,7 +28,7 @@ const CourseProject1 = () => {
               </p>
               <p className="text-sm text-muted-foreground">
                 Используйте фиксированный <code className="text-primary bg-primary/10 px-1 rounded">seed=42</code> для
-                воспроизводимости результатов. Эксперимент должен быть запускаемым одной командой.
+                <CrossLinkToHub hubPath="/pytorch/cheatsheet" hubAnchor="saving" hubTitle="PyTorch — Сохранение и загрузка">воспроизводимости</CrossLinkToHub> результатов. Эксперимент должен быть запускаемым одной командой.
               </p>
             </div>
           </CardContent>

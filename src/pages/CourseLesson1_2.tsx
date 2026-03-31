@@ -117,7 +117,7 @@ python -c "import torch; print(torch.__version__); print('CUDA:', torch.cuda.is_
 
       {/* Step 3: ML-Agents */}
       <section>
-        <h2 className="text-2xl font-bold text-foreground mb-4">Шаг 3. Установка ML-Agents</h2>
+        <h2 className="text-2xl font-bold text-foreground mb-4">Шаг 3. Установка <CrossLinkToHub hubPath="/unity-ml-agents" hubAnchor="installation" hubTitle="Unity ML-Agents — Установка">ML-Agents</CrossLinkToHub></h2>
 
         <CyberCodeBlock language="python" filename="terminal">
 {`# Установка ML-Agents Python-пакета
