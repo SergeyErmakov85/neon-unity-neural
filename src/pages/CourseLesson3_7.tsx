@@ -56,7 +56,7 @@ const CourseLesson3_7 = () => {
         <h2 className="text-2xl font-bold text-foreground mb-4">Правильная архитектура — половина успеха</h2>
         <p className="text-muted-foreground leading-relaxed">
           Выбор архитектуры нейросети для RL-агента критически влияет на качество обучения.
-          <strong className="text-foreground"> MLP</strong> подходит для простых задач,{" "}
+          <strong className="text-foreground"> <CrossLinkToHub hubPath="/pytorch/cheatsheet" hubAnchor="nn" hubTitle="PyTorch — Нейронные сети">MLP</CrossLinkToHub></strong> подходит для простых задач,{" "}
           <strong className="text-primary">CNN</strong> — для визуальных наблюдений,{" "}
           <strong className="text-secondary">LSTM</strong> — когда нужна память.
         </p>
