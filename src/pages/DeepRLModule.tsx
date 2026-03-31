@@ -142,7 +142,7 @@ const DeepRLModule = () => {
               <p className="text-muted-foreground leading-relaxed">
                 <strong className="text-foreground">Deep Reinforcement Learning (Deep RL)</strong> — это направление
                 машинного обучения, объединяющее глубокие нейронные сети (Deep Learning) с методами обучения
-                с подкреплением (Reinforcement Learning). Вместо ручного проектирования признаков агент
+                с подкреплением (Reinforcement Learning) (введение — <CrossLinkToLesson lessonId="1-1" lessonPath="/courses/1-1" lessonTitle="Что такое обучение с подкреплением?" lessonLevel={1} />). Вместо ручного проектирования признаков агент
                 самостоятельно извлекает полезные представления из «сырых» данных — изображений, звуков
                 или сенсорных сигналов.
               </p>
