@@ -383,6 +383,29 @@ start_epoch = checkpoint['epoch']`}</CyberCodeBlock>
               на текущее устройство (например, если модель была сохранена на GPU, а загружается на CPU).
             </p>
           </InfoBox>
+          <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="onnx-export">ONNX-экспорт</h3>
+          <p>Экспорт модели в формат ONNX для использования вне PyTorch (Unity Sentis, TensorRT, ONNX Runtime).</p>
+
+          <CyberCodeBlock language="python" filename="onnx_export.py">{`import torch
+
+model = PolicyNetwork(obs_size=33, action_size=4)
+model.load_state_dict(torch.load("ppo_agent.pt"))
+model.eval()
+
+dummy_input = torch.randn(1, 33)
+torch.onnx.export(
+    model, dummy_input, "agent.onnx",
+    input_names=["obs"], output_names=["action"],
+    opset_version=11
+)`}</CyberCodeBlock>
+
+          <InfoBox color="secondary" title="⚙️ opset_version и верификация">
+            <p className="text-sm">
+              Используйте <code className="text-foreground">opset_version=11</code> для совместимости с Unity Sentis.
+              После экспорта проверьте модель через <code className="text-foreground">onnx.checker.check_model("agent.onnx")</code> —
+              это выявит несовместимые операции до деплоя.
+            </p>
+          </InfoBox>
         </Section>
 
         {/* Section 9: Utilities */}
