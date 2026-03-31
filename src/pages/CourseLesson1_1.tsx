@@ -169,7 +169,7 @@ const CourseLesson1_1 = () => {
             { symbol: "A", name: "Действия (Actions)", desc: "Множество доступных действий агента. Например, движение вверх, вниз, влево, вправо." },
             { symbol: "R", name: "Награды (Rewards)", desc: "Сигнал обратной связи: R(s, a, s') — числовая оценка перехода." },
             { symbol: "T", name: "Переходы (Transitions)", desc: "T(s'|s,a) — вероятность перехода в состояние s' при действии a в состоянии s." },
-            { symbol: "γ", name: "Дисконт (Discount)", desc: "γ ∈ [0, 1] — насколько агент ценит будущие награды по сравнению с текущими (дисконтирование γ)." },
+            { symbol: "γ", name: <><CrossLinkToHub hubPath="/math-rl/module-1" hubTitle="Ряды и дисконтирование">Дисконт (Discount)</CrossLinkToHub></>, desc: "γ ∈ [0, 1] — насколько агент ценит будущие награды по сравнению с текущими (дисконтирование γ)." },
           ].map((item, i) => (
             <div key={i} className="flex gap-4 items-start p-3 rounded-lg bg-card/40 border border-border/30">
               <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
