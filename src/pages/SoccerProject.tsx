@@ -51,7 +51,7 @@ const SoccerProject = () => {
           <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
             <CardContent className="p-6 space-y-4">
               <p className="text-muted-foreground leading-relaxed">
-                Два игрока (или команды 2v2) играют в футбол на поле. Каждый агент наблюдает за мячом, своей позицией и
+                Два игрока (или команды 2v2) играют в футбол на поле (мультиагенты — <CrossLinkToLesson lessonId="3-2" lessonPath="/courses/3-2" lessonTitle="Multi-Agent RL и Self-Play" lessonLevel={3} />). Каждый агент наблюдает за мячом, своей позицией и
                 позициями других игроков. Агенты должны координироваться для забивания голов и защиты ворот.
                 Используется Multi-Agent Posthumous Credit Assignment (MAPOCA).
               </p>

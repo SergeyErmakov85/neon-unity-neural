@@ -52,7 +52,7 @@ const RacingCarProject = () => {
           <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
             <CardContent className="p-6 space-y-4">
               <p className="text-muted-foreground leading-relaxed">
-                Агент управляет автомобилем на замкнутом треке. Для восприятия окружения используются raycast-сенсоры,
+                Агент управляет автомобилем на замкнутом треке (Урок: гоночный агент — <CrossLinkToLesson lessonId="project-3" lessonPath="/courses/project-3" lessonTitle="Гоночный агент с непрерывным управлением" lessonLevel={2} />). Для восприятия окружения используются raycast-сенсоры,
                 направленные веером вперёд. Агент должен научиться проходить трек максимально быстро, не врезаясь в стены.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
