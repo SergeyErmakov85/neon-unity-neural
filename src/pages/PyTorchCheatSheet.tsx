@@ -151,7 +151,7 @@ with torch.no_grad():
         <Section id="nn" icon={<Brain className="w-5 h-5 text-primary" />} title="4. Нейронные сети (torch.nn)">
           <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="nn" />
           <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">Создание модели</h3>
-          <p>Все модели наследуются от <code className="text-foreground">nn.Module</code>. Необходимо определить слои в <code className="text-foreground">__init__</code> и прямой проход в <code className="text-foreground">forward</code>.</p>
+          <p>Все модели наследуются от <code className="text-foreground">nn.Module</code>. Необходимо определить слои в <code className="text-foreground">__init__</code> и прямой проход в <code className="text-foreground">forward</code> (ваша первая сеть — <CrossLinkToLesson lessonId="1-3" lessonPath="/courses/1-3" lessonTitle="CartPole — твой первый RL-агент" lessonLevel={1} />).</p>
           <CyberCodeBlock language="python" filename="model.py">{`class MyClassifier(nn.Module):
     def __init__(self, input_size, num_classes):
         super(MyClassifier, self).__init__()
