@@ -4,6 +4,7 @@ import { BookOpen, Shapes, Grid3X3, GitBranch, Brain, Wrench, ArrowLeft } from "
 import { useNavigate } from "react-router-dom";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 import Math from "@/components/Math";
 import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/landing/Navbar";
