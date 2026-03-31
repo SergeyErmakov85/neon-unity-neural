@@ -4,6 +4,7 @@ import CyberCodeBlock from "@/components/CyberCodeBlock";
 import Quiz from "@/components/Quiz";
 import { Card, CardContent } from "@/components/ui/card";
 import { Lightbulb, TrendingUp, Shuffle } from "lucide-react";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const quizQuestions = [
   {
