@@ -3,6 +3,7 @@ import ProGate from "@/components/ProGate";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import { Card, CardContent } from "@/components/ui/card";
 import { Trophy, CheckCircle2, Gamepad2, Brain, Settings, Package, Star } from "lucide-react";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const CourseFinalProject = () => {
   const preview = (
