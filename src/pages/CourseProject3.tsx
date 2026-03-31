@@ -13,7 +13,7 @@ const CourseProject3 = () => {
       <section>
         <h2 className="text-2xl font-bold text-foreground mb-4">Задание</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Создайте гоночного агента в Unity, который управляет машинкой с непрерывным рулевым
+          Создайте <CrossLinkToHub hubPath="/unity-projects/racing" hubTitle="Проект Racing Car">гоночного агента</CrossLinkToHub> в Unity, который управляет машинкой с непрерывным рулевым
           управлением и газом/тормозом. Агент должен проехать полный круг по трассе с чекпоинтами,
           не вылетая за пределы дороги.
         </p>
