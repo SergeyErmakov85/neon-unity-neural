@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight, BookOpen, Settings, Code, Rocket, Target } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import CrossLinkToLesson from "@/components/CrossLinkToLesson";
+import HubLessonBadges from "@/components/HubLessonBadges";
 import Math from "@/components/Math";
 
 const BallBalanceProject = () => {
