@@ -5,6 +5,7 @@ import Quiz from "@/components/Quiz";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Lightbulb, Shield, Shuffle, Database, RefreshCw } from "lucide-react";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const quizQuestions = [
   {
@@ -92,13 +93,13 @@ const CourseLesson1_4 = () => {
           {[
             {
               icon: Shield,
-              title: "Target Network",
+              title: <><CrossLinkToHub hubPath="/algorithms/dqn" hubTitle="DQN — Target Network">Target Network</CrossLinkToHub></>,
               desc: "Копия Q-сети, обновляемая каждые N шагов. Стабилизирует target-значения, предотвращая «гонку за собственным хвостом».",
               color: "text-primary",
             },
             {
               icon: Database,
-              title: "Experience Replay",
+              title: <><CrossLinkToHub hubPath="/algorithms/dqn" hubTitle="DQN — Replay Buffer">Experience Replay</CrossLinkToHub></>,
               desc: "Буфер переходов (s, a, r, s', done). Разрушает корреляцию между последовательными шагами, делая обучение эффективнее.",
               color: "text-secondary",
             },
@@ -141,7 +142,7 @@ const CourseLesson1_4 = () => {
 
       {/* Replay Buffer */}
       <section>
-        <h2 className="text-2xl font-bold text-foreground mb-4">Replay Buffer</h2>
+        <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/algorithms/dqn" hubTitle="DQN — Replay Buffer">Replay Buffer</CrossLinkToHub></h2>
 
         <CyberCodeBlock language="python" filename="replay_buffer.py">
 {`import random

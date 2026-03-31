@@ -4,6 +4,7 @@ import Quiz from "@/components/Quiz";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Lightbulb, BarChart3 } from "lucide-react";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const quizQuestions = [
   {
@@ -128,7 +129,7 @@ print(f"Средний reward за 100 эпизодов: {avg_reward:.1f}")
 
       {/* Q-table limitations */}
       <section>
-        <h2 className="text-2xl font-bold text-foreground mb-4">Q-таблица и её ограничения</h2>
+        <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/algorithms/dqn" hubTitle="DQN — Deep Q-Network">Q-learning</CrossLinkToHub> и его ограничения</h2>
         <p className="text-muted-foreground leading-relaxed mb-4">
           В простых средах (как GridWorld) можно использовать Q-таблицу — матрицу,
           где для каждой пары (состояние, действие) хранится ожидаемая награда.
@@ -142,7 +143,7 @@ print(f"Средний reward за 100 эпизодов: {avg_reward:.1f}")
             <div>
               <p className="font-semibold text-sm text-foreground">Решение: нейросетевая аппроксимация</p>
               <p className="text-xs text-muted-foreground mt-1">
-                Вместо таблицы используем нейронную сеть, которая принимает состояние
+                Вместо таблицы используем нейронную сеть (<CrossLinkToHub hubPath="/pytorch/cheatsheet" hubAnchor="nn" hubTitle="PyTorch — Нейронные сети">nn.Module</CrossLinkToHub>), которая принимает состояние
                 и предсказывает Q-значения для каждого действия. Это основа Deep Q-Network (DQN).
               </p>
             </div>
@@ -154,7 +155,7 @@ print(f"Средний reward за 100 эпизодов: {avg_reward:.1f}")
       <section>
         <h2 className="text-2xl font-bold text-foreground mb-4">Агент на PyTorch</h2>
         <p className="text-muted-foreground leading-relaxed mb-4">
-          Реализуем простой нейросетевой Q-learning агент. Сеть принимает 4 наблюдения
+          Реализуем простой нейросетевой Q-learning агент. Ниже представлен полный <CrossLinkToHub hubPath="/pytorch/cheatsheet" hubAnchor="training" hubTitle="PyTorch — Цикл обучения">цикл обучения</CrossLinkToHub>: сеть принимает 4 наблюдения
           и выдаёт Q-значения для 2 действий.
         </p>
 

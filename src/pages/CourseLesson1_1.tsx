@@ -3,6 +3,7 @@ import CyberCodeBlock from "@/components/CyberCodeBlock";
 import Quiz from "@/components/Quiz";
 import { Card, CardContent } from "@/components/ui/card";
 import { Lightbulb, Brain, Target, Eye, Gift, Gamepad2 } from "lucide-react";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 
 const rlCycleSteps = [
   { label: "Агент", sub: "принимает решение", icon: Brain, color: "text-primary" },
@@ -158,7 +159,7 @@ const CourseLesson1_1 = () => {
       <section>
         <h2 className="text-2xl font-bold text-foreground mb-4">Формализм MDP</h2>
         <p className="text-muted-foreground leading-relaxed mb-4">
-          <strong className="text-foreground">Markov Decision Process (MDP)</strong> — математическая
+          <strong className="text-foreground"><CrossLinkToHub hubPath="/deep-rl" hubAnchor="foundations" hubTitle="Deep RL — Основы">Markov Decision Process (MDP)</CrossLinkToHub></strong> — математическая
           модель принятия решений в условиях неопределённости. MDP задаётся кортежем из пяти элементов:
         </p>
 
@@ -168,7 +169,7 @@ const CourseLesson1_1 = () => {
             { symbol: "A", name: "Действия (Actions)", desc: "Множество доступных действий агента. Например, движение вверх, вниз, влево, вправо." },
             { symbol: "R", name: "Награды (Rewards)", desc: "Сигнал обратной связи: R(s, a, s') — числовая оценка перехода." },
             { symbol: "T", name: "Переходы (Transitions)", desc: "T(s'|s,a) — вероятность перехода в состояние s' при действии a в состоянии s." },
-            { symbol: "γ", name: "Дисконт (Discount)", desc: "γ ∈ [0, 1] — насколько агент ценит будущие награды по сравнению с текущими." },
+            { symbol: "γ", name: "Дисконт (Discount)", desc: "γ ∈ [0, 1] — насколько агент ценит будущие награды по сравнению с текущими (дисконтирование γ)." },
           ].map((item, i) => (
             <div key={i} className="flex gap-4 items-start p-3 rounded-lg bg-card/40 border border-border/30">
               <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
@@ -261,7 +262,7 @@ P(s_{t+1} | s_t, a_t) = P(s_{t+1} | s_1, a_1, ..., s_t, a_t)`}
           {[
             { term: "Пространство состояний", desc: "Множество всех возможных состояний среды S. Определяет, что агент может наблюдать." },
             { term: "Пространство действий", desc: "Множество всех доступных действий A. Может быть дискретным (кнопки) или непрерывным (угол поворота)." },
-            { term: "Мат. ожидание награды", desc: "𝔼[G_t] — среднее значение суммарной дисконтированной награды, которое агент стремится максимизировать." },
+            { term: "Мат. ожидание награды", desc: "𝔼[G_t] — среднее значение суммарной дисконтированной награды (математическое ожидание), которое агент стремится максимизировать." },
             { term: "MDP", desc: "Математическая модель: состояния, действия, переходы, награды, дисконт." },
             { term: "Policy (π)", desc: "Стратегия агента: π(a|s) — вероятность выбрать действие a в состоянии s." },
             { term: "Value Function (V)", desc: "V(s) — ожидаемая суммарная награда из состояния s при следовании политике π." },
