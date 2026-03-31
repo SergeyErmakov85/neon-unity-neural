@@ -232,6 +232,8 @@ const DeepRLModule = () => {
             <Layers className="w-6 h-6 text-secondary" />
             2. Ключевые алгоритмы Deep RL
           </h2>
+          <HubLessonBadges hubPath="/deep-rl" hubAnchor="algorithms" />
+          </h2>
 
           <Card className="bg-card/60 backdrop-blur-sm border-secondary/20">
             <CardContent className="p-6 space-y-4">
