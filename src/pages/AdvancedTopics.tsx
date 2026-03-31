@@ -93,6 +93,7 @@ const AdvancedTopics = () => {
 
           {/* Multi-Agent */}
           <TabsContent id="tab-multiagent" value="multiagent">
+            <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Multi-Agent RL (MAPOCA)</CardTitle>
