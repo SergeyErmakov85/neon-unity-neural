@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight, BookOpen, Settings, Code, Rocket, Target, Car } from "lucide-react";
 import RaycastVisualizer from "@/components/RaycastVisualizer";
 import CrossLinkToLesson from "@/components/CrossLinkToLesson";
+import HubLessonBadges from "@/components/HubLessonBadges";
 import { useNavigate } from "react-router-dom";
 
 const RacingCarProject = () => {
@@ -28,6 +29,7 @@ const RacingCarProject = () => {
       </div>
 
       <div className="container mx-auto px-4 py-12 max-w-4xl space-y-12">
+        <HubLessonBadges hubPath="/unity-projects/racing" />
         {/* Содержание */}
         <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
           <CardContent className="p-6">

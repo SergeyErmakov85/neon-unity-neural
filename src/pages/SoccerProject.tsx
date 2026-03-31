@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, BookOpen, Settings, Code, Rocket, Target, Users } from "lucide-react";
 import CrossLinkToLesson from "@/components/CrossLinkToLesson";
+import HubLessonBadges from "@/components/HubLessonBadges";
 import { useNavigate } from "react-router-dom";
 
 const SoccerProject = () => {
@@ -27,6 +28,7 @@ const SoccerProject = () => {
       </div>
 
       <div className="container mx-auto px-4 py-12 max-w-4xl space-y-12">
+        <HubLessonBadges hubPath="/unity-projects/soccer" />
         {/* Содержание */}
         <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
           <CardContent className="p-6">
