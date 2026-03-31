@@ -73,6 +73,7 @@ print(f"Using device: {device}")`}</CyberCodeBlock>
 
         {/* Section 2: Tensors */}
         <Section id="tensors" icon={<Box className="w-5 h-5 text-secondary" />} title="2. Тензоры (Tensors): Основы">
+          <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="tensors" />
           <p>Тензоры — это многомерные матрицы, аналог <code className="text-foreground">ndarray</code> из NumPy, но с поддержкой GPU.</p>
 
           <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Создание</h3>
