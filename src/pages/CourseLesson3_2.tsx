@@ -70,8 +70,8 @@ const CourseLesson3_2 = () => {
           — одна из самых сложных и перспективных областей RL.
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">
-          Unity ML-Agents предоставляет мощные инструменты для MARL: <strong className="text-primary">MA-POCA</strong>
-          для кооперативных задач и <strong className="text-secondary">Self-Play</strong> для конкурентных.
+          Unity ML-Agents предоставляет мощные инструменты для MARL: <strong className="text-primary"><CrossLinkToHub hubPath="/advanced" hubTitle="Продвинутые темы — Multi-Agent">MA-POCA</CrossLinkToHub></strong>
+          для кооперативных задач и <strong className="text-secondary"><CrossLinkToHub hubPath="/advanced" hubTitle="Продвинутые темы — Self-Play">Self-Play</CrossLinkToHub></strong> для конкурентных.
         </p>
       </section>
     </>
