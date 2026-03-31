@@ -93,7 +93,7 @@ const CourseLesson1_4 = () => {
           {[
             {
               icon: Shield,
-              title: "Target Network",
+              title: <><CrossLinkToHub hubPath="/algorithms/dqn" hubTitle="DQN — Target Network">Target Network</CrossLinkToHub></>,
               desc: "Копия Q-сети, обновляемая каждые N шагов. Стабилизирует target-значения, предотвращая «гонку за собственным хвостом».",
               color: "text-primary",
             },
