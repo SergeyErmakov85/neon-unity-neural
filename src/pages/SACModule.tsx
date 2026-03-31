@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, BookOpen, Zap, Target, Code, Rocket } from "luci
 import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
 import Quiz from "@/components/Quiz";
+import HubLessonBadges from "@/components/HubLessonBadges";
 
 const SACModule = () => {
   const navigate = useNavigate();
