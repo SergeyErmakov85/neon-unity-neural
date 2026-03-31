@@ -35,6 +35,7 @@ const quizQuestions = [
 const CourseLesson1_2 = () => {
   return (
     <LessonLayout
+      lessonId="1-2"
       lessonTitle="Установка окружения: PyTorch + Unity ML-Agents"
       lessonNumber="1.2"
       duration="30 мин"

@@ -81,6 +81,7 @@ const CourseLesson2_2 = () => {
 
   return (
     <LessonLayout
+      lessonId="2-2"
       lessonTitle="PPO — реализация с нуля"
       lessonNumber="2.2"
       duration="45 мин"

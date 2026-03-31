@@ -26,6 +26,7 @@ const CourseProject3 = () => {
 
   return (
     <LessonLayout
+      lessonId="project-3"
       lessonTitle="Гоночный агент с непрерывным управлением"
       lessonNumber="П3"
       duration="120–180 мин"

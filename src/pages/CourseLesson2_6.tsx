@@ -63,6 +63,7 @@ const CourseLesson2_6 = () => {
 
   return (
     <LessonLayout
+      lessonId="2-6"
       lessonTitle="Визуализация обучения: TensorBoard и W&B"
       lessonNumber="2.6"
       duration="25 мин"

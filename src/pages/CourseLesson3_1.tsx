@@ -81,6 +81,7 @@ const CourseLesson3_1 = () => {
 
   return (
     <LessonLayout
+      lessonId="3-1"
       lessonTitle="SAC — Soft Actor-Critic"
       lessonNumber="3.1"
       duration="45 мин"

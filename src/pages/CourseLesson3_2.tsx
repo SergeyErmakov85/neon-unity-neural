@@ -78,6 +78,7 @@ const CourseLesson3_2 = () => {
 
   return (
     <LessonLayout
+      lessonId="3-2"
       lessonTitle="Многоагентное обучение: MA-POCA и Self-Play"
       lessonNumber="3.2"
       duration="45 мин"

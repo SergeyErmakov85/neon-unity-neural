@@ -7,6 +7,7 @@ import { Download, ExternalLink, Target, Trophy, CheckCircle2 } from "lucide-rea
 const CourseProject1 = () => {
   return (
     <LessonLayout
+      lessonId="project-1"
       lessonTitle="Балансировка шеста — воспроизводимый эксперимент"
       lessonNumber="П1"
       duration="60–90 мин"

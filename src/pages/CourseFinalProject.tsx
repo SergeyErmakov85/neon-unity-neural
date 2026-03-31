@@ -24,6 +24,7 @@ const CourseFinalProject = () => {
 
   return (
     <LessonLayout
+      lessonId="final-project"
       lessonTitle="Финальный проект: Полноценная игра с обученным NPC"
       lessonNumber="FP"
       duration="10–20 часов"

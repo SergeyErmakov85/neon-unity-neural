@@ -69,6 +69,7 @@ const CourseLesson3_3 = () => {
 
   return (
     <LessonLayout
+      lessonId="3-3"
       lessonTitle="Curriculum Learning и Environment Randomization"
       lessonNumber="3.3"
       duration="35 мин"
