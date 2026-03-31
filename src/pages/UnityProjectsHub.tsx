@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight, Gamepad2, CircleDot, Grid3X3, Car, Users, Apple, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import HubLessonBadges from "@/components/HubLessonBadges";
 
 interface Project {
   id: string;
