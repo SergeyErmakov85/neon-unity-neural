@@ -132,7 +132,7 @@ if (reachedGoal) AddReward(1.0f);`}
           <div className="space-y-3">
             {[
               { title: "Distance-based", desc: "Награда обратно пропорциональна расстоянию до цели. Просто и эффективно.", icon: Target },
-              { title: "Curriculum-based", desc: "Начинаем с простых задач, постепенно усложняем. Агент не теряет мотивацию.", icon: Lightbulb },
+              { title: "Curriculum-based", desc: <span>Начинаем с простых задач, постепенно усложняем (<CrossLinkToHub hubPath="/advanced" hubTitle="Продвинутые темы">curriculum learning</CrossLinkToHub>). Агент не теряет мотивацию.</span>, icon: Lightbulb },
               { title: "Curiosity-driven", desc: "Внутренняя награда за посещение новых состояний. Решает проблему sparse rewards.", icon: Target },
             ].map((item, i) => (
               <div key={i} className="flex gap-3 items-start p-4 rounded-lg bg-card/40 border border-border/30">
