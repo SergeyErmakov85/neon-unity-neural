@@ -1,4 +1,5 @@
 import LessonLayout from "@/components/LessonLayout";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 import ProGate from "@/components/ProGate";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,12 +13,12 @@ const CourseProject3 = () => {
       <section>
         <h2 className="text-2xl font-bold text-foreground mb-4">Задание</h2>
         <p className="text-muted-foreground leading-relaxed">
-          Создайте гоночного агента в Unity, который управляет машинкой с непрерывным рулевым
+          Создайте <CrossLinkToHub hubPath="/unity-projects/racing" hubTitle="Проект Racing Car">гоночного агента</CrossLinkToHub> в Unity, который управляет машинкой с непрерывным рулевым
           управлением и газом/тормозом. Агент должен проехать полный круг по трассе с чекпоинтами,
           не вылетая за пределы дороги.
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">
-          Проект использует Ray Perception Sensors для «зрения» агента, checkpoint-систему наград
+          Проект использует <CrossLinkToHub hubPath="/unity-ml-agents" hubAnchor="neural-networks" hubTitle="Unity ML-Agents — Нейросети">Ray Perception Sensors</CrossLinkToHub> для «зрения» агента, checkpoint-систему наград
           и SAC/PPO для обучения непрерывному управлению.
         </p>
       </section>

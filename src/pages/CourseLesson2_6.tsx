@@ -1,4 +1,5 @@
 import LessonLayout from "@/components/LessonLayout";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 import ProGate from "@/components/ProGate";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import Quiz from "@/components/Quiz";
@@ -54,7 +55,7 @@ const CourseLesson2_6 = () => {
       <p className="text-muted-foreground leading-relaxed">
         RL-обучение — процесс непредсказуемый. Без мониторинга вы не поймёте,
         обучается ли агент, застрял ли он, или награды растут случайно.{" "}
-        <strong className="text-foreground">TensorBoard</strong> и{" "}
+        <strong className="text-foreground"><CrossLinkToHub hubPath="/unity-ml-agents" hubAnchor="training" hubTitle="Unity ML-Agents — Обучение">TensorBoard</CrossLinkToHub></strong> и{" "}
         <strong className="text-foreground">Weights &amp; Biases</strong> — два
         ключевых инструмента для отслеживания прогресса.
       </p>

@@ -1,4 +1,5 @@
 import LessonLayout from "@/components/LessonLayout";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 import ProGate from "@/components/ProGate";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import Quiz from "@/components/Quiz";
@@ -62,7 +63,7 @@ const CourseLesson2_4 = () => {
           даёт обратную связь на каждом шаге, но его легко спроектировать неправильно.
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">
-          В этом уроке мы разберём теоретические основы reward shaping и практические приёмы,
+          В этом уроке мы разберём теоретические основы <CrossLinkToHub hubPath="/deep-rl" hubAnchor="practice" hubTitle="Deep RL — Практика">reward shaping</CrossLinkToHub> и практические приёмы,
           которые помогут вашим агентам обучаться быстрее и стабильнее.
         </p>
       </section>
@@ -131,7 +132,7 @@ if (reachedGoal) AddReward(1.0f);`}
           <div className="space-y-3">
             {[
               { title: "Distance-based", desc: "Награда обратно пропорциональна расстоянию до цели. Просто и эффективно.", icon: Target },
-              { title: "Curriculum-based", desc: "Начинаем с простых задач, постепенно усложняем. Агент не теряет мотивацию.", icon: Lightbulb },
+              { title: "Curriculum-based", desc: <span>Начинаем с простых задач, постепенно усложняем (<CrossLinkToHub hubPath="/advanced" hubTitle="Продвинутые темы">curriculum learning</CrossLinkToHub>). Агент не теряет мотивацию.</span>, icon: Lightbulb },
               { title: "Curiosity-driven", desc: "Внутренняя награда за посещение новых состояний. Решает проблему sparse rewards.", icon: Target },
             ].map((item, i) => (
               <div key={i} className="flex gap-3 items-start p-4 rounded-lg bg-card/40 border border-border/30">

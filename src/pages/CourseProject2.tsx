@@ -1,4 +1,5 @@
 import LessonLayout from "@/components/LessonLayout";
+import CrossLinkToHub from "@/components/CrossLinkToHub";
 import ProGate from "@/components/ProGate";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,7 +13,7 @@ const CourseProject2 = () => {
         <h2 className="text-2xl font-bold text-foreground mb-4">Задание</h2>
         <p className="text-muted-foreground leading-relaxed">
           Создайте 3D-среду в Unity: замкнутая арена с препятствиями, где агент должен
-          преследовать и поймать подвижную цель. Используйте PPO с dense reward shaping,
+          преследовать и поймать подвижную цель. Используйте <CrossLinkToHub hubPath="/algorithms/ppo" hubTitle="PPO — Proximal Policy Optimization">PPO</CrossLinkToHub> с dense reward shaping,
           параллельные среды для ускорения обучения и TensorBoard для мониторинга.
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">
