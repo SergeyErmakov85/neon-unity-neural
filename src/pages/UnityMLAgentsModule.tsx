@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 import { BookOpen, Cpu, Layers, Settings, Code, Wrench, Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
