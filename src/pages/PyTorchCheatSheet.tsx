@@ -120,6 +120,7 @@ arr = x.numpy()     # Конвертация в NumPy (нужен .cpu() и .det
 
         {/* Section 3: Autograd */}
         <Section id="autograd" icon={<Zap className="w-5 h-5 text-accent" />} title="3. Autograd (Автоматическое дифференцирование)">
+          <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="autograd" />
           <p>
             Ключевой механизм PyTorch для обратного распространения ошибки (Backpropagation). 
             При каждой операции с тензором, у которого <code className="text-foreground">requires_grad=True</code>, 
