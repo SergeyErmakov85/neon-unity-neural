@@ -62,7 +62,7 @@ const CourseLesson3_6 = () => {
           и десятка других параметров.
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">
-          <strong className="text-foreground">Optuna</strong> — фреймворк для байесовской оптимизации,
+          <strong className="text-foreground"><CrossLinkToHub hubPath="/math-rl/module-4" hubTitle="Методы оптимизации">Optuna</CrossLinkToHub></strong> — фреймворк для байесовской оптимизации,
           который интеллектуально исследует пространство параметров. В связке с{" "}
           <strong className="text-secondary">Weights & Biases Sweeps</strong> вы получаете
           полный пайплайн автоподбора с визуализацией.
