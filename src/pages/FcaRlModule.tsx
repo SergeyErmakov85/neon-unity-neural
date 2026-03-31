@@ -114,7 +114,7 @@ const FcaRlModule = () => {
 
                   <p>
                     <strong className="text-foreground">Формальное понятие</strong> — пара (A, B), где A' = B и B' = A.
-                    Множество A называется <em>объёмом</em>, B — <em>содержанием</em> понятия.
+                    Множество A называется <em>объёмом</em>, B — <em>содержанием</em> понятия (<CrossLinkToLesson lessonId="3-7" lessonPath="/courses/3-7" lessonTitle="Архитектуры нейросетей через FCA" lessonLevel={3} />).
                     Если объект не подтверждает правило, он является <strong className="text-foreground">контрпримером</strong>.
                   </p>
 
