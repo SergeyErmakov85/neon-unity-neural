@@ -51,7 +51,7 @@ const AdvancedTopics = () => {
                   <h3 className="text-lg font-semibold text-primary mb-2">Концепция</h3>
                   <p className="text-muted-foreground">
                     Постепенное усложнение задачи во время обучения. Агент начинает с простых задач и по мере освоения переходит к более сложным,
-                    что значительно ускоряет обучение и повышает финальное качество.
+                    что значительно ускоряет обучение и повышает финальное качество (Урок 3.3 — <CrossLinkToLesson lessonId="3-3" lessonPath="/courses/3-3" lessonTitle="Curriculum Learning" lessonLevel={3} />).
                   </p>
                 </div>
 
