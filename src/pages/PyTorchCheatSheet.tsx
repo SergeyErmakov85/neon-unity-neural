@@ -215,6 +215,7 @@ model = MyClassifier(input_size=784, num_classes=10).to(device)`}</CyberCodeBloc
             </p>
           </InfoBox>
 
+          <p className="text-sm text-muted-foreground mt-2">(Actor-Critic архитектура — <CrossLinkToLesson lessonId="2-3" lessonPath="/courses/2-3" lessonTitle="Actor-Critic и A2C" lessonLevel={2} />)</p>
           <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Оптимизаторы (Optimizers)</h3>
           <CyberCodeBlock language="python" filename="optimizers.py">{`# Стохастический градиентный спуск с momentum
 optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
