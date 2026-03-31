@@ -279,7 +279,7 @@ const DeepRLModule = () => {
               </h3>
               <p className="text-muted-foreground leading-relaxed">
                 <strong className="text-foreground">PPO</strong> — алгоритм от OpenAI (2017), ставший стандартом де-факто
-                для обучения с подкреплением. Используется в Unity ML-Agents как алгоритм по умолчанию,
+                для обучения с подкреплением (с нуля — <CrossLinkToLesson lessonId="2-2" lessonPath="/courses/2-2" lessonTitle="PPO — Proximal Policy Optimization" lessonLevel={2} />). Используется в Unity ML-Agents как алгоритм по умолчанию,
                 а также в обучении ChatGPT через RLHF.
               </p>
               <p className="text-muted-foreground leading-relaxed">
