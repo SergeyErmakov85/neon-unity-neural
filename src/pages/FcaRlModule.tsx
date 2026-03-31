@@ -149,7 +149,7 @@ const FcaRlModule = () => {
                 <GitBranch className="h-7 w-7 text-yellow-400" />
                 <h2 className="text-2xl md:text-3xl font-bold text-foreground">2. Решётки понятий</h2>
               </div>
-
+              <HubLessonBadges hubPath="/fca-rl" hubAnchor="lattices" />
               <Card className="border-yellow-500/20 bg-card/60 backdrop-blur-sm">
                 <CardContent className="p-6 space-y-4 text-muted-foreground leading-relaxed">
                   <p>
