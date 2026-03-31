@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, GraduationCap, Users, Eye, Swords, Cpu } from "lucide-react";
 import { Link } from "react-router-dom";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 
 const codeBlock = (code: string, lang = "yaml") => (
   <pre className="bg-card/80 border border-primary/20 rounded-lg p-4 overflow-x-auto text-xs md:text-sm font-mono leading-relaxed">
@@ -50,7 +51,7 @@ const AdvancedTopics = () => {
                   <h3 className="text-lg font-semibold text-primary mb-2">Концепция</h3>
                   <p className="text-muted-foreground">
                     Постепенное усложнение задачи во время обучения. Агент начинает с простых задач и по мере освоения переходит к более сложным,
-                    что значительно ускоряет обучение и повышает финальное качество.
+                    что значительно ускоряет обучение и повышает финальное качество (Урок 3.3 — <CrossLinkToLesson lessonId="3-3" lessonPath="/courses/3-3" lessonTitle="Curriculum Learning" lessonLevel={3} />).
                   </p>
                 </div>
 
@@ -96,7 +97,7 @@ const AdvancedTopics = () => {
             <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
-                <CardTitle className="text-2xl">Multi-Agent RL (MAPOCA)</CardTitle>
+                <CardTitle className="text-2xl">Multi-Agent RL (MAPOCA) (<CrossLinkToLesson lessonId="3-2" lessonPath="/courses/3-2" lessonTitle="Multi-Agent RL и Self-Play" lessonLevel={3} />)</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div>
@@ -142,7 +143,7 @@ public class TeamAgent : Agent {
             <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
-                <CardTitle className="text-2xl">Imitation Learning (BC + GAIL)</CardTitle>
+                <CardTitle className="text-2xl">Imitation Learning (BC + GAIL) (<CrossLinkToLesson lessonId="3-4" lessonPath="/courses/3-4" lessonTitle="Imitation Learning: BC и GAIL" lessonLevel={3} />)</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
@@ -183,7 +184,7 @@ mlagents-learn config/gail.yaml --run-id=gail_run`, "bash")}
                 <div>
                   <h3 className="text-lg font-semibold text-primary mb-2">Концепция</h3>
                   <p className="text-muted-foreground">
-                    Агент играет против копий самого себя. Применяется для настольных игр, файтингов и стратегий.
+                    Агент играет против копий самого себя. Применяется для настольных игр, файтингов и стратегий (<CrossLinkToLesson lessonId="3-2" lessonPath="/courses/3-2" lessonTitle="Multi-Agent RL и Self-Play" lessonLevel={3} />).
                   </p>
                 </div>
 

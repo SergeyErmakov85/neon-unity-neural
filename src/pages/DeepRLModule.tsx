@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 import { Card, CardContent } from "@/components/ui/card";
 import { BookOpen, Brain, Zap, Target, Code2, TrendingUp, Layers } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -141,7 +142,7 @@ const DeepRLModule = () => {
               <p className="text-muted-foreground leading-relaxed">
                 <strong className="text-foreground">Deep Reinforcement Learning (Deep RL)</strong> — это направление
                 машинного обучения, объединяющее глубокие нейронные сети (Deep Learning) с методами обучения
-                с подкреплением (Reinforcement Learning). Вместо ручного проектирования признаков агент
+                с подкреплением (Reinforcement Learning) (введение — <CrossLinkToLesson lessonId="1-1" lessonPath="/courses/1-1" lessonTitle="Что такое обучение с подкреплением?" lessonLevel={1} />). Вместо ручного проектирования признаков агент
                 самостоятельно извлекает полезные представления из «сырых» данных — изображений, звуков
                 или сенсорных сигналов.
               </p>
@@ -244,7 +245,7 @@ const DeepRLModule = () => {
               <p className="text-muted-foreground leading-relaxed">
                 <strong className="text-foreground">DQN</strong> — прорывной алгоритм DeepMind (2013), который
                 впервые продемонстрировал способность агента играть в игры Atari на уровне человека,
-                используя только пиксели экрана как входные данные.
+                используя только пиксели экрана как входные данные (реализация — <CrossLinkToLesson lessonId="1-4" lessonPath="/courses/1-4" lessonTitle="DQN с нуля на PyTorch" lessonLevel={1} />).
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 Основные инновации DQN:
@@ -278,7 +279,7 @@ const DeepRLModule = () => {
               </h3>
               <p className="text-muted-foreground leading-relaxed">
                 <strong className="text-foreground">PPO</strong> — алгоритм от OpenAI (2017), ставший стандартом де-факто
-                для обучения с подкреплением. Используется в Unity ML-Agents как алгоритм по умолчанию,
+                для обучения с подкреплением (с нуля — <CrossLinkToLesson lessonId="2-2" lessonPath="/courses/2-2" lessonTitle="PPO — Proximal Policy Optimization" lessonLevel={2} />). Используется в Unity ML-Agents как алгоритм по умолчанию,
                 а также в обучении ChatGPT через RLHF.
               </p>
               <p className="text-muted-foreground leading-relaxed">
@@ -312,7 +313,7 @@ const DeepRLModule = () => {
               </h3>
               <p className="text-muted-foreground leading-relaxed">
                 <strong className="text-foreground">SAC</strong> — off-policy алгоритм от UC Berkeley (2018),
-                который максимизирует не только суммарную награду, но и энтропию политики. Это поощряет
+                который максимизирует не только суммарную награду, но и энтропию политики (<CrossLinkToLesson lessonId="3-1" lessonPath="/courses/3-1" lessonTitle="SAC — Soft Actor-Critic" lessonLevel={3} />). Это поощряет
                 исследование среды и делает обучение более устойчивым.
               </p>
               <p className="text-muted-foreground leading-relaxed">
@@ -353,9 +354,9 @@ const DeepRLModule = () => {
             <CardContent className="p-6 space-y-4">
               <h3 className="text-lg font-semibold text-foreground">Игровые среды и симуляции</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Deep RL активно используется для обучения агентов в игровых средах. Это идеальная площадка
+                Deep RL активно используется для обучения агентов в игровых средах (reward — <CrossLinkToLesson lessonId="2-4" lessonPath="/courses/2-4" lessonTitle="Reward Shaping и Curriculum" lessonLevel={2} />). Это идеальная площадка
                 для экспериментов, поскольку игры предоставляют чёткие правила, измеримые награды и
-                контролируемую сложность.
+                контролируемую сложность (деплой — <CrossLinkToLesson lessonId="3-5" lessonPath="/courses/3-5" lessonTitle="ONNX-экспорт и деплой в Unity" lessonLevel={3} />).
               </p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground">
                 <li><strong className="text-foreground">Atari Games:</strong> Классический бенчмарк для DQN —

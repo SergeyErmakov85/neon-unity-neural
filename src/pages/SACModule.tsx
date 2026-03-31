@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
 import Quiz from "@/components/Quiz";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 
 const SACModule = () => {
   const navigate = useNavigate();
@@ -52,7 +53,8 @@ const SACModule = () => {
           <p className="text-muted-foreground leading-relaxed">
             <strong className="text-foreground">SAC (Soft Actor-Critic)</strong> — off-policy алгоритм, основанный на
             принципе максимизации энтропии. Разработан в 2018 году в UC Berkeley. SAC автоматически балансирует
-            между exploitation (использование лучших действий) и exploration (исследование новых действий).
+            между exploitation (использование лучших действий) и exploration (исследование новых действий)
+            (реализация — <CrossLinkToLesson lessonId="3-1" lessonPath="/courses/3-1" lessonTitle="SAC — Soft Actor-Critic" lessonLevel={3} />).
           </p>
         </section>
 
