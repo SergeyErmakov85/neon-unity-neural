@@ -148,6 +148,7 @@ with torch.no_grad():
 
         {/* Section 4: Neural Networks */}
         <Section id="nn" icon={<Brain className="w-5 h-5 text-primary" />} title="4. Нейронные сети (torch.nn)">
+          <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="nn" />
           <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">Создание модели</h3>
           <p>Все модели наследуются от <code className="text-foreground">nn.Module</code>. Необходимо определить слои в <code className="text-foreground">__init__</code> и прямой проход в <code className="text-foreground">forward</code>.</p>
           <CyberCodeBlock language="python" filename="model.py">{`class MyClassifier(nn.Module):
