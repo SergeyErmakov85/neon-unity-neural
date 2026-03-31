@@ -3,6 +3,7 @@ import { ArrowLeft, Package, Box, Zap, Brain, Database, RotateCw, Eye, Save, Wre
 import { useNavigate } from "react-router-dom";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 
 const PyTorchCheatSheet = () => {
   const navigate = useNavigate();
@@ -74,7 +75,7 @@ print(f"Using device: {device}")`}</CyberCodeBlock>
         {/* Section 2: Tensors */}
         <Section id="tensors" icon={<Box className="w-5 h-5 text-secondary" />} title="2. Тензоры (Tensors): Основы">
           <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="tensors" />
-          <p>Тензоры — это многомерные матрицы, аналог <code className="text-foreground">ndarray</code> из NumPy, но с поддержкой GPU.</p>
+          <p>Тензоры — это многомерные матрицы, аналог <code className="text-foreground">ndarray</code> из NumPy, но с поддержкой GPU (практика — <CrossLinkToLesson lessonId="1-2" lessonPath="/courses/1-2" lessonTitle="Установка окружения: PyTorch + Unity ML-Agents" lessonLevel={1} />).</p>
 
           <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Создание</h3>
           <CyberCodeBlock language="python" filename="tensors_create.py">{`x = torch.tensor([1, 2, 3])         # Из списка
@@ -150,7 +151,7 @@ with torch.no_grad():
         <Section id="nn" icon={<Brain className="w-5 h-5 text-primary" />} title="4. Нейронные сети (torch.nn)">
           <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="nn" />
           <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">Создание модели</h3>
-          <p>Все модели наследуются от <code className="text-foreground">nn.Module</code>. Необходимо определить слои в <code className="text-foreground">__init__</code> и прямой проход в <code className="text-foreground">forward</code>.</p>
+          <p>Все модели наследуются от <code className="text-foreground">nn.Module</code>. Необходимо определить слои в <code className="text-foreground">__init__</code> и прямой проход в <code className="text-foreground">forward</code> (ваша первая сеть — <CrossLinkToLesson lessonId="1-3" lessonPath="/courses/1-3" lessonTitle="CartPole — твой первый RL-агент" lessonLevel={1} />).</p>
           <CyberCodeBlock language="python" filename="model.py">{`class MyClassifier(nn.Module):
     def __init__(self, input_size, num_classes):
         super(MyClassifier, self).__init__()
@@ -214,6 +215,7 @@ model = MyClassifier(input_size=784, num_classes=10).to(device)`}</CyberCodeBloc
             </p>
           </InfoBox>
 
+          <p className="text-sm text-muted-foreground mt-2">(Actor-Critic архитектура — <CrossLinkToLesson lessonId="2-3" lessonPath="/courses/2-3" lessonTitle="Actor-Critic и A2C" lessonLevel={2} />)</p>
           <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Оптимизаторы (Optimizers)</h3>
           <CyberCodeBlock language="python" filename="optimizers.py">{`# Стохастический градиентный спуск с momentum
 optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
@@ -267,7 +269,7 @@ dataset = CustomDataset(train_x, train_y)`}</CyberCodeBlock>
         {/* Section 6: Training Loop */}
         <Section id="training" icon={<RotateCw className="w-5 h-5 text-accent" />} title="6. Цикл обучения (Training Loop) — Шаблон">
           <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="training" />
-          <p>Стандартный шаблон обучения (boilerplate), который используется в большинстве проектов на PyTorch.</p>
+          <p>Стандартный шаблон обучения (boilerplate), который используется в большинстве проектов на PyTorch (DQN loop — <CrossLinkToLesson lessonId="1-4" lessonPath="/courses/1-4" lessonTitle="DQN с нуля на PyTorch" lessonLevel={1} />).</p>
           <CyberCodeBlock language="python" filename="train.py">{`# Гиперпараметры
 epochs = 10
 criterion = nn.CrossEntropyLoss()
@@ -344,7 +346,7 @@ print(f'Accuracy: {accuracy:.2f}%')`}</CyberCodeBlock>
         {/* Section 8: Saving & Loading */}
         <Section id="saving" icon={<Save className="w-5 h-5 text-secondary" />} title="8. Сохранение и Загрузка (Saving & Loading)">
           <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="saving" />
-          <p>Рекомендуемый способ — сохранять только веса (<code className="text-foreground">state_dict</code>), а не модель целиком.</p>
+          <p>Рекомендуемый способ — сохранять только веса (<code className="text-foreground">state_dict</code>), а не модель целиком (ONNX деплой — <CrossLinkToLesson lessonId="3-5" lessonPath="/courses/3-5" lessonTitle="ONNX-экспорт и деплой в Unity" lessonLevel={3} />).</p>
 
           <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Сохранение</h3>
           <CyberCodeBlock language="python" filename="save.py">{`# Сохранить только веса (рекомендуется)
