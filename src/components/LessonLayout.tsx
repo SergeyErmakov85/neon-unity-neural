@@ -350,8 +350,8 @@ const LessonLayout = ({
                         <div key={i} className="flex items-start gap-2 py-1">
                           <ArrowRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                           <div>
-                            <CrossLinkToHub hubPath={link.hubPath} hubAnchor={link.hubAnchor} hubTitle={link.hubTitle}>
-                              {link.sectionTitle}
+                            <CrossLinkToHub hubPath={link.hubPath} hubAnchor={link.hubAnchor} hubTitle={link.hubLabel}>
+                              {link.hubLabel}
                             </CrossLinkToHub>
                             <p className="text-xs text-muted-foreground">{link.contextInLesson}</p>
                           </div>
