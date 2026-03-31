@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight, BookOpen, Settings, Code, Rocket, Target, Car } from "lucide-react";
 import RaycastVisualizer from "@/components/RaycastVisualizer";
 import CrossLinkToLesson from "@/components/CrossLinkToLesson";
+import HubLessonBadges from "@/components/HubLessonBadges";
 import { useNavigate } from "react-router-dom";
 
 const RacingCarProject = () => {
