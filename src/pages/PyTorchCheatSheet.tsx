@@ -48,6 +48,7 @@ const PyTorchCheatSheet = () => {
 
         {/* Section 1: Setup */}
         <Section id="setup" icon={<Package className="w-5 h-5 text-primary" />} title="1. Импорт и Настройка (Setup)">
+          <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="setup" />
           <p>Стандартные импорты, необходимые для начала работы с PyTorch.</p>
           <CyberCodeBlock language="python" filename="setup.py">{`import torch
 import torch.nn as nn                   # Слои нейросетей, функции потерь
