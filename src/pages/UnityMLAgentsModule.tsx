@@ -114,7 +114,7 @@ const UnityMLAgentsModule = () => {
             1. Установка и настройка
           </h2>
           <HubLessonBadges hubPath="/unity-ml-agents" hubAnchor="installation" />
-          </h2>
+
 
           <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
             <CardContent className="p-6 space-y-4">
