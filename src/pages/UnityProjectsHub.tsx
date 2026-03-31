@@ -150,6 +150,8 @@ const UnityProjectsHub = () => {
                     <div><span className="text-foreground font-medium">Алгоритм:</span> {project.algorithm}</div>
                   </div>
 
+                  <HubLessonBadges hubPath={project.link} />
+
                   <Button
                     variant="outline"
                     className="w-full border-primary/50 text-primary hover:bg-primary/10"
