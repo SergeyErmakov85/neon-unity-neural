@@ -91,7 +91,7 @@ const CourseFinalProject = () => {
               { icon: <Star className="w-5 h-5" />, title: "Этап 2: Функция награды", desc: "Спроектируйте reward: dense rewards для ускорения, штрафы за ошибки, бонусы за цели.", time: "2–3 часа" },
               { icon: <Brain className="w-5 h-5" />, title: "Этап 3: Обучение", desc: "Настройте YAML-конфиг (PPO/SAC), запустите mlagents-learn с параллельными средами.", time: "2–4 часа" },
               { icon: <Settings className="w-5 h-5" />, title: "Этап 4: Оптимизация", desc: "Используйте Optuna или ручной подбор для финальной настройки гиперпараметров.", time: "2–4 часа" },
-              { icon: <Package className="w-5 h-5" />, title: "Этап 5: Деплой", desc: "Экспортируйте в ONNX, подключите к BehaviorParameters, оптимизируйте модель.", time: "1–2 часа" },
+              { icon: <Package className="w-5 h-5" />, title: "Этап 5: Деплой", desc: "Выполните ONNX-экспорт, подключите к BehaviorParameters, оптимизируйте модель.", time: "1–2 часа" },
               { icon: <Gamepad2 className="w-5 h-5" />, title: "Этап 6: Геймплей", desc: "Добавьте UI, управление игроком, камеру. Соберите билд под целевую платформу.", time: "2–4 часа" },
             ].map((stage, i) => (
               <Card key={i} className="border-border/30 bg-card/50">
