@@ -59,7 +59,7 @@ const CourseLesson3_6 = () => {
           В RL гиперпараметры критически важны: один и тот же алгоритм может дать отличный или
           ужасный результат в зависимости от <code className="text-primary">learning_rate</code>,
           <code className="text-primary">batch_size</code>, <code className="text-primary">clip_epsilon</code>
-          и десятка других параметров.
+          и десятка других параметров. Структурировать результаты экспериментов поможет <CrossLinkToHub hubPath="/fca-rl" hubAnchor="fca-hyperparams" hubTitle="FCA для анализа гиперпараметров">FCA-анализ</CrossLinkToHub>.
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">
           <strong className="text-foreground"><CrossLinkToHub hubPath="/math-rl/module-4" hubTitle="Методы оптимизации">Optuna</CrossLinkToHub></strong> — фреймворк для байесовской оптимизации,
