@@ -125,7 +125,7 @@ const CourseLesson2_1 = () => {
           <Math>{"J(\\theta) = \\mathbb{E}_{\\tau \\sim \\pi_\\theta} \\left[ \\sum_{t=0}^{T} \\gamma^t r_t \\right]"}</Math>
 
           <p className="text-muted-foreground leading-relaxed my-4">
-            Применяя log-trick, получаем <strong className="text-foreground">теорему градиента политики</strong>:
+            Применяя log-trick, получаем <strong className="text-foreground">теорему градиента политики</strong> — <CrossLinkToHub hubPath="/math-rl/module-4" hubTitle="Математика RL — Оптимизация">∇<sub>θ</sub>J(θ)</CrossLinkToHub>:
           </p>
 
           <Math>{"\\nabla_\\theta J(\\theta) = \\mathbb{E}_{\\tau \\sim \\pi_\\theta} \\left[ \\sum_{t=0}^{T} \\nabla_\\theta \\log \\pi_\\theta(a_t | s_t) \\cdot G_t \\right]"}</Math>
