@@ -185,6 +185,7 @@ const PPOModule = () => {
           <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Code className="w-6 h-6 text-secondary" /> 5. Реализация на PyTorch
           </h2>
+          <p className="text-muted-foreground text-sm mb-4">(реализация — <CrossLinkToLesson lessonId="2-2" lessonPath="/courses/2-2" lessonTitle="PPO — Proximal Policy Optimization" lessonLevel={2} />)</p>
           <Card className="bg-card/60 backdrop-blur-sm border-secondary/20">
             <CardContent className="p-6 space-y-4">
               <h3 className="text-lg font-semibold text-foreground">PPO Agent</h3>
