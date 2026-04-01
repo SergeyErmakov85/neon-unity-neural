@@ -223,7 +223,7 @@ writer.close()
           </h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             W&amp;B — облачная платформа для эксперимент-трекинга. В отличие от TensorBoard,
-            данные хранятся в облаке, а гиперпараметры логируются автоматически — идеально
+            данные хранятся в облаке, а гиперпараметры и <CrossLinkToHub hubPath="/pytorch/cheatsheet" hubAnchor="saving" hubTitle="PyTorch — Сохранение">чекпоинты</CrossLinkToHub> логируются автоматически — идеально
             для сравнения десятков запусков.
           </p>
 

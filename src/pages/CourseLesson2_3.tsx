@@ -197,7 +197,7 @@ class ContinuousActorCritic(nn.Module):
 
         {/* YAML config */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">YAML-конфигурация ML-Agents</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/unity-ml-agents" hubAnchor="training" hubTitle="Unity ML-Agents — Обучение">YAML-конфигурация</CrossLinkToHub> ML-Agents</h2>
 
           <CyberCodeBlock language="python" filename="trainer_config.yaml">
 {`behaviors:

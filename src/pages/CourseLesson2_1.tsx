@@ -155,7 +155,7 @@ const CourseLesson2_1 = () => {
 
         {/* PyTorch implementation */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">REINFORCE на PyTorch</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4">REINFORCE на PyTorch (<CrossLinkToHub hubPath="/pytorch/cheatsheet" hubAnchor="autograd" hubTitle="PyTorch — Autograd">autograd</CrossLinkToHub>)</h2>
 
           <CyberCodeBlock language="python" filename="reinforce.py">
 {`import torch
