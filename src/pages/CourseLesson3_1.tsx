@@ -131,7 +131,7 @@ const CourseLesson3_1 = () => {
 
         {/* Twin critics */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/pytorch/cheatsheet" hubAnchor="nn" hubTitle="PyTorch — Нейронные сети">Twin Critics</CrossLinkToHub></h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/algorithms/sac" hubAnchor="architecture" hubTitle="SAC — Архитектура Twin Critics">Twin Critics</CrossLinkToHub></h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Card className="bg-card/50 border-border/40">
               <CardContent className="p-5 space-y-2">

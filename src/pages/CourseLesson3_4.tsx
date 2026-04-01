@@ -123,7 +123,7 @@ const CourseLesson3_4 = () => {
           </h2>
           <p className="text-muted-foreground leading-relaxed">
             GAIL решает проблемы BC через <strong className="text-foreground">состязательное обучение</strong>.
-            Дискриминатор учится отличать поведение агента от экспертного, а агент получает награду
+            <CrossLinkToHub hubPath="/math-rl/module-4" hubTitle="Математика RL — Оптимизация">Дискриминатор</CrossLinkToHub> учится отличать поведение агента от экспертного, а агент получает награду
             за то, что обманывает дискриминатор:
           </p>
           <Math>{`\\min_\\pi \\max_D \\; \\mathbb{E}_{\\pi}[\\log D(s,a)] + \\mathbb{E}_{\\pi_E}[\\log(1 - D(s,a))] - \\lambda H(\\pi)`}</Math>

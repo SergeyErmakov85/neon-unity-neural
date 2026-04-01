@@ -154,7 +154,7 @@ const CourseLesson3_2 = () => {
 
         {/* Self-Play */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">Self-Play</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/unity-ml-agents" hubAnchor="training" hubTitle="Unity ML-Agents — Self-Play">Self-Play</CrossLinkToHub></h2>
           <CyberCodeBlock language="python" filename="self_play_config.yaml">
 {`behaviors:
   SoccerPlayer:

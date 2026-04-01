@@ -89,7 +89,7 @@ const CourseLesson3_6 = () => {
         <section>
           <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
             <Settings className="w-6 h-6 text-primary" />
-            Пространство <CrossLinkToHub hubPath="/algorithms/ppo" hubTitle="PPO — Proximal Policy Optimization">гиперпараметров PPO</CrossLinkToHub>
+            Пространство <CrossLinkToHub hubPath="/algorithms/ppo" hubAnchor="implementation" hubTitle="PPO — Реализация">гиперпараметров PPO</CrossLinkToHub>
           </h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border border-border/50 rounded-lg overflow-hidden">
