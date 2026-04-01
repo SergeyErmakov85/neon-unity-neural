@@ -125,7 +125,7 @@ const CourseLesson2_2 = () => {
 
         {/* Clipped objective */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/algorithms/ppo" hubTitle="PPO — Proximal Policy Optimization">Clipped Surrogate Objective</CrossLinkToHub></h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/algorithms/ppo" hubAnchor="clipped" hubTitle="PPO — Clipped Objective">Clipped Surrogate Objective</CrossLinkToHub></h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Ratio между новой и старой политикой:
           </p>
@@ -164,7 +164,7 @@ const CourseLesson2_2 = () => {
 
         {/* GAE */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/math-rl/module-5" hubTitle="Математика RL — Advantage">GAE (Generalized Advantage Estimation)</CrossLinkToHub></h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/algorithms/ppo" hubAnchor="gae" hubTitle="PPO — GAE">GAE (Generalized Advantage Estimation)</CrossLinkToHub></h2>
           <Math>{"\\hat{A}_t^{GAE(\\gamma, \\lambda)} = \\sum_{l=0}^{\\infty} (\\gamma \\lambda)^l \\delta_{t+l}"}</Math>
           <p className="text-sm text-muted-foreground mt-2">
             где <Math display={false}>{"\\delta_t = r_t + \\gamma V(s_{t+1}) - V(s_t)"}</Math> — TD-ошибка.

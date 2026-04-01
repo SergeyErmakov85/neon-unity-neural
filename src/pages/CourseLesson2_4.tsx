@@ -170,7 +170,7 @@ if (reachedGoal) AddReward(1.0f);`}
 
         {/* Unity C# example */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">Пример: Reward в Unity C#</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4">Пример: <CrossLinkToHub hubPath="/unity-ml-agents" hubAnchor="training" hubTitle="Unity ML-Agents — Обучение">AddReward / SetReward</CrossLinkToHub> в Unity C#</h2>
           <CyberCodeBlock language="csharp" filename="RewardExample.cs">
 {`public override void OnActionReceived(ActionBuffers actions)
 {

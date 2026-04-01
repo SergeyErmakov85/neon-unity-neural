@@ -57,7 +57,7 @@ const CourseLesson2_3 = () => {
         <p className="text-muted-foreground leading-relaxed">
           До сих пор мы работали с <strong className="text-foreground">дискретными действиями</strong>:
           агент выбирал из конечного набора (влево/вправо в CartPole). Но в реальных задачах — управление
-          роботом, автопилот, физические симуляции — действия <strong className="text-primary"><CrossLinkToHub hubPath="/algorithms/ppo" hubTitle="PPO — непрерывные действия">непрерывные</CrossLinkToHub></strong>:
+          роботом, автопилот, физические симуляции — действия <strong className="text-primary"><CrossLinkToHub hubPath="/unity-ml-agents" hubAnchor="neural-networks" hubTitle="Unity ML-Agents — Нейросети">непрерывные</CrossLinkToHub></strong>:
           угол поворота, сила нажатия, скорость.
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">
@@ -123,7 +123,7 @@ action = dist.sample()  # → 0.73`}
 
         {/* Actor-Critic architecture */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/deep-rl" hubAnchor="algorithms" hubTitle="Deep RL — Алгоритмы">Actor-Critic</CrossLinkToHub> архитектура</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/algorithms/ppo" hubAnchor="architecture" hubTitle="PPO — Архитектура Actor-Critic">Actor-Critic</CrossLinkToHub> архитектура</h2>
           <Card className="bg-card/40 border-primary/20 mb-4">
             <CardContent className="p-4 flex gap-3 items-start">
               <Lightbulb className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
@@ -197,7 +197,7 @@ class ContinuousActorCritic(nn.Module):
 
         {/* YAML config */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">YAML-конфигурация ML-Agents</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/unity-ml-agents" hubAnchor="training" hubTitle="Unity ML-Agents — Обучение">YAML-конфигурация</CrossLinkToHub> ML-Agents</h2>
 
           <CyberCodeBlock language="python" filename="trainer_config.yaml">
 {`behaviors:
