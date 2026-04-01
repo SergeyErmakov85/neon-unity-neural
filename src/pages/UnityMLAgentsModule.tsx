@@ -373,7 +373,7 @@ random_tensor = torch.rand(4, 3)  # Тензор размера 4x3`}
             3. Создание нейронных сетей для ML-Agents
           </h2>
           <HubLessonBadges hubPath="/unity-ml-agents" hubAnchor="neural-networks" />
-          <p className="text-sm text-muted-foreground">(Actor-Critic — <CrossLinkToLesson lessonId="2-3" lessonPath="/courses/2-3" lessonTitle="Actor-Critic и A2C" lessonLevel={2} />)</p>
+          <p className="text-sm text-muted-foreground">(Actor-Critic — <CrossLinkToLesson lessonId="2-3" lessonPath="/courses/2-3" lessonTitle="Actor-Critic и непрерывные действия" lessonLevel={2} />) (сенсоры — <CrossLinkToLesson lessonId="project-2" lessonPath="/courses/project-2" lessonTitle="3D-агент-охотник в Unity" lessonLevel={2} />)</p>
 
           <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
             <CardContent className="p-6 space-y-4">
