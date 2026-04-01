@@ -159,7 +159,7 @@ const CourseLesson1_1 = () => {
       <section>
         <h2 className="text-2xl font-bold text-foreground mb-4">Формализм MDP</h2>
         <p className="text-muted-foreground leading-relaxed mb-4">
-          <strong className="text-foreground"><CrossLinkToHub hubPath="/deep-rl" hubAnchor="foundations" hubTitle="Deep RL — Основы">Markov Decision Process (MDP)</CrossLinkToHub></strong> — математическая
+          <strong className="text-foreground"><CrossLinkToHub hubPath="/math-rl/module-5" hubAnchor="глава-3-марковские-процессы-принятия-решений-mdp" hubTitle="Математика RL — Глава 3: MDP">Markov Decision Process (MDP)</CrossLinkToHub></strong> — математическая
           модель принятия решений в условиях неопределённости. MDP задаётся кортежем из пяти элементов:
         </p>
 
