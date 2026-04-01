@@ -28,7 +28,7 @@ const MathRLModule2 = () => {
           </span>
         </h1>
         <p className="text-muted-foreground mb-8 text-lg">
-          Векторы, матрицы, собственные значения и разложения в контексте обучения с подкреплением
+          Векторы, матрицы, собственные значения и разложения в контексте обучения с подкреплением (архитектуры — <CrossLinkToLesson lessonId="3-7" lessonPath="/courses/3-7" lessonTitle="Архитектуры нейросетей через FCA" lessonLevel={3} />).
         </p>
         <HubLessonBadges hubPath="/math-rl/module-2" />
 

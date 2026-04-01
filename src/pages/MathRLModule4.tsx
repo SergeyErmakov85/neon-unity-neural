@@ -77,7 +77,7 @@ const MathRLModule4 = () => {
           </p>
           <Math>{`\\nabla_{\\theta}\\log P(\\tau|\\theta) = \\sum_{t=0}^T \\nabla_{\\theta}\\log \\pi_\\theta(a_t|s_t)`}</Math>
 
-          <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Шаг 4: Формула REINFORCE</h3>
+          <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Шаг 4: Формула REINFORCE (<CrossLinkToLesson lessonId="2-1" lessonPath="/courses/2-1" lessonTitle="Policy Gradient и REINFORCE" lessonLevel={2} />)</h3>
           <Math>{`\\nabla_{\\theta} J(\\theta) = \\mathbb{E}_{\\tau\\sim \\pi_\\theta}\\Big[\\sum_{t=0}^T \\nabla_{\\theta}\\log \\pi_\\theta(a_t|s_t)\\;R(\\tau)\\Big]`}</Math>
 
           <h3 className="text-xl font-semibold text-foreground mt-8 mb-3">Шаг 5: Reward-to-go</h3>
