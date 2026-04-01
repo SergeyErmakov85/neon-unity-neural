@@ -57,7 +57,7 @@ const CourseLesson2_3 = () => {
         <p className="text-muted-foreground leading-relaxed">
           До сих пор мы работали с <strong className="text-foreground">дискретными действиями</strong>:
           агент выбирал из конечного набора (влево/вправо в CartPole). Но в реальных задачах — управление
-          роботом, автопилот, физические симуляции — действия <strong className="text-primary"><CrossLinkToHub hubPath="/algorithms/ppo" hubTitle="PPO — непрерывные действия">непрерывные</CrossLinkToHub></strong>:
+          роботом, автопилот, физические симуляции — действия <strong className="text-primary"><CrossLinkToHub hubPath="/unity-ml-agents" hubAnchor="neural-networks" hubTitle="Unity ML-Agents — Нейросети">непрерывные</CrossLinkToHub></strong>:
           угол поворота, сила нажатия, скорость.
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">
