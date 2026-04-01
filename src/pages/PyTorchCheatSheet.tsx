@@ -125,7 +125,7 @@ arr = x.numpy()     # Конвертация в NumPy (нужен .cpu() и .det
           <p>
             Ключевой механизм PyTorch для обратного распространения ошибки (Backpropagation). 
             При каждой операции с тензором, у которого <code className="text-foreground">requires_grad=True</code>, 
-            PyTorch строит вычислительный граф и автоматически рассчитывает градиенты.
+            PyTorch строит вычислительный граф и автоматически рассчитывает градиенты (Policy Gradient — <CrossLinkToLesson lessonId="2-1" lessonPath="/courses/2-1" lessonTitle="Policy Gradient и REINFORCE" lessonLevel={2} />).
           </p>
           <CyberCodeBlock language="python" filename="autograd.py">{`x = torch.tensor([2.0], requires_grad=True) # Включаем слежение за градиентами
 y = x ** 2 + 5    # y = x² + 5
