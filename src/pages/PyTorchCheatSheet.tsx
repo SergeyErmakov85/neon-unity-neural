@@ -125,7 +125,7 @@ arr = x.numpy()     # Конвертация в NumPy (нужен .cpu() и .det
           <p>
             Ключевой механизм PyTorch для обратного распространения ошибки (Backpropagation). 
             При каждой операции с тензором, у которого <code className="text-foreground">requires_grad=True</code>, 
-            PyTorch строит вычислительный граф и автоматически рассчитывает градиенты.
+            PyTorch строит вычислительный граф и автоматически рассчитывает градиенты (Policy Gradient — <CrossLinkToLesson lessonId="2-1" lessonPath="/courses/2-1" lessonTitle="Policy Gradient и REINFORCE" lessonLevel={2} />).
           </p>
           <CyberCodeBlock language="python" filename="autograd.py">{`x = torch.tensor([2.0], requires_grad=True) # Включаем слежение за градиентами
 y = x ** 2 + 5    # y = x² + 5
@@ -151,7 +151,7 @@ with torch.no_grad():
         <Section id="nn" icon={<Brain className="w-5 h-5 text-primary" />} title="4. Нейронные сети (torch.nn)">
           <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="nn" />
           <h3 className="text-xl font-semibold text-foreground mt-6 mb-3">Создание модели</h3>
-          <p>Все модели наследуются от <code className="text-foreground">nn.Module</code>. Необходимо определить слои в <code className="text-foreground">__init__</code> и прямой проход в <code className="text-foreground">forward</code> (ваша первая сеть — <CrossLinkToLesson lessonId="1-3" lessonPath="/courses/1-3" lessonTitle="CartPole — твой первый RL-агент" lessonLevel={1} />).</p>
+          <p>Все модели наследуются от <code className="text-foreground">nn.Module</code>. Необходимо определить слои в <code className="text-foreground">__init__</code> и прямой проход в <code className="text-foreground">forward</code> (ваша первая сеть — <CrossLinkToLesson lessonId="1-3" lessonPath="/courses/1-3" lessonTitle="CartPole — твой первый RL-агент" lessonLevel={1} />) (Actor-Critic — <CrossLinkToLesson lessonId="2-3" lessonPath="/courses/2-3" lessonTitle="Actor-Critic и непрерывные действия" lessonLevel={2} />).</p>
           <CyberCodeBlock language="python" filename="model.py">{`class MyClassifier(nn.Module):
     def __init__(self, input_size, num_classes):
         super(MyClassifier, self).__init__()
@@ -384,7 +384,7 @@ start_epoch = checkpoint['epoch']`}</CyberCodeBlock>
             </p>
           </InfoBox>
           <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="onnx-export">ONNX-экспорт</h3>
-          <p>Экспорт модели в формат ONNX для использования вне PyTorch (Unity Sentis, TensorRT, ONNX Runtime).</p>
+          <p>Экспорт модели в формат ONNX для использования вне PyTorch (Unity Sentis, TensorRT, ONNX Runtime) (экспорт для Unity — <CrossLinkToLesson lessonId="3-5" lessonPath="/courses/3-5" lessonTitle="ONNX-экспорт и деплой в Unity" lessonLevel={3} />).</p>
 
           <CyberCodeBlock language="python" filename="onnx_export.py">{`import torch
 

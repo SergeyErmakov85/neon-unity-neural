@@ -115,7 +115,7 @@ const UnityMLAgentsModule = () => {
             1. Установка и настройка
           </h2>
           <HubLessonBadges hubPath="/unity-ml-agents" hubAnchor="installation" />
-          <p className="text-sm text-muted-foreground">(подробнее — <CrossLinkToLesson lessonId="1-2" lessonPath="/courses/1-2" lessonTitle="Установка окружения: PyTorch + Unity ML-Agents" lessonLevel={1} />)</p>
+          <p className="text-sm text-muted-foreground">(подробнее — <CrossLinkToLesson lessonId="1-2" lessonPath="/courses/1-2" lessonTitle="Установка окружения: PyTorch + Unity ML-Agents" lessonLevel={1} />) (Sentis — <CrossLinkToLesson lessonId="3-5" lessonPath="/courses/3-5" lessonTitle="ONNX-экспорт и деплой в Unity" lessonLevel={3} />)</p>
 
 
           <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
@@ -373,7 +373,7 @@ random_tensor = torch.rand(4, 3)  # Тензор размера 4x3`}
             3. Создание нейронных сетей для ML-Agents
           </h2>
           <HubLessonBadges hubPath="/unity-ml-agents" hubAnchor="neural-networks" />
-          <p className="text-sm text-muted-foreground">(Actor-Critic — <CrossLinkToLesson lessonId="2-3" lessonPath="/courses/2-3" lessonTitle="Actor-Critic и A2C" lessonLevel={2} />)</p>
+          <p className="text-sm text-muted-foreground">(Actor-Critic — <CrossLinkToLesson lessonId="2-3" lessonPath="/courses/2-3" lessonTitle="Actor-Critic и непрерывные действия" lessonLevel={2} />) (сенсоры — <CrossLinkToLesson lessonId="project-2" lessonPath="/courses/project-2" lessonTitle="3D-агент-охотник в Unity" lessonLevel={2} />)</p>
 
           <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
             <CardContent className="p-6 space-y-4">
@@ -466,6 +466,7 @@ loss = F.mse_loss(predictions, targets)`}
             (PPO — <CrossLinkToLesson lessonId="2-2" lessonPath="/courses/2-2" lessonTitle="PPO — Proximal Policy Optimization" lessonLevel={2} />)
             (параллелизация — <CrossLinkToLesson lessonId="2-5" lessonPath="/courses/2-5" lessonTitle="Параллельные среды и масштабирование" lessonLevel={2} />)
             (curriculum — <CrossLinkToLesson lessonId="3-3" lessonPath="/courses/3-3" lessonTitle="Curriculum Learning" lessonLevel={3} />)
+            (self-play — <CrossLinkToLesson lessonId="3-2" lessonPath="/courses/3-2" lessonTitle="MA-POCA и Self-Play" lessonLevel={3} />)
           </p>
 
           <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
