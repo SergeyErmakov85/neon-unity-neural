@@ -123,7 +123,7 @@ action = dist.sample()  # → 0.73`}
 
         {/* Actor-Critic architecture */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/deep-rl" hubAnchor="algorithms" hubTitle="Deep RL — Алгоритмы">Actor-Critic</CrossLinkToHub> архитектура</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/algorithms/ppo" hubAnchor="architecture" hubTitle="PPO — Архитектура Actor-Critic">Actor-Critic</CrossLinkToHub> архитектура</h2>
           <Card className="bg-card/40 border-primary/20 mb-4">
             <CardContent className="p-4 flex gap-3 items-start">
               <Lightbulb className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
