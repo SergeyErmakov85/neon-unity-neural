@@ -429,7 +429,7 @@ const MathRL = () => {
   const location = useLocation();
   const [openParts, setOpenParts] = useState<Set<string>>(new Set());
 
-  // Auto-open the correct accordion part based on URL
+  // Auto-open the correct accordion part based on URL and scroll to hash anchor
   useEffect(() => {
     const partId = moduleToPartMap[location.pathname];
     if (partId) {
@@ -439,17 +439,19 @@ const MathRL = () => {
         next.add(partId);
         return next;
       });
-      // Scroll to the part after a short delay
+      const hash = location.hash.replace("#", "");
       setTimeout(() => {
-        const el = document.getElementById(partId);
+        // If there's a hash, scroll to that specific element; otherwise scroll to the part
+        const targetId = hash || partId;
+        const el = document.getElementById(targetId);
         if (el) {
           el.scrollIntoView({ behavior: "smooth", block: "start" });
           el.classList.add("highlight-flash");
           setTimeout(() => el.classList.remove("highlight-flash"), 1500);
         }
-      }, 300);
+      }, 400);
     }
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   const togglePart = (id: string) => {
     setOpenParts((prev) => {
