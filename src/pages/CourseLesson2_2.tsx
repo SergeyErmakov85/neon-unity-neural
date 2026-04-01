@@ -125,7 +125,7 @@ const CourseLesson2_2 = () => {
 
         {/* Clipped objective */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/algorithms/ppo" hubTitle="PPO — Proximal Policy Optimization">Clipped Surrogate Objective</CrossLinkToHub></h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/algorithms/ppo" hubAnchor="clipped" hubTitle="PPO — Clipped Objective">Clipped Surrogate Objective</CrossLinkToHub></h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Ratio между новой и старой политикой:
           </p>
