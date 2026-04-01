@@ -67,7 +67,7 @@ const CourseLesson3_1 = () => {
       <section>
         <h2 className="text-2xl font-bold text-foreground mb-4">Принцип <CrossLinkToHub hubPath="/math-rl/module-5" hubTitle="Фундаментальная математика RL">максимальной энтропии</CrossLinkToHub></h2>
         <p className="text-muted-foreground leading-relaxed">
-          <strong className="text-foreground"><CrossLinkToHub hubPath="/algorithms/sac" hubTitle="Soft Actor-Critic">Soft Actor-Critic (SAC)</CrossLinkToHub></strong> — state-of-the-art off-policy
+          <strong className="text-foreground"><CrossLinkToHub hubPath="/algorithms/sac" hubAnchor="entropy" hubTitle="SAC — Максимальная энтропия">Soft Actor-Critic (SAC)</CrossLinkToHub></strong> — state-of-the-art off-policy
           алгоритм для задач с непрерывными действиями. В отличие от PPO, SAC максимизирует не только
           reward, но и <strong className="text-primary">энтропию политики</strong> — агент стремится быть
           максимально стохастичным при достижении высокой награды.
