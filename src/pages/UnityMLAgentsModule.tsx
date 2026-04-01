@@ -115,7 +115,7 @@ const UnityMLAgentsModule = () => {
             1. Установка и настройка
           </h2>
           <HubLessonBadges hubPath="/unity-ml-agents" hubAnchor="installation" />
-          <p className="text-sm text-muted-foreground">(подробнее — <CrossLinkToLesson lessonId="1-2" lessonPath="/courses/1-2" lessonTitle="Установка окружения: PyTorch + Unity ML-Agents" lessonLevel={1} />)</p>
+          <p className="text-sm text-muted-foreground">(подробнее — <CrossLinkToLesson lessonId="1-2" lessonPath="/courses/1-2" lessonTitle="Установка окружения: PyTorch + Unity ML-Agents" lessonLevel={1} />) (Sentis — <CrossLinkToLesson lessonId="3-5" lessonPath="/courses/3-5" lessonTitle="ONNX-экспорт и деплой в Unity" lessonLevel={3} />)</p>
 
 
           <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
