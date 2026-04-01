@@ -5,7 +5,7 @@ const audiences = [
     icon: Gamepad2,
     title: "Разработчики игр",
     description: "Умные NPC и адаптивный геймплей в Unity-проектах",
-    color: "primary" as const,
+    color: "secondary" as const,
     isPrimary: true,
     benefits: ["Unity-проекты", "ML-Agents", "Игровые среды"],
     position: "top" as const,
@@ -23,7 +23,7 @@ const audiences = [
     icon: FlaskConical,
     title: "Исследователи",
     description: "Воспроизводимые эксперименты и модульная архитектура",
-    color: "primary" as const,
+    color: "warning" as const,
     isPrimary: false,
     benefits: ["Воспроизводимость", "Модульность", "Эксперименты"],
     position: "bottom" as const,
@@ -32,7 +32,7 @@ const audiences = [
     icon: GraduationCap,
     title: "Студенты",
     description: "Практические навыки RL для курсовых и портфолио",
-    color: "secondary" as const,
+    color: "info" as const,
     isPrimary: false,
     benefits: ["Пошагово", "Теория + практика", "Примеры"],
     position: "left" as const,
@@ -40,13 +40,6 @@ const audiences = [
 ];
 
 const colorMap = {
-  primary: {
-    border: "border-primary/40",
-    text: "text-primary",
-    bg: "bg-primary/10",
-    glow: "hover:shadow-[0_0_30px_rgba(0,212,255,0.15)]",
-    line: "from-primary/60",
-  },
   secondary: {
     border: "border-secondary/40",
     text: "text-secondary",
@@ -60,6 +53,20 @@ const colorMap = {
     bg: "bg-accent/10",
     glow: "hover:shadow-[0_0_30px_rgba(236,72,153,0.15)]",
     line: "from-accent/60",
+  },
+  warning: {
+    border: "border-[hsl(45,90%,55%)]/40",
+    text: "text-[hsl(45,90%,55%)]",
+    bg: "bg-[hsl(45,90%,55%)]/10",
+    glow: "hover:shadow-[0_0_30px_rgba(234,179,8,0.15)]",
+    line: "from-[hsl(45,90%,55%)]/60",
+  },
+  info: {
+    border: "border-[hsl(210,90%,60%)]/40",
+    text: "text-[hsl(210,90%,60%)]",
+    bg: "bg-[hsl(210,90%,60%)]/10",
+    glow: "hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]",
+    line: "from-[hsl(210,90%,60%)]/60",
   },
 };
 
