@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 import { ArrowLeft, BookOpen, TrendingUp, Layers, BarChart3, Code2, GraduationCap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
@@ -67,7 +68,7 @@ const MathRLModule1 = () => {
             в контексте обучения с подкреплением
           </h2>
           <p className="text-muted-foreground mb-8 text-lg">
-            Фундаментальные математические понятия предела и их связь с алгоритмами RL: сходимость, дисконтирование, уравнения Беллмана.
+            Фундаментальные математические понятия предела и их связь с алгоритмами RL: сходимость, дисконтирование (дисконтирование — <CrossLinkToLesson lessonId="1-1" lessonPath="/courses/1-1" lessonTitle="Что такое обучение с подкреплением?" lessonLevel={1} />), уравнения Беллмана.
           </p>
 
           <HubLessonBadges hubPath="/math-rl/module-1" />

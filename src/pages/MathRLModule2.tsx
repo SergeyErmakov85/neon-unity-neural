@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import HubLessonBadges from "@/components/HubLessonBadges";
+import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 import { ArrowLeft, BookOpen, Brain, Code2, Lightbulb, GraduationCap, Layers } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
@@ -27,7 +28,7 @@ const MathRLModule2 = () => {
           </span>
         </h1>
         <p className="text-muted-foreground mb-8 text-lg">
-          Векторы, матрицы, собственные значения и разложения в контексте обучения с подкреплением
+          Векторы, матрицы, собственные значения и разложения в контексте обучения с подкреплением (архитектуры — <CrossLinkToLesson lessonId="3-7" lessonPath="/courses/3-7" lessonTitle="Архитектуры нейросетей через FCA" lessonLevel={3} />).
         </p>
         <HubLessonBadges hubPath="/math-rl/module-2" />
 
