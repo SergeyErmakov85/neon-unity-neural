@@ -291,7 +291,7 @@ class MLPPolicy(nn.Module):
         <section>
           <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
             <Table className="w-6 h-6 text-primary" />
-            Таблица рекомендаций
+            Таблица рекомендаций (<CrossLinkToHub hubPath="/fca-rl" hubAnchor="lattices" hubTitle="FCA — Решётки понятий">решётка выбора</CrossLinkToHub>)
           </h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border border-border/50 rounded-lg overflow-hidden">
