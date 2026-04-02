@@ -156,6 +156,29 @@ const FrozenLakeProject = () => {
 
         {/* Main content */}
         <main className="flex-1 min-w-0">
+
+        {/* Inline TOC */}
+        <Card className="mb-10 bg-card/60 border-border/30 backdrop-blur-sm">
+          <CardContent className="p-6">
+            <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+              <FileText className="w-5 h-5 text-primary" />
+              Содержание модуля
+            </h2>
+            <ol className="space-y-2">
+              {TOC_ITEMS.map(({ id, label }) => (
+                <li key={id}>
+                  <button
+                    onClick={() => scrollTo(id)}
+                    className="text-sm text-primary hover:underline hover:text-primary/80 transition-colors cursor-pointer text-left"
+                  >
+                    {label}
+                  </button>
+                </li>
+              ))}
+            </ol>
+          </CardContent>
+        </Card>
+
         <section className="mb-12 scroll-mt-28" id="rl-basics">
           <SectionHeader icon={<BookOpen className="w-6 h-6 text-primary" />} title="1. 🌍 Что такое обучение с подкреплением?" id="rl-basics-header" />
 
