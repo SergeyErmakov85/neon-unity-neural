@@ -896,6 +896,7 @@ env_slippery.close()`}
             </a>
           </Button>
         </div>
+        </main>
       </div>
 
       <FooterSection />
