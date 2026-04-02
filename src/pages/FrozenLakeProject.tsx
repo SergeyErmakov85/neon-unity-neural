@@ -166,18 +166,32 @@ const FrozenLakeProject = () => {
               Содержание модуля
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {TOC_ITEMS.map(({ id, label, emoji, Icon }, i) => (
-                <button
-                  key={id}
-                  onClick={() => scrollTo(id)}
-                  className="flex flex-col items-center gap-2 px-4 py-5 rounded-xl border border-border/30 bg-background/40 hover:bg-primary/10 hover:border-primary/30 transition-colors cursor-pointer group text-center"
-                >
-                  <Icon className="w-6 h-6 text-primary shrink-0" />
-                  <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-                    {i + 1}. {emoji} {label}
-                  </span>
-                </button>
-              ))}
+              {TOC_ITEMS.map(({ id, label, emoji, Icon }, i) => {
+                const neonColors = [
+                  { border: "border-cyan-500/40", shadow: "shadow-[0_0_15px_rgba(0,212,255,0.15)]", hoverShadow: "hover:shadow-[0_0_20px_rgba(0,212,255,0.3)]", text: "text-cyan-400", bg: "hover:bg-cyan-500/10" },
+                  { border: "border-purple-500/40", shadow: "shadow-[0_0_15px_rgba(168,85,247,0.15)]", hoverShadow: "hover:shadow-[0_0_20px_rgba(168,85,247,0.3)]", text: "text-purple-400", bg: "hover:bg-purple-500/10" },
+                  { border: "border-pink-500/40", shadow: "shadow-[0_0_15px_rgba(236,72,153,0.15)]", hoverShadow: "hover:shadow-[0_0_20px_rgba(236,72,153,0.3)]", text: "text-pink-400", bg: "hover:bg-pink-500/10" },
+                  { border: "border-green-500/40", shadow: "shadow-[0_0_15px_rgba(34,197,94,0.15)]", hoverShadow: "hover:shadow-[0_0_20px_rgba(34,197,94,0.3)]", text: "text-green-400", bg: "hover:bg-green-500/10" },
+                  { border: "border-amber-500/40", shadow: "shadow-[0_0_15px_rgba(245,158,11,0.15)]", hoverShadow: "hover:shadow-[0_0_20px_rgba(245,158,11,0.3)]", text: "text-amber-400", bg: "hover:bg-amber-500/10" },
+                  { border: "border-blue-500/40", shadow: "shadow-[0_0_15px_rgba(59,130,246,0.15)]", hoverShadow: "hover:shadow-[0_0_20px_rgba(59,130,246,0.3)]", text: "text-blue-400", bg: "hover:bg-blue-500/10" },
+                  { border: "border-rose-500/40", shadow: "shadow-[0_0_15px_rgba(244,63,94,0.15)]", hoverShadow: "hover:shadow-[0_0_20px_rgba(244,63,94,0.3)]", text: "text-rose-400", bg: "hover:bg-rose-500/10" },
+                  { border: "border-teal-500/40", shadow: "shadow-[0_0_15px_rgba(20,184,166,0.15)]", hoverShadow: "hover:shadow-[0_0_20px_rgba(20,184,166,0.3)]", text: "text-teal-400", bg: "hover:bg-teal-500/10" },
+                  { border: "border-orange-500/40", shadow: "shadow-[0_0_15px_rgba(249,115,22,0.15)]", hoverShadow: "hover:shadow-[0_0_20px_rgba(249,115,22,0.3)]", text: "text-orange-400", bg: "hover:bg-orange-500/10" },
+                ];
+                const c = neonColors[i % neonColors.length];
+                return (
+                  <button
+                    key={id}
+                    onClick={() => scrollTo(id)}
+                    className={`flex flex-col items-center gap-2 px-4 py-5 rounded-xl border ${c.border} ${c.shadow} ${c.hoverShadow} ${c.bg} bg-background/60 backdrop-blur-sm transition-all duration-300 cursor-pointer group text-center hover:scale-[1.03] hover:-translate-y-0.5`}
+                  >
+                    <Icon className={`w-6 h-6 ${c.text} shrink-0 drop-shadow-sm`} />
+                    <span className={`text-sm font-medium text-foreground group-hover:${c.text} transition-colors`}>
+                      {i + 1}. {emoji} {label}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </CardContent>
         </Card>
