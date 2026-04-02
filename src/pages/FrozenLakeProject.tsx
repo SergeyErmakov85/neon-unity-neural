@@ -165,15 +165,15 @@ const FrozenLakeProject = () => {
               <FileText className="w-5 h-5 text-primary" />
               Содержание модуля
             </h2>
-            <div className="space-y-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {TOC_ITEMS.map(({ id, label, emoji, Icon }, i) => (
                 <button
                   key={id}
                   onClick={() => scrollTo(id)}
-                  className="flex items-center gap-3 w-full text-left px-4 py-3 rounded-lg border border-border/30 bg-background/40 hover:bg-primary/10 hover:border-primary/30 transition-colors cursor-pointer group"
+                  className="flex flex-col items-center gap-2 px-4 py-5 rounded-xl border border-border/30 bg-background/40 hover:bg-primary/10 hover:border-primary/30 transition-colors cursor-pointer group text-center"
                 >
-                  <Icon className="w-5 h-5 text-primary shrink-0" />
-                  <span className="text-base font-medium text-foreground group-hover:text-primary transition-colors">
+                  <Icon className="w-6 h-6 text-primary shrink-0" />
+                  <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                     {i + 1}. {emoji} {label}
                   </span>
                 </button>
