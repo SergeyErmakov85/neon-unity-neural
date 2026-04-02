@@ -129,17 +129,18 @@ const FrozenLakeProject = () => {
               <BookOpen className="w-4 h-4 text-primary" />
               Содержание
             </h2>
-            {TOC_ITEMS.map(({ id, label }) => (
+            {TOC_ITEMS.map(({ id, label, Icon }, i) => (
               <button
                 key={id}
                 onClick={() => scrollTo(id)}
-                className={`block w-full text-left text-sm px-3 py-2 rounded-md transition-colors cursor-pointer border-l-2 ${
+                className={`flex items-center gap-2 w-full text-left text-sm px-3 py-2 rounded-md transition-colors cursor-pointer border-l-2 ${
                   activeId === id
                     ? "border-primary text-primary bg-primary/10 font-medium"
                     : "border-transparent text-muted-foreground hover:text-foreground hover:bg-muted/30"
                 }`}
               >
-                {label}
+                <Icon className="w-3.5 h-3.5 shrink-0" />
+                {i + 1}. {label}
               </button>
             ))}
 
