@@ -160,22 +160,24 @@ const FrozenLakeProject = () => {
         {/* Inline TOC */}
         <Card className="mb-10 bg-card/60 border-border/30 backdrop-blur-sm">
           <CardContent className="p-6">
-            <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
               <FileText className="w-5 h-5 text-primary" />
               Содержание модуля
             </h2>
-            <ol className="space-y-2">
-              {TOC_ITEMS.map(({ id, label }) => (
-                <li key={id}>
-                  <button
-                    onClick={() => scrollTo(id)}
-                    className="text-sm text-primary hover:underline hover:text-primary/80 transition-colors cursor-pointer text-left"
-                  >
-                    {label}
-                  </button>
-                </li>
+            <div className="space-y-3">
+              {TOC_ITEMS.map(({ id, label, emoji, Icon }, i) => (
+                <button
+                  key={id}
+                  onClick={() => scrollTo(id)}
+                  className="flex items-center gap-3 w-full text-left px-4 py-3 rounded-lg border border-border/30 bg-background/40 hover:bg-primary/10 hover:border-primary/30 transition-colors cursor-pointer group"
+                >
+                  <Icon className="w-5 h-5 text-primary shrink-0" />
+                  <span className="text-base font-medium text-foreground group-hover:text-primary transition-colors">
+                    {i + 1}. {emoji} {label}
+                  </span>
+                </button>
               ))}
-            </ol>
+            </div>
           </CardContent>
         </Card>
 
