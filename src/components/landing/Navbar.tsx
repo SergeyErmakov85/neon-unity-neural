@@ -166,7 +166,7 @@ const Navbar = () => {
               <Sparkles className="w-5 h-5 text-accent" />
               <span className="text-sm font-medium text-foreground">Математика RL</span>
             </button>
-            <button onClick={() => navigate("/hub/fca-rl")} className={`flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/fca-rl" ? "border-yellow-500/70 bg-yellow-500/15 shadow-[0_0_15px_hsl(45,100%,50%/0.3)]" : "border-yellow-500/30 hover:bg-yellow-500/10"}`}>
+            <button onClick={() => navigate("/hub/fca-rl")} className={`flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/fca-rl" ? "border-yellow-500/70 bg-yellow-500/15 shadow-glow-yellow" : "border-yellow-500/30 shadow-glow-yellow hover:bg-yellow-500/10"}`}>
               <Network className="w-5 h-5 text-yellow-400" />
               <span className="text-sm font-medium text-foreground">FCA + RL</span>
             </button>

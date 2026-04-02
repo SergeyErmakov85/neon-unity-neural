@@ -58,6 +58,7 @@ html { scroll-behavior: smooth; }
     --glow-cyan: 0 0 20px hsl(180 100% 50% / 0.5), 0 0 40px hsl(180 100% 50% / 0.3);
     --glow-purple: 0 0 20px hsl(280 100% 60% / 0.5), 0 0 40px hsl(280 100% 60% / 0.3);
     --glow-pink: 0 0 20px hsl(320 100% 60% / 0.5), 0 0 40px hsl(320 100% 60% / 0.3);
+    --glow-yellow: 0 0 20px hsl(45 100% 50% / 0.5), 0 0 40px hsl(45 100% 50% / 0.3);
 
     --transition-cyber: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
