@@ -78,6 +78,7 @@ const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const LessonPage = lazy(() => import("./pages/LessonPage"));
 const HubPage = lazy(() => import("./pages/HubPage"));
 const FcaRlModule = lazy(() => import("./pages/FcaRlModule"));
+const FrozenLakeProject = lazy(() => import("./pages/FrozenLakeProject"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -168,6 +169,7 @@ const App = () => (
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/learn/:stageSlug/:lessonSlug" element={<LessonPage />} />
             <Route path="/fca-rl" element={<FcaRlModule />} />
+            <Route path="/projects/frozen-lake" element={<FrozenLakeProject />} />
             <Route path="/hub/:hubId" element={<HubPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

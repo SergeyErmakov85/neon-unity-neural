@@ -34,7 +34,7 @@ const projects: ProjectEntry[] = [
       "Классическая задача на табличный Q-Learning: скользкое озеро, дискретные состояния, стохастические переходы.",
     icon: Snowflake,
     link: "/projects/frozen-lake",
-    ready: false,
+    ready: true,
   },
 ];
 
