@@ -120,48 +120,42 @@ const FrozenLakeProject = () => {
         </div>
       </div>
 
-      {/* Table of contents */}
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <Card className="bg-card/60 backdrop-blur-sm border-border/50 mb-10">
-          <CardContent className="p-6">
-            <div className="flex items-center gap-2 mb-4">
-              <FileText className="w-5 h-5 text-primary" />
-              <h3 className="text-lg font-bold text-foreground">📑 Содержание модуля</h3>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-border/50">
-                    <th className="text-left py-2 px-3 text-muted-foreground">#</th>
-                    <th className="text-left py-2 px-3 text-muted-foreground">Раздел</th>
-                    <th className="text-left py-2 px-3 text-muted-foreground">Что изучаем</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { n: 1, title: "🌍 Что такое обучение с подкреплением?", desc: "Агент, среда, награда — базовые понятия", id: "rl-basics" },
-                    { n: 2, title: "🧊 Среда Frozen Lake", desc: "Правила игры и как устроена сетка", id: "frozen-lake-env" },
-                    { n: 3, title: "📐 Математика Q-Learning", desc: "Уравнение Беллмана — пошагово и понятно", id: "q-math" },
-                    { n: 4, title: "⚙️ Настройка окружения", desc: "Установка библиотек и инициализация", id: "setup" },
-                    { n: 5, title: "🏗️ Инициализация среды и Q-таблицы", desc: "Гиперпараметры и начальная Q-таблица", id: "init" },
-                    { n: 6, title: "🏋️ Обучение агента", desc: "Цикл обучения с живым отображением прогресса", id: "training" },
-                    { n: 7, title: "📊 Анализ результатов", desc: "Графики метрик и тепловая карта Q-таблицы", id: "analysis" },
-                    { n: 8, title: "🎮 Тестирование агента", desc: "Смотрим, как обученный агент проходит озеро", id: "testing" },
-                    { n: 9, title: "🧪 Эксперименты", desc: "Меняем параметры — наблюдаем эффект", id: "experiments" },
-                  ].map((item) => (
-                    <tr key={item.n} className="border-b border-border/20 hover:bg-primary/5 transition-colors cursor-pointer" onClick={() => document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" })}>
-                      <td className="py-2 px-3 text-primary font-mono">{item.n}</td>
-                      <td className="py-2 px-3 text-foreground font-medium">{item.title}</td>
-                      <td className="py-2 px-3 text-muted-foreground">{item.desc}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </CardContent>
-        </Card>
+      {/* Two-column layout */}
+      <div className="container mx-auto px-4 py-8 flex gap-8">
+        {/* Sticky sidebar TOC */}
+        <aside className="hidden lg:block w-64 shrink-0">
+          <nav className="sticky top-24 space-y-1">
+            <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3 flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-primary" />
+              Содержание
+            </h2>
+            {TOC_ITEMS.map(({ id, label }) => (
+              <button
+                key={id}
+                onClick={() => scrollTo(id)}
+                className={`block w-full text-left text-sm px-3 py-2 rounded-md transition-colors cursor-pointer border-l-2 ${
+                  activeId === id
+                    ? "border-primary text-primary bg-primary/10 font-medium"
+                    : "border-transparent text-muted-foreground hover:text-foreground hover:bg-muted/30"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
 
-        {/* Section 1: RL Basics */}
+            <div className="mt-6 pt-4 border-t border-border/30">
+              <Button variant="outline" size="sm" asChild className="w-full border-primary/50 text-primary hover:bg-primary/10">
+                <a href="/FrozenLake_QLearning_Module.ipynb" download className="flex items-center gap-2 justify-center">
+                  <Download className="w-4 h-4" />
+                  Скачать IPYNB
+                </a>
+              </Button>
+            </div>
+          </nav>
+        </aside>
+
+        {/* Main content */}
+        <main className="flex-1 min-w-0">
         <section className="mb-12 scroll-mt-28" id="rl-basics">
           <SectionHeader icon={<BookOpen className="w-6 h-6 text-primary" />} title="1. 🌍 Что такое обучение с подкреплением?" id="rl-basics-header" />
 
