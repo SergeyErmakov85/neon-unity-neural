@@ -44,6 +44,29 @@ const SectionHeader = ({ icon, title, id }: { icon: React.ReactNode; title: stri
 
 const FrozenLakeProject = () => {
   const navigate = useNavigate();
+  const [activeId, setActiveId] = useState<string>("");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        }
+      },
+      { rootMargin: "-20% 0px -60% 0px" }
+    );
+    TOC_ITEMS.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <div className="min-h-screen bg-background">
