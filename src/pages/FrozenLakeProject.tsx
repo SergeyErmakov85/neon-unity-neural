@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 import Navbar from "@/components/landing/Navbar";
 import FooterSection from "@/components/landing/FooterSection";
 import SEOHead from "@/components/SEOHead";
@@ -8,6 +8,18 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import { ArrowLeft, Download, Snowflake, BookOpen, Brain, Calculator, Settings, Dumbbell, BarChart3, Gamepad2, FlaskConical, FileText } from "lucide-react";
+
+const TOC_ITEMS = [
+  { id: "rl-basics", label: "1. Что такое RL?" },
+  { id: "frozen-lake-env", label: "2. Среда Frozen Lake" },
+  { id: "q-math", label: "3. Математика Q-Learning" },
+  { id: "setup", label: "4. Настройка окружения" },
+  { id: "init", label: "5. Инициализация" },
+  { id: "training", label: "6. Обучение агента" },
+  { id: "analysis", label: "7. Анализ результатов" },
+  { id: "testing", label: "8. Тестирование агента" },
+  { id: "experiments", label: "9. Эксперименты" },
+];
 
 const Math = lazy(() => import("@/components/Math"));
 
