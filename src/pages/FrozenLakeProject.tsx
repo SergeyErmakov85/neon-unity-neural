@@ -10,15 +10,15 @@ import CyberCodeBlock from "@/components/CyberCodeBlock";
 import { ArrowLeft, Download, Snowflake, BookOpen, Brain, Calculator, Settings, Dumbbell, BarChart3, Gamepad2, FlaskConical, FileText } from "lucide-react";
 
 const TOC_ITEMS = [
-  { id: "rl-basics", label: "1. Что такое RL?" },
-  { id: "frozen-lake-env", label: "2. Среда Frozen Lake" },
-  { id: "q-math", label: "3. Математика Q-Learning" },
-  { id: "setup", label: "4. Настройка окружения" },
-  { id: "init", label: "5. Инициализация" },
-  { id: "training", label: "6. Обучение агента" },
-  { id: "analysis", label: "7. Анализ результатов" },
-  { id: "testing", label: "8. Тестирование агента" },
-  { id: "experiments", label: "9. Эксперименты" },
+  { id: "rl-basics", label: "Что такое RL?", emoji: "🌍", Icon: BookOpen },
+  { id: "frozen-lake-env", label: "Среда Frozen Lake", emoji: "🧊", Icon: Snowflake },
+  { id: "q-math", label: "Математика Q-Learning", emoji: "📐", Icon: Calculator },
+  { id: "setup", label: "Настройка окружения", emoji: "⚙️", Icon: Settings },
+  { id: "init", label: "Инициализация", emoji: "🏗️", Icon: Brain },
+  { id: "training", label: "Обучение агента", emoji: "🏋️", Icon: Dumbbell },
+  { id: "analysis", label: "Анализ результатов", emoji: "📊", Icon: BarChart3 },
+  { id: "testing", label: "Тестирование агента", emoji: "🎮", Icon: Gamepad2 },
+  { id: "experiments", label: "Эксперименты", emoji: "🧪", Icon: FlaskConical },
 ];
 
 const Math = lazy(() => import("@/components/Math"));
