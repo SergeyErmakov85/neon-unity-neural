@@ -169,6 +169,7 @@ const App = () => (
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/learn/:stageSlug/:lessonSlug" element={<LessonPage />} />
             <Route path="/fca-rl" element={<FcaRlModule />} />
+            <Route path="/projects/frozen-lake" element={<FrozenLakeProject />} />
             <Route path="/hub/:hubId" element={<HubPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
