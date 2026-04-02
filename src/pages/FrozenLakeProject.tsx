@@ -10,15 +10,15 @@ import CyberCodeBlock from "@/components/CyberCodeBlock";
 import { ArrowLeft, Download, Snowflake, BookOpen, Brain, Calculator, Settings, Dumbbell, BarChart3, Gamepad2, FlaskConical, FileText } from "lucide-react";
 
 const TOC_ITEMS = [
-  { id: "rl-basics", label: "1. Что такое RL?" },
-  { id: "frozen-lake-env", label: "2. Среда Frozen Lake" },
-  { id: "q-math", label: "3. Математика Q-Learning" },
-  { id: "setup", label: "4. Настройка окружения" },
-  { id: "init", label: "5. Инициализация" },
-  { id: "training", label: "6. Обучение агента" },
-  { id: "analysis", label: "7. Анализ результатов" },
-  { id: "testing", label: "8. Тестирование агента" },
-  { id: "experiments", label: "9. Эксперименты" },
+  { id: "rl-basics", label: "Что такое RL?", emoji: "🌍", Icon: BookOpen },
+  { id: "frozen-lake-env", label: "Среда Frozen Lake", emoji: "🧊", Icon: Snowflake },
+  { id: "q-math", label: "Математика Q-Learning", emoji: "📐", Icon: Calculator },
+  { id: "setup", label: "Настройка окружения", emoji: "⚙️", Icon: Settings },
+  { id: "init", label: "Инициализация", emoji: "🏗️", Icon: Brain },
+  { id: "training", label: "Обучение агента", emoji: "🏋️", Icon: Dumbbell },
+  { id: "analysis", label: "Анализ результатов", emoji: "📊", Icon: BarChart3 },
+  { id: "testing", label: "Тестирование агента", emoji: "🎮", Icon: Gamepad2 },
+  { id: "experiments", label: "Эксперименты", emoji: "🧪", Icon: FlaskConical },
 ];
 
 const Math = lazy(() => import("@/components/Math"));
@@ -129,17 +129,18 @@ const FrozenLakeProject = () => {
               <BookOpen className="w-4 h-4 text-primary" />
               Содержание
             </h2>
-            {TOC_ITEMS.map(({ id, label }) => (
+            {TOC_ITEMS.map(({ id, label, Icon }, i) => (
               <button
                 key={id}
                 onClick={() => scrollTo(id)}
-                className={`block w-full text-left text-sm px-3 py-2 rounded-md transition-colors cursor-pointer border-l-2 ${
+                className={`flex items-center gap-2 w-full text-left text-sm px-3 py-2 rounded-md transition-colors cursor-pointer border-l-2 ${
                   activeId === id
                     ? "border-primary text-primary bg-primary/10 font-medium"
                     : "border-transparent text-muted-foreground hover:text-foreground hover:bg-muted/30"
                 }`}
               >
-                {label}
+                <Icon className="w-3.5 h-3.5 shrink-0" />
+                {i + 1}. {label}
               </button>
             ))}
 
@@ -160,22 +161,24 @@ const FrozenLakeProject = () => {
         {/* Inline TOC */}
         <Card className="mb-10 bg-card/60 border-border/30 backdrop-blur-sm">
           <CardContent className="p-6">
-            <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
               <FileText className="w-5 h-5 text-primary" />
               Содержание модуля
             </h2>
-            <ol className="space-y-2">
-              {TOC_ITEMS.map(({ id, label }) => (
-                <li key={id}>
-                  <button
-                    onClick={() => scrollTo(id)}
-                    className="text-sm text-primary hover:underline hover:text-primary/80 transition-colors cursor-pointer text-left"
-                  >
-                    {label}
-                  </button>
-                </li>
+            <div className="space-y-3">
+              {TOC_ITEMS.map(({ id, label, emoji, Icon }, i) => (
+                <button
+                  key={id}
+                  onClick={() => scrollTo(id)}
+                  className="flex items-center gap-3 w-full text-left px-4 py-3 rounded-lg border border-border/30 bg-background/40 hover:bg-primary/10 hover:border-primary/30 transition-colors cursor-pointer group"
+                >
+                  <Icon className="w-5 h-5 text-primary shrink-0" />
+                  <span className="text-base font-medium text-foreground group-hover:text-primary transition-colors">
+                    {i + 1}. {emoji} {label}
+                  </span>
+                </button>
               ))}
-            </ol>
+            </div>
           </CardContent>
         </Card>
 
