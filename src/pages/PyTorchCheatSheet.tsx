@@ -384,6 +384,7 @@ start_epoch = checkpoint['epoch']`}</CyberCodeBlock>
             </p>
           </InfoBox>
           <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" id="onnx-export">ONNX-экспорт</h3>
+          <HubLessonBadges hubPath="/pytorch/cheatsheet" hubAnchor="onnx-export" />
           <p>Экспорт модели в формат ONNX для использования вне PyTorch (Unity Sentis, TensorRT, ONNX Runtime) (экспорт для Unity — <CrossLinkToLesson lessonId="3-5" lessonPath="/courses/3-5" lessonTitle="ONNX-экспорт и деплой в Unity" lessonLevel={3} />).</p>
 
           <CyberCodeBlock language="python" filename="onnx_export.py">{`import torch

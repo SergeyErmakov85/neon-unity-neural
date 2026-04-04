@@ -493,6 +493,14 @@ export const LESSON_CONTEXT_LINKS: Record<string, ContextLink[]> = {
       ctaLabel: "Deep RL хаб",
       isPrimary: true,
     },
+    {
+      hubId: "fca-rl",
+      placement: "after-code",
+      title: "FCA для гиперпараметров",
+      whyThisNow: "Структурирование результатов sweep и выбор зон для следующих экспериментов.",
+      ctaLabel: "FCA хаб",
+      isPrimary: false,
+    },
   ],
   "nn-architectures": [
     {
@@ -517,6 +525,14 @@ export const LESSON_CONTEXT_LINKS: Record<string, ContextLink[]> = {
       title: "Математика нейросетей",
       whyThisNow: "Обратное распространение и градиентный поток.",
       ctaLabel: "Математика",
+      isPrimary: false,
+    },
+    {
+      hubId: "fca-rl",
+      placement: "lesson-end",
+      title: "FCA для архитектур",
+      whyThisNow: "Формальный контекст для сравнения и выбора архитектуры под задачу.",
+      ctaLabel: "FCA хаб",
       isPrimary: false,
     },
   ],

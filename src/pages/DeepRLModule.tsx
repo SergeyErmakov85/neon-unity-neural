@@ -237,7 +237,13 @@ const DeepRLModule = () => {
             2. Ключевые алгоритмы Deep RL
           </h2>
           <HubLessonBadges hubPath="/deep-rl" hubAnchor="algorithms" />
-
+          <p className="text-sm text-muted-foreground -mt-2 mb-2">
+            В курсе подробнее: мультиагенты —{" "}
+            <CrossLinkToLesson lessonId="3-2" lessonPath="/courses/3-2" lessonTitle="MA-POCA и Self-Play" lessonLevel={3} />
+            ; имитационное обучение —{" "}
+            <CrossLinkToLesson lessonId="3-4" lessonPath="/courses/3-4" lessonTitle="Имитационное обучение (GAIL)" lessonLevel={3} />
+            .
+          </p>
 
           <Card className="bg-card/60 backdrop-blur-sm border-secondary/20">
             <CardContent className="p-6 space-y-4">
@@ -351,7 +357,11 @@ const DeepRLModule = () => {
             3. Практическое применение
           </h2>
           <HubLessonBadges hubPath="/deep-rl" hubAnchor="practice" />
-
+          <p className="text-sm text-muted-foreground -mt-2 mb-2">
+            Curriculum Learning в Unity ML-Agents — урок{" "}
+            <CrossLinkToLesson lessonId="3-3" lessonPath="/courses/3-3" lessonTitle="Curriculum Learning" lessonLevel={3} />
+            .
+          </p>
 
           <Card className="bg-card/60 backdrop-blur-sm border-primary/20">
             <CardContent className="p-6 space-y-4">

@@ -53,7 +53,6 @@ const PPOModule = () => {
         {/* Введение */}
         <section id="ppo-overview" className="space-y-4">
           <h2 className="text-2xl font-bold text-foreground">Введение</h2>
-          <HubLessonBadges hubPath="/algorithms/ppo" />
           <p className="text-muted-foreground leading-relaxed">
             <strong className="text-foreground">PPO (Proximal Policy Optimization)</strong> — один из самых популярных
             алгоритмов обучения с подкреплением, разработанный OpenAI в 2017 году. PPO является стандартным алгоритмом
@@ -95,6 +94,7 @@ const PPOModule = () => {
           <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Shield className="w-6 h-6 text-secondary" /> 2. Clipped Objective
           </h2>
+          <HubLessonBadges hubPath="/algorithms/ppo" hubAnchor="clipped" />
           <Card className="bg-card/60 backdrop-blur-sm border-secondary/20">
             <CardContent className="p-6 space-y-4">
               <p className="text-muted-foreground leading-relaxed">
@@ -126,6 +126,7 @@ const PPOModule = () => {
           <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Cpu className="w-6 h-6 text-secondary" /> 3. Generalized Advantage Estimation
           </h2>
+          <HubLessonBadges hubPath="/algorithms/ppo" hubAnchor="gae" />
           <Card className="bg-card/60 backdrop-blur-sm border-secondary/20">
             <CardContent className="p-6 space-y-4">
               <p className="text-muted-foreground leading-relaxed">
@@ -152,6 +153,7 @@ const PPOModule = () => {
           <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Cpu className="w-6 h-6 text-secondary" /> 4. Архитектура Actor-Critic
           </h2>
+          <HubLessonBadges hubPath="/algorithms/ppo" hubAnchor="architecture" />
           <Card className="bg-card/60 backdrop-blur-sm border-secondary/20">
             <CardContent className="p-6 space-y-4">
               <p className="text-muted-foreground leading-relaxed">
@@ -185,6 +187,7 @@ const PPOModule = () => {
           <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Code className="w-6 h-6 text-secondary" /> 5. Реализация на PyTorch
           </h2>
+          <HubLessonBadges hubPath="/algorithms/ppo" hubAnchor="implementation" />
           <p className="text-muted-foreground text-sm mb-4">(реализация — <CrossLinkToLesson lessonId="2-2" lessonPath="/courses/2-2" lessonTitle="PPO — Proximal Policy Optimization" lessonLevel={2} />)</p>
           <Card className="bg-card/60 backdrop-blur-sm border-secondary/20">
             <CardContent className="p-6 space-y-4">
@@ -378,6 +381,7 @@ def ppo_update(model, optimizer, obs, actions, old_log_probs,
           <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Rocket className="w-6 h-6 text-secondary" /> 7. Конфигурация для Unity ML-Agents
           </h2>
+          <HubLessonBadges hubPath="/algorithms/ppo" hubAnchor="unity" />
           <p className="text-muted-foreground text-sm mb-4">(Racing Car — <CrossLinkToLesson lessonId="project-3" lessonPath="/courses/project-3" lessonTitle="Гоночный агент с непрерывным управлением" lessonLevel={2} />)</p>
           <Card className="bg-card/60 backdrop-blur-sm border-secondary/20">
             <CardContent className="p-6 space-y-4">
