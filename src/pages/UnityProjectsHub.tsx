@@ -110,6 +110,7 @@ const UnityProjectsHub = () => {
           <p className="text-muted-foreground mt-2 max-w-3xl">
             Пошаговые руководства по созданию 3D проектов с интеллектуальными агентами в Unity ML-Agents.
           </p>
+          <HubLessonBadges hubPath="/unity-projects" />
         </div>
       </div>
 

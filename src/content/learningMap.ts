@@ -39,7 +39,7 @@ export const LEARNING_MAP: Stage[] = [
       { id: "1-5", slug: "mdp", title: "Марковские процессы принятия решений (MDP)", type: "lesson", path: "/courses/1-5", contextLinks: linksFor("mdp") },
       { id: "1-6", slug: "q-learning-tabular", title: "Q-Learning: табличный метод", type: "lesson", path: "/courses/1-6", contextLinks: linksFor("q-learning-tabular") },
       { id: "1-7", slug: "exploration-exploitation", title: "Exploration vs Exploitation", type: "lesson", path: "/courses/1-7", contextLinks: linksFor("exploration-exploitation") },
-      { id: "p-1", slug: "project-1", title: "Проект: Балансировка шеста", type: "project", path: "/courses/project-1", contextLinks: [] },
+      { id: "p-1", slug: "project-1", title: "Проект: Балансировка шеста", type: "project", path: "/courses/project-1", contextLinks: linksFor("project-1") },
     ],
   },
   {
@@ -56,8 +56,8 @@ export const LEARNING_MAP: Stage[] = [
       { id: "2-4", slug: "reward-shaping", title: "Reward Shaping", type: "lesson", path: "/courses/2-4", contextLinks: linksFor("reward-shaping") },
       { id: "2-5", slug: "parallel-envs", title: "Параллельные среды", type: "lesson", path: "/courses/2-5", contextLinks: linksFor("parallel-envs") },
       { id: "2-6", slug: "tensorboard-wandb", title: "TensorBoard и W&B", type: "lesson", path: "/courses/2-6", contextLinks: linksFor("tensorboard-wandb") },
-      { id: "p-2", slug: "project-2", title: "Проект: 3D-охотник", type: "project", path: "/courses/project-2", contextLinks: [] },
-      { id: "p-3", slug: "project-3", title: "Проект: Гоночный агент", type: "project", path: "/courses/project-3", contextLinks: [] },
+      { id: "p-2", slug: "project-2", title: "Проект: 3D-охотник", type: "project", path: "/courses/project-2", contextLinks: linksFor("project-2") },
+      { id: "p-3", slug: "project-3", title: "Проект: Гоночный агент", type: "project", path: "/courses/project-3", contextLinks: linksFor("project-3") },
     ],
   },
   {
@@ -75,7 +75,7 @@ export const LEARNING_MAP: Stage[] = [
       { id: "3-5", slug: "onnx-deploy", title: "Деплой модели: ONNX", type: "lesson", path: "/courses/3-5", contextLinks: linksFor("onnx-deploy") },
       { id: "3-6", slug: "hyperopt", title: "Оптимизация гиперпараметров", type: "lesson", path: "/courses/3-6", contextLinks: linksFor("hyperopt") },
       { id: "3-7", slug: "nn-architectures", title: "Архитектуры нейросетей", type: "lesson", path: "/courses/3-7", contextLinks: linksFor("nn-architectures") },
-      { id: "p-final", slug: "final-project", title: "Финальный проект: Игра с NPC", type: "project", path: "/courses/final-project", contextLinks: [] },
+      { id: "p-final", slug: "final-project", title: "Финальный проект: Игра с NPC", type: "project", path: "/courses/final-project", contextLinks: linksFor("final-project") },
     ],
   },
 ];

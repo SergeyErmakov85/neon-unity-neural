@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Math from "@/components/Math";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import CrossLinkToHub from "@/components/CrossLinkToHub";
+import HubLessonBadges from "@/components/HubLessonBadges";
 import {
   Accordion,
   AccordionContent,
@@ -27,6 +28,7 @@ const PyTorchModule = () => {
         <p className="text-muted-foreground mb-8 text-lg">
           Табличное Q-обучение и Deep Q-Network для задачи навигации такси с использованием NumPy, PyTorch и Gym
         </p>
+        <HubLessonBadges hubPath="/pytorch" />
 
         {/* Download + Cheat Sheet */}
         <div className="mb-10 grid gap-4 sm:grid-cols-2">

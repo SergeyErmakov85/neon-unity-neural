@@ -4,7 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, GraduationCap, Users, Eye, Swords, Cpu } from "lucide-react";
 import { Link } from "react-router-dom";
-import HubLessonBadges from "@/components/HubLessonBadges";
 import CrossLinkToLesson from "@/components/CrossLinkToLesson";
 
 const codeBlock = (code: string, lang = "yaml") => (
@@ -45,7 +44,6 @@ const AdvancedTopics = () => {
 
           {/* Curriculum Learning */}
           <TabsContent id="curriculum" value="curriculum">
-            <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Curriculum Learning</CardTitle>
@@ -98,7 +96,6 @@ const AdvancedTopics = () => {
 
           {/* Multi-Agent */}
           <TabsContent id="multiagent" value="multiagent">
-            <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Multi-Agent RL (MAPOCA) (<CrossLinkToLesson lessonId="3-2" lessonPath="/courses/3-2" lessonTitle="Multi-Agent RL и Self-Play" lessonLevel={3} />)</CardTitle>
@@ -144,7 +141,6 @@ public class TeamAgent : Agent {
 
           {/* Imitation Learning */}
           <TabsContent id="imitation" value="imitation">
-            <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Imitation Learning (BC + GAIL) (<CrossLinkToLesson lessonId="3-4" lessonPath="/courses/3-4" lessonTitle="Imitation Learning: BC и GAIL" lessonLevel={3} />)</CardTitle>
@@ -179,7 +175,6 @@ mlagents-learn config/gail.yaml --run-id=gail_run`, "bash")}
 
           {/* Self-Play */}
           <TabsContent id="selfplay" value="selfplay">
-            <HubLessonBadges hubPath="/advanced" />
             <Card className="border-primary/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Self-Play</CardTitle>

@@ -57,7 +57,7 @@ const CourseLesson3_3 = () => {
         <p className="text-muted-foreground leading-relaxed">
           Представьте, что ребёнка сразу посадили за руль болида Формулы-1 — он ничему не научится.
           Но если начать с велосипеда, потом картинг, потом обычная машина — он освоит вождение.
-          <strong className="text-foreground"> <CrossLinkToHub hubPath="/advanced" hubTitle="Продвинутые темы — Curriculum Learning">Curriculum Learning</CrossLinkToHub></strong> применяет тот же принцип к RL-агентам.
+          <strong className="text-foreground"> <CrossLinkToHub hubPath="/deep-rl" hubAnchor="practice" hubTitle="Deep RL — практика и curriculum">Curriculum Learning</CrossLinkToHub></strong> применяет тот же принцип к RL-агентам.
         </p>
         <p className="text-muted-foreground leading-relaxed mt-3">
           А <strong className="text-primary">Environment Randomization</strong> — это способ сделать агента

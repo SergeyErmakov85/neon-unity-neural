@@ -49,7 +49,6 @@ const SACModule = () => {
         {/* Введение */}
         <section id="sac-overview" className="space-y-4">
           <h2 className="text-2xl font-bold text-foreground">Введение</h2>
-          <HubLessonBadges hubPath="/algorithms/sac" />
           <p className="text-muted-foreground leading-relaxed">
             <strong className="text-foreground">SAC (Soft Actor-Critic)</strong> — off-policy алгоритм, основанный на
             принципе максимизации энтропии. Разработан в 2018 году в UC Berkeley. SAC автоматически балансирует
@@ -63,6 +62,7 @@ const SACModule = () => {
           <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Target className="w-6 h-6 text-accent" /> 1. Maximum Entropy RL
           </h2>
+          <HubLessonBadges hubPath="/algorithms/sac" hubAnchor="entropy" />
           <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
             <CardContent className="p-6 space-y-4">
               <p className="text-muted-foreground leading-relaxed">
@@ -111,6 +111,7 @@ const SACModule = () => {
           <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Zap className="w-6 h-6 text-accent" /> 3. Архитектура SAC
           </h2>
+          <HubLessonBadges hubPath="/algorithms/sac" hubAnchor="architecture" />
           <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
             <CardContent className="p-6 space-y-4">
               <p className="text-muted-foreground leading-relaxed">SAC использует 5 нейронных сетей:</p>
@@ -136,6 +137,7 @@ const SACModule = () => {
           <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Code className="w-6 h-6 text-accent" /> 4. Реализация на PyTorch
           </h2>
+          <HubLessonBadges hubPath="/algorithms/sac" hubAnchor="implementation" />
           <p className="text-muted-foreground text-sm mb-4">(реализация — <CrossLinkToLesson lessonId="3-1" lessonPath="/courses/3-1" lessonTitle="SAC — Soft Actor-Critic" lessonLevel={3} />)</p>
           <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
             <CardContent className="p-6 space-y-4">
@@ -217,6 +219,7 @@ class GaussianPolicy(nn.Module):
           <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Rocket className="w-6 h-6 text-accent" /> 5. Конфигурация для Unity ML-Agents
           </h2>
+          <HubLessonBadges hubPath="/algorithms/sac" hubAnchor="unity" />
           <Card className="bg-card/60 backdrop-blur-sm border-accent/20">
             <CardContent className="p-6 space-y-4">
               <pre className="bg-background/80 border border-border/50 rounded-lg p-4 overflow-x-auto text-sm text-foreground">

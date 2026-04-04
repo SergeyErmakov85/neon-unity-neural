@@ -2,6 +2,8 @@ import { useMemo, lazy, Suspense } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { SUPPORT_HUBS, type HubId } from "@/content/hubs";
 import { LEARNING_MAP, type Stage, type Lesson } from "@/content/learningMap";
+import { CROSSLINKS } from "@/config/crosslinks";
+import { hubPathToSupportHubId } from "@/lib/hubPathToSupportHubId";
 import { Button } from "@/components/ui/button";
 import { PageSkeleton } from "@/components/SkeletonCard";
 import { ArrowLeft, ArrowRight, BookOpen, SearchX } from "lucide-react";
@@ -23,14 +25,30 @@ interface BackLink {
 }
 
 function findLessonsForHub(hubId: HubId): BackLink[] {
+  const seen = new Set<string>();
   const results: BackLink[] = [];
+
+  const push = (stage: Stage, lesson: Lesson) => {
+    if (seen.has(lesson.id)) return;
+    seen.add(lesson.id);
+    results.push({ stage, lesson });
+  };
+
   for (const stage of LEARNING_MAP) {
     for (const lesson of stage.lessons) {
       if (lesson.contextLinks.some((cl) => cl.hubId === hubId)) {
-        results.push({ stage, lesson });
+        push(stage, lesson);
       }
     }
   }
+
+  for (const link of CROSSLINKS) {
+    if (hubPathToSupportHubId(link.hubPath) !== hubId) continue;
+    const stage = LEARNING_MAP.find((s) => s.lessons.some((l) => l.path === link.lessonPath));
+    const lesson = stage?.lessons.find((l) => l.path === link.lessonPath);
+    if (stage && lesson) push(stage, lesson);
+  }
+
   return results;
 }
 
