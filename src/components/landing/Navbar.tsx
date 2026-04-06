@@ -135,7 +135,7 @@ const Navbar = () => {
               <img
                 src={logoImage}
                 alt="RL Platform"
-                className="h-16 md:h-20 lg:h-24 w-auto transition-all duration-300 group-hover:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]"
+                className="h-20 md:h-24 lg:h-28 w-auto transition-all duration-300 group-hover:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]"
                 loading="eager"
                 decoding="async"
                 width="200"
