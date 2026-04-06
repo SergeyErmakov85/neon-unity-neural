@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import {
   ArrowLeft, Download, Brain, Zap, Shield, Target, Layers,
   GitBranch, CheckCircle2, XCircle, ChevronRight, Sparkles,
-  Play, Database, RefreshCw, Save, FileCode, Box, BookOpen
+  Play, Database, RefreshCw, Save, FileCode, Box, BookOpen, Network
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Math from "@/components/Math";
@@ -651,6 +651,31 @@ const DemoProject = () => {
               </CardHeader>
               <CardContent>
                 <FullCodeDisplay />
+              </CardContent>
+            </Card>
+          </AnimatedSection>
+
+          {/* ════════ TRAINED MODEL ════════ */}
+          <AnimatedSection id="trained-model" className="pt-8">
+            <Card className="bg-card/40 border-secondary/20 overflow-hidden">
+              <CardContent className="p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="relative w-16 h-16 shrink-0 rounded-xl bg-secondary/10 border border-secondary/30 flex items-center justify-center shadow-[0_0_20px_hsl(var(--secondary)/0.2)]">
+                    <Network className="w-8 h-8 text-secondary" />
+                    <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-secondary animate-pulse" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
+                      <Brain className="w-5 h-5 text-secondary" /> Обученная нейронная сеть
+                    </h3>
+                    <p className="text-sm text-muted-foreground mt-1">FoodCollector_REINFORCE_3.0.onnx — готовая модель, загрузи в Unity Sentis и запусти агента.</p>
+                  </div>
+                </div>
+                <a href="/FoodCollector_REINFORCE_3.0.onnx" download>
+                  <Button variant="secondary" className="shrink-0 gap-2">
+                    <Download className="w-4 h-4" /> Скачать .onnx
+                  </Button>
+                </a>
               </CardContent>
             </Card>
           </AnimatedSection>
