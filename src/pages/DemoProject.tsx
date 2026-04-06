@@ -20,12 +20,14 @@ import Math from "@/components/Math";
 
 /* ───────── Section Navigation ───────── */
 const sections = [
-  { id: "intro", label: "Введение" },
-  { id: "architecture", label: "Архитектура" },
-  { id: "training", label: "Обучение" },
-  { id: "export", label: "Экспорт" },
-  { id: "test", label: "Тест" },
-  { id: "audit", label: "Аудит" },
+  { id: "intro", label: "Введение", icon: Brain },
+  { id: "architecture", label: "Архитектура", icon: Layers },
+  { id: "training", label: "Обучение", icon: Zap },
+  { id: "export", label: "Экспорт", icon: Box },
+  { id: "test", label: "Тест", icon: CheckCircle2 },
+  { id: "full-code", label: "Полный код", icon: FileCode },
+  { id: "trained-model", label: "Нейросеть", icon: Network },
+  { id: "audit", label: "Аудит", icon: BookOpen },
 ];
 
 /* ───────── Optimizations Data ───────── */
