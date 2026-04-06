@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Brain, Zap, Shield, GitBranch, ArrowRight, CheckCircle, AlertTriangle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import AlgorithmTable from "@/components/landing/AlgorithmTable";
 
 const algorithms = [
   {
@@ -136,6 +137,9 @@ const AlgorithmsHub = () => {
             );
           })}
         </div>
+
+        <AlgorithmTable />
+
 
         <div className="flex justify-center">
           <Button onClick={() => navigate("/")} variant="outline" className="border-primary/50 text-primary hover:bg-primary/10">

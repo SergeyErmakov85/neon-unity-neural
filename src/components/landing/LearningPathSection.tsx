@@ -5,7 +5,7 @@ import { LEARNING_MAP } from "@/content/learningMap";
 import { SUPPORT_HUBS, type HubId } from "@/content/hubs";
 import { useLearningProgress } from "@/hooks/useLearningProgress";
 import { useUserRole } from "@/hooks/useUserRole";
-import AlgorithmTable from "./AlgorithmTable";
+
 
 const stageColors = [
   {
@@ -186,9 +186,7 @@ const LearningPathSection = () => {
           </div>
         </div>
 
-        <div className="relative z-20">
-          <AlgorithmTable />
-        </div>
+
       </div>
     </section>
   );
