@@ -186,9 +186,7 @@ const LearningPathSection = () => {
           </div>
         </div>
 
-        <div className="relative z-20">
-          <AlgorithmTable />
-        </div>
+
       </div>
     </section>
   );
