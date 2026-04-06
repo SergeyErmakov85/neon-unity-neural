@@ -20,12 +20,14 @@ import Math from "@/components/Math";
 
 /* ───────── Section Navigation ───────── */
 const sections = [
-  { id: "intro", label: "Введение" },
-  { id: "architecture", label: "Архитектура" },
-  { id: "training", label: "Обучение" },
-  { id: "export", label: "Экспорт" },
-  { id: "test", label: "Тест" },
-  { id: "audit", label: "Аудит" },
+  { id: "intro", label: "Введение", icon: Brain },
+  { id: "architecture", label: "Архитектура", icon: Layers },
+  { id: "training", label: "Обучение", icon: Zap },
+  { id: "export", label: "Экспорт", icon: Box },
+  { id: "test", label: "Тест", icon: CheckCircle2 },
+  { id: "full-code", label: "Полный код", icon: FileCode },
+  { id: "trained-model", label: "Нейросеть", icon: Network },
+  { id: "audit", label: "Аудит", icon: BookOpen },
 ];
 
 /* ───────── Optimizations Data ───────── */
@@ -244,7 +246,7 @@ const DemoProject = () => {
           }
         }
       },
-      { rootMargin: "-30% 0px -60% 0px" }
+      { rootMargin: "-20% 0px -70% 0px" }
     );
     sections.forEach((s) => {
       const el = document.getElementById(s.id);
@@ -272,29 +274,34 @@ const DemoProject = () => {
       />
       <Navbar />
 
-      {/* Section Nav */}
-      <div className="fixed top-20 left-0 right-0 z-40 bg-background/80 backdrop-blur-lg border-b border-border/50">
-        <div className="container mx-auto px-4">
-          <nav className="flex items-center gap-1 overflow-x-auto py-2 scrollbar-hide">
-            {sections.map((s) => (
-              <button
-                key={s.id}
-                onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth" })}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300 ${
-                  activeSection === s.id
-                    ? "bg-primary/20 text-primary shadow-[0_0_12px_hsl(var(--primary)/0.3)]"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                }`}
-              >
-                {s.label}
-              </button>
-            ))}
+      {/* Layout: sidebar + content */}
+      <div className="container mx-auto px-4 pt-8 pb-20 flex gap-8">
+        {/* Left sidebar TOC — hidden on mobile */}
+        <aside className="hidden lg:block w-56 shrink-0">
+          <nav className="sticky top-24 space-y-1">
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3 px-3">Содержание</p>
+            {sections.map((s) => {
+              const Icon = s.icon;
+              return (
+                <button
+                  key={s.id}
+                  onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth" })}
+                  className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 text-left ${
+                    activeSection === s.id
+                      ? "bg-primary/15 text-primary shadow-[0_0_12px_hsl(var(--primary)/0.2)]"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                  }`}
+                >
+                  <Icon className="w-4 h-4 shrink-0" />
+                  {s.label}
+                </button>
+              );
+            })}
           </nav>
-        </div>
-      </div>
+        </aside>
 
-      <main className="pt-36 pb-20 px-4">
-        <div className="container mx-auto max-w-5xl space-y-32">
+        {/* Main content */}
+        <main className="flex-1 min-w-0 space-y-16">
 
           {/* Download */}
           <div className="flex justify-end">
@@ -1143,8 +1150,8 @@ log_prob_cont = dist_cont.log_prob(raw_action)  # ✓ Корректно`}</Cybe
               </Accordion>
             </div>
           </AnimatedSection>
-        </div>
-      </main>
+        </main>
+      </div>
 
       <FooterSection />
     </div>
