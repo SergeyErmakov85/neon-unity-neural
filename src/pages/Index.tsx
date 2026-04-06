@@ -12,6 +12,7 @@ import AudienceSection from "@/components/landing/AudienceSection";
 import UniqueValueSection from "@/components/landing/UniqueValueSection";
 import TestimonialSection from "@/components/landing/TestimonialSection";
 import FinalCTASection from "@/components/landing/FinalCTASection";
+import AboutMeSection from "@/components/landing/AboutMeSection";
 import EmailCapture from "@/components/landing/EmailCapture";
 import FooterSection from "@/components/landing/FooterSection";
 
@@ -47,6 +48,7 @@ const Index = () => {
       <AudienceSection />
       <UniqueValueSection />
       <TestimonialSection />
+      <AboutMeSection />
       <FinalCTASection />
       <EmailCapture />
       <FooterSection />
