@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search, LogOut, Brain, Gamepad2, Sparkles, Rocket, Network, User as UserIcon } from "lucide-react";
+import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search, LogOut, Brain, Gamepad2, Sparkles, Rocket, Network, User as UserIcon, Cpu } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 import logoImage from "@/assets/Logo_RL_platform.png";
@@ -166,6 +166,10 @@ const Navbar = () => {
               <Sparkles className="w-5 h-5 text-accent" />
               <span className="text-sm font-medium text-foreground">Математика RL</span>
             </button>
+            <button onClick={() => navigate("/algorithms")} className={`flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname.startsWith("/algorithms") ? "border-blue-500/70 bg-blue-500/15 shadow-glow-darkblue" : "border-blue-500/30 shadow-glow-darkblue hover:bg-blue-500/10"}`}>
+              <Cpu className="w-5 h-5 text-blue-400" />
+              <span className="text-sm font-medium text-foreground">Алгоритмы RL</span>
+            </button>
             <button onClick={() => navigate("/hub/fca-rl")} className={`flex items-center gap-2 px-4 py-2 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/fca-rl" ? "border-yellow-500/70 bg-yellow-500/15 shadow-glow-yellow" : "border-yellow-500/30 shadow-glow-yellow hover:bg-yellow-500/10"}`}>
               <Network className="w-5 h-5 text-yellow-400" />
               <span className="text-sm font-medium text-foreground">FCA + RL</span>
@@ -257,6 +261,7 @@ const Navbar = () => {
                     { href: "/hub/deep-rl", label: "Deep RL", Icon: Code2, color: "text-accent" },
                     { href: "/hub/project", label: "Проекты", Icon: Rocket, color: "text-secondary" },
                     { href: "/hub/math-rl", label: "Математика RL", Icon: Sparkles, color: "text-accent" },
+                    { href: "/algorithms", label: "Алгоритмы RL", Icon: Cpu, color: "text-blue-400" },
                     { href: "/hub/fca-rl", label: "FCA + RL", Icon: Network, color: "text-yellow-400" },
                   ].map((item) => (
                     <button
