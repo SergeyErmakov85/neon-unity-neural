@@ -5,7 +5,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search, LogOut, Brain, Gamepad2, Sparkles, Rocket, Network, User as UserIcon, Cpu } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
-import logoImage from "@/assets/Logo_RL_platform.png";
+import logoImage from "@/assets/logo-rl-platform.png";
 import GlobalSearch from "@/components/GlobalSearch";
 import UserProfilePopover from "@/components/UserProfilePopover";
 import XpNotification from "@/components/XpNotification";
