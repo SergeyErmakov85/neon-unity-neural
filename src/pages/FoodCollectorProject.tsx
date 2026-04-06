@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, Download, Brain, Code, FlaskConical, BarChart3 } from "lucide-react";
+import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, Download, Brain, Code, FlaskConical, BarChart3, Network } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import SEOHead from "@/components/SEOHead";
@@ -140,6 +140,33 @@ const FoodCollectorProject = () => {
               <a href="/FoodCollector_REINFORCE_v3.ipynb" download>
                 <Button variant="cyber">
                   <Download className="w-4 h-4 mr-2" /> Скачать .ipynb
+                </Button>
+              </a>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* 5b. Обученная нейронная сеть */}
+        <section className="space-y-6">
+          <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
+            <Network className="w-6 h-6 text-secondary" /> Обученная нейронная сеть
+          </h2>
+          <Card className="bg-card/60 backdrop-blur-sm border-secondary/20 overflow-hidden">
+            <CardContent className="p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                {/* Neural network icon */}
+                <div className="relative w-16 h-16 shrink-0 rounded-xl bg-secondary/10 border border-secondary/30 flex items-center justify-center shadow-[0_0_20px_hsl(var(--secondary)/0.2)]">
+                  <Network className="w-8 h-8 text-secondary" />
+                  <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-secondary animate-pulse" />
+                </div>
+                <div>
+                  <p className="text-foreground font-medium">FoodCollector_REINFORCE_3.0.onnx</p>
+                  <p className="text-sm text-muted-foreground mt-1">Готовая модель ONNX — загрузи в Unity Sentis и запусти агента.</p>
+                </div>
+              </div>
+              <a href="/FoodCollector_REINFORCE_3.0.onnx" download>
+                <Button variant="secondary" className="shrink-0">
+                  <Download className="w-4 h-4 mr-2" /> Скачать .onnx
                 </Button>
               </a>
             </CardContent>
