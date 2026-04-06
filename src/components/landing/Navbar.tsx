@@ -329,8 +329,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Neon line at bottom */}
-      <div className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent transition-opacity duration-300 ${isScrolled ? "opacity-100" : "opacity-0"}`} />
     </nav>
     </>
   );
