@@ -1150,8 +1150,8 @@ log_prob_cont = dist_cont.log_prob(raw_action)  # ✓ Корректно`}</Cybe
               </Accordion>
             </div>
           </AnimatedSection>
-        </div>
-      </main>
+        </main>
+      </div>
 
       <FooterSection />
     </div>
