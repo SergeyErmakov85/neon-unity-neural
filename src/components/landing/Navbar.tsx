@@ -124,7 +124,7 @@ const Navbar = () => {
           {/* Logo - positioned left */}
           <a
             href="/"
-            className="absolute -left-24 top-6 flex items-center group"
+            className="absolute -left-32 top-6 flex items-center group"
             onClick={(e) => {
               e.preventDefault();
               navigate("/");
