@@ -5,7 +5,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, GraduationCap, Code2, FileText, CreditCard, HelpCircle, Users, Search, LogOut, Brain, Gamepad2, Sparkles, Rocket, Network, User as UserIcon, Cpu } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
-import logoImage from "@/assets/Logo_RL_platform.png";
+import logoImage from "@/assets/logo-rl-platform.png";
 import GlobalSearch from "@/components/GlobalSearch";
 import UserProfilePopover from "@/components/UserProfilePopover";
 import XpNotification from "@/components/XpNotification";
@@ -135,7 +135,7 @@ const Navbar = () => {
               <img
                 src={logoImage}
                 alt="RL Platform"
-                className="h-12 md:h-14 lg:h-16 w-auto transition-all duration-300 group-hover:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]"
+                className="h-16 md:h-20 lg:h-24 w-auto transition-all duration-300 group-hover:drop-shadow-[0_0_15px_hsl(var(--primary)/0.5)]"
                 loading="eager"
                 decoding="async"
                 width="200"
