@@ -68,13 +68,13 @@ const AboutMeSection = () => {
           {/* LinkedIn CTA */}
           <div className="flex justify-center">
             <a
-              href="https://www.linkedin.com/in/sergey-ermakov-7a146999/"
+              href="https://www.linkedin.com/in/sergey-ermakov-7a146999/?originalSubdomain=ru"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0A66C2]/10 border border-[#0A66C2]/30 text-[#0A66C2] hover:bg-[#0A66C2]/20 hover:border-[#0A66C2]/50 hover:shadow-[0_0_20px_rgba(10,102,194,0.15)] transition-all duration-300 font-medium"
             >
               <Linkedin className="w-5 h-5" />
-              Связаться в LinkedIn
+              Посмотреть профиль в LinkedIn
             </a>
           </div>
         </div>
