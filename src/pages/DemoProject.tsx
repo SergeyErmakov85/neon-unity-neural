@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import {
   ArrowLeft, Download, Brain, Zap, Shield, Target, Layers,
   GitBranch, CheckCircle2, XCircle, ChevronRight, Sparkles,
-  Play, Database, RefreshCw, Save, FileCode, Box, BookOpen
+  Play, Database, RefreshCw, Save, FileCode, Box, BookOpen, Network
 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Math from "@/components/Math";
