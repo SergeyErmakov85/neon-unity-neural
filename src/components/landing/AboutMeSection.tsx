@@ -31,9 +31,6 @@ const AboutMeSection = () => {
               <p className="text-primary font-medium">
                 Associate Professor · M.Sc. Computer Science · Data Scientist
               </p>
-              <p className="text-muted-foreground text-sm">
-                Московский Городской Психолого-Педагогический Университет (МГППУ)
-              </p>
             </div>
           </div>
 
