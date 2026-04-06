@@ -145,34 +145,34 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation - Tech Stack Badges */}
-          <div className="hidden lg:flex items-center gap-3 ml-28">
-            <button onClick={() => navigate("/hub/pytorch")} className={`flex items-center gap-2 px-4 h-10 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/pytorch" ? "border-primary/70 bg-primary/15 shadow-glow-cyan" : "border-primary/30 shadow-glow-cyan hover:bg-primary/10"}`}>
-              <Brain className="w-5 h-5 text-primary" />
-              <span className="text-sm font-medium text-foreground">PyTorch</span>
+          <div className="hidden lg:flex items-center gap-2 ml-28">
+            <button onClick={() => navigate("/hub/pytorch")} className={`flex items-center justify-center gap-2 w-[148px] h-10 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/pytorch" ? "border-primary/70 bg-primary/15 shadow-glow-cyan" : "border-primary/30 shadow-glow-cyan hover:bg-primary/10"}`}>
+              <Brain className="w-4 h-4 text-primary shrink-0" />
+              <span className="text-xs font-medium text-foreground whitespace-nowrap">PyTorch</span>
             </button>
-            <button onClick={() => navigate("/hub/unity-ml-agents")} className={`flex items-center gap-2 px-4 h-10 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/unity-ml-agents" ? "border-secondary/70 bg-secondary/15 shadow-glow-purple" : "border-secondary/30 shadow-glow-purple hover:bg-secondary/10"}`}>
-              <Gamepad2 className="w-5 h-5 text-secondary" />
-              <span className="text-sm font-medium text-foreground">Unity ML-Agents</span>
+            <button onClick={() => navigate("/hub/unity-ml-agents")} className={`flex items-center justify-center gap-2 w-[148px] h-10 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/unity-ml-agents" ? "border-secondary/70 bg-secondary/15 shadow-glow-purple" : "border-secondary/30 shadow-glow-purple hover:bg-secondary/10"}`}>
+              <Gamepad2 className="w-4 h-4 text-secondary shrink-0" />
+              <span className="text-xs font-medium text-foreground whitespace-nowrap">Unity ML-Agents</span>
             </button>
-            <button onClick={() => navigate("/hub/deep-rl")} className={`flex items-center gap-2 px-4 h-10 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/deep-rl" ? "border-accent/70 bg-accent/15 shadow-glow-pink" : "border-accent/30 shadow-glow-pink hover:bg-accent/10"}`}>
-              <Code2 className="w-5 h-5 text-accent" />
-              <span className="text-sm font-medium text-foreground">Deep RL</span>
+            <button onClick={() => navigate("/hub/deep-rl")} className={`flex items-center justify-center gap-2 w-[148px] h-10 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/deep-rl" ? "border-accent/70 bg-accent/15 shadow-glow-pink" : "border-accent/30 shadow-glow-pink hover:bg-accent/10"}`}>
+              <Code2 className="w-4 h-4 text-accent shrink-0" />
+              <span className="text-xs font-medium text-foreground whitespace-nowrap">Deep RL</span>
             </button>
-            <button onClick={() => navigate("/hub/project")} className={`flex items-center gap-2 px-4 h-10 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/project" ? "border-secondary/70 bg-secondary/15 shadow-glow-purple" : "border-secondary/30 shadow-glow-purple hover:bg-secondary/10"}`}>
-              <Rocket className="w-5 h-5 text-secondary" />
-              <span className="text-sm font-medium text-foreground">Проекты</span>
+            <button onClick={() => navigate("/hub/project")} className={`flex items-center justify-center gap-2 w-[148px] h-10 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/project" ? "border-secondary/70 bg-secondary/15 shadow-glow-purple" : "border-secondary/30 shadow-glow-purple hover:bg-secondary/10"}`}>
+              <Rocket className="w-4 h-4 text-secondary shrink-0" />
+              <span className="text-xs font-medium text-foreground whitespace-nowrap">Проекты</span>
             </button>
-            <button onClick={() => navigate("/hub/math-rl")} className={`flex items-center gap-2 px-4 h-10 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/math-rl" ? "border-accent/70 bg-accent/15 shadow-glow-pink" : "border-accent/30 shadow-glow-pink hover:bg-accent/10"}`}>
-              <Sparkles className="w-5 h-5 text-accent" />
-              <span className="text-sm font-medium text-foreground">Математика RL</span>
+            <button onClick={() => navigate("/hub/math-rl")} className={`flex items-center justify-center gap-2 w-[148px] h-10 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/math-rl" ? "border-accent/70 bg-accent/15 shadow-glow-pink" : "border-accent/30 shadow-glow-pink hover:bg-accent/10"}`}>
+              <Sparkles className="w-4 h-4 text-accent shrink-0" />
+              <span className="text-xs font-medium text-foreground whitespace-nowrap">Математика RL</span>
             </button>
-            <button onClick={() => navigate("/algorithms")} className={`flex items-center gap-2 px-4 h-10 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname.startsWith("/algorithms") ? "border-blue-500/70 bg-blue-500/15 shadow-glow-darkblue" : "border-blue-500/30 shadow-glow-darkblue hover:bg-blue-500/10"}`}>
-              <Cpu className="w-5 h-5 text-blue-400" />
-              <span className="text-sm font-medium text-foreground">Алгоритмы RL</span>
+            <button onClick={() => navigate("/algorithms")} className={`flex items-center justify-center gap-2 w-[148px] h-10 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname.startsWith("/algorithms") ? "border-blue-500/70 bg-blue-500/15 shadow-glow-darkblue" : "border-blue-500/30 shadow-glow-darkblue hover:bg-blue-500/10"}`}>
+              <Cpu className="w-4 h-4 text-blue-400 shrink-0" />
+              <span className="text-xs font-medium text-foreground whitespace-nowrap">Алгоритмы RL</span>
             </button>
-            <button onClick={() => navigate("/hub/fca-rl")} className={`flex items-center gap-2 px-4 h-10 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/fca-rl" ? "border-yellow-500/70 bg-yellow-500/15 shadow-glow-yellow" : "border-yellow-500/30 shadow-glow-yellow hover:bg-yellow-500/10"}`}>
-              <Network className="w-5 h-5 text-yellow-400" />
-              <span className="text-sm font-medium text-foreground">FCA + RL</span>
+            <button onClick={() => navigate("/hub/fca-rl")} className={`flex items-center justify-center gap-2 w-[148px] h-10 rounded-full bg-card/60 backdrop-blur-sm border transition-all duration-300 cursor-pointer hover:scale-105 ${location.pathname === "/hub/fca-rl" ? "border-yellow-500/70 bg-yellow-500/15 shadow-glow-yellow" : "border-yellow-500/30 shadow-glow-yellow hover:bg-yellow-500/10"}`}>
+              <Network className="w-4 h-4 text-yellow-400 shrink-0" />
+              <span className="text-xs font-medium text-foreground whitespace-nowrap">FCA + RL</span>
             </button>
 
             {/* Utility items */}
