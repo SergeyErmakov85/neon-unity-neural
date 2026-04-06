@@ -139,6 +139,9 @@ const AlgorithmsHub = () => {
           })}
         </div>
 
+        <AlgorithmTable />
+
+
         <div className="flex justify-center">
           <Button onClick={() => navigate("/")} variant="outline" className="border-primary/50 text-primary hover:bg-primary/10">
             <ArrowLeft className="w-4 h-4 mr-2" /> На главную
