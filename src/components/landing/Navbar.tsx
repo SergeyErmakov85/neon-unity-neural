@@ -118,7 +118,7 @@ const Navbar = () => {
     <>
     <GlobalSearch />
     <XpNotification />
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/80 backdrop-blur-xl shadow-[var(--glow-cyan)]" : "bg-background"}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/80 backdrop-blur-xl" : "bg-background"}`}>
       <div className="container px-4 mx-auto">
         <div className={`relative flex items-center justify-center transition-all duration-300 ${isScrolled ? "h-14" : "h-16 md:h-20"}`}>
           {/* Logo - positioned left */}
