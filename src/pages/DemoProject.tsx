@@ -246,7 +246,7 @@ const DemoProject = () => {
           }
         }
       },
-      { rootMargin: "-30% 0px -60% 0px" }
+      { rootMargin: "-20% 0px -70% 0px" }
     );
     sections.forEach((s) => {
       const el = document.getElementById(s.id);
