@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, CheckCircle2, Circle, Lock, Info } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { LEARNING_MAP } from "@/content/learningMap";
 import { SUPPORT_HUBS, type HubId } from "@/content/hubs";
 import { useLearningProgress } from "@/hooks/useLearningProgress";
