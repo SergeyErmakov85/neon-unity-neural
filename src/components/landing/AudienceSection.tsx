@@ -80,9 +80,9 @@ const clipPaths: Record<string, string> = {
 
 /* content anchor positions inside the diamond */
 const contentPosition: Record<string, string> = {
-  top:    "top-[8%] left-1/2 -translate-x-1/2 text-center",
+  top:    "top-[8%] left-1/2 -translate-x-1/2",
   right:  "top-1/2 right-[8%] -translate-y-1/2 text-right",
-  bottom: "bottom-[8%] left-1/2 -translate-x-1/2 text-center",
+  bottom: "bottom-[8%] left-1/2 -translate-x-1/2",
   left:   "top-1/2 left-[8%] -translate-y-1/2 text-left",
 };
 
@@ -174,8 +174,8 @@ const AudienceSection = () => {
                       <Icon className={`w-6 h-6 ${c.text}`} />
                     </div>
                     <div className="flex items-center gap-2 mb-1">
-                      <h3 className="text-lg font-bold text-foreground">{a.title}</h3>
-                      {a.isPrimary && <Star className="w-3.5 h-3.5 text-primary fill-primary flex-shrink-0" />}
+                      <h3 className="text-lg font-bold text-foreground text-center px-[44px]">{a.title}</h3>
+                      {a.isPrimary && <Star className="w-3.5 h-3.5 text-primary fill-primary flex-shrink-0 px-0 mx-0 my-0" />}
                     </div>
                     <p className="text-muted-foreground text-xs leading-relaxed mb-2">{a.description}</p>
                     <div className={`flex flex-wrap gap-1.5 ${a.position === 'right' ? 'justify-end' : a.position === 'left' ? 'justify-start' : 'justify-center'}`}>
