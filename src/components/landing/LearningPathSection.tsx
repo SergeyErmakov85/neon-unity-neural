@@ -109,7 +109,7 @@ const LearningPathSection = () => {
                             return (
                               <button
                                 key={lesson.id}
-                                onClick={() => !isLocked && navigate(`/learn/${stage.slug}/${lesson.slug}`)}
+                                onClick={(e) => { e.stopPropagation(); if (!isLocked) navigate(lesson.path); }}
                                 disabled={isLocked}
                                 className={`w-full flex items-center justify-between gap-2 rounded-lg px-3 py-2.5 text-left text-sm transition-colors group ${
                                   isCompleted
