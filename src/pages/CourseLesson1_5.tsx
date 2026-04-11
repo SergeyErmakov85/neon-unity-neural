@@ -2,18 +2,14 @@ import LessonLayout from "@/components/LessonLayout";
 
 const CourseLesson1_5 = () => (
   <LessonLayout
+    lessonTitle="Марковские процессы принятия решений (MDP)"
+    lessonNumber="1.5"
+    duration="25 мин"
+    tags={["theory", "math"]}
+    level={1}
     lessonId="1-5"
-    title="Марковские процессы принятия решений (MDP)"
-    titleExtra=""
-    subtitle="Формальное описание задач RL через состояния, действия, переходы и награды."
-    currentPath="/courses/1-5"
     prevLesson={{ path: "/courses/1-4", title: "DQN с нуля на PyTorch" }}
     nextLesson={{ path: "/courses/1-6", title: "Q-Learning: табличный метод" }}
-    stageSlug="stage-1"
-    lessonSlug="mdp"
-    badges={["#theory", "#math"]}
-    duration="25 мин"
-    isFree
   >
     <section>
       <h2 className="text-2xl font-bold text-foreground mb-4">🚧 Урок в разработке</h2>

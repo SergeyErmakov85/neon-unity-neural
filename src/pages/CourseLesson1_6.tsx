@@ -2,18 +2,14 @@ import LessonLayout from "@/components/LessonLayout";
 
 const CourseLesson1_6 = () => (
   <LessonLayout
+    lessonTitle="Q-Learning: табличный метод"
+    lessonNumber="1.6"
+    duration="30 мин"
+    tags={["algorithm", "tabular"]}
+    level={1}
     lessonId="1-6"
-    title="Q-Learning: табличный метод"
-    titleExtra=""
-    subtitle="Классический алгоритм обучения без модели среды: обновление таблицы Q-значений."
-    currentPath="/courses/1-6"
     prevLesson={{ path: "/courses/1-5", title: "MDP" }}
     nextLesson={{ path: "/courses/1-7", title: "Exploration vs Exploitation" }}
-    stageSlug="stage-1"
-    lessonSlug="q-learning-tabular"
-    badges={["#algorithm", "#tabular"]}
-    duration="30 мин"
-    isFree
   >
     <section>
       <h2 className="text-2xl font-bold text-foreground mb-4">🚧 Урок в разработке</h2>

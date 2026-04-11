@@ -2,18 +2,14 @@ import LessonLayout from "@/components/LessonLayout";
 
 const CourseLesson1_7 = () => (
   <LessonLayout
+    lessonTitle="Exploration vs Exploitation"
+    lessonNumber="1.7"
+    duration="20 мин"
+    tags={["theory", "strategy"]}
+    level={1}
     lessonId="1-7"
-    title="Exploration vs Exploitation"
-    titleExtra=""
-    subtitle="Баланс между исследованием новых стратегий и использованием уже известных."
-    currentPath="/courses/1-7"
     prevLesson={{ path: "/courses/1-6", title: "Q-Learning: табличный метод" }}
     nextLesson={{ path: "/courses/project-1", title: "Проект: Балансировка шеста" }}
-    stageSlug="stage-1"
-    lessonSlug="exploration-exploitation"
-    badges={["#theory", "#strategy"]}
-    duration="20 мин"
-    isFree
   >
     <section>
       <h2 className="text-2xl font-bold text-foreground mb-4">🚧 Урок в разработке</h2>
