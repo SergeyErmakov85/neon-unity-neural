@@ -36,11 +36,11 @@ const Navbar = () => {
     const metadataName = typeof user.user_metadata?.name === "string" ? user.user_metadata.name : null;
     const fallbackName = metadataName || user.email || "User";
 
-    const { data } = await (supabase
-      .from("profiles" as any)
+    const { data } = await supabase
+      .from("profiles")
       .select("name, avatar_url")
       .eq("id", user.id)
-      .maybeSingle() as any);
+      .maybeSingle();
 
     if (data?.name?.trim()) setUserName(data.name.trim());
     else setUserName(fallbackName);
