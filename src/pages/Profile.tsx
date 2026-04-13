@@ -72,7 +72,7 @@ const Profile = () => {
       if (data) {
         setName(data.name || "");
         setAvatarUrl(data.avatar_url);
-        setCreatedAt(new Date(data.created_at).toLocaleDateString("ru-RU", { year: "numeric", month: "long", day: "numeric" }));
+        setCreatedAt(data.created_at ? new Date(data.created_at).toLocaleDateString("ru-RU", { year: "numeric", month: "long", day: "numeric" }) : "Дата не указана");
       }
       setLoading(false);
     };
