@@ -2,6 +2,7 @@ import { BookOpen, TrendingUp, Layers, BarChart3, Code2, GraduationCap } from "l
 import Math from "@/components/Math";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import { GeometricSeriesChart, ValueIterationChart, DiscountImpactChart } from "@/components/math-rl/module1/InteractiveCharts";
+import LimitOfSequenceViz from "@/components/math-rl/LimitOfSequenceViz";
 
 const Part1Limits = () => (
   <>
