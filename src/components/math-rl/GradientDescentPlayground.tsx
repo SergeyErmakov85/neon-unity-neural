@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback } from "react";
 import { Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
@@ -6,6 +6,27 @@ import { Slider } from "@/components/ui/slider";
 const f = (x: number) => x * x - 4 * x + 5;
 const grad = (x: number) => 2 * x - 4;
 const X_OPT = 2.0;
+
+const CHART_W = 400;
+const CHART_H = 260;
+const X_MIN = -1;
+const X_MAX = 5;
+const Y_MIN = 0;
+const Y_MAX = 12;
+
+const toSvgX = (x: number) => ((x - X_MIN) / (X_MAX - X_MIN)) * CHART_W;
+const toSvgY = (y: number) => CHART_H - ((y - Y_MIN) / (Y_MAX - Y_MIN)) * CHART_H;
+
+const CURVE_PATH = (() => {
+  const pts: string[] = [];
+  for (let i = 0; i <= 200; i++) {
+    const x = X_MIN + (i / 200) * (X_MAX - X_MIN);
+    const y = f(x);
+    const clampedY = Math.max(Y_MIN, Math.min(Y_MAX, y));
+    pts.push(`${toSvgX(x).toFixed(1)},${toSvgY(clampedY).toFixed(1)}`);
+  }
+  return pts.join(" ");
+})();
 
 interface Step {
   x: number;
@@ -49,30 +70,8 @@ const GradientDescentPlayground = () => {
     setHistory([{ x: x0, fx: f(x0), g: grad(x0) }]);
   }, [x0]);
 
-  // SVG chart
-  const chartW = 400;
-  const chartH = 260;
-  const xMin = -1;
-  const xMax = 5;
-  const yMin = 0;
-  const yMax = 12;
-
-  const toSvgX = (x: number) => ((x - xMin) / (xMax - xMin)) * chartW;
-  const toSvgY = (y: number) => chartH - ((y - yMin) / (yMax - yMin)) * chartH;
-
-  const curvePath = useMemo(() => {
-    const pts: string[] = [];
-    for (let i = 0; i <= 200; i++) {
-      const x = xMin + (i / 200) * (xMax - xMin);
-      const y = f(x);
-      const clampedY = window.Math.max(yMin, window.Math.min(yMax, y));
-      pts.push(`${toSvgX(x).toFixed(1)},${toSvgY(clampedY).toFixed(1)}`);
-    }
-    return pts.join(" ");
-  }, []);
-
-  const error = window.Math.abs(currentX - X_OPT);
-  const diverged = window.Math.abs(currentX) > 8;
+  const error = Math.abs(currentX - X_OPT);
+  const diverged = Math.abs(currentX) > 8;
   const converged = error < 0.01;
 
   return (
@@ -85,21 +84,21 @@ const GradientDescentPlayground = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
         {/* SVG Chart */}
         <div className="bg-background/50 rounded-lg p-3">
-          <svg viewBox={`0 0 ${chartW} ${chartH}`} className="w-full h-auto">
+          <svg viewBox={`0 0 ${CHART_W} ${CHART_H}`} className="w-full h-auto">
             {/* Grid */}
             {[0, 2, 4, 6, 8, 10, 12].map((y) => (
-              <line key={`gy${y}`} x1={0} y1={toSvgY(y)} x2={chartW} y2={toSvgY(y)} stroke="hsl(var(--border))" strokeWidth={0.5} opacity={0.3} />
+              <line key={`gy${y}`} x1={0} y1={toSvgY(y)} x2={CHART_W} y2={toSvgY(y)} stroke="hsl(var(--border))" strokeWidth={0.5} opacity={0.3} />
             ))}
             {[-1, 0, 1, 2, 3, 4, 5].map((x) => (
-              <line key={`gx${x}`} x1={toSvgX(x)} y1={0} x2={toSvgX(x)} y2={chartH} stroke="hsl(var(--border))" strokeWidth={0.5} opacity={0.3} />
+              <line key={`gx${x}`} x1={toSvgX(x)} y1={0} x2={toSvgX(x)} y2={CHART_H} stroke="hsl(var(--border))" strokeWidth={0.5} opacity={0.3} />
             ))}
 
             {/* x* = 2 vertical */}
-            <line x1={toSvgX(2)} y1={0} x2={toSvgX(2)} y2={chartH} stroke="hsl(var(--muted-foreground))" strokeWidth={1} strokeDasharray="4 3" opacity={0.5} />
+            <line x1={toSvgX(2)} y1={0} x2={toSvgX(2)} y2={CHART_H} stroke="hsl(var(--muted-foreground))" strokeWidth={1} strokeDasharray="4 3" opacity={0.5} />
             <text x={toSvgX(2) + 4} y={14} fill="hsl(var(--muted-foreground))" fontSize={10}>x*=2</text>
 
             {/* Curve */}
-            <polyline points={curvePath} fill="none" stroke="hsl(var(--primary))" strokeWidth={2} />
+            <polyline points={CURVE_PATH} fill="none" stroke="hsl(var(--primary))" strokeWidth={2} />
 
             {/* Tangent line */}
             {!diverged && (() => {
@@ -113,8 +112,8 @@ const GradientDescentPlayground = () => {
               const y2t = cy + g * dx;
               return (
                 <line
-                  x1={toSvgX(x1t)} y1={toSvgY(window.Math.max(yMin, window.Math.min(yMax, y1t)))}
-                  x2={toSvgX(x2t)} y2={toSvgY(window.Math.max(yMin, window.Math.min(yMax, y2t)))}
+                  x1={toSvgX(x1t)} y1={toSvgY(Math.max(Y_MIN, Math.min(Y_MAX, y1t)))}
+                  x2={toSvgX(x2t)} y2={toSvgY(Math.max(Y_MIN, Math.min(Y_MAX, y2t)))}
                   stroke="hsl(var(--secondary))" strokeWidth={1.5} opacity={0.7}
                 />
               );
@@ -124,7 +123,7 @@ const GradientDescentPlayground = () => {
             {!diverged && (
               <circle
                 cx={toSvgX(currentX)}
-                cy={toSvgY(window.Math.max(yMin, window.Math.min(yMax, f(currentX))))}
+                cy={toSvgY(Math.max(Y_MIN, Math.min(Y_MAX, f(currentX))))}
                 r={6}
                 fill="hsl(var(--destructive, 0 84% 60%))"
                 stroke="white"
@@ -134,7 +133,7 @@ const GradientDescentPlayground = () => {
             )}
 
             {/* Axis labels */}
-            <text x={chartW / 2} y={chartH - 2} fill="hsl(var(--muted-foreground))" fontSize={10} textAnchor="middle">x</text>
+            <text x={CHART_W / 2} y={CHART_H - 2} fill="hsl(var(--muted-foreground))" fontSize={10} textAnchor="middle">x</text>
             <text x={4} y={12} fill="hsl(var(--muted-foreground))" fontSize={10}>f(x)</text>
           </svg>
         </div>
