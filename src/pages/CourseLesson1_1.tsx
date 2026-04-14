@@ -104,6 +104,15 @@ const CourseLesson1_1 = () => {
         "Дилемма exploration vs exploitation",
       ]}
     >
+      {/* ── Инфографика сразу после заголовка ── */}
+      <div className="rounded-xl overflow-hidden border border-border/30 bg-card/20 mb-2">
+        <img
+          src={rlCycleImg}
+          alt="Инфографика цикла обучения с подкреплением"
+          className="w-full max-w-2xl mx-auto"
+        />
+      </div>
+
       {/* ── 1. Мотивация ────────────────────────────────── */}
       <section>
         <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
@@ -318,14 +327,6 @@ const CourseLesson1_1 = () => {
               ↻ Цикл повторяется каждый временной шаг t
             </div>
           </div>
-        </div>
-
-        <div className="mt-6 rounded-xl overflow-hidden border border-border/30 bg-card/20">
-          <img
-            src={rlCycleImg}
-            alt="Инфографика цикла обучения с подкреплением"
-            className="w-full max-w-2xl mx-auto"
-          />
         </div>
       </section>
 
