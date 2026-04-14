@@ -328,14 +328,6 @@ const CourseLesson1_1 = () => {
             </div>
           </div>
         </div>
-
-        <div className="mt-6 rounded-xl overflow-hidden border border-border/30 bg-card/20">
-          <img
-            src={rlCycleImg}
-            alt="Инфографика цикла обучения с подкреплением"
-            className="w-full max-w-2xl mx-auto"
-          />
-        </div>
       </section>
 
       {/* ── 5. Exploration vs Exploitation ────────────── */}
