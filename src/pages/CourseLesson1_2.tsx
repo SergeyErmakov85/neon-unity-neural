@@ -32,6 +32,7 @@ const CHECKLIST_ITEMS = [
   { id: "pip", label: "pip обновлён до последней версии" },
   { id: "pytorch", label: "PyTorch установлен и import torch работает" },
   { id: "mlagents", label: "ML-Agents установлен (mlagents-learn --help)" },
+  { id: "gymnasium", label: "Gymnasium установлен (import gymnasium)" },
   { id: "unity", label: "Unity 2022.3 LTS + пакет ML-Agents" },
   { id: "verify", label: "Скрипт проверки выполнен без ошибок" },
 ];
@@ -463,7 +464,10 @@ torchvision
 torchaudio
 mlagents==1.1.0
 protobuf==3.20.3
-grpcio==1.48.2`}
+grpcio==1.48.2
+gymnasium>=0.29.0
+matplotlib
+numpy`}
         </CyberCodeBlock>
 
         <CyberCodeBlock language="python" filename="terminal">
@@ -557,10 +561,18 @@ import mlagents
 print(f"\\n[3] ML-Agents: {mlagents.__version__}")
 print("    ✅ Импорт OK")
 
-# 4. Протестировать основные зависимости
+# 4. Gymnasium
+import gymnasium
+print(f"\\n[4] Gymnasium: {gymnasium.__version__}")
+env = gymnasium.make("CartPole-v1")
+obs, _ = env.reset()
+print(f"    CartPole obs: {obs.shape} — ✅ среда работает")
+env.close()
+
+# 5. Протестировать основные зависимости
 import google.protobuf
 import grpc
-print(f"\\n[4] protobuf: {google.protobuf.__version__}")
+print(f"\\n[5] protobuf: {google.protobuf.__version__}")
 print(f"    grpcio: {grpc.__version__}")
 print("    ✅ Зависимости OK")
 
@@ -678,6 +690,7 @@ python check_env.py`}
                 "Изолированное окружение (venv / Conda) защищает от конфликтов зависимостей",
                 "Для Уровня 1 достаточно CPU-версии PyTorch, GPU понадобится позже",
                 "ML-Agents 1.1.0 работает с Python 3.10–3.11 и PyTorch 2.0+",
+                "Gymnasium — лёгкая библиотека сред для быстрого освоения алгоритмов RL",
                 "Скрипт check_env.py позволяет быстро проверить все компоненты",
               ].map((point, i) => (
                 <div key={i} className="flex items-start gap-3">
@@ -686,10 +699,17 @@ python check_env.py`}
                 </div>
               ))}
             </div>
-            <div className="mt-4 p-3 rounded-lg bg-primary/5 border border-primary/20">
+            <div className="mt-4 p-3 rounded-lg bg-primary/5 border border-primary/20 space-y-2">
               <p className="text-sm text-foreground font-medium flex items-center gap-2">
                 <Lightbulb className="w-4 h-4 text-primary" />
-                В следующем уроке мы создадим первого RL-агента для задачи CartPole!
+                Что дальше?
+              </p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                В следующих уроках мы освоим ключевые RL-алгоритмы (Q-learning, DQN) в
+                лёгких средах Gymnasium — CartPole и FrozenLake. Это позволит сфокусироваться
+                на алгоритмах без сложностей 3D-движка. Затем, начиная с Уровня 2, мы
+                перенесём эти навыки в Unity ML-Agents для обучения агентов в полноценных
+                3D-играх.
               </p>
             </div>
           </CardContent>
