@@ -85,8 +85,10 @@ const Part1Limits = () => (
 
       <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="абсолютная-сходимость">Абсолютная сходимость</h3>
       <p>
-        Ряд <Math display={false}>{`\\sum a_n`}</Math> сходится <em>абсолютно</em>, если сходится ряд модулей <Math display={false}>{`\\sum |a_n|`}</Math>. В RL ряды вознаграждений обычно сходятся абсолютно благодаря дисконтированию.
+      Ряд <Math display={false}>{`\\sum a_n`}</Math> сходится <em>абсолютно</em>, если сходится ряд модулей <Math display={false}>{`\\sum |a_n|`}</Math>. В RL ряды вознаграждений обычно сходятся абсолютно благодаря дисконтированию.
       </p>
+
+      <InfiniteSeriesViz />
     </Section>
 
     {/* ── 3. Связь с RL: дисконтирование ── */}
