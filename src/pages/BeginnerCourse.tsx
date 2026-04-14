@@ -112,6 +112,11 @@ const BeginnerCourse = () => {
             <span className="text-muted-foreground font-normal text-2xl md:text-3xl">1.1. </span>
             Что такое Reinforcement Learning?
           </h1>
+          <img
+            src="/images/rl-cycle-infographic.png"
+            alt="Цикл обучения с подкреплением: Агент, Среда, Действие, Вознаграждение, Состояние, Политика"
+            className="w-full max-w-2xl mx-auto rounded-xl border border-border/50 shadow-lg mt-4"
+          />
         </div>
 
         {/* 2. PROGRESS BAR */}
