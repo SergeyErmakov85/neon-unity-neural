@@ -4,6 +4,7 @@ import CyberCodeBlock from "@/components/CyberCodeBlock";
 import { GeometricSeriesChart, ValueIterationChart, DiscountImpactChart } from "@/components/math-rl/module1/InteractiveCharts";
 import LimitOfSequenceViz from "@/components/math-rl/LimitOfSequenceViz";
 import InfiniteSeriesViz from "@/components/math-rl/InfiniteSeriesViz";
+import ValueFunctionViz from "@/components/math-rl/ValueFunctionViz";
 
 const Part1Limits = () => (
   <>
@@ -123,6 +124,8 @@ const Part1Limits = () => (
         При заданной политике <Math display={false}>{`\\pi`}</Math> определим функцию ценности как математическое ожидание дисконтированного возврата:
       </p>
       <Math>{`V^\\pi(s) = \\mathbb{E}_\\pi\\!\\left[\\sum_{t=0}^{\\infty} \\gamma^t R_{t+1} \\;\\middle|\\; S_0 = s\\right]`}</Math>
+
+      <ValueFunctionViz />
     </Section>
 
     {/* ── 4. Уравнения Беллмана ── */}
