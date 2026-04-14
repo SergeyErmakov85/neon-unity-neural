@@ -3,6 +3,7 @@ import Math from "@/components/Math";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import { GeometricSeriesChart, ValueIterationChart, DiscountImpactChart } from "@/components/math-rl/module1/InteractiveCharts";
 import LimitOfSequenceViz from "@/components/math-rl/LimitOfSequenceViz";
+import InfiniteSeriesViz from "@/components/math-rl/InfiniteSeriesViz";
 
 const Part1Limits = () => (
   <>
