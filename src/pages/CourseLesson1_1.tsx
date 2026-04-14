@@ -104,15 +104,6 @@ const CourseLesson1_1 = () => {
         "Дилемма exploration vs exploitation",
       ]}
     >
-      {/* ── Инфографика сразу после заголовка ── */}
-      <div className="rounded-xl overflow-hidden border border-border/30 bg-card/20 mb-2">
-        <img
-          src={rlCycleImg}
-          alt="Инфографика цикла обучения с подкреплением"
-          className="w-full max-w-2xl mx-auto"
-        />
-      </div>
-
       {/* ── 1. Мотивация ────────────────────────────────── */}
       <section>
         <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
@@ -293,6 +284,15 @@ const CourseLesson1_1 = () => {
           агент наблюдает состояние, выбирает действие, получает награду и переходит в новое
           состояние.
         </p>
+
+        {/* Инфографика цикла обучения с подкреплением */}
+        <div className="rounded-xl overflow-hidden border border-border/30 bg-card/20 mb-6">
+          <img
+            src={rlCycleImg}
+            alt="Инфографика цикла обучения с подкреплением"
+            className="w-full max-w-2xl mx-auto"
+          />
+        </div>
 
         <div className="relative bg-card/40 rounded-xl border border-border/50 p-8 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
