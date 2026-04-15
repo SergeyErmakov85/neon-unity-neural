@@ -14,6 +14,7 @@ import ScrollProgressBar from "@/components/ScrollProgressBar";
 import ScrollToTop from "@/components/ScrollToTop";
 import LessonBreadcrumbs from "@/components/LessonBreadcrumbs";
 import SEOHead from "@/components/SEOHead";
+import ProUpgradeBanner from "@/components/ProUpgradeBanner";
 import { completeLesson, getProgress } from "@/lib/gamification";
 
 interface LessonMeta {
@@ -363,6 +364,9 @@ const LessonLayout = ({
               </div>
             </section>
           )}
+
+          {/* Pro upgrade banner for free lessons */}
+          {level === 1 && <ProUpgradeBanner />}
 
           {/* Scroll completion marker */}
           <div ref={bottomRef} className="h-1" />

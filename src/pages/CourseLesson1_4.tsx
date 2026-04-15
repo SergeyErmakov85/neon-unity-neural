@@ -1,5 +1,5 @@
 import LessonLayout from "@/components/LessonLayout";
-import ProUpgradeBanner from "@/components/ProUpgradeBanner";
+
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import Quiz from "@/components/Quiz";
 import { Card, CardContent } from "@/components/ui/card";
@@ -767,7 +767,6 @@ env.close()`}
         nextLesson={{ path: "/courses/project-1", title: "Проект: Балансировка шеста" }}
       />
 
-      <ProUpgradeBanner />
     </LessonLayout>
   );
 };
