@@ -5,6 +5,7 @@ import { GeometricSeriesChart, ValueIterationChart, DiscountImpactChart } from "
 import LimitOfSequenceViz from "@/components/math-rl/LimitOfSequenceViz";
 import InfiniteSeriesViz from "@/components/math-rl/InfiniteSeriesViz";
 import ValueFunctionViz from "@/components/math-rl/ValueFunctionViz";
+import mdpTwoStatesImg from "@/assets/mdp-two-states.png";
 
 const Part1Limits = () => (
   <>
