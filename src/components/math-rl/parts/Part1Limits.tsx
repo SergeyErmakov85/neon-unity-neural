@@ -158,7 +158,7 @@ const Part1Limits = () => (
 
       <div className="relative group/mdp">
         <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3 cursor-pointer inline-block drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] hover:drop-shadow-[0_0_14px_rgba(255,255,255,0.8)] transition-all duration-300" id="пример-mdp-с-двумя-состояниями">Пример: MDP с двумя состояниями</h3>
-        <div className="hidden group-hover/mdp:block absolute left-[-420px] top-0 z-50 pointer-events-none">
+        <div className="invisible opacity-0 group-hover/mdp:visible group-hover/mdp:opacity-100 transition-all duration-300 ease-out absolute left-[-420px] top-0 z-50 pointer-events-none">
           <img
             src={mdpTwoStatesImg}
             alt="MDP с двумя состояниями — инфографика"
