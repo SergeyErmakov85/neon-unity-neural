@@ -155,7 +155,16 @@ const Part1Limits = () => (
       </p>
       <Math>{`V_{k+1}(s) = \\max_a \\sum_{s'} P(s'|s,a)\\bigl[R(s,a,s') + \\gamma\\, V_k(s')\\bigr]`}</Math>
 
-      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="пример-mdp-с-двумя-состояниями">Пример: MDP с двумя состояниями</h3>
+      <div className="relative group/mdp">
+        <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3 cursor-pointer inline-block" id="пример-mdp-с-двумя-состояниями">Пример: MDP с двумя состояниями</h3>
+        <div className="hidden group-hover/mdp:block absolute left-[-420px] top-0 z-50 pointer-events-none">
+          <img
+            src={mdpTwoStatesImg}
+            alt="MDP с двумя состояниями — инфографика"
+            className="w-[400px] rounded-xl border border-primary/30 shadow-lg opacity-80"
+          />
+        </div>
+      </div>
       <p>
         Рассмотрим простейшую MDP: из <Math display={false}>{`S_1`}</Math> агент переходит в <Math display={false}>{`S_2`}</Math> с наградой +2, из <Math display={false}>{`S_2`}</Math> — обратно в <Math display={false}>{`S_1`}</Math> с наградой 0. При <Math display={false}>{`\\gamma = 0.9`}</Math>:
       </p>
