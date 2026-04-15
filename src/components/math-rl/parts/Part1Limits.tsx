@@ -157,7 +157,7 @@ const Part1Limits = () => (
       <Math>{`V_{k+1}(s) = \\max_a \\sum_{s'} P(s'|s,a)\\bigl[R(s,a,s') + \\gamma\\, V_k(s')\\bigr]`}</Math>
 
       <div className="relative group/mdp">
-        <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3 cursor-pointer inline-block" id="пример-mdp-с-двумя-состояниями">Пример: MDP с двумя состояниями</h3>
+        <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3 cursor-pointer inline-block drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] hover:drop-shadow-[0_0_14px_rgba(255,255,255,0.8)] transition-all duration-300" id="пример-mdp-с-двумя-состояниями">Пример: MDP с двумя состояниями</h3>
         <div className="hidden group-hover/mdp:block absolute left-[-420px] top-0 z-50 pointer-events-none">
           <img
             src={mdpTwoStatesImg}
