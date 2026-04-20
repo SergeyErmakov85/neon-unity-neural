@@ -204,10 +204,10 @@ const CourseLesson1_5 = () => {
             <Lightbulb className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
             <p className="text-xs text-muted-foreground">
               <strong className="text-foreground">Свойство Маркова:</strong> будущее состояние
-              зависит только от текущего <code className="text-primary">s_t</code> и действия{" "}
-              <code className="text-primary">a_t</code> — вся история в{" "}
-              <code className="text-primary">s_t</code> уже «зашита». Это ключевое допущение,
-              без которого нельзя использовать T(s'|s, a).
+              зависит только от текущего <Math display={false}>{"s_t"}</Math> и действия{" "}
+              <Math display={false}>{"a_t"}</Math> — вся история в{" "}
+              <Math display={false}>{"s_t"}</Math> уже «зашита». Это ключевое допущение,
+              без которого нельзя использовать <Math display={false}>{"T(s' \\mid s, a)"}</Math>.
             </p>
           </CardContent>
         </Card>
