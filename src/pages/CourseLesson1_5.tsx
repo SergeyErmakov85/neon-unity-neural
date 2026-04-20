@@ -639,17 +639,16 @@ for row in policy:
             </AccordionTrigger>
             <AccordionContent className="px-4">
               <p className="text-sm text-muted-foreground leading-relaxed mb-2">
-                Если γ = 1 и эпизод бесконечен, то сумма{" "}
-                <code className="text-primary">G = r + r + r + ...</code> может расходиться —
-                V(s) не определена. При γ &lt; 1 геометрический ряд сходится:
+                Если <Math display={false}>{"\\gamma = 1"}</Math> и эпизод бесконечен, то сумма{" "}
+                <Math display={false}>{"G = r + r + r + \\dots"}</Math> может расходиться —{" "}
+                <Math display={false}>{"V(s)"}</Math> не определена. При{" "}
+                <Math display={false}>{"\\gamma < 1"}</Math> геометрический ряд сходится:
               </p>
-              <CyberCodeBlock language="pseudo" filename="convergence">
-                {`|G| ≤ r_max · (1 + γ + γ² + ...) = r_max / (1 - γ)
-Эффективный горизонт ≈ 1 / (1 − γ).   γ=0.99 → ~100 шагов.`}
-              </CyberCodeBlock>
+              <Math>{"|G| \\leq r_{\\max} \\cdot (1 + \\gamma + \\gamma^2 + \\dots) = \\frac{r_{\\max}}{1 - \\gamma}"}</Math>
+              <Math>{"\\text{Эффективный горизонт} \\approx \\frac{1}{1 - \\gamma}, \\quad \\gamma = 0.99 \\;\\Rightarrow\\; {\\sim}\\,100 \\text{ шагов}"}</Math>
               <p className="text-sm text-muted-foreground leading-relaxed mt-2">
-                Помимо сходимости, γ отражает предпочтение агента: «синица в руке важнее
-                журавля в небе».
+                Помимо сходимости, <Math display={false}>{"\\gamma"}</Math> отражает
+                предпочтение агента: «синица в руке важнее журавля в небе».
               </p>
             </AccordionContent>
           </AccordionItem>
@@ -667,16 +666,18 @@ for row in policy:
             <AccordionContent className="px-4">
               <p className="text-sm text-muted-foreground leading-relaxed mb-2">
                 <strong className="text-foreground">Expectation</strong> (для фиксированной
-                политики π): усреднение по π(a|s) —{" "}
-                <code className="text-primary">V^π(s) = E_a [ ... ]</code>. Отвечает на
-                вопрос: «насколько хороша данная политика?».
+                политики π): усреднение по{" "}
+                <Math display={false}>{"\\pi(a \\mid s)"}</Math> —{" "}
+                <Math display={false}>{"V^{\\pi}(s) = \\mathbb{E}_a[\\,\\dots\\,]"}</Math>.
+                Отвечает на вопрос: «насколько хороша данная политика?».
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 <strong className="text-foreground">Optimality</strong> (для лучшей возможной
                 политики): максимизация по действиям —{" "}
-                <code className="text-primary">V*(s) = max_a [ ... ]</code>. Решает задачу
-                поиска лучшей политики. Замена <code>Σ_a π</code> на <code>max_a</code> — и есть
-                вся разница.
+                <Math display={false}>{"V^{*}(s) = \\max_a [\\,\\dots\\,]"}</Math>. Решает задачу
+                поиска лучшей политики. Замена{" "}
+                <Math display={false}>{"\\sum_a \\pi"}</Math> на{" "}
+                <Math display={false}>{"\\max_a"}</Math> — и есть вся разница.
               </p>
             </AccordionContent>
           </AccordionItem>
@@ -770,7 +771,8 @@ for row in policy:
                 <CrossLinkToHub hubPath="/courses/1-4" hubTitle="Урок 1.4 — DQN">
                   DQN из урока 1.4
                 </CrossLinkToHub>{" "}
-                — теперь формула <code className="text-primary">r + γ·max Q(s', a')</code>{" "}
+                — теперь формула{" "}
+                <Math display={false}>{"r + \\gamma \\cdot \\max_{a'} Q(s', a')"}</Math>{" "}
                 должна стать очевидной.
               </p>
             </CardContent>
@@ -818,8 +820,6 @@ for row in policy:
         lessonPath="/courses/1-5"
         nextLesson={{ path: "/courses/1-6", title: "Q-Learning: табличный метод" }}
       />
-
-      <ProUpgradeBanner />
     </LessonLayout>
   );
 };
