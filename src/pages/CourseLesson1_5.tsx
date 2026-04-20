@@ -225,9 +225,7 @@ const CourseLesson1_5 = () => {
           действий и наград:
         </p>
 
-        <CyberCodeBlock language="pseudo" filename="trajectory.txt">
-          {`τ = (s_0, a_0, r_1, s_1, a_1, r_2, s_2, a_2, r_3, ...)`}
-        </CyberCodeBlock>
+        <Math>{"\\tau = (s_0,\\, a_0,\\, r_1,\\, s_1,\\, a_1,\\, r_2,\\, s_2,\\, a_2,\\, r_3,\\, \\dots)"}</Math>
 
         <p className="text-muted-foreground leading-relaxed my-4">
           Нас интересует не только <em>текущая</em> награда, а{" "}
@@ -235,14 +233,13 @@ const CourseLesson1_5 = () => {
           называемая возвратом (return):
         </p>
 
-        <CyberCodeBlock language="pseudo" filename="return.txt">
-          {`# Возврат, накопленный начиная с шага t
-G_t = r_{t+1} + γ · r_{t+2} + γ² · r_{t+3} + ...
-    = Σ_{k=0}^{∞} γ^k · r_{t+k+1}
+        <Math>{"G_t = r_{t+1} + \\gamma\\, r_{t+2} + \\gamma^2 r_{t+3} + \\dots = \\sum_{k=0}^{\\infty} \\gamma^k\\, r_{t+k+1}"}</Math>
 
-# Рекурсивная форма (удобна для доказательств):
-G_t = r_{t+1} + γ · G_{t+1}`}
-        </CyberCodeBlock>
+        <p className="text-muted-foreground leading-relaxed my-4 text-sm italic">
+          Рекурсивная форма (удобна для доказательств):
+        </p>
+
+        <Math>{"G_t = r_{t+1} + \\gamma\\, G_{t+1}"}</Math>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
           <Card className="bg-card/40 border-border/40">
