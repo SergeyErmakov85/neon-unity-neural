@@ -183,7 +183,7 @@ const CourseLesson1_5 = () => {
             { sym: "A", name: "Actions", desc: "Множество действий агента" },
             { sym: "T", name: "Transitions", desc: "T(s'|s,a) — вероятность перехода" },
             { sym: "R", name: "Rewards", desc: "R(s,a,s') — числовая награда" },
-            { sym: "\\gamma", name: "Discount", desc: "\\gamma \\in [0,1] — вес будущих наград" },
+            { sym: "\\gamma", name: "Discount", desc: "γ ∈ [0,1] — вес будущих наград" },
           ].map((item) => (
             <Card key={item.sym} className="bg-card/40 border-primary/20">
               <CardContent className="p-3 text-center space-y-1">
