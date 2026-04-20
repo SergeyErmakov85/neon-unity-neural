@@ -1,6 +1,6 @@
 import LessonLayout from "@/components/LessonLayout";
-import ProUpgradeBanner from "@/components/ProUpgradeBanner";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
+import Math from "@/components/Math";
 import Quiz from "@/components/Quiz";
 import { Card, CardContent } from "@/components/ui/card";
 import {
