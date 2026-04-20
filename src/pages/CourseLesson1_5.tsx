@@ -118,14 +118,17 @@ const CourseLesson1_5 = () => {
         <p className="text-muted-foreground leading-relaxed mb-4">
           В уроках 1.3 и 1.4 ты уже обучил <strong className="text-foreground">DQN</strong> —
           он прекрасно балансирует шест, но работает «как чёрный ящик». Почему сеть учит
-          именно <em>Q-значения</em>? Почему в коде появляется
-          <code className="text-primary mx-1">r + γ · max Q(s', a')</code>? Откуда берётся
-          формула <code className="text-primary mx-1">G_t = r + γ·r' + γ²·r'' + …</code>?
+          именно <em>Q-значения</em>? Почему в коде появляется выражение
         </p>
+        <Math>{"r + \\gamma \\cdot \\max_{a'} Q(s', a')"}</Math>
+        <p className="text-muted-foreground leading-relaxed my-4">
+          и откуда берётся формула возврата
+        </p>
+        <Math>{"G_t = r_{t+1} + \\gamma\\, r_{t+2} + \\gamma^2 r_{t+3} + \\dots\\,?"}</Math>
         <p className="text-muted-foreground leading-relaxed mb-4">
           Все эти формулы — прямое следствие математической модели, которая называется{" "}
           <strong className="text-foreground">Марковский процесс принятия решений (MDP)</strong>.
-          В уроке 1.1 мы видели пятёрку <code className="text-primary">(S, A, T, R, γ)</code>{" "}
+          В уроке 1.1 мы видели пятёрку <Math display={false}>{"(S, A, T, R, \\gamma)"}</Math>{" "}
           в общих чертах. Теперь — настоящее погружение.
         </p>
 
