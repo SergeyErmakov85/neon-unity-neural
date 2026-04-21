@@ -483,7 +483,11 @@ const CourseLesson1_1 = () => {
             {
               symbol: "γ",
               name: (
-                <CrossLinkToHub hubPath="/math-rl/module-1" hubTitle="Ряды и дисконтирование">
+                <CrossLinkToHub
+                  hubPath="/math-rl/module-1"
+                  hubAnchor="4-уравнения-беллмана-и-дисконтирование"
+                  hubTitle="Математика RL — Уравнения Беллмана и дисконтирование"
+                >
                   Дисконт (Discount)
                 </CrossLinkToHub>
               ),
@@ -590,7 +594,11 @@ P(s_{t+1} | s_t, a_t) = P(s_{t+1} | s_1, a_1, ..., s_t, a_t)`}
               term: "Value Function (V)",
               desc: (
                 <>
-                  <CrossLinkToHub hubPath="/math-rl/module-5" hubTitle="MDP и Bellman">
+                  <CrossLinkToHub
+                    hubPath="/math-rl/module-5"
+                    hubAnchor="глава-4"
+                    hubTitle="Математика RL — Глава 4. Функции ценности"
+                  >
                     V(s)
                   </CrossLinkToHub>{" "}
                   — ожидаемая суммарная награда из состояния s при следовании политике π.

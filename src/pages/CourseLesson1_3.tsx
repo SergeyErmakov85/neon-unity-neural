@@ -649,7 +649,8 @@ for episode in range(EPISODES):
                 <p>
                   <CrossLinkToHub
                     hubPath="/math-rl/module-5"
-                    hubTitle="Математика → MDP и Bellman"
+                    hubAnchor="глава-5"
+                    hubTitle="Математика RL — Глава 5. Уравнения Беллмана"
                   >
                     Подробнее о уравнении Беллмана →
                   </CrossLinkToHub>
