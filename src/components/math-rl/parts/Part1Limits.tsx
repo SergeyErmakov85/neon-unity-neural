@@ -139,14 +139,214 @@ const Part1Limits = () => (
         Без <Math display={false}>{`\\gamma < 1`}</Math> бесконечная сумма в определении <Math display={false}>{`V^\\pi`}</Math> часто расходится. Именно поэтому дисконтирование — <em>неотъемлемая часть</em> формулировки бесконечного горизонта RL.
       </p>
 
-      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="уравнение-оптимальности-беллмана">Уравнение оптимальности Беллмана</h3>
+      {/* 4.1 — Идея простыми словами */}
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="идея-простыми-словами">4.1 Идея простыми словами</h3>
       <p>
-        Для оптимальной политики <Math display={false}>{`\\pi^*`}</Math>:
+        Уравнение Беллмана говорит, что <strong className="text-foreground">лучшая ценность (выгода) состояния сейчас</strong> равна <strong className="text-foreground">лучшему немедленному результату плюс лучшая ценность дальнейших состояний</strong>. Агент совершает действие, попадает в новое состояние, получает награду — и продолжает думать о будущем.
       </p>
-      <Math>{`V^*(s) = \\max_a \\sum_{s'} P(s'|s,a)\\bigl[R(s,a,s') + \\gamma\\, V^*(s')\\bigr]`}</Math>
+      <InfoBox variant="primary">
+        <p className="text-sm">
+          Это основа <strong className="text-foreground">динамического программирования</strong> и многих алгоритмов принятия решений (включая обучение с подкреплением). Сложная задача «как действовать оптимально на длинном горизонте» разбивается на простые шаги: <em>сначала считаем ценности всех следующих состояний, потом используем их для текущего</em>.
+        </p>
+      </InfoBox>
+
+      {/* 4.2 — Уравнение оптимальности (общая формула) */}
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="уравнение-оптимальности-беллмана">4.2 Уравнение оптимальности Беллмана (дискретный случай)</h3>
       <p>
-        Существование и единственность решения гарантируются тем, что оператор Беллмана является <strong className="text-foreground">сжимающим отображением</strong> с коэффициентом <Math display={false}>{`\\gamma`}</Math>. По теореме Банаха о неподвижной точке, итеративное применение оператора сходится к единственному <Math display={false}>{`V^*`}</Math>.
+        Для оптимальной политики <Math display={false}>{`\\pi^*`}</Math> и любого состояния <Math display={false}>{`s`}</Math>:
       </p>
+      <Math>{`V^*(s) = \\max_{a \\in A(s)} \\sum_{s'} P(s'|s,a)\\bigl[R(s,a,s') + \\gamma\\, V^*(s')\\bigr]`}</Math>
+
+      <div className="my-6 overflow-x-auto rounded-xl border border-primary/30 bg-card/60 backdrop-blur-sm">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-primary/30">
+              <th className="text-left py-2 px-3 text-primary font-semibold">Обозначение</th>
+              <th className="text-left py-2 px-3 text-foreground font-semibold">Смысл</th>
+            </tr>
+          </thead>
+          <tbody className="text-muted-foreground">
+            <tr className="border-b border-border/30">
+              <td className="py-2 px-3"><Math display={false}>{`V^*(s)`}</Math></td>
+              <td className="py-2 px-3">максимальная ожидаемая суммарная награда, начиная из состояния <Math display={false}>{`s`}</Math> и действуя оптимально</td>
+            </tr>
+            <tr className="border-b border-border/30">
+              <td className="py-2 px-3"><Math display={false}>{`A(s)`}</Math></td>
+              <td className="py-2 px-3">множество допустимых действий в состоянии <Math display={false}>{`s`}</Math></td>
+            </tr>
+            <tr className="border-b border-border/30">
+              <td className="py-2 px-3"><Math display={false}>{`P(s'|s,a)`}</Math></td>
+              <td className="py-2 px-3">вероятность перейти в состояние <Math display={false}>{`s'`}</Math> из <Math display={false}>{`s`}</Math>, если выполнить действие <Math display={false}>{`a`}</Math></td>
+            </tr>
+            <tr className="border-b border-border/30">
+              <td className="py-2 px-3"><Math display={false}>{`R(s,a,s')`}</Math></td>
+              <td className="py-2 px-3">немедленная награда за переход <Math display={false}>{`s \\to s'`}</Math> по действию <Math display={false}>{`a`}</Math></td>
+            </tr>
+            <tr className="border-b border-border/30">
+              <td className="py-2 px-3"><Math display={false}>{`\\gamma \\in [0,1)`}</Math></td>
+              <td className="py-2 px-3">коэффициент дисконтирования будущего: чем ближе к 1, тем важнее далёкое будущее</td>
+            </tr>
+            <tr>
+              <td className="py-2 px-3"><Math display={false}>{`s'`}</Math></td>
+              <td className="py-2 px-3">возможные следующие состояния</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      {/* 4.3 — Что означает формула */}
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="что-означает-формула">4.3 Что означает формула — по частям</h3>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 my-4">
+        <div className="p-3 rounded-lg bg-primary/10 border border-primary/30">
+          <Math display={false}>{`V^*(s)`}</Math>
+          <p className="text-xs text-muted-foreground mt-2">лучшая ценность состояния <Math display={false}>{`s`}</Math></p>
+        </div>
+        <div className="p-3 rounded-lg bg-secondary/10 border border-secondary/30">
+          <Math display={false}>{`\\max_{a \\in A(s)}`}</Math>
+          <p className="text-xs text-muted-foreground mt-2">выбираем действие <Math display={false}>{`a`}</Math>, которое даёт наибольшую ценность</p>
+        </div>
+        <div className="p-3 rounded-lg bg-accent/10 border border-accent/30">
+          <Math display={false}>{`\\sum_{s'} P(s'|s,a)`}</Math>
+          <p className="text-xs text-muted-foreground mt-2">учитываем все возможные следующие состояния и их вероятности</p>
+        </div>
+        <div className="p-3 rounded-lg bg-primary/10 border border-primary/30">
+          <Math display={false}>{`R(s,a,s')`}</Math>
+          <p className="text-xs text-muted-foreground mt-2">немедленная награда (польза прямо сейчас)</p>
+        </div>
+        <div className="p-3 rounded-lg bg-secondary/10 border border-secondary/30">
+          <Math display={false}>{`\\gamma\\, V^*(s')`}</Math>
+          <p className="text-xs text-muted-foreground mt-2">будущая ценность из <Math display={false}>{`s'`}</Math>, но <em>дисконтированная</em></p>
+        </div>
+        <div className="p-3 rounded-lg bg-accent/10 border border-accent/30">
+          <Math display={false}>{`[\\,R + \\gamma V^*\\,]`}</Math>
+          <p className="text-xs text-muted-foreground mt-2">польза одного перехода = сейчас + будущее</p>
+        </div>
+      </div>
+      <InfoBox variant="secondary">
+        <p className="text-sm">
+          Иначе говоря: для каждого действия считаем ожидаемую (с учётом вероятностей) сумму из <strong className="text-foreground">немедленной награды</strong> и <strong className="text-foreground">дисконтированной будущей ценности</strong>, и берём <strong className="text-foreground">максимум</strong>.
+        </p>
+      </InfoBox>
+
+      {/* 4.4 — Пример на пальцах */}
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="пример-на-пальцах">4.4 Пример «на пальцах»</h3>
+      <p>
+        Вы в городе. Нужно добраться до цели и получить максимальную награду. Из состояния <Math display={false}>{`s`}</Math> доступно 2 действия:
+      </p>
+      <div className="grid md:grid-cols-2 gap-4 my-4">
+        <div className="p-4 rounded-lg bg-card/60 border border-primary/30">
+          <p className="text-sm font-semibold text-primary mb-2">Действие <Math display={false}>{`a_1`}</Math> (вправо)</p>
+          <ul className="text-sm space-y-1 text-muted-foreground">
+            <li>с вероятностью 0.8 → клетка <Math display={false}>{`+5`}</Math></li>
+            <li>с вероятностью 0.2 → в стену (значение 0)</li>
+            <li>награда за шаг: <Math display={false}>{`-1`}</Math></li>
+          </ul>
+        </div>
+        <div className="p-4 rounded-lg bg-card/60 border border-secondary/30">
+          <p className="text-sm font-semibold text-secondary mb-2">Действие <Math display={false}>{`a_2`}</Math> (вниз)</p>
+          <ul className="text-sm space-y-1 text-muted-foreground">
+            <li>с вероятностью 1.0 → к цели <Math display={false}>{`+10`}</Math></li>
+            <li>награда за шаг: <Math display={false}>{`-1`}</Math></li>
+          </ul>
+        </div>
+      </div>
+      <p>
+        Пусть ценность клетки <Math display={false}>{`+5`}</Math> равна <Math display={false}>{`5`}</Math>, ценность цели <Math display={false}>{`+10`}</Math> равна <Math display={false}>{`10`}</Math>, дисконт <Math display={false}>{`\\gamma = 0.9`}</Math>.
+      </p>
+
+      <div className="grid md:grid-cols-2 gap-4 my-4">
+        <div className="p-4 rounded-lg bg-card/80 border border-primary/30">
+          <p className="text-sm font-semibold text-primary mb-2">Считаем для <Math display={false}>{`a_1`}</Math> (вправо):</p>
+          <Math>{`0.8\\cdot[-1 + 0.9\\cdot 5] + 0.2\\cdot[-1 + 0.9\\cdot 0]`}</Math>
+          <Math>{`= 0.8\\cdot 3.5 + 0.2\\cdot(-1) = 2.8 - 0.2 = 2.6`}</Math>
+        </div>
+        <div className="p-4 rounded-lg bg-card/80 border border-secondary/30">
+          <p className="text-sm font-semibold text-secondary mb-2">Считаем для <Math display={false}>{`a_2`}</Math> (вниз):</p>
+          <Math>{`1.0\\cdot[-1 + 0.9\\cdot 10] = -1 + 9 = 8`}</Math>
+        </div>
+      </div>
+      <InfoBox variant="accent">
+        <p className="text-sm">
+          ⭐ Берём максимум: <Math display={false}>{`V^*(s) = \\max(2.6,\\,8) = 8`}</Math> → <strong className="text-foreground">лучше идти вниз</strong> (действие <Math display={false}>{`a_2`}</Math>).
+        </p>
+      </InfoBox>
+
+      {/* 4.5 — Интуиция γ */}
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="интуиция-gamma">4.5 Интуиция: роль <Math display={false}>{`\\gamma`}</Math></h3>
+      <ul className="list-disc list-inside space-y-2 text-sm">
+        <li>
+          🧭 <strong className="text-foreground">Сейчас выбираем действие</strong>, которое кажется лучшим не только сейчас, но и с учётом того, что будет дальше.
+        </li>
+        <li>
+          ⏱️ Если <Math display={false}>{`\\gamma`}</Math> <strong className="text-foreground">маленький</strong> (например 0.1) — важно только ближайшее будущее.
+        </li>
+        <li>
+          🔭 Если <Math display={false}>{`\\gamma`}</Math> <strong className="text-foreground">близок к 1</strong> (например 0.99) — важно и далёкое будущее.
+        </li>
+        <li>
+          ⚖️ Уравнение Беллмана «разбивает» сложную задачу на простые шаги: сначала считаем ценности всех следующих состояний, потом используем их для текущего.
+        </li>
+      </ul>
+
+      {/* 4.6 — Как используется */}
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="как-используется">4.6 Как используется уравнение Беллмана</h3>
+      <div className="grid md:grid-cols-3 gap-3 my-4">
+        <div className="p-4 rounded-lg bg-card/60 border border-primary/30 hover:shadow-glow-cyan transition-shadow">
+          <p className="text-sm font-semibold text-primary mb-2">📊 Оценка политики</p>
+          <p className="text-xs text-muted-foreground">
+            <em>policy evaluation:</em> вычисляем <Math display={false}>{`V^\\pi(s)`}</Math> для фиксированной стратегии <Math display={false}>{`\\pi`}</Math> (без <Math display={false}>{`\\max`}</Math>).
+          </p>
+        </div>
+        <div className="p-4 rounded-lg bg-card/60 border border-secondary/30 hover:shadow-glow-purple transition-shadow">
+          <p className="text-sm font-semibold text-secondary mb-2">🔄 Итерация ценности</p>
+          <p className="text-xs text-muted-foreground">
+            <em>value iteration:</em> многократно применяем уравнение, пока значения не перестанут меняться → получаем <Math display={false}>{`V^*(s)`}</Math>.
+          </p>
+        </div>
+        <div className="p-4 rounded-lg bg-card/60 border border-accent/30">
+          <p className="text-sm font-semibold text-accent mb-2">🎯 Извлечение стратегии</p>
+          <p className="text-xs text-muted-foreground">
+            <em>policy extraction:</em> выбираем действие, которое давало максимум: <Math display={false}>{`\\pi^*(s) = \\arg\\max_a [\\,\\cdots]`}</Math>.
+          </p>
+        </div>
+      </div>
+
+      {/* 4.7 — Непрерывный случай */}
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="непрерывный-случай">4.7 Непрерывный случай</h3>
+      <p>
+        Если состояния и действия непрерывны, суммы заменяются на интегралы:
+      </p>
+      <Math>{`V^*(s) = \\max_{a \\in A(s)} \\int \\bigl[\\,R(s,a,s') + \\gamma\\, V^*(s')\\,\\bigr]\\, p(s'|s,a)\\, ds'`}</Math>
+      <p>
+        Здесь <Math display={false}>{`p(s'|s,a)`}</Math> — плотность вероятности перейти в <Math display={false}>{`s'`}</Math>. Идея та же самая.
+      </p>
+
+      {/* 4.8 — Существование и единственность */}
+      <h3 className="scroll-mt-28 text-xl font-semibold text-foreground mt-8 mb-3" id="сходимость-беллмана">4.8 Почему решение существует</h3>
+      <p>
+        Существование и единственность <Math display={false}>{`V^*`}</Math> гарантируются тем, что оператор Беллмана является <strong className="text-foreground">сжимающим отображением</strong> с коэффициентом <Math display={false}>{`\\gamma`}</Math>. По теореме Банаха о неподвижной точке, итеративное применение оператора сходится к единственному <Math display={false}>{`V^*`}</Math>.
+      </p>
+
+      {/* 4.9 — Главное в одной строке */}
+      <InfoBox variant="accent">
+        <p className="text-sm font-semibold text-foreground mb-2">🎯 Главное в одной строке</p>
+        <p className="text-sm">
+          Лучшая ценность состояния = лучшая ожидаемая награда сейчас + важность лучшего будущего.
+        </p>
+        <div className="flex flex-wrap items-center gap-2 mt-3 text-xs">
+          <span className="px-2 py-1 rounded bg-primary/15 border border-primary/30 text-primary">состояние <Math display={false}>{`s`}</Math></span>
+          <span className="text-muted-foreground">→</span>
+          <span className="px-2 py-1 rounded bg-secondary/15 border border-secondary/30 text-secondary">выбор действия <Math display={false}>{`a`}</Math></span>
+          <span className="text-muted-foreground">→</span>
+          <span className="px-2 py-1 rounded bg-accent/15 border border-accent/30 text-accent">переход в <Math display={false}>{`s'`}</Math> (вероятности)</span>
+          <span className="text-muted-foreground">→</span>
+          <span className="px-2 py-1 rounded bg-primary/15 border border-primary/30 text-primary">награда <Math display={false}>{`R(s,a,s')`}</Math></span>
+          <span className="text-muted-foreground">+</span>
+          <span className="px-2 py-1 rounded bg-secondary/15 border border-secondary/30 text-secondary">будущее <Math display={false}>{`\\gamma V^*(s')`}</Math></span>
+          <span className="text-muted-foreground">→</span>
+          <span className="px-2 py-1 rounded bg-accent/15 border border-accent/30 text-accent">берём максимум по действиям</span>
+        </div>
+      </InfoBox>
     </Section>
 
     {/* ── 5. Итерация ценности ── */}
