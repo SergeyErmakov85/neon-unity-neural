@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import CrossLinkToHub from "@/components/CrossLinkToHub";
 import ValueFunctionViz from "@/components/math-rl/ValueFunctionViz";
+import mdpDiagram from "@/assets/mdp-diagram.png";
 
 const quizQuestions = [
   {
@@ -109,6 +110,152 @@ const CourseLesson1_5 = () => {
         "Оптимальность V*, Q* и связь π*(s) = argmax_a Q*(s, a)",
       ]}
     >
+      {/* ── 0. Визуальная карта MDP (по рисунку) ───────────── */}
+      <section>
+        <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
+          <Workflow className="w-6 h-6 text-primary" />
+          MDP одним взглядом — визуальная карта
+        </h2>
+        <p className="text-muted-foreground leading-relaxed mb-4">
+          Прежде чем погружаться в формулы, зафиксируем общую картину. На схеме ниже
+          собрано всё, о чём пойдёт речь в этом уроке: формальный кортеж{" "}
+          <Math display={false}>{"\\mathcal{M} = (\\mathcal{S}, \\mathcal{A}, P, R, \\gamma)"}</Math>,
+          петля взаимодействия <strong className="text-foreground">агент ↔ среда</strong>,
+          траектория и цель обучения.
+        </p>
+
+        {/* Формула-«шапка» MDP */}
+        <Card className="bg-card/60 backdrop-blur-sm border-primary/30 mb-6">
+          <CardContent className="p-5 text-center">
+            <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">
+              Markov Decision Process
+            </p>
+            <Math>{"\\mathcal{M} = (\\mathcal{S},\\, \\mathcal{A},\\, P,\\, R,\\, \\gamma)"}</Math>
+          </CardContent>
+        </Card>
+
+        {/* Иллюстрация */}
+        <Card className="bg-card/40 border-border/40 mb-6 overflow-hidden">
+          <CardContent className="p-4">
+            <img
+              src={mdpDiagram}
+              alt="Схема Марковского процесса принятия решений: агент отправляет действие в среду, среда возвращает награду и следующее состояние"
+              loading="lazy"
+              className="w-full h-auto rounded-md bg-background"
+            />
+            <p className="text-xs text-muted-foreground italic text-center mt-3">
+              Цикл взаимодействия: агент выбирает <Math display={false}>{"a_t \\in \\mathcal{A}"}</Math>,
+              среда отвечает наградой <Math display={false}>{"r_t \\in \\mathbb{R}"}</Math> и
+              следующим состоянием <Math display={false}>{"s_{t+1} \\in \\mathcal{S}"}</Math>.
+            </p>
+          </CardContent>
+        </Card>
+
+        {/* Компоненты пятёрки */}
+        <h3 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
+          <Sigma className="w-5 h-5 text-primary" />
+          Компоненты MDP
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+          {[
+            { sym: "\\mathcal{S}", name: "State space", desc: "Множество всех возможных состояний среды" },
+            { sym: "\\mathcal{A}", name: "Action space", desc: "Множество доступных действий агента" },
+            { sym: "P", name: "Transition probability", desc: "P(s' | s, a) — вероятность перехода в s' из s после действия a" },
+            { sym: "R", name: "Reward function", desc: "R(s, a, s') — числовая награда за переход" },
+            { sym: "\\gamma", name: "Discount factor", desc: "γ ∈ [0, 1) — вес будущих наград" },
+          ].map((item) => (
+            <Card key={item.name} className="bg-card/60 backdrop-blur-sm border-primary/20 hover:shadow-glow-cyan transition-shadow">
+              <CardContent className="p-4 flex items-start gap-3">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center flex-shrink-0">
+                  <Math display={false} className="!text-primary font-bold">{item.sym}</Math>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-sm font-semibold text-foreground">{item.name}</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Петля agent ↔ environment */}
+        <h3 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
+          <Route className="w-5 h-5 text-secondary" />
+          Петля взаимодействия агент ↔ среда
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+          <Card className="bg-card/60 backdrop-blur-sm border-primary/30">
+            <CardContent className="p-4 space-y-2">
+              <p className="text-xs uppercase tracking-wider text-primary font-semibold">Agent → Environment</p>
+              <Math display={false}>{"a_t \\in \\mathcal{A}"}</Math>
+              <p className="text-xs text-muted-foreground">Агент выбирает действие в момент времени <Math display={false}>{"t"}</Math>.</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-card/60 backdrop-blur-sm border-secondary/30">
+            <CardContent className="p-4 space-y-2">
+              <p className="text-xs uppercase tracking-wider text-secondary font-semibold">Environment → Agent</p>
+              <Math display={false}>{"r_t \\in \\mathbb{R}"}</Math>
+              <p className="text-xs text-muted-foreground">Среда возвращает награду, полученную после <Math display={false}>{"a_{t-1}"}</Math>.</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-card/60 backdrop-blur-sm border-secondary/30">
+            <CardContent className="p-4 space-y-2">
+              <p className="text-xs uppercase tracking-wider text-secondary font-semibold">Environment → Agent</p>
+              <Math display={false}>{"s_{t+1} \\in \\mathcal{S}"}</Math>
+              <p className="text-xs text-muted-foreground">Среда переводит агента в новое состояние согласно <Math display={false}>{"P(s' \\mid s, a)"}</Math>.</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Траектория */}
+        <h3 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
+          <GitBranch className="w-5 h-5 text-primary" />
+          Развёртка во времени — траектория
+        </h3>
+        <Card className="bg-card/60 backdrop-blur-sm border-primary/30 mb-3">
+          <CardContent className="p-5">
+            <Math>{"s_0 \\xrightarrow{a_0} r_0, s_1 \\xrightarrow{a_1} r_1, s_2 \\;\\cdots\\; \\xrightarrow{a_t} r_t, s_{t+1} \\;\\cdots"}</Math>
+          </CardContent>
+        </Card>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6">
+          {[
+            { sym: "s_t \\in \\mathcal{S}", desc: "состояние в момент времени t" },
+            { sym: "a_t \\in \\mathcal{A}", desc: "действие в момент времени t" },
+            { sym: "r_t \\in \\mathbb{R}", desc: "награда, полученная после действия a_{t-1}" },
+            { sym: "P(s' \\mid s, a)", desc: "вероятность перейти в s', выбрав a из s" },
+          ].map((item) => (
+            <Card key={item.desc} className="bg-card/30 border-border/40">
+              <CardContent className="p-3 flex items-center gap-3">
+                <div className="min-w-[110px] px-2 py-1 rounded bg-primary/10 border border-primary/20 text-center">
+                  <Math display={false} className="!text-primary text-xs">{item.sym}</Math>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">— {item.desc}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Цель */}
+        <Card className="bg-card/60 backdrop-blur-sm border-secondary/30 hover:shadow-glow-purple transition-shadow">
+          <CardContent className="p-5 space-y-3">
+            <div className="flex items-center gap-2">
+              <Target className="w-5 h-5 text-secondary" />
+              <p className="text-sm font-semibold text-secondary uppercase tracking-wider">Objective</p>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Найти политику <Math display={false}>{"\\pi(a \\mid s)"}</Math>, которая
+              максимизирует <strong className="text-foreground">ожидаемый дисконтированный возврат</strong>:
+            </p>
+            <Math>{"G_t = \\sum_{k=0}^{\\infty} \\gamma^{k}\\, r_{t+k+1}"}</Math>
+            <p className="text-xs text-muted-foreground italic">
+              Все алгоритмы RL — от Q-Learning до PPO — это разные способы решить именно
+              эту оптимизационную задачу. Дальше в уроке мы разберём по очереди каждый
+              элемент схемы.
+            </p>
+          </CardContent>
+        </Card>
+      </section>
+
       {/* ── 1. Зачем возвращаемся к MDP ───────────── */}
       <section>
         <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
