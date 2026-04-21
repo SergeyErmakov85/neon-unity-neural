@@ -4,7 +4,7 @@ import { Section, InfoBox } from "./Section";
 import { MDPTreeViz } from "./Module5Charts";
 
 const Chapter3 = () => (
-  <Section icon={<Box className="w-5 h-5 text-primary" />} title="Глава 3. Марковские процессы принятия решений (MDP)">
+  <Section icon={<Box className="w-5 h-5 text-primary" />} title="Глава 3. Марковские процессы принятия решений (MDP)" id="глава-3">
     <p>
       В реальных задачах текущее действие агента влияет не только на сиюминутную награду, но и на то, в какой ситуации он окажется на следующем шаге. Для описания таких сред используется мощный аппарат — <strong className="text-foreground">Марковские процессы принятия решений</strong>.
     </p>

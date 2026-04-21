@@ -2,17 +2,25 @@ import React from "react";
 
 const slugify = (t: string) => t.toLowerCase().replace(/[^\wа-яё]+/gi, "-").replace(/^-|-$/g, "").slice(0, 60);
 
-export const Section = ({ icon, title, id, children }: { icon: React.ReactNode; title: string; id?: string; children: React.ReactNode }) => (
-  <section className="mt-12 first:mt-0 scroll-mt-28" id={id || slugify(title)}>
-    <div className="flex items-center gap-3 mb-6">
-      {icon}
-      <h2 className="text-2xl font-bold text-foreground">{title}</h2>
-    </div>
-    <div className="text-muted-foreground leading-relaxed space-y-3">
-      {children}
-    </div>
-  </section>
-);
+export const Section = ({ icon, title, id, children }: { icon: React.ReactNode; title: string; id?: string; children: React.ReactNode }) => {
+  const titleSlug = slugify(title);
+  const primaryId = id || titleSlug;
+  // When an explicit short id is provided, keep the slugified-title id as a
+  // secondary anchor so the sidebar TOC (which uses slugify(title)) still works.
+  const showAlias = id && id !== titleSlug;
+  return (
+    <section className="mt-12 first:mt-0 scroll-mt-28" id={primaryId}>
+      {showAlias && <span id={titleSlug} className="scroll-mt-28 block" aria-hidden />}
+      <div className="flex items-center gap-3 mb-6">
+        {icon}
+        <h2 className="text-2xl font-bold text-foreground">{title}</h2>
+      </div>
+      <div className="text-muted-foreground leading-relaxed space-y-3">
+        {children}
+      </div>
+    </section>
+  );
+};
 
 export const CodeBlock = ({ children }: { children: string }) => (
   <pre className="my-4 p-4 rounded-lg bg-[hsl(var(--cyber-darker))] border border-primary/20 overflow-x-auto">

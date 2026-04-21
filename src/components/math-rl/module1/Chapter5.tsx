@@ -3,7 +3,7 @@ import Math from "@/components/Math";
 import { Section, InfoBox, CodeBlock } from "./Section";
 
 const Chapter5 = () => (
-  <Section icon={<Zap className="w-5 h-5 text-primary" />} title="Глава 5. Сердце RL: Уравнения Беллмана">
+  <Section icon={<Zap className="w-5 h-5 text-primary" />} title="Глава 5. Сердце RL: Уравнения Беллмана" id="глава-5">
     <p>
       Весь математический аппарат RL опирается на принцип <strong className="text-foreground">динамического программирования</strong>, заложенный Ричардом Беллманом в 1950-х. Гениальность подхода — обнаружение рекурсивной структуры: возврат <Math display={false}>{"G_t"}</Math> раскладывается на немедленную награду и дисконтированный возврат следующего шага.
     </p>

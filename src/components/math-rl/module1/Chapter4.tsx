@@ -3,7 +3,7 @@ import Math from "@/components/Math";
 import { Section, InfoBox } from "./Section";
 
 const Chapter4 = () => (
-  <Section icon={<TrendingUp className="w-5 h-5 text-secondary" />} title="Глава 4. Возврат, политики и функции ценности">
+  <Section icon={<TrendingUp className="w-5 h-5 text-secondary" />} title="Глава 4. Возврат, политики и функции ценности" id="глава-4">
     <h3 id="возврат-return" className="scroll-mt-28 text-xl font-semibold text-foreground mt-6 mb-3">Возврат (Return)</h3>
     <p>
       Агент стремится максимизировать совокупную награду — <strong className="text-foreground">возврат</strong> <Math display={false}>{"G_t"}</Math>.

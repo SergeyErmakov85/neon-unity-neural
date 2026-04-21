@@ -3,7 +3,7 @@ import Math from "@/components/Math";
 import { Section, InfoBox } from "./Section";
 
 const Chapter10 = () => (
-  <Section icon={<Gamepad2 className="w-5 h-5 text-primary" />} title="Глава 10. Мост к практике: Unity ML-Agents">
+  <Section icon={<Gamepad2 className="w-5 h-5 text-primary" />} title="Глава 10. Мост к практике: Unity ML-Agents" id="глава-10">
     <p>
       Unity ML-Agents позволяет создавать 3D-симуляции на C#, выступающие в роли Среды, в то время как алгоритмы RL (PPO на Python/PyTorch) работают в отдельном процессе через TCP.
     </p>

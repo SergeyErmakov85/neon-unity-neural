@@ -4,7 +4,7 @@ import { Section, InfoBox } from "./Section";
 import { TDErrorViz, SarsaVsQLearningViz } from "./Module5Charts";
 
 const Chapter6 = () => (
-  <Section icon={<GitBranch className="w-5 h-5 text-accent" />} title="Глава 6. От динамического программирования к Model-Free RL">
+  <Section icon={<GitBranch className="w-5 h-5 text-accent" />} title="Глава 6. От динамического программирования к Model-Free RL" id="глава-6">
     <p>
       Если модель среды известна (матрицы <Math display={false}>{"P"}</Math> и <Math display={false}>{"R"}</Math>), можно использовать классическое <strong className="text-foreground">Динамическое Программирование</strong> (Policy Iteration, Value Iteration). Но в реальности мы почти никогда не знаем динамику среды. Программист, настраивающий агента в Unity, не знает аналитической формулы вероятности отскока физического объекта сложной формы.
     </p>

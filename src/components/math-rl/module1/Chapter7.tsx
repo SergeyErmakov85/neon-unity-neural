@@ -3,7 +3,7 @@ import Math from "@/components/Math";
 import { Section, InfoBox } from "./Section";
 
 const Chapter7 = () => (
-  <Section icon={<History className="w-5 h-5 text-secondary" />} title="Глава 7. Следы пригодности (Eligibility Traces)">
+  <Section icon={<History className="w-5 h-5 text-secondary" />} title="Глава 7. Следы пригодности (Eligibility Traces)" id="глава-7">
     <p>
       Методы TD(0) обновляют значения лишь на один шаг вперёд, а Монте-Карло ждёт конца эпизода — это две крайности одного спектра. <strong className="text-foreground">Следы пригодности</strong> (Eligibility Traces) и метод <Math display={false}>{"\\text{TD}(\\lambda)"}</Math> — элегантный мост между ними.
     </p>

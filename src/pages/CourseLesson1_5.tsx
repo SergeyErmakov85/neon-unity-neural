@@ -602,8 +602,8 @@ const CourseLesson1_5 = () => {
           <Sigma className="w-6 h-6 text-secondary" />
           <CrossLinkToHub
             hubPath="/math-rl/module-5"
-            hubAnchor="глава-5-уравнения-беллмана"
-            hubTitle="Математика RL — Уравнения Беллмана"
+            hubAnchor="глава-5"
+            hubTitle="Математика RL — Глава 5. Уравнения Беллмана"
           >
             Уравнения Беллмана
           </CrossLinkToHub>

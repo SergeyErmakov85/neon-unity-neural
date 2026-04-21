@@ -3,7 +3,7 @@ import Math from "@/components/Math";
 import { Section, InfoBox } from "./Section";
 
 const Chapter2 = () => (
-  <Section icon={<Target className="w-5 h-5 text-accent" />} title="Глава 2. Многорукие бандиты: Исследование vs Использование">
+  <Section icon={<Target className="w-5 h-5 text-accent" />} title="Глава 2. Многорукие бандиты: Исследование vs Использование" id="глава-2">
     <p>
       Прежде чем переходить к сложным средам, изучим упрощённую, но фундаментальную постановку — <strong className="text-foreground">задачу о многоруком бандите</strong> (Multi-Armed Bandit). Представьте <Math display={false}>{"K"}</Math> игровых автоматов, каждый из которых выдаёт выигрыш согласно неизвестному распределению. Цель — максимизировать суммарный выигрыш за определённое число попыток.
     </p>

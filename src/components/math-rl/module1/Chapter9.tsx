@@ -3,7 +3,7 @@ import Math from "@/components/Math";
 import { Section, InfoBox } from "./Section";
 
 const Chapter9 = () => (
-  <Section icon={<Sparkles className="w-5 h-5 text-accent" />} title="Глава 9. Методы градиента политики (Policy Gradients)">
+  <Section icon={<Sparkles className="w-5 h-5 text-accent" />} title="Глава 9. Методы градиента политики (Policy Gradients)" id="глава-9">
     <p>
       Value-based методы (DQN) не работают с <strong className="text-foreground">непрерывным пространством действий</strong> (нельзя вычислить <Math display={false}>{"\\max_a"}</Math> для бесконечного числа вариантов) и не могут выучить истинно стохастические политики (в «Камень-ножницы-бумага» оптимальная стратегия — играть случайно).
     </p>

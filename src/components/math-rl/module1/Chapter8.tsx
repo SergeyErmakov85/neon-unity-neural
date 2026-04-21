@@ -3,7 +3,7 @@ import Math from "@/components/Math";
 import { Section, InfoBox } from "./Section";
 
 const Chapter8 = () => (
-  <Section icon={<Cpu className="w-5 h-5 text-primary" />} title="Глава 8. Аппроксимация функций и Deep RL">
+  <Section icon={<Cpu className="w-5 h-5 text-primary" />} title="Глава 8. Аппроксимация функций и Deep RL" id="глава-8">
     <p>
       Все описанные алгоритмы в классическом виде опираются на <strong className="text-foreground">табличные методы</strong>: таблица, где строки — состояния, столбцы — действия, а ячейки хранят Q-значения.
     </p>
