@@ -23,10 +23,13 @@ import {
   Gauge,
   Route,
   Workflow,
+  Bot,
+  Trees,
+  ArrowRight,
+  ArrowLeft,
 } from "lucide-react";
 import CrossLinkToHub from "@/components/CrossLinkToHub";
 import ValueFunctionViz from "@/components/math-rl/ValueFunctionViz";
-import mdpDiagram from "@/assets/mdp-diagram.png";
 
 const quizQuestions = [
   {
@@ -134,19 +137,88 @@ const CourseLesson1_5 = () => {
           </CardContent>
         </Card>
 
-        {/* Иллюстрация */}
-        <Card className="bg-card/40 border-border/40 mb-6 overflow-hidden">
-          <CardContent className="p-4">
-            <img
-              src={mdpDiagram}
-              alt="Схема Марковского процесса принятия решений: агент отправляет действие в среду, среда возвращает награду и следующее состояние"
-              loading="lazy"
-              className="w-full h-auto rounded-md bg-background"
-            />
-            <p className="text-xs text-muted-foreground italic text-center mt-3">
-              Цикл взаимодействия: агент выбирает <Math display={false}>{"a_t \\in \\mathcal{A}"}</Math>,
-              среда отвечает наградой <Math display={false}>{"r_t \\in \\mathbb{R}"}</Math> и
-              следующим состоянием <Math display={false}>{"s_{t+1} \\in \\mathcal{S}"}</Math>.
+        {/* Интерактивная диаграмма Agent ↔ Environment (нативный SVG) */}
+        <Card className="bg-card/60 backdrop-blur-sm border-primary/30 mb-6 overflow-hidden">
+          <CardContent className="p-6">
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-4 items-center">
+              {/* AGENT */}
+              <div className="relative rounded-xl border-2 border-primary/40 bg-primary/5 p-5 hover:shadow-glow-cyan transition-shadow">
+                <div className="absolute -top-3 left-4 px-2 py-0.5 bg-background border border-primary/40 rounded text-xs font-bold text-primary uppercase tracking-wider">
+                  Agent
+                </div>
+                <div className="flex flex-col items-center gap-3 py-2">
+                  <div className="w-20 h-20 rounded-full bg-primary/10 border-2 border-primary/40 flex items-center justify-center shadow-glow-cyan">
+                    <Bot className="w-12 h-12 text-primary" strokeWidth={1.5} />
+                  </div>
+                  <p className="text-xs text-center text-muted-foreground leading-relaxed">
+                    Принимает решения,<br />обучается на опыте
+                  </p>
+                </div>
+              </div>
+
+              {/* CHANNELS — middle column with 3 arrows */}
+              <div className="flex flex-col gap-4 min-w-[180px]">
+                {/* action: agent → env */}
+                <div className="relative">
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 h-[2px] bg-gradient-to-r from-primary to-primary/40 relative">
+                      <div className="absolute -top-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs">
+                        <span className="text-primary font-mono">action </span>
+                        <Math display={false} className="!text-primary text-xs">{"a_t \\in \\mathcal{A}"}</Math>
+                      </div>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-primary -ml-2" />
+                  </div>
+                </div>
+
+                {/* reward: env → agent */}
+                <div className="relative">
+                  <div className="flex items-center gap-2">
+                    <ArrowLeft className="w-4 h-4 text-secondary -mr-2" />
+                    <div className="flex-1 h-[2px] bg-gradient-to-l from-secondary to-secondary/40 relative">
+                      <div className="absolute -top-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs">
+                        <span className="text-secondary font-mono">reward </span>
+                        <Math display={false} className="!text-secondary text-xs">{"r_t \\in \\mathbb{R}"}</Math>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* next state: env → agent */}
+                <div className="relative">
+                  <div className="flex items-center gap-2">
+                    <ArrowLeft className="w-4 h-4 text-secondary -mr-2" />
+                    <div className="flex-1 h-[2px] bg-gradient-to-l from-secondary to-secondary/40 relative">
+                      <div className="absolute -top-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs">
+                        <span className="text-secondary font-mono">next state </span>
+                        <Math display={false} className="!text-secondary text-xs">{"s_{t+1} \\in \\mathcal{S}"}</Math>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* ENVIRONMENT */}
+              <div className="relative rounded-xl border-2 border-secondary/40 bg-secondary/5 p-5 hover:shadow-glow-purple transition-shadow">
+                <div className="absolute -top-3 left-4 px-2 py-0.5 bg-background border border-secondary/40 rounded text-xs font-bold text-secondary uppercase tracking-wider">
+                  Environment
+                </div>
+                <div className="flex flex-col items-center gap-3 py-2">
+                  <div className="w-20 h-20 rounded-full bg-secondary/10 border-2 border-secondary/40 flex items-center justify-center shadow-glow-purple">
+                    <Trees className="w-12 h-12 text-secondary" strokeWidth={1.5} />
+                  </div>
+                  <p className="text-xs text-center text-muted-foreground leading-relaxed">
+                    Имеет состояние,<br />реагирует на действия
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-xs text-muted-foreground italic text-center mt-6 pt-4 border-t border-border/30">
+              Цикл взаимодействия: агент выбирает{" "}
+              <Math display={false}>{"a_t \\in \\mathcal{A}"}</Math>, среда отвечает наградой{" "}
+              <Math display={false}>{"r_t \\in \\mathbb{R}"}</Math> и следующим состоянием{" "}
+              <Math display={false}>{"s_{t+1} \\in \\mathcal{S}"}</Math>.
             </p>
           </CardContent>
         </Card>
