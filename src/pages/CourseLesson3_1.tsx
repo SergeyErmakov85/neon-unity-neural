@@ -65,7 +65,7 @@ const CourseLesson3_1 = () => {
   const preview = (
     <>
       <section>
-        <h2 className="text-2xl font-bold text-foreground mb-4">Принцип <CrossLinkToHub hubPath="/math-rl/module-5" hubTitle="Фундаментальная математика RL">максимальной энтропии</CrossLinkToHub></h2>
+        <h2 className="text-2xl font-bold text-foreground mb-4">Принцип <CrossLinkToHub hubPath="/math-rl/module-5" hubAnchor="глава-9" hubTitle="Математика RL — Глава 9. Policy Gradients">максимальной энтропии</CrossLinkToHub></h2>
         <p className="text-muted-foreground leading-relaxed">
           <strong className="text-foreground"><CrossLinkToHub hubPath="/algorithms/sac" hubAnchor="entropy" hubTitle="SAC — Максимальная энтропия">Soft Actor-Critic (SAC)</CrossLinkToHub></strong> — state-of-the-art off-policy
           алгоритм для задач с непрерывными действиями. В отличие от PPO, SAC максимизирует не только

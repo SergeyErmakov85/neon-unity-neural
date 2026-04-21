@@ -117,7 +117,7 @@ const CourseLesson2_1 = () => {
 
         {/* REINFORCE derivation */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/math-rl/module-4" hubTitle="Математика RL — Оптимизация">REINFORCE</CrossLinkToHub>: вывод градиента</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4"><CrossLinkToHub hubPath="/math-rl/module-4" hubAnchor="шаг-4-формула-reinforce" hubTitle="Математика RL — Формула REINFORCE">REINFORCE</CrossLinkToHub>: вывод градиента</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Цель — максимизировать ожидаемую суммарную награду J(θ):
           </p>
@@ -125,7 +125,7 @@ const CourseLesson2_1 = () => {
           <Math>{"J(\\theta) = \\mathbb{E}_{\\tau \\sim \\pi_\\theta} \\left[ \\sum_{t=0}^{T} \\gamma^t r_t \\right]"}</Math>
 
           <p className="text-muted-foreground leading-relaxed my-4">
-            Применяя log-trick, получаем <strong className="text-foreground">теорему градиента политики</strong> — <CrossLinkToHub hubPath="/math-rl/module-4" hubTitle="Математика RL — Оптимизация">∇<sub>θ</sub>J(θ)</CrossLinkToHub>:
+            Применяя log-trick, получаем <strong className="text-foreground">теорему градиента политики</strong> — <CrossLinkToHub hubPath="/math-rl/module-4" hubAnchor="целевая-функция-политики" hubTitle="Математика RL — Целевая функция политики">∇<sub>θ</sub>J(θ)</CrossLinkToHub>:
           </p>
 
           <Math>{"\\nabla_\\theta J(\\theta) = \\mathbb{E}_{\\tau \\sim \\pi_\\theta} \\left[ \\sum_{t=0}^{T} \\nabla_\\theta \\log \\pi_\\theta(a_t | s_t) \\cdot G_t \\right]"}</Math>
@@ -137,7 +137,7 @@ const CourseLesson2_1 = () => {
 
         {/* Variance problem */}
         <section>
-          <h2 className="text-2xl font-bold text-foreground mb-4">Проблема дисперсии и <CrossLinkToHub hubPath="/math-rl/module-5" hubTitle="Математика RL — Q-Learning">baseline</CrossLinkToHub></h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4">Проблема дисперсии и <CrossLinkToHub hubPath="/math-rl/module-5" hubAnchor="глава-9" hubTitle="Математика RL — Глава 9. Policy Gradients и baseline">baseline</CrossLinkToHub></h2>
 
           <Card className="bg-card/40 border-primary/20 mb-4">
             <CardContent className="p-4 flex gap-3 items-start">

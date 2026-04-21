@@ -203,7 +203,8 @@ const CourseLesson1_4 = () => {
                   по{" "}
                   <CrossLinkToHub
                     hubPath="/math-rl/module-5"
-                    hubTitle="MDP и уравнение Беллмана"
+                    hubAnchor="глава-5"
+                    hubTitle="Математика RL — Глава 5. Уравнения Беллмана"
                   >
                     уравнению Беллмана
                   </CrossLinkToHub>
@@ -612,7 +613,8 @@ print(f"\\nФинальный средний reward (последние 100): "
                 Это{" "}
                 <CrossLinkToHub
                   hubPath="/math-rl/module-5"
-                  hubTitle="Математика → MDP и Bellman"
+                  hubAnchor="глава-5"
+                  hubTitle="Математика RL — Глава 5. Уравнения Беллмана"
                 >
                   уравнение Беллмана
                 </CrossLinkToHub>
