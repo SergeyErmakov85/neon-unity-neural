@@ -13,8 +13,8 @@ export type CrossLink = {
 export const CROSSLINKS: CrossLink[] = [
   // ── Урок 1.1: Что такое RL? ──
   { lessonId: "1-1", lessonPath: "/courses/1-1", lessonTitle: "Что такое RL?", lessonLevel: 1, hubPath: "/deep-rl", hubAnchor: "foundations", hubLabel: "Deep RL → Основы", contextInLesson: "MDP, награды, нейросети — расширение введения", contextInHub: "Введение в Уроке 1.1" },
-  { lessonId: "1-1", lessonPath: "/courses/1-1", lessonTitle: "Что такое RL?", lessonLevel: 1, hubPath: "/math-rl/module-5", hubLabel: "Математика → MDP и Bellman", contextInLesson: "Формальное определение MDP, V/Q функции", contextInHub: "Введение в Уроке 1.1" },
-  { lessonId: "1-1", lessonPath: "/courses/1-1", lessonTitle: "Что такое RL?", lessonLevel: 1, hubPath: "/math-rl/module-1", hubLabel: "Математика → Ряды и дисконтирование", contextInLesson: "Математика за γ и бесконечными суммами наград", contextInHub: "Введение в Уроке 1.1" },
+  { lessonId: "1-1", lessonPath: "/courses/1-1", lessonTitle: "Что такое RL?", lessonLevel: 1, hubPath: "/math-rl/module-5", hubAnchor: "глава-3", hubLabel: "Математика → Глава 3. MDP", contextInLesson: "Формальное определение MDP, V/Q функции", contextInHub: "Введение в Уроке 1.1" },
+  { lessonId: "1-1", lessonPath: "/courses/1-1", lessonTitle: "Что такое RL?", lessonLevel: 1, hubPath: "/math-rl/module-1", hubAnchor: "4-уравнения-беллмана-и-дисконтирование", hubLabel: "Математика → Ряды и дисконтирование", contextInLesson: "Математика за γ и бесконечными суммами наград", contextInHub: "Введение в Уроке 1.1" },
   { lessonId: "1-1", lessonPath: "/courses/1-1", lessonTitle: "Что такое RL?", lessonLevel: 1, hubPath: "/algorithms/dqn", hubLabel: "Алгоритмы → DQN", contextInLesson: "Пример value-based метода", contextInHub: "Введение в Уроке 1.1" },
 
   // ── Урок 1.2: Установка окружения ──
@@ -31,9 +31,14 @@ export const CROSSLINKS: CrossLink[] = [
   // ── Урок 1.4: DQN с нуля ──
   { lessonId: "1-4", lessonPath: "/courses/1-4", lessonTitle: "DQN с нуля на PyTorch", lessonLevel: 1, hubPath: "/algorithms/dqn", hubLabel: "Алгоритмы → DQN", contextInLesson: "Полная реализация DQN: replay buffer, target network", contextInHub: "Детальная реализация DQN (Урок 1.4)" },
   { lessonId: "1-4", lessonPath: "/courses/1-4", lessonTitle: "DQN с нуля на PyTorch", lessonLevel: 1, hubPath: "/pytorch/cheatsheet", hubAnchor: "nn", hubLabel: "PyTorch → nn.Module", contextInLesson: "Архитектура Q-сети на nn.Module", contextInHub: "Пример Q-сети (Урок 1.4)" },
-  { lessonId: "1-4", lessonPath: "/courses/1-4", lessonTitle: "DQN с нуля на PyTorch", lessonLevel: 1, hubPath: "/math-rl/module-5", hubLabel: "Математика → Bellman", contextInLesson: "Математическая основа DQN — уравнение Беллмана", contextInHub: "Формула Беллмана в коде DQN (Урок 1.4)" },
-  { lessonId: "1-4", lessonPath: "/courses/1-4", lessonTitle: "DQN с нуля на PyTorch", lessonLevel: 1, hubPath: "/math-rl/module-4", hubLabel: "Математика → Оптимизация", contextInLesson: "Оптимизация Q-сети через SGD / Adam", contextInHub: "Оптимизация в контексте DQN (Урок 1.4)" },
+  { lessonId: "1-4", lessonPath: "/courses/1-4", lessonTitle: "DQN с нуля на PyTorch", lessonLevel: 1, hubPath: "/math-rl/module-5", hubAnchor: "глава-5", hubLabel: "Математика → Глава 5. Уравнения Беллмана", contextInLesson: "Математическая основа DQN — уравнение Беллмана", contextInHub: "Формула Беллмана в коде DQN (Урок 1.4)" },
+  { lessonId: "1-4", lessonPath: "/courses/1-4", lessonTitle: "DQN с нуля на PyTorch", lessonLevel: 1, hubPath: "/math-rl/module-4", hubAnchor: "лекция-3-градиентный-спуск-и-его-варианты", hubLabel: "Математика → Оптимизация", contextInLesson: "Оптимизация Q-сети через SGD / Adam", contextInHub: "Оптимизация в контексте DQN (Урок 1.4)" },
   { lessonId: "1-4", lessonPath: "/courses/1-4", lessonTitle: "DQN с нуля на PyTorch", lessonLevel: 1, hubPath: "/deep-rl", hubAnchor: "algorithms", hubLabel: "Deep RL → Алгоритмы", contextInLesson: "DQN в контексте других Deep RL алгоритмов", contextInHub: "DQN — первый deep-метод (Урок 1.4)" },
+
+  // ── Урок 1.5: MDP и уравнения Беллмана ──
+  { lessonId: "1-5", lessonPath: "/courses/1-5", lessonTitle: "MDP и уравнения Беллмана", lessonLevel: 1, hubPath: "/math-rl/module-5", hubAnchor: "глава-5", hubLabel: "Математика → Глава 5. Уравнения Беллмана", contextInLesson: "Рекурсивная структура функции ценности", contextInHub: "Интуитивный разбор Беллмана (Урок 1.5)" },
+  { lessonId: "1-5", lessonPath: "/courses/1-5", lessonTitle: "MDP и уравнения Беллмана", lessonLevel: 1, hubPath: "/math-rl/module-5", hubAnchor: "глава-3", hubLabel: "Математика → Глава 3. MDP", contextInLesson: "Формальное описание MDP-среды", contextInHub: "MDP на практике (Урок 1.5)" },
+  { lessonId: "1-5", lessonPath: "/courses/1-5", lessonTitle: "MDP и уравнения Беллмана", lessonLevel: 1, hubPath: "/math-rl/module-5", hubAnchor: "глава-6", hubLabel: "Математика → Глава 6. Model-Free RL", contextInLesson: "Переход от DP к Model-Free методам", contextInHub: "Связка с Model-Free (Урок 1.5)" },
 
   // ── Проект 1: Балансировка шеста ──
   { lessonId: "project-1", lessonPath: "/courses/project-1", lessonTitle: "Проект: Балансировка шеста", lessonLevel: 1, hubPath: "/unity-projects/ball-balance", hubLabel: "Unity → Ball Balance", contextInLesson: "Аналогичная задача балансировки в 3D Unity-среде", contextInHub: "Родственный проект (Проект 1)" },
@@ -42,9 +47,9 @@ export const CROSSLINKS: CrossLink[] = [
 
   // ── Урок 2.1: Policy Gradient ──
   { lessonId: "2-1", lessonPath: "/courses/2-1", lessonTitle: "Policy Gradient и REINFORCE", lessonLevel: 2, hubPath: "/deep-rl", hubAnchor: "algorithms", hubLabel: "Deep RL → Алгоритмы", contextInLesson: "Policy Gradient как альтернатива value-based методам", contextInHub: "Теорема градиента политики (Урок 2.1)" },
-  { lessonId: "2-1", lessonPath: "/courses/2-1", lessonTitle: "Policy Gradient и REINFORCE", lessonLevel: 2, hubPath: "/math-rl/module-4", hubLabel: "Математика → Оптимизация", contextInLesson: "Стохастический градиентный подъём для политики", contextInHub: "Оптимизация политики (Урок 2.1)" },
+  { lessonId: "2-1", lessonPath: "/courses/2-1", lessonTitle: "Policy Gradient и REINFORCE", lessonLevel: 2, hubPath: "/math-rl/module-4", hubAnchor: "лекция-2-вывод-градиента-политики", hubLabel: "Математика → Вывод градиента политики", contextInLesson: "Стохастический градиентный подъём для политики", contextInHub: "Оптимизация политики (Урок 2.1)" },
   { lessonId: "2-1", lessonPath: "/courses/2-1", lessonTitle: "Policy Gradient и REINFORCE", lessonLevel: 2, hubPath: "/pytorch/cheatsheet", hubAnchor: "autograd", hubLabel: "PyTorch → Autograd", contextInLesson: "Autograd для вычисления градиента политики", contextInHub: "Autograd в контексте REINFORCE (Урок 2.1)" },
-  { lessonId: "2-1", lessonPath: "/courses/2-1", lessonTitle: "Policy Gradient и REINFORCE", lessonLevel: 2, hubPath: "/math-rl/module-3", hubLabel: "Математика → Вероятности", contextInLesson: "Логарифмические производные и REINFORCE", contextInHub: "Вероятностные основы градиента политики (Урок 2.1)" },
+  { lessonId: "2-1", lessonPath: "/courses/2-1", lessonTitle: "Policy Gradient и REINFORCE", lessonLevel: 2, hubPath: "/math-rl/module-3", hubAnchor: "1-теория-вероятностей", hubLabel: "Математика → Вероятности", contextInLesson: "Логарифмические производные и REINFORCE", contextInHub: "Вероятностные основы градиента политики (Урок 2.1)" },
 
   // ── Урок 2.2: PPO ──
   { lessonId: "2-2", lessonPath: "/courses/2-2", lessonTitle: "PPO — реализация с нуля", lessonLevel: 2, hubPath: "/algorithms/ppo", hubAnchor: "clipped", hubLabel: "PPO → Clipped Objective", contextInLesson: "Детальный разбор формулы клиппинга", contextInHub: "Реализация clipped loss (Урок 2.2)" },
@@ -52,7 +57,7 @@ export const CROSSLINKS: CrossLink[] = [
   { lessonId: "2-2", lessonPath: "/courses/2-2", lessonTitle: "PPO — реализация с нуля", lessonLevel: 2, hubPath: "/algorithms/ppo", hubAnchor: "architecture", hubLabel: "PPO → Архитектура", contextInLesson: "Архитектура Actor-Critic сетей для PPO", contextInHub: "Actor-Critic архитектура (Урок 2.2)" },
   { lessonId: "2-2", lessonPath: "/courses/2-2", lessonTitle: "PPO — реализация с нуля", lessonLevel: 2, hubPath: "/algorithms/ppo", hubAnchor: "implementation", hubLabel: "PPO → Реализация", contextInLesson: "Полная реализация PPO на PyTorch", contextInHub: "Код PPO из Урока 2.2" },
   { lessonId: "2-2", lessonPath: "/courses/2-2", lessonTitle: "PPO — реализация с нуля", lessonLevel: 2, hubPath: "/algorithms/ppo", hubAnchor: "unity", hubLabel: "PPO → Unity", contextInLesson: "Запуск PPO-обучения в Unity ML-Agents", contextInHub: "PPO в Unity (Урок 2.2)" },
-  { lessonId: "2-2", lessonPath: "/courses/2-2", lessonTitle: "PPO — реализация с нуля", lessonLevel: 2, hubPath: "/math-rl/module-5", hubLabel: "Математика → Advantage", contextInLesson: "Математика GAE и advantage estimation", contextInHub: "Формула GAE (Урок 2.2)" },
+  { lessonId: "2-2", lessonPath: "/courses/2-2", lessonTitle: "PPO — реализация с нуля", lessonLevel: 2, hubPath: "/math-rl/module-5", hubAnchor: "глава-9", hubLabel: "Математика → Глава 9. Policy Gradients и Advantage", contextInLesson: "Математика GAE и advantage estimation", contextInHub: "Формула GAE (Урок 2.2)" },
 
   // ── Урок 2.3: Непрерывные действия ──
   { lessonId: "2-3", lessonPath: "/courses/2-3", lessonTitle: "Непрерывные действия и Actor-Critic", lessonLevel: 2, hubPath: "/algorithms/ppo", hubAnchor: "architecture", hubLabel: "PPO → Архитектура", contextInLesson: "Адаптация PPO для continuous action space", contextInHub: "Continuous PPO (Урок 2.3)" },
@@ -63,7 +68,7 @@ export const CROSSLINKS: CrossLink[] = [
   // ── Урок 2.4: Reward Shaping ──
   { lessonId: "2-4", lessonPath: "/courses/2-4", lessonTitle: "Reward Shaping", lessonLevel: 2, hubPath: "/deep-rl", hubAnchor: "practice", hubLabel: "Deep RL → Практика", contextInLesson: "Проектирование функции вознаграждения", contextInHub: "Reward shaping (Урок 2.4)" },
   { lessonId: "2-4", lessonPath: "/courses/2-4", lessonTitle: "Reward Shaping", lessonLevel: 2, hubPath: "/unity-ml-agents", hubAnchor: "training", hubLabel: "ML-Agents → Обучение", contextInLesson: "Настройка наград в Unity-средах", contextInHub: "Настройка reward в ML-Agents (Урок 2.4)" },
-  { lessonId: "2-4", lessonPath: "/courses/2-4", lessonTitle: "Reward Shaping", lessonLevel: 2, hubPath: "/math-rl/module-1", hubLabel: "Математика → Ряды", contextInLesson: "Математическое обоснование reward shaping", contextInHub: "Ряды и дисконтирование (Урок 2.4)" },
+  { lessonId: "2-4", lessonPath: "/courses/2-4", lessonTitle: "Reward Shaping", lessonLevel: 2, hubPath: "/math-rl/module-1", hubAnchor: "6-дисконтирование-в-rl-и-его-влияние", hubLabel: "Математика → Дисконтирование в RL", contextInLesson: "Математическое обоснование reward shaping", contextInHub: "Ряды и дисконтирование (Урок 2.4)" },
 
   // ── Урок 2.5: Параллельные среды ──
   { lessonId: "2-5", lessonPath: "/courses/2-5", lessonTitle: "Параллельные среды", lessonLevel: 2, hubPath: "/unity-ml-agents", hubAnchor: "training", hubLabel: "ML-Agents → Обучение", contextInLesson: "Запуск множества экземпляров среды в ML-Agents", contextInHub: "Параллелизм для ускорения обучения (Урок 2.5)" },
@@ -86,7 +91,7 @@ export const CROSSLINKS: CrossLink[] = [
   { lessonId: "3-1", lessonPath: "/courses/3-1", lessonTitle: "SAC — Soft Actor-Critic", lessonLevel: 3, hubPath: "/algorithms/sac", hubAnchor: "architecture", hubLabel: "SAC → Архитектура", contextInLesson: "Twin Q-networks и reparameterization trick", contextInHub: "Архитектура SAC (Урок 3.1)" },
   { lessonId: "3-1", lessonPath: "/courses/3-1", lessonTitle: "SAC — Soft Actor-Critic", lessonLevel: 3, hubPath: "/algorithms/sac", hubAnchor: "implementation", hubLabel: "SAC → Реализация", contextInLesson: "Полная реализация SAC на PyTorch", contextInHub: "Код SAC (Урок 3.1)" },
   { lessonId: "3-1", lessonPath: "/courses/3-1", lessonTitle: "SAC — Soft Actor-Critic", lessonLevel: 3, hubPath: "/algorithms/sac", hubAnchor: "unity", hubLabel: "SAC → Unity", contextInLesson: "SAC-обучение в Unity ML-Agents", contextInHub: "SAC в Unity (Урок 3.1)" },
-  { lessonId: "3-1", lessonPath: "/courses/3-1", lessonTitle: "SAC — Soft Actor-Critic", lessonLevel: 3, hubPath: "/math-rl/module-5", hubLabel: "Математика → Soft Value", contextInLesson: "Математика soft value функций", contextInHub: "Энтропийная формула (Урок 3.1)" },
+  { lessonId: "3-1", lessonPath: "/courses/3-1", lessonTitle: "SAC — Soft Actor-Critic", lessonLevel: 3, hubPath: "/math-rl/module-5", hubAnchor: "глава-9", hubLabel: "Математика → Глава 9. Policy Gradients и энтропия", contextInLesson: "Математика soft value функций", contextInHub: "Энтропийная формула (Урок 3.1)" },
 
   // ── Урок 3.2: MA-POCA и Self-Play ──
   { lessonId: "3-2", lessonPath: "/courses/3-2", lessonTitle: "MA-POCA и Self-Play", lessonLevel: 3, hubPath: "/unity-projects/soccer", hubLabel: "Unity → Soccer", contextInLesson: "Soccer как среда для multi-agent обучения", contextInHub: "Мультиагентная среда Soccer (Урок 3.2)" },
@@ -100,14 +105,14 @@ export const CROSSLINKS: CrossLink[] = [
   // ── Урок 3.4: GAIL ──
   { lessonId: "3-4", lessonPath: "/courses/3-4", lessonTitle: "Имитационное обучение (GAIL)", lessonLevel: 3, hubPath: "/deep-rl", hubAnchor: "algorithms", hubLabel: "Deep RL → Алгоритмы", contextInLesson: "GAIL в семействе Deep RL методов", contextInHub: "Imitation Learning (Урок 3.4)" },
   { lessonId: "3-4", lessonPath: "/courses/3-4", lessonTitle: "Имитационное обучение (GAIL)", lessonLevel: 3, hubPath: "/unity-ml-agents", hubAnchor: "training", hubLabel: "ML-Agents → Обучение", contextInLesson: "Запись и использование демонстраций в ML-Agents", contextInHub: "Демонстрации для GAIL (Урок 3.4)" },
-  { lessonId: "3-4", lessonPath: "/courses/3-4", lessonTitle: "Имитационное обучение (GAIL)", lessonLevel: 3, hubPath: "/math-rl/module-4", hubLabel: "Математика → Оптимизация", contextInLesson: "GAN-подобная оптимизация в GAIL", contextInHub: "Adversarial training (Урок 3.4)" },
+  { lessonId: "3-4", lessonPath: "/courses/3-4", lessonTitle: "Имитационное обучение (GAIL)", lessonLevel: 3, hubPath: "/math-rl/module-4", hubAnchor: "лекция-2-вывод-градиента-политики", hubLabel: "Математика → Градиент политики", contextInLesson: "GAN-подобная оптимизация в GAIL", contextInHub: "Adversarial training (Урок 3.4)" },
 
   // ── Урок 3.5: Деплой ONNX ──
   { lessonId: "3-5", lessonPath: "/courses/3-5", lessonTitle: "Деплой модели: ONNX", lessonLevel: 3, hubPath: "/pytorch/cheatsheet", hubAnchor: "onnx-export", hubLabel: "PyTorch → ONNX-экспорт", contextInLesson: "Экспорт PyTorch → ONNX формат", contextInHub: "ONNX-экспорт (Урок 3.5)" },
   { lessonId: "3-5", lessonPath: "/courses/3-5", lessonTitle: "Деплой модели: ONNX", lessonLevel: 3, hubPath: "/unity-ml-agents", hubAnchor: "installation", hubLabel: "ML-Agents → Установка", contextInLesson: "Интеграция ONNX-модели в Unity через Sentis", contextInHub: "ONNX → Sentis (Урок 3.5)" },
 
   // ── Урок 3.6: Оптимизация гиперпараметров ──
-  { lessonId: "3-6", lessonPath: "/courses/3-6", lessonTitle: "Оптимизация гиперпараметров", lessonLevel: 3, hubPath: "/math-rl/module-4", hubLabel: "Математика → Оптимизация", contextInLesson: "Математика поиска гиперпараметров", contextInHub: "Оптимизация гиперпараметров (Урок 3.6)" },
+  { lessonId: "3-6", lessonPath: "/courses/3-6", lessonTitle: "Оптимизация гиперпараметров", lessonLevel: 3, hubPath: "/math-rl/module-4", hubAnchor: "лекция-3-градиентный-спуск-и-его-варианты", hubLabel: "Математика → Оптимизация", contextInLesson: "Математика поиска гиперпараметров", contextInHub: "Оптимизация гиперпараметров (Урок 3.6)" },
   { lessonId: "3-6", lessonPath: "/courses/3-6", lessonTitle: "Оптимизация гиперпараметров", lessonLevel: 3, hubPath: "/algorithms/ppo", hubAnchor: "implementation", hubLabel: "PPO → Реализация", contextInLesson: "lr, clip_range, n_epochs — настройка PPO", contextInHub: "Тюнинг PPO гиперпараметров (Урок 3.6)" },
   { lessonId: "3-6", lessonPath: "/courses/3-6", lessonTitle: "Оптимизация гиперпараметров", lessonLevel: 3, hubPath: "/fca-rl", hubAnchor: "fca-hyperparams", hubLabel: "FCA → Гиперпараметры", contextInLesson: "Анализ экспериментов через формальные понятия", contextInHub: "FCA-анализ гиперпараметров (Урок 3.6)" },
 
