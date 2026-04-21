@@ -429,28 +429,43 @@ const MathRL = () => {
   const location = useLocation();
   const [openParts, setOpenParts] = useState<Set<string>>(new Set());
 
-  // Auto-open the correct accordion part based on URL and scroll to hash anchor
+  // Auto-open the correct accordion part based on URL and scroll to hash anchor.
+  // Uses polling (requestAnimationFrame) so lazy-loaded Part chunks and
+  // async-rendered Chapter components scroll correctly once mounted.
   useEffect(() => {
     const partId = moduleToPartMap[location.pathname];
-    if (partId) {
-      setOpenParts((prev) => {
-        if (prev.has(partId)) return prev;
-        const next = new Set(prev);
-        next.add(partId);
-        return next;
-      });
-      const hash = location.hash.replace("#", "");
-      setTimeout(() => {
-        // If there's a hash, scroll to that specific element; otherwise scroll to the part
-        const targetId = hash || partId;
-        const el = document.getElementById(targetId);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-          el.classList.add("highlight-flash");
-          setTimeout(() => el.classList.remove("highlight-flash"), 1500);
-        }
-      }, 400);
-    }
+    if (!partId) return;
+
+    setOpenParts((prev) => {
+      if (prev.has(partId)) return prev;
+      const next = new Set(prev);
+      next.add(partId);
+      return next;
+    });
+
+    const hash = location.hash.replace("#", "");
+    const targetId = hash || partId;
+
+    const deadline = Date.now() + 3000;
+    let cancelled = false;
+    const tryScroll = () => {
+      if (cancelled) return;
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        el.classList.add("highlight-flash");
+        setTimeout(() => el.classList.remove("highlight-flash"), 1500);
+        return;
+      }
+      if (Date.now() < deadline) {
+        window.requestAnimationFrame(() => setTimeout(tryScroll, 80));
+      }
+    };
+    tryScroll();
+
+    return () => {
+      cancelled = true;
+    };
   }, [location.pathname, location.hash]);
 
   const togglePart = (id: string) => {

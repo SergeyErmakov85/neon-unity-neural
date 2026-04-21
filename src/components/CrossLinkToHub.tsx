@@ -13,6 +13,27 @@ interface CrossLinkToHubProps {
   hubTitle?: string;
 }
 
+/**
+ * Polls the DOM for an element with the given id, scrolling to it once it appears.
+ * Handles lazy-loaded routes, accordion auto-open and async chunk loading.
+ */
+const scrollToAnchorWhenReady = (anchor: string, maxWaitMs = 3000) => {
+  const deadline = Date.now() + maxWaitMs;
+  const tryScroll = () => {
+    const el = document.getElementById(anchor);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      el.classList.add("highlight-flash");
+      setTimeout(() => el.classList.remove("highlight-flash"), 1500);
+      return;
+    }
+    if (Date.now() < deadline) {
+      window.requestAnimationFrame(() => setTimeout(tryScroll, 80));
+    }
+  };
+  tryScroll();
+};
+
 const CrossLinkToHub = ({
   hubPath,
   hubAnchor,
@@ -26,15 +47,8 @@ const CrossLinkToHub = ({
     navigate(fullPath);
 
     if (hubAnchor) {
-      // Wait for navigation and DOM render
-      setTimeout(() => {
-        const el = document.getElementById(hubAnchor);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-          el.classList.add("highlight-flash");
-          setTimeout(() => el.classList.remove("highlight-flash"), 1500);
-        }
-      }, 300);
+      // Route/component may mount lazily; poll for the element rather than guessing a delay.
+      scrollToAnchorWhenReady(hubAnchor);
     }
   };
 
