@@ -1,4 +1,5 @@
-import { BookOpen, TrendingUp, Layers, BarChart3, Code2, GraduationCap } from "lucide-react";
+import { BookOpen, TrendingUp, Layers, BarChart3, Code2, GraduationCap, ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 import Math from "@/components/Math";
 import CyberCodeBlock from "@/components/CyberCodeBlock";
 import { GeometricSeriesChart, ValueIterationChart, DiscountImpactChart } from "@/components/math-rl/module1/InteractiveCharts";
@@ -6,6 +7,39 @@ import LimitOfSequenceViz from "@/components/math-rl/LimitOfSequenceViz";
 import InfiniteSeriesViz from "@/components/math-rl/InfiniteSeriesViz";
 import ValueFunctionViz from "@/components/math-rl/ValueFunctionViz";
 import mdpTwoStatesImg from "@/assets/mdp-two-states.png";
+
+/**
+ * Тонкая капсула «назад в урок 1.5» — зеркало pill-варианта HubLink.
+ * Показывается справа от заголовка § 4, помогает читателям, пришедшим
+ * по глубокой ссылке из курса, вернуться к месту остановки.
+ */
+const BackToLessonPill = () => (
+  <Link
+    to="/courses/1-5#пример-вывода-уравнения-оптимальности"
+    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border transition-all duration-200 no-underline"
+    style={{
+      borderColor: "rgba(0,255,214,0.25)",
+      backgroundColor: "rgba(0,255,214,0.06)",
+      color: "#00FFD6",
+      fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+      fontSize: "11px",
+      lineHeight: 1.2,
+      whiteSpace: "nowrap",
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.boxShadow = "0 0 8px rgba(0,255,214,0.35)";
+      e.currentTarget.style.borderColor = "rgba(0,255,214,0.5)";
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.boxShadow = "none";
+      e.currentTarget.style.borderColor = "rgba(0,255,214,0.25)";
+    }}
+    title="Вернуться в урок 1.5 к месту, где мы остановились"
+  >
+    <ArrowLeft aria-hidden style={{ width: 12, height: 12 }} />
+    <span>из урока 1.5 — вернуться</span>
+  </Link>
+);
 
 const Part1Limits = () => (
   <>
@@ -130,7 +164,11 @@ const Part1Limits = () => (
     </Section>
 
     {/* ── 4. Уравнения Беллмана ── */}
-    <Section icon={<TrendingUp className="w-5 h-5 text-primary" />} title="4. Уравнения Беллмана и дисконтирование">
+    <Section
+      icon={<TrendingUp className="w-5 h-5 text-primary" />}
+      title="4. Уравнения Беллмана и дисконтирование"
+      rightSlot={<BackToLessonPill />}
+    >
       <p>
         Уравнение Беллмана выражает ценность состояния через ценности последующих состояний — это рекуррентное соотношение:
       </p>
@@ -659,11 +697,22 @@ print(f"\\nTD-ошибка через 300 шагов: {td_err[-1]:.8f} → 0")`}
 
 const slugify = (t: string) => t.toLowerCase().replace(/[^\wа-яё]+/gi, "-").replace(/^-|-$/g, "").slice(0, 60);
 
-const Section = ({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) => (
+const Section = ({
+  icon,
+  title,
+  children,
+  rightSlot,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  children: React.ReactNode;
+  rightSlot?: React.ReactNode;
+}) => (
   <section className="mt-12 first:mt-0 scroll-mt-28" id={slugify(title)}>
-    <div className="flex items-center gap-3 mb-6">
+    <div className="flex items-center flex-wrap gap-3 mb-6">
       {icon}
       <h2 className="text-2xl font-bold text-foreground">{title}</h2>
+      {rightSlot && <div className="ml-auto">{rightSlot}</div>}
     </div>
     <div className="text-muted-foreground leading-relaxed space-y-3">{children}</div>
   </section>
