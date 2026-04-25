@@ -97,14 +97,14 @@ const quizQuestions = [
 const CourseLesson1_5 = () => {
   return (
     <LessonLayout
-      lessonId="1-5"
+      lessonId="1-6"
       lessonTitle="Марковские процессы принятия решений (MDP)"
-      lessonNumber="1.5"
+      lessonNumber="1.6"
       duration="35 мин"
       tags={["#theory", "#math", "#bellman"]}
       level={1}
-      prevLesson={{ path: "/courses/1-4", title: "DQN с нуля на PyTorch" }}
-      nextLesson={{ path: "/courses/1-6", title: "Q-Learning: табличный метод" }}
+      prevLesson={{ path: "/courses/1-5", title: "DQN с нуля на PyTorch" }}
+      nextLesson={{ path: "/courses/1-7", title: "Exploration vs Exploitation" }}
       keyConcepts={[
         "MDP = (S, A, T, R, γ) — формальная модель задачи RL",
         "Политика π, возврат G_t и траектории",
@@ -714,7 +714,7 @@ const CourseLesson1_5 = () => {
             {
               name: "Q-Learning",
               model: "model-free",
-              desc: "T и R неизвестны. Обновляем табличку Q на опыте. Урок 1.6 — от уравнения Беллмана до кода.",
+              desc: "T и R неизвестны. Обновляем табличку Q на опыте. Урок 1.3 — от уравнения Беллмана до кода.",
               color: "border-secondary/30",
               label: "text-secondary",
             },
@@ -944,8 +944,8 @@ for row in policy:
               <h3 className="font-bold text-sm text-primary">Следующий шаг — Q-Learning</h3>
               <p className="text-xs text-muted-foreground">
                 В{" "}
-                <CrossLinkToHub hubPath="/courses/1-6" hubTitle="Урок 1.6 — Q-Learning">
-                  уроке 1.6
+                <CrossLinkToHub hubPath="/courses/1-3" hubTitle="Урок 1.3 — Q-Learning">
+                  уроке 1.3
                 </CrossLinkToHub>{" "}
                 мы превратим уравнение Беллмана оптимальности для Q в алгоритм, который
                 учится без знания T и R.
@@ -987,8 +987,8 @@ for row in policy:
               <h3 className="font-bold text-sm text-foreground">Вернуться к коду DQN</h3>
               <p className="text-xs text-muted-foreground">
                 Перечитай код{" "}
-                <CrossLinkToHub hubPath="/courses/1-4" hubTitle="Урок 1.4 — DQN">
-                  DQN из урока 1.4
+                <CrossLinkToHub hubPath="/courses/1-5" hubTitle="Урок 1.5 — DQN">
+                  DQN из урока 1.5
                 </CrossLinkToHub>{" "}
                 — теперь формула{" "}
                 <Math display={false}>{"r + \\gamma \\cdot \\max_{a'} Q(s', a')"}</Math>{" "}
@@ -1036,8 +1036,8 @@ for row in policy:
       <Quiz
         title="Проверь себя: MDP и Беллман"
         questions={quizQuestions}
-        lessonPath="/courses/1-5"
-        nextLesson={{ path: "/courses/1-6", title: "Q-Learning: табличный метод" }}
+        lessonPath="/courses/1-6"
+        nextLesson={{ path: "/courses/1-7", title: "Exploration vs Exploitation" }}
       />
     </LessonLayout>
   );

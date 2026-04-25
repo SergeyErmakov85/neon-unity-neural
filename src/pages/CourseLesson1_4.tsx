@@ -98,8 +98,8 @@ const CourseLesson1_4 = () => {
       lessonNumber="1.4"
       duration="45 мин"
       tags={["#code", "#pytorch", "#dqn", "#deep"]}
-      prevLesson={{ path: "/courses/1-3", title: "CartPole агент" }}
-      nextLesson={{ path: "/courses/project-1", title: "Проект 1" }}
+      prevLesson={{ path: "/courses/1-3", title: "Q-Learning: табличный метод" }}
+      nextLesson={{ path: "/courses/1-5", title: "DQN с нуля на PyTorch" }}
       keyConcepts={[
         "DQN — первый deep RL алгоритм (DeepMind, 2015)",
         "Target Network — стабилизация обучения",

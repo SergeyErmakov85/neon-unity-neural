@@ -76,11 +76,11 @@ const CourseLesson1_3 = () => {
     <LessonLayout
       lessonId="1-3"
       lessonTitle="CartPole — твой первый RL-агент"
-      lessonNumber="1.3"
+      lessonNumber="1.4"
       duration="35 мин"
       tags={["#code", "#pytorch", "#gym"]}
       prevLesson={{ path: "/courses/1-2", title: "Установка окружения" }}
-      nextLesson={{ path: "/courses/1-4", title: "DQN с нуля" }}
+      nextLesson={{ path: "/courses/1-5", title: "DQN с нуля на PyTorch" }}
       keyConcepts={[
         "Gymnasium — стандартная библиотека RL-сред",
         "CartPole: наблюдения, действия, награды, конец эпизода",
@@ -792,7 +792,7 @@ plt.show()`}
       <Quiz
         title="Проверь себя: CartPole"
         questions={quizQuestions}
-        nextLesson={{ path: "/courses/1-4", title: "DQN с нуля" }}
+        nextLesson={{ path: "/courses/1-5", title: "DQN с нуля на PyTorch" }}
       />
     </LessonLayout>
   );

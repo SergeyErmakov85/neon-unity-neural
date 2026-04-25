@@ -95,7 +95,7 @@ const CourseLesson1_1 = () => {
       lessonNumber="1.1"
       duration="25 мин"
       tags={["#theory", "#basics"]}
-      nextLesson={{ path: "/courses/1-2", title: "Установка окружения" }}
+      nextLesson={{ path: "/courses/1-2", title: "Установка окружения: PyTorch + Unity ML-Agents" }}
       keyConcepts={[
         "Чем RL отличается от других видов машинного обучения",
         "Как работает цикл «агент — среда — награда»",
