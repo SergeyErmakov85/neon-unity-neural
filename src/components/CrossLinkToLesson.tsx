@@ -18,6 +18,17 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useUserRole } from "@/hooks/useUserRole";
 
+const LEVEL1_LESSON_ID_BY_PATH: Record<string, string> = {
+  "/courses/1-1": "1.1",
+  "/courses/1-2": "1.2",
+  "/courses/1-3": "1.3",
+  "/courses/1-4": "1.4",
+  "/courses/1-5": "1.5",
+  "/courses/1-6": "1.6",
+  "/courses/1-7": "1.7",
+  "/courses/project-1": "П1",
+};
+
 interface CrossLinkToLessonProps {
   lessonId: string;
   lessonPath: string;
@@ -48,7 +59,10 @@ const CrossLinkToLesson = ({
     }
   };
 
-  const label = children ?? `Урок ${lessonId}`;
+  const canonicalLessonId = lessonLevel === 1 && LEVEL1_LESSON_ID_BY_PATH[lessonPath]
+    ? LEVEL1_LESSON_ID_BY_PATH[lessonPath]
+    : lessonId;
+  const label = children ?? `Урок ${canonicalLessonId}`;
 
   if (isAccessible) {
     return (

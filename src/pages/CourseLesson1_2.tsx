@@ -113,8 +113,8 @@ const CourseLesson1_2 = () => {
       lessonNumber="1.2"
       duration="30 мин"
       tags={["#setup", "#pytorch", "#unity", "#mlagents"]}
-      prevLesson={{ path: "/courses/1-1", title: "Что такое RL?" }}
-      nextLesson={{ path: "/courses/1-3", title: "Первый агент: CartPole" }}
+      prevLesson={{ path: "/courses/1-1", title: "Что такое обучение с подкреплением?" }}
+      nextLesson={{ path: "/courses/1-3", title: "Q-Learning: табличный метод" }}
       keyConcepts={[
         "Как устроен стек: Unity ↔ ML-Agents ↔ PyTorch",
         "Создание изолированного Python-окружения (venv / Conda)",
@@ -720,7 +720,7 @@ python check_env.py`}
       <Quiz
         title="Проверь себя: Установка окружения"
         questions={quizQuestions}
-        nextLesson={{ path: "/courses/1-3", title: "Первый агент: CartPole" }}
+        nextLesson={{ path: "/courses/1-3", title: "Q-Learning: табличный метод" }}
       />
     </LessonLayout>
   );
