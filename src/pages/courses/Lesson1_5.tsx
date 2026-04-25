@@ -9,31 +9,29 @@ import Section_ValueIteration from "@/components/math-rl/lesson1_5/Section_Value
 import Section_BellmanBridge from "@/components/math-rl/lesson1_5/Section_BellmanBridge";
 
 /**
- * Хост-компонент урока 1.5 — «Марковские процессы принятия решений».
+ * Хост-компонент урока 1.6 — «Марковские процессы принятия решений».
  *
- * Этот файл — новый плацдарм, построенный с нуля в изоляции от
- * существующего src/pages/CourseLesson1_5.tsx. Роутинг на него ещё
- * НЕ переключён — старый урок остаётся доступным по /courses/1-5.
+ * Этот файл используется роутом /courses/1-6 из App.tsx.
  *
  * Секции импортируются из src/components/math-rl/lesson1_5/*.
  * Сейчас они — плейсхолдеры; содержимое наполняется в отдельных промптах
  * (см. комментарии JSX).
  *
  * API LessonLayout на данный момент принимает `lessonId`, `lessonNumber`,
- * `lessonTitle` — поэтому идеальный заголовок «1.5 · Марковские процессы
+ * `lessonTitle` — поэтому идеальный заголовок «1.6 · Марковские процессы
  * принятия решений» собирается из полей (lessonNumber + lessonTitle).
  */
 const Lesson1_5 = () => {
   return (
     <LessonLayout
-      lessonId="1-5"
-      lessonNumber="1.5"
+      lessonId="1-6"
+      lessonNumber="1.6"
       lessonTitle="Марковские процессы принятия решений"
       duration="35 мин"
       tags={["#theory", "#math", "#bellman"]}
       level={1}
-      prevLesson={{ path: "/courses/1-4", title: "DQN с нуля на PyTorch" }}
-      nextLesson={{ path: "/courses/1-6", title: "Q-Learning: табличный метод" }}
+      prevLesson={{ path: "/courses/1-5", title: "DQN с нуля на PyTorch" }}
+      nextLesson={{ path: "/courses/1-7", title: "Exploration vs Exploitation" }}
     >
       <Section_Intro />
       {/* промпт 3 — Intro */}
