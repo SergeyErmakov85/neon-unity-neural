@@ -74,12 +74,12 @@ const quizQuestions = [
 const CourseLesson1_3 = () => {
   return (
     <LessonLayout
-      lessonId="1-3"
+      lessonId="1-4"
       lessonTitle="CartPole — твой первый RL-агент"
       lessonNumber="1.4"
       duration="35 мин"
       tags={["#code", "#pytorch", "#gym"]}
-      prevLesson={{ path: "/courses/1-2", title: "Установка окружения" }}
+      prevLesson={{ path: "/courses/1-3", title: "Q-Learning: табличный метод" }}
       nextLesson={{ path: "/courses/1-5", title: "DQN с нуля на PyTorch" }}
       keyConcepts={[
         "Gymnasium — стандартная библиотека RL-сред",

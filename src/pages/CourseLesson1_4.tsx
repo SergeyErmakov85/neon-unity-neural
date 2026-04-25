@@ -93,13 +93,13 @@ const quizQuestions = [
 const CourseLesson1_4 = () => {
   return (
     <LessonLayout
-      lessonId="1-4"
+      lessonId="1-5"
       lessonTitle="DQN с нуля на PyTorch"
-      lessonNumber="1.4"
+      lessonNumber="1.5"
       duration="45 мин"
       tags={["#code", "#pytorch", "#dqn", "#deep"]}
-      prevLesson={{ path: "/courses/1-3", title: "Q-Learning: табличный метод" }}
-      nextLesson={{ path: "/courses/1-5", title: "DQN с нуля на PyTorch" }}
+      prevLesson={{ path: "/courses/1-4", title: "CartPole — твой первый RL-агент" }}
+      nextLesson={{ path: "/courses/project-1", title: "Проект: Балансировка шеста" }}
       keyConcepts={[
         "DQN — первый deep RL алгоритм (DeepMind, 2015)",
         "Target Network — стабилизация обучения",
@@ -765,7 +765,7 @@ env.close()`}
       <Quiz
         title="Проверь себя: DQN"
         questions={quizQuestions}
-        lessonPath="/courses/1-4"
+        lessonPath="/courses/1-5"
         nextLesson={{ path: "/courses/project-1", title: "Проект: Балансировка шеста" }}
       />
 
